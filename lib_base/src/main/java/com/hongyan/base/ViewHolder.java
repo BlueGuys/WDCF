@@ -44,14 +44,14 @@ class ViewHolder {
         });
 
         //初始化businessLayout
-        LinearLayout businessLayout = rootView.findViewById(R.id.contentLayout);
-        View contentView;
+        LinearLayout contentLayout = rootView.findViewById(R.id.contentLayout);
+        View businessView;
         try {
-            contentView = LayoutInflater.from(baseActivity).inflate(businessViewHolder.getLayoutID(), null, false);
+            businessView = LayoutInflater.from(baseActivity).inflate(businessViewHolder.getLayoutID(), null, false);
         } catch (Exception e) {
-            contentView = LayoutInflater.from(baseActivity).inflate(R.layout.view_base, null, false);
+            businessView = LayoutInflater.from(baseActivity).inflate(R.layout.view_base, null, false);
         }
-        businessLayout.addView(contentView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        contentLayout.addView(businessView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         //初始化networkErrorLayout
         netErrorLayout = rootView.findViewById(R.id.netErrorLayout);
@@ -69,7 +69,7 @@ class ViewHolder {
         navigationView.setVisibility(businessViewHolder.hideNavigationView() ? View.GONE : View.VISIBLE);
         businessViewHolder.setNavigationView(navigationView);
 
-        businessViewHolder.initView(contentView);
+        businessViewHolder.initView(businessView);
     }
 
     /**
