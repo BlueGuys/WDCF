@@ -14,6 +14,10 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        startLoading();
+    }
+
+    @Override
+    public boolean needPageRequest() {
+        return false;
     }
 }

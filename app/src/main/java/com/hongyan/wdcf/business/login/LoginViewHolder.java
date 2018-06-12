@@ -1,35 +1,37 @@
-package com.hongyan.wdcf.business.main;
+package com.hongyan.wdcf.business.login;
 
-import android.content.Intent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
 import com.hongyan.base.RequestBean;
 import com.hongyan.wdcf.R;
-import com.hongyan.wdcf.business.login.LoginActivity;
+import com.hongyan.wdcf.business.main.MainResult;
 
 /**
  * Created by wangning on 2018/6/10.
  */
 
-public class MainViewHolder extends BaseViewHolder {
+public class LoginViewHolder extends BaseViewHolder {
 
-    MainViewHolder(BaseActivity activity) {
+    LoginViewHolder(BaseActivity activity) {
         super(activity);
     }
 
     @Override
     public int getLayoutID() {
-        return R.layout.activity_main;
+        return R.layout.activity_login;
     }
 
     @Override
     protected int getNavigationTitle() {
-        return R.string.app_name;
+        return R.string.login;
+    }
+
+    @Override
+    protected boolean allowPullRefresh() {
+        return true;
     }
 
     @Override
@@ -42,22 +44,10 @@ public class MainViewHolder extends BaseViewHolder {
 
     @Override
     protected <T extends BaseResult> void onRequestSuccess(T result) {
-        Toast.makeText(getmActivity(), "ssss", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    protected boolean onRequestFail() {
-        return super.onRequestFail();
+        showSuccessToast("请求成功");
     }
 
     @Override
     protected void initView(View rootView) {
-        Button button = rootView.findViewById(R.id.start);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mActivity.startActivity(new Intent(mActivity, LoginActivity.class));
-            }
-        });
     }
 }

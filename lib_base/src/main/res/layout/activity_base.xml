@@ -1,23 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.hongyan.base.NavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="44dp" />
 
-    <LinearLayout
-        android:id="@+id/contentLayout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/navigation"
-        android:gravity="center_horizontal|top"
-        android:orientation="vertical" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <include
-        android:id="@+id/netErrorLayout"
-        layout="@layout/view_network_error"
-        android:visibility="gone" />
-</RelativeLayout>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/layout_swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/contentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/navigation"
+                android:gravity="center_horizontal|top"
+                android:orientation="vertical" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <include
+            android:id="@+id/netErrorLayout"
+            layout="@layout/view_network_error"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+</LinearLayout>

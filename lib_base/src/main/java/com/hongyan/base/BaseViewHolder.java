@@ -10,11 +10,11 @@ import com.hongyan.lib_base.R;
 
 public abstract class BaseViewHolder {
 
-    protected BaseActivity activity;
+    protected BaseActivity mActivity;
     protected NavigationView navigationView;
 
-    public BaseViewHolder(BaseActivity activity) {
-        this.activity = activity;
+    public BaseViewHolder(BaseActivity mActivity) {
+        this.mActivity = mActivity;
     }
 
     protected abstract RequestBean getRequestBean();
@@ -31,11 +31,15 @@ public abstract class BaseViewHolder {
 
     protected abstract int getNavigationTitle();
 
-    public BaseActivity getActivity() {
-        return activity;
+    public BaseActivity getmActivity() {
+        return mActivity;
     }
 
     protected boolean hideNavigationView() {
+        return false;
+    }
+
+    protected boolean allowPullRefresh(){
         return false;
     }
 
@@ -55,32 +59,32 @@ public abstract class BaseViewHolder {
         addLeftButton(R.drawable.icon_arrow_back, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.finish();
+                mActivity.finish();
             }
         });
     }
 
     protected void showSuccessToast(String message) {
-        activity.showSuccessToast(message);
+        mActivity.showSuccessToast(message);
     }
 
     protected void showErrorToast(String message) {
-        activity.showErrorToast(message);
+        mActivity.showErrorToast(message);
     }
 
     protected void startLoading() {
-        activity.startLoading();
+        mActivity.startLoading();
     }
 
     /**
      * @param isCancelable 是否可以取消
      */
     protected void startLoading(boolean isCancelable) {
-        activity.startLoading(isCancelable);
+        mActivity.startLoading(isCancelable);
     }
 
     protected void cancelLoading() {
-        activity.cancelLoading();
+        mActivity.cancelLoading();
     }
 
 

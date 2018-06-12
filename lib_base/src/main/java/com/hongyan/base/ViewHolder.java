@@ -1,6 +1,8 @@
 package com.hongyan.base;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -16,7 +18,7 @@ class ViewHolder {
 
     private BaseActivity baseActivity;
     private View rootView;
-    private LinearLayout businessLayout;
+    private SwipeRefreshLayout refreshLayout;
     private BaseViewHolder businessViewHolder;
     private View netErrorLayout;
 
@@ -24,7 +26,7 @@ class ViewHolder {
         this.baseActivity = baseActivity;
         this.businessViewHolder = businessViewHolder;
         initView();
-        requestPageData();
+        requestPageData(false);
     }
 
     /**
@@ -33,7 +35,16 @@ class ViewHolder {
     private void initView() {
         rootView = LayoutInflater.from(baseActivity).inflate(R.layout.activity_base, null, false);
 
-        businessLayout = rootView.findViewById(R.id.contentLayout);
+        refreshLayout = rootView.findViewById(R.id.layout_swipe_refresh);
+        refreshLayout.setEnabled(businessViewHolder.allowPullRefresh());
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            public void onRefresh() {
+                requestPageData(true);
+            }
+        });
+
+        //初始化businessLayout
+        LinearLayout businessLayout = rootView.findViewById(R.id.contentLayout);
         View contentView;
         try {
             contentView = LayoutInflater.from(baseActivity).inflate(businessViewHolder.getLayoutID(), null, false);
@@ -42,12 +53,21 @@ class ViewHolder {
         }
         businessLayout.addView(contentView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
+        //初始化networkErrorLayout
         netErrorLayout = rootView.findViewById(R.id.netErrorLayout);
+        netErrorLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                requestPageData(false);
+                return true;
+            }
+        });
 
         //实例化导航栏
         NavigationView navigationView = rootView.findViewById(R.id.navigation);
-        businessViewHolder.setNavigationView(navigationView);
+        navigationView.setTitle(baseActivity.getString(businessViewHolder.getNavigationTitle()));
         navigationView.setVisibility(businessViewHolder.hideNavigationView() ? View.GONE : View.VISIBLE);
+        businessViewHolder.setNavigationView(navigationView);
 
         businessViewHolder.initView(contentView);
     }
@@ -55,23 +75,36 @@ class ViewHolder {
     /**
      * 发送页面请求
      */
-    private void requestPageData() {
+    private void requestPageData(final boolean isPullRefresh) {
         if (!baseActivity.needPageRequest()) {//如果子类指定不需要页面请求，那么就不请求
             return;
         }
-        baseActivity.startLoading();
         RequestBean requestBean = businessViewHolder.getRequestBean();
+        if (requestBean == null) {
+            return;
+        }
+        if (!isPullRefresh) {
+            baseActivity.startLoading();
+        }
         new NetworkCall<>().start(requestBean.getResultClass(), requestBean.getRequestUrl(), requestBean.getParams(), new RequestListener() {
             @Override
             public <T extends BaseResult> void onResponse(T result) {
-                baseActivity.cancelLoading();
+                if (isPullRefresh) {
+                    refreshLayout.setRefreshing(false);
+                } else {
+                    baseActivity.cancelLoading();
+                }
                 businessViewHolder.onRequestSuccess(result);
                 showBusinessLayout();
             }
 
             @Override
             public void onError(BaseError error) {
-                baseActivity.cancelLoading();
+                if (isPullRefresh) {
+                    refreshLayout.setRefreshing(false);
+                } else {
+                    baseActivity.cancelLoading();
+                }
                 if (businessViewHolder.onRequestFail()) {
                     //子类实现
                 } else {
@@ -83,13 +116,13 @@ class ViewHolder {
     }
 
     private void showBusinessLayout() {
+        refreshLayout.setVisibility(View.VISIBLE);
         netErrorLayout.setVisibility(View.GONE);
-        businessLayout.setVisibility(View.VISIBLE);
     }
 
     private void showNetErrorLayout() {
+        refreshLayout.setVisibility(View.GONE);
         netErrorLayout.setVisibility(View.VISIBLE);
-        businessLayout.setVisibility(View.GONE);
     }
 
     View getRootView() {
