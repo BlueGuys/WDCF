@@ -35,6 +35,11 @@ public class LoginViewHolder extends BaseViewHolder {
     }
 
     @Override
+    protected boolean allowLoadMore() {
+        return true;
+    }
+
+    @Override
     protected RequestBean getRequestBean() {
         RequestBean bean = new RequestBean<>(MainResult.class);
         bean.setRequestUrl("http://www.xicaijing.com/Api/Digiccy/mylists.html");

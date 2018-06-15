@@ -1,6 +1,5 @@
 package com.hongyan.base;
 
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.hongyan.lib_base.R;
+import com.hongyan.smartrefresh.layout.SmartRefreshLayout;
 
 /**
  * Created by wangning on 2018/6/10.
@@ -18,7 +18,7 @@ class ViewHolder {
 
     private BaseActivity baseActivity;
     private View rootView;
-    private SwipeRefreshLayout refreshLayout;
+    private SmartRefreshLayout refreshLayout;
     private BaseViewHolder businessViewHolder;
     private View netErrorLayout;
 
@@ -35,13 +35,9 @@ class ViewHolder {
     private void initView() {
         rootView = LayoutInflater.from(baseActivity).inflate(R.layout.activity_base, null, false);
 
-        refreshLayout = rootView.findViewById(R.id.layout_swipe_refresh);
-        refreshLayout.setEnabled(businessViewHolder.allowPullRefresh());
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            public void onRefresh() {
-                requestPageData(true);
-            }
-        });
+        refreshLayout = rootView.findViewById(R.id.refreshLayout);
+        refreshLayout.setEnableRefresh(businessViewHolder.allowPullRefresh());
+        refreshLayout.setEnableLoadMore(businessViewHolder.allowLoadMore());
 
         //初始化businessLayout
         LinearLayout contentLayout = rootView.findViewById(R.id.contentLayout);
@@ -90,7 +86,7 @@ class ViewHolder {
             @Override
             public <T extends BaseResult> void onResponse(T result) {
                 if (isPullRefresh) {
-                    refreshLayout.setRefreshing(false);
+                    refreshLayout.setEnableRefresh(false);
                 } else {
                     baseActivity.cancelLoading();
                 }
@@ -101,7 +97,7 @@ class ViewHolder {
             @Override
             public void onError(BaseError error) {
                 if (isPullRefresh) {
-                    refreshLayout.setRefreshing(false);
+                    refreshLayout.setEnableRefresh(false);
                 } else {
                     baseActivity.cancelLoading();
                 }

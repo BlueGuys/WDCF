@@ -39,7 +39,11 @@ public abstract class BaseViewHolder {
         return false;
     }
 
-    protected boolean allowPullRefresh(){
+    protected boolean allowPullRefresh() {
+        return false;
+    }
+
+    protected boolean allowLoadMore() {
         return false;
     }
 
