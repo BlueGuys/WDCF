@@ -27,11 +27,6 @@ public class AppStartActivity extends BaseActivity {
     }
 
     @Override
-    public boolean needPageRequest() {
-        return false;
-    }
-
-    @Override
     protected BaseViewHolder getViewHolder() {
         return new AppStartViewHolder(this);
     }

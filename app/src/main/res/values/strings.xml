@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">WDCF</string>
     <string name="login">登录</string>
+    <string name="list">列表</string>
 </resources>

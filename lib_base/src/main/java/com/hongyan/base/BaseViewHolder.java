@@ -31,7 +31,7 @@ public abstract class BaseViewHolder {
 
     protected abstract int getNavigationTitle();
 
-    public BaseActivity getmActivity() {
+    public BaseActivity getActivity() {
         return mActivity;
     }
 
@@ -39,13 +39,11 @@ public abstract class BaseViewHolder {
         return false;
     }
 
-    protected boolean allowPullRefresh() {
-        return false;
+    protected View getRootView() {
+        return null;
     }
 
-    protected boolean allowLoadMore() {
-        return false;
-    }
+    public abstract boolean needPageRequest();
 
     public NavigationView getNavigationView() {
         return navigationView;

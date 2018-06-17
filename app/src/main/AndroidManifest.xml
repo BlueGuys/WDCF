@@ -31,6 +31,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".business.login.LoginActivity" />
+        <activity android:name=".business.list.ListActivity" />
         <activity
             android:name="com.hongyan.TestActivity"
             android:launchMode="singleTask" />

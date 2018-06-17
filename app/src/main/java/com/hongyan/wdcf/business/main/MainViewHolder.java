@@ -8,15 +8,17 @@ import android.widget.Toast;
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
+import com.hongyan.base.CommonViewHolder;
 import com.hongyan.base.RequestBean;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.business.list.ListActivity;
 import com.hongyan.wdcf.business.login.LoginActivity;
 
 /**
  * Created by wangning on 2018/6/10.
  */
 
-public class MainViewHolder extends BaseViewHolder {
+public class MainViewHolder extends CommonViewHolder {
 
     MainViewHolder(BaseActivity activity) {
         super(activity);
@@ -42,7 +44,12 @@ public class MainViewHolder extends BaseViewHolder {
 
     @Override
     protected <T extends BaseResult> void onRequestSuccess(T result) {
-        Toast.makeText(getmActivity(), "ssss", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "ssss", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public boolean needPageRequest() {
+        return true;
     }
 
     @Override
@@ -57,6 +64,14 @@ public class MainViewHolder extends BaseViewHolder {
             @Override
             public void onClick(View v) {
                 mActivity.startActivity(new Intent(mActivity, LoginActivity.class));
+            }
+        });
+
+        Button buttonList = rootView.findViewById(R.id.startList);
+        buttonList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mActivity.startActivity(new Intent(mActivity, ListActivity.class));
             }
         });
     }

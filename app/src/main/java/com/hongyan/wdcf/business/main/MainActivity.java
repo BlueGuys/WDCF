@@ -16,8 +16,4 @@ public class MainActivity extends BaseActivity {
         super.onResume();
     }
 
-    @Override
-    public boolean needPageRequest() {
-        return false;
-    }
 }

@@ -14,11 +14,6 @@ public class LoginActivity extends BaseActivity {
     }
 
     @Override
-    public boolean needPageRequest() {
-        return true;
-    }
-
-    @Override
     protected BaseViewHolder getViewHolder() {
         return new LoginViewHolder(this);
     }

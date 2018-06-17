@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <com.hongyan.base.NavigationView
@@ -14,26 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-        <com.hongyan.smartrefresh.layout.SmartRefreshLayout
-            android:id="@+id/refreshLayout"
+
+        <LinearLayout
+            android:id="@+id/contentLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srlEnableScrollContentWhenLoaded="true"
-            app:srlEnableFooterFollowWhenLoadFinished="true">
-
-            <LinearLayout
-                android:id="@+id/contentLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/navigation"
-                android:gravity="center_horizontal|top"
-                android:orientation="vertical" />
-
-            <com.hongyan.smartrefresh.layout.footer.ClassicsFooter
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srlClassicsSpinnerStyle="Translate"/>
-        </com.hongyan.smartrefresh.layout.SmartRefreshLayout>
+            android:gravity="center_horizontal|top"
+            android:orientation="vertical" />
 
         <include
             android:id="@+id/netErrorLayout"

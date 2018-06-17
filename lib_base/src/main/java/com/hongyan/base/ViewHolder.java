@@ -18,15 +18,15 @@ class ViewHolder {
 
     private BaseActivity baseActivity;
     private View rootView;
-    private SmartRefreshLayout refreshLayout;
     private BaseViewHolder businessViewHolder;
+    private LinearLayout contentLayout;
     private View netErrorLayout;
 
     ViewHolder(BaseActivity baseActivity, BaseViewHolder businessViewHolder) {
         this.baseActivity = baseActivity;
         this.businessViewHolder = businessViewHolder;
         initView();
-        requestPageData(false);
+        requestPageData();
     }
 
     /**
@@ -35,18 +35,9 @@ class ViewHolder {
     private void initView() {
         rootView = LayoutInflater.from(baseActivity).inflate(R.layout.activity_base, null, false);
 
-        refreshLayout = rootView.findViewById(R.id.refreshLayout);
-        refreshLayout.setEnableRefresh(businessViewHolder.allowPullRefresh());
-        refreshLayout.setEnableLoadMore(businessViewHolder.allowLoadMore());
-
         //初始化businessLayout
-        LinearLayout contentLayout = rootView.findViewById(R.id.contentLayout);
-        View businessView;
-        try {
-            businessView = LayoutInflater.from(baseActivity).inflate(businessViewHolder.getLayoutID(), null, false);
-        } catch (Exception e) {
-            businessView = LayoutInflater.from(baseActivity).inflate(R.layout.view_base, null, false);
-        }
+        contentLayout = rootView.findViewById(R.id.contentLayout);
+        View businessView = businessViewHolder.getRootView();
         contentLayout.addView(businessView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         //初始化networkErrorLayout
@@ -54,7 +45,7 @@ class ViewHolder {
         netErrorLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                requestPageData(false);
+                requestPageData();
                 return true;
             }
         });
@@ -71,36 +62,27 @@ class ViewHolder {
     /**
      * 发送页面请求
      */
-    private void requestPageData(final boolean isPullRefresh) {
-        if (!baseActivity.needPageRequest()) {//如果子类指定不需要页面请求，那么就不请求
+    private void requestPageData() {
+        if (!baseActivity.getViewHolder().needPageRequest()) {//如果子类指定不需要页面请求，那么就不请求
             return;
         }
+        baseActivity.startLoading(false);
         RequestBean requestBean = businessViewHolder.getRequestBean();
         if (requestBean == null) {
-            return;
+            throw new Error("请求参数不能为空");
         }
-        if (!isPullRefresh) {
-            baseActivity.startLoading();
-        }
+        showBusinessLayout();
         new NetworkCall<>().start(requestBean.getResultClass(), requestBean.getRequestUrl(), requestBean.getParams(), new RequestListener() {
             @Override
             public <T extends BaseResult> void onResponse(T result) {
-                if (isPullRefresh) {
-                    refreshLayout.setEnableRefresh(false);
-                } else {
-                    baseActivity.cancelLoading();
-                }
+                baseActivity.cancelLoading();
                 businessViewHolder.onRequestSuccess(result);
                 showBusinessLayout();
             }
 
             @Override
             public void onError(BaseError error) {
-                if (isPullRefresh) {
-                    refreshLayout.setEnableRefresh(false);
-                } else {
-                    baseActivity.cancelLoading();
-                }
+                baseActivity.cancelLoading();
                 if (businessViewHolder.onRequestFail()) {
                     //子类实现
                 } else {
@@ -112,12 +94,12 @@ class ViewHolder {
     }
 
     private void showBusinessLayout() {
-        refreshLayout.setVisibility(View.VISIBLE);
+        contentLayout.setVisibility(View.VISIBLE);
         netErrorLayout.setVisibility(View.GONE);
     }
 
     private void showNetErrorLayout() {
-        refreshLayout.setVisibility(View.GONE);
+        contentLayout.setVisibility(View.GONE);
         netErrorLayout.setVisibility(View.VISIBLE);
     }
 

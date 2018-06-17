@@ -5,6 +5,7 @@ import android.view.View;
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
+import com.hongyan.base.CommonViewHolder;
 import com.hongyan.base.RequestBean;
 import com.hongyan.wdcf.R;
 
@@ -12,7 +13,7 @@ import com.hongyan.wdcf.R;
  * Created by wangning on 2018/6/10.
  */
 
-public class AppStartViewHolder extends BaseViewHolder {
+public class AppStartViewHolder extends CommonViewHolder {
 
     AppStartViewHolder(BaseActivity activity) {
         super(activity);
@@ -44,5 +45,10 @@ public class AppStartViewHolder extends BaseViewHolder {
     @Override
     protected boolean hideNavigationView() {
         return true;
+    }
+
+    @Override
+    public boolean needPageRequest() {
+        return false;
     }
 }

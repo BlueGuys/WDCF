@@ -65,9 +65,7 @@ public abstract class BaseActivity extends FragmentActivity {
         return true;
     }
 
-    public boolean needPageRequest() {
-        return true;
-    }
+
 
     protected void showSuccessToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
@@ -94,7 +92,7 @@ public abstract class BaseActivity extends FragmentActivity {
 
     protected void cancelLoading() {
         if (dialog == null) {
-            cancelLoading();
+            return;
         }
         dialog.dismiss();
     }
