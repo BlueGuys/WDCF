@@ -5,19 +5,19 @@ import android.view.View;
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
-import com.hongyan.base.CommonViewHolder;
+import com.hongyan.base.IViewHolder;
 import com.hongyan.base.RequestBean;
 import com.hongyan.wdcf.R;
-import com.hongyan.wdcf.business.main.MainResult;
 
 /**
  * Created by wangning on 2018/6/10.
  */
 
-public class LoginViewHolder extends CommonViewHolder {
+public class LoginViewHolder extends BaseViewHolder implements IViewHolder {
 
-    LoginViewHolder(BaseActivity activity) {
-        super(activity);
+
+    public LoginViewHolder(BaseActivity mActivity) {
+        super(mActivity);
     }
 
     @Override
@@ -26,8 +26,8 @@ public class LoginViewHolder extends CommonViewHolder {
     }
 
     @Override
-    protected int getNavigationTitle() {
-        return R.string.login;
+    public int getLayoutType() {
+        return IViewHolder.LAYOUT_TYPE_COMMON;
     }
 
     @Override
@@ -36,6 +36,27 @@ public class LoginViewHolder extends CommonViewHolder {
     }
 
     @Override
-    protected void initView(View rootView) {
+    public void initView(View rootView) {
+
+    }
+
+    @Override
+    public int getNavigationTitle() {
+        return 0;
+    }
+
+    @Override
+    public RequestBean getRequestBean() {
+        return null;
+    }
+
+    @Override
+    public <T extends BaseResult> void onRequestSuccess(T result) {
+
+    }
+
+    @Override
+    public boolean onRequestFail() {
+        return false;
     }
 }

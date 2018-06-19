@@ -5,7 +5,7 @@ import android.view.View;
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
-import com.hongyan.base.CommonViewHolder;
+import com.hongyan.base.IViewHolder;
 import com.hongyan.base.RequestBean;
 import com.hongyan.wdcf.R;
 
@@ -13,7 +13,7 @@ import com.hongyan.wdcf.R;
  * Created by wangning on 2018/6/10.
  */
 
-public class AppStartViewHolder extends CommonViewHolder {
+public class AppStartViewHolder extends BaseViewHolder implements IViewHolder {
 
     AppStartViewHolder(BaseActivity activity) {
         super(activity);
@@ -25,21 +25,17 @@ public class AppStartViewHolder extends CommonViewHolder {
     }
 
     @Override
-    protected int getNavigationTitle() {
-        return R.string.app_name;
-    }
-
-    @Override
-    protected RequestBean getRequestBean() {
+    public RequestBean getRequestBean() {
         return null;
     }
 
     @Override
-    protected <T extends BaseResult> void onRequestSuccess(T result) {
+    public <T extends BaseResult> void onRequestSuccess(T result) {
     }
 
     @Override
-    protected void initView(View rootView) {
+    public boolean onRequestFail() {
+        return false;
     }
 
     @Override
@@ -47,8 +43,24 @@ public class AppStartViewHolder extends CommonViewHolder {
         return true;
     }
 
+
+    @Override
+    public int getLayoutType() {
+        return IViewHolder.LAYOUT_TYPE_COMMON;
+    }
+
     @Override
     public boolean needPageRequest() {
         return false;
+    }
+
+    @Override
+    public void initView(View rootView) {
+
+    }
+
+    @Override
+    public int getNavigationTitle() {
+        return R.string.app_name;
     }
 }

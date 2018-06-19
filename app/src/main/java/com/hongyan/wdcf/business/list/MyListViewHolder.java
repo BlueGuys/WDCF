@@ -4,67 +4,58 @@ import android.view.View;
 
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;
-import com.hongyan.base.CommonViewHolder;
-import com.hongyan.base.HYBaseAdapter;
-import com.hongyan.base.ListViewHolder;
+import com.hongyan.base.BaseViewHolder;
+import com.hongyan.base.IViewHolder;
 import com.hongyan.base.RequestBean;
-import com.hongyan.wdcf.R;
-import com.hongyan.wdcf.business.main.MainResult;
 
 /**
  * Created by wangning on 2018/6/10.
  */
 
-public class MyListViewHolder extends ListViewHolder {
+public class MyListViewHolder extends BaseViewHolder implements IViewHolder {
 
-    MyListViewHolder(BaseActivity activity) {
-        super(activity);
+
+    public MyListViewHolder(BaseActivity mActivity) {
+        super(mActivity);
     }
 
     @Override
     public int getLayoutID() {
-        return R.layout.activity_list;
+        return 0;
     }
 
     @Override
-    protected int getNavigationTitle() {
-        return R.string.list;
-    }
-
-    @Override
-    protected boolean allowPullRefresh() {
-        return true;
-    }
-
-    @Override
-    protected boolean allowLoadMore() {
-        return true;
+    public int getLayoutType() {
+        return IViewHolder.LAYOUT_TYPE_LIST;
     }
 
     @Override
     public boolean needPageRequest() {
-        return true;
+        return false;
     }
 
     @Override
-    protected HYBaseAdapter getAdapter() {
+    public void initView(View rootView) {
+
+    }
+
+    @Override
+    public int getNavigationTitle() {
+        return 0;
+    }
+
+    @Override
+    public RequestBean getRequestBean() {
         return null;
     }
 
     @Override
-    protected RequestBean getRequestBean() {
-        RequestBean bean = new RequestBean<>(MainResult.class);
-        bean.setRequestUrl("http://www.xicaijing.com/Api/Digiccy/mylists.html");
-        bean.addParam("sss", "ss");
-        return bean;
+    public <T extends BaseResult> void onRequestSuccess(T result) {
+
     }
 
     @Override
-    protected <T extends BaseResult> void onRequestSuccess(T result) {
-        showSuccessToast("请求成功");
-    }
-
-    @Override
-    protected void initView(View rootView) {
+    public boolean onRequestFail() {
+        return false;
     }
 }

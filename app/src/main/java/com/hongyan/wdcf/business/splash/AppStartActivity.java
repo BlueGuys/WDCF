@@ -23,7 +23,7 @@ public class AppStartActivity extends BaseActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 30);
+        }, 2000);
     }
 
     @Override

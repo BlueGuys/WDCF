@@ -1,14 +1,18 @@
 package com.hongyan.base;
 
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.hongyan.lib_base.R;
 import com.hongyan.smartrefresh.layout.SmartRefreshLayout;
+import com.hongyan.smartrefresh.layout.api.RefreshLayout;
+import com.hongyan.smartrefresh.layout.listener.OnRefreshListener;
 
 /**
  * Created by wangning on 2018/6/10.
@@ -17,57 +21,97 @@ import com.hongyan.smartrefresh.layout.SmartRefreshLayout;
 class ViewHolder {
 
     private BaseActivity baseActivity;
-    private View rootView;
     private BaseViewHolder businessViewHolder;
+
+    private IViewHolder iViewHolder;
+
+    private View rootView;
+    protected NavigationView navigationView;
     private LinearLayout contentLayout;
+    private LinearLayout businessLayout;
+    private SmartRefreshLayout smartRefreshLayout;
+    protected ListView listView;
     private View netErrorLayout;
 
     ViewHolder(BaseActivity baseActivity, BaseViewHolder businessViewHolder) {
         this.baseActivity = baseActivity;
         this.businessViewHolder = businessViewHolder;
-        initView();
-        requestPageData();
+        iViewHolder = (IViewHolder) businessViewHolder;
+        initBaseView();
+        requestPageData(false);
     }
 
     /**
      * 初始化View
      */
-    private void initView() {
-        rootView = LayoutInflater.from(baseActivity).inflate(R.layout.activity_base, null, false);
+    private void initBaseView() {
+        int layoutResId = 0;
+        if (iViewHolder.getLayoutType() == IViewHolder.LAYOUT_TYPE_COMMON) {
+            layoutResId = R.layout.activity_base_common;
+        } else if (iViewHolder.getLayoutType() == IViewHolder.LAYOUT_TYPE_LIST) {
+            layoutResId = R.layout.activity_base_list;
+        }
+        rootView = LayoutInflater.from(baseActivity).inflate(layoutResId, null, false);
 
-        //初始化businessLayout
+        //实例化导航栏
+        NavigationView navigationView = rootView.findViewById(R.id.navigation);
+        try {
+            navigationView.setTitle(baseActivity.getString(iViewHolder.getNavigationTitle()));
+        } catch (Exception e) {
+            navigationView.setTitle(baseActivity.getString(R.string.app_name));
+        }
+        businessViewHolder.setNavigationView(navigationView);
+        navigationView.setVisibility(businessViewHolder.hideNavigationView() ? View.GONE : View.VISIBLE);
+
         contentLayout = rootView.findViewById(R.id.contentLayout);
-        View businessView = businessViewHolder.getRootView();
-        contentLayout.addView(businessView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        netErrorLayout = rootView.findViewById(R.id.netErrorLayout);
+        smartRefreshLayout = rootView.findViewById(R.id.refreshLayout);
+        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                requestPageData(true);
+            }
+        });
 
         //初始化networkErrorLayout
-        netErrorLayout = rootView.findViewById(R.id.netErrorLayout);
         netErrorLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                requestPageData();
+                requestPageData(false);
                 return true;
             }
         });
 
-        //实例化导航栏
-        NavigationView navigationView = rootView.findViewById(R.id.navigation);
-        navigationView.setTitle(baseActivity.getString(businessViewHolder.getNavigationTitle()));
-        navigationView.setVisibility(businessViewHolder.hideNavigationView() ? View.GONE : View.VISIBLE);
-        businessViewHolder.setNavigationView(navigationView);
+        if (iViewHolder.getLayoutType() == IViewHolder.LAYOUT_TYPE_COMMON) {
+            initLayoutCommon();
+        } else if (iViewHolder.getLayoutType() == IViewHolder.LAYOUT_TYPE_LIST) {
+            initLayoutList();
+        }
+        showBusinessLayout();
+    }
 
-        businessViewHolder.initView(businessView);
+
+    private void initLayoutCommon() {
+        businessLayout = rootView.findViewById(R.id.businessLayout);
+        View businessView = LayoutInflater.from(baseActivity).inflate(iViewHolder.getLayoutID(), null, false);
+        businessLayout.addView(businessView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        iViewHolder.initView(businessView);
+    }
+
+    private void initLayoutList() {
+        listView = rootView.findViewById(R.id.listView);
+        listView.setAdapter(businessViewHolder.getAdapter());
     }
 
     /**
      * 发送页面请求
      */
-    private void requestPageData() {
-        if (!baseActivity.getViewHolder().needPageRequest()) {//如果子类指定不需要页面请求，那么就不请求
+    private void requestPageData(final boolean isPullRefresh) {
+        if (!iViewHolder.needPageRequest()) {//如果子类指定不需要页面请求，那么就不请求
             return;
         }
         baseActivity.startLoading(false);
-        RequestBean requestBean = businessViewHolder.getRequestBean();
+        RequestBean requestBean = iViewHolder.getRequestBean();
         if (requestBean == null) {
             throw new Error("请求参数不能为空");
         }
@@ -76,14 +120,20 @@ class ViewHolder {
             @Override
             public <T extends BaseResult> void onResponse(T result) {
                 baseActivity.cancelLoading();
-                businessViewHolder.onRequestSuccess(result);
+                if (isPullRefresh) {
+                    smartRefreshLayout.finishRefresh();
+                }
+                iViewHolder.onRequestSuccess(result);
                 showBusinessLayout();
             }
 
             @Override
             public void onError(BaseError error) {
                 baseActivity.cancelLoading();
-                if (businessViewHolder.onRequestFail()) {
+                if (isPullRefresh) {
+                    smartRefreshLayout.finishRefresh();
+                }
+                if (iViewHolder.onRequestFail()) {
                     //子类实现
                 } else {
                     showNetErrorLayout();

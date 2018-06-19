@@ -66,7 +66,6 @@ public abstract class BaseActivity extends FragmentActivity {
     }
 
 
-
     protected void showSuccessToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }

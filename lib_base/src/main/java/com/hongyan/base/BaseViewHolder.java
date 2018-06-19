@@ -1,38 +1,54 @@
 package com.hongyan.base;
 
+import android.app.Activity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.hongyan.lib_base.R;
+import com.hongyan.smartrefresh.layout.SmartRefreshLayout;
 
 /**
  * Created by wangning on 2018/6/10.
  */
 
-public abstract class BaseViewHolder {
+public class BaseViewHolder {
 
     protected BaseActivity mActivity;
+    private IViewHolder iViewHolder;
+
+    private View rootView;
     protected NavigationView navigationView;
+    private LinearLayout contentLayout;
+    private LinearLayout businessLayout;
+    private SmartRefreshLayout smartRefreshLayout;
+    protected ListView listView;
+    private View netErrorLayout;
 
     public BaseViewHolder(BaseActivity mActivity) {
         this.mActivity = mActivity;
     }
 
-    protected abstract RequestBean getRequestBean();
-
-    protected abstract <T extends BaseResult> void onRequestSuccess(T result);
-
-    protected boolean onRequestFail() {
-        return false;
+    private void showBusinessLayout() {
+        contentLayout.setVisibility(View.VISIBLE);
+        netErrorLayout.setVisibility(View.GONE);
     }
 
-    protected abstract int getLayoutID();
+    private void showNetErrorLayout() {
+        contentLayout.setVisibility(View.GONE);
+        netErrorLayout.setVisibility(View.VISIBLE);
+    }
 
-    protected abstract void initView(View rootView);
-
-    protected abstract int getNavigationTitle();
-
-    public BaseActivity getActivity() {
+    public Activity getActivity() {
         return mActivity;
+    }
+
+    public HYBaseAdapter getAdapter() {
+        return null;
     }
 
     protected boolean hideNavigationView() {
@@ -40,10 +56,8 @@ public abstract class BaseViewHolder {
     }
 
     protected View getRootView() {
-        return null;
+        return rootView;
     }
-
-    public abstract boolean needPageRequest();
 
     public NavigationView getNavigationView() {
         return navigationView;
@@ -88,6 +102,5 @@ public abstract class BaseViewHolder {
     protected void cancelLoading() {
         mActivity.cancelLoading();
     }
-
 
 }
