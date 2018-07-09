@@ -3,6 +3,7 @@ package com.hongyan.wdcf.base;
 
 import com.hongyan.base.router.RouterConst;
 import com.hongyan.wdcf.business.account.login.LoginActivity;
+import com.hongyan.wdcf.business.account.register.RegisterActivity;
 
 public final class RouterConfig {
 
@@ -25,8 +26,10 @@ public final class RouterConfig {
 
     public void init() {
         RouterConst.addRouter(UserLoginIndex, LoginActivity.class.getName());
+        RouterConst.addRouter(UserRegisterIndex, RegisterActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
+    public static final String UserRegisterIndex = "native://user/register/index";
 
 }

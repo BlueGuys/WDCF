@@ -34,7 +34,6 @@ public class MeFragment extends BaseFragment {
         }
     }
 
-
     private void initView() {
         button = view.findViewById(R.id.login);
         button.setOnClickListener(new View.OnClickListener() {

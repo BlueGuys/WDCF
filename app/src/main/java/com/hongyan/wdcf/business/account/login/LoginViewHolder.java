@@ -1,13 +1,17 @@
 package com.hongyan.wdcf.business.account.login;
 
 import android.view.View;
+import android.widget.Button;
 
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
 import com.hongyan.base.IViewHolder;
 import com.hongyan.base.RequestBean;
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.RouterConfig;
 
 /**
  * Created by wangning on 2018/6/10.
@@ -15,6 +19,7 @@ import com.hongyan.wdcf.R;
 
 public class LoginViewHolder extends BaseViewHolder implements IViewHolder {
 
+    private Button button;
 
     public LoginViewHolder(BaseActivity mActivity) {
         super(mActivity);
@@ -37,7 +42,14 @@ public class LoginViewHolder extends BaseViewHolder implements IViewHolder {
 
     @Override
     public void initView(View rootView) {
-
+        button = rootView.findViewById(R.id.register);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Router router = new Router(RouterConfig.UserRegisterIndex);
+                RouterManager.getInstance().openUrl(router);
+            }
+        });
     }
 
     @Override

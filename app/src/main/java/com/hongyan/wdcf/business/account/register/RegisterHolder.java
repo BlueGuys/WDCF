@@ -20,7 +20,6 @@ import com.hongyan.wdcf.base.RouterConfig;
 public class RegisterHolder extends BaseViewHolder implements IViewHolder {
 
     private Button button;
-    private Button login;
     private RegisterModel registerModel;
 
     public RegisterHolder(BaseActivity mActivity) {
@@ -52,18 +51,6 @@ public class RegisterHolder extends BaseViewHolder implements IViewHolder {
                 registerModel.startRegister();
             }
         });
-        login = rootView.findViewById(R.id.login);
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Router router = new Router();
-                router.setUrl(RouterConfig.UserLoginIndex);
-                router.addParams("type", "1");
-                router.addParams("test", "哈哈哈");
-                RouterManager.getInstance().openUrl(router);
-            }
-        });
-
     }
 
     @Override
