@@ -1,9 +1,11 @@
 package com.hongyan.base;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -21,8 +23,12 @@ public abstract class BaseActivity extends FragmentActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init();
-        setContentView(new ViewHolder(this, getViewHolder()).getRootView());
+        BaseViewHolder baseViewHolder = getViewHolder();
+        if (baseViewHolder != null) {
+            setContentView(new ViewHolder(this, getViewHolder()).getRootView());
+        }
     }
+
 
     @Override
     protected void onResume() {
@@ -34,6 +40,15 @@ public abstract class BaseActivity extends FragmentActivity {
     }
 
     protected abstract BaseViewHolder getViewHolder();
+
+    protected String getParam(String key) {
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle == null) {
+            return "";
+        }
+        return bundle.getString(key);
+    }
 
     /**
      * 设置为沉浸式(半透明)状态栏

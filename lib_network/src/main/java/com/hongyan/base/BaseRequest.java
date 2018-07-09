@@ -19,7 +19,7 @@ public class BaseRequest<T extends BaseResult> extends Request<BaseResponse> {
     private Response.Listener<BaseResponse> mResponseListener;
     private Response.ErrorListener mErrorListener;
     private Class<T> mResultClass = null;
-    private HashMap mMap = new HashMap();
+    private HashMap<String, String> mMap = new HashMap();
     private boolean checkLogin = false;
 
     public BaseRequest(Class<T> resultClass, String url, Response.Listener<BaseResponse> listener, Response.ErrorListener errorListener) {
@@ -90,12 +90,16 @@ public class BaseRequest<T extends BaseResult> extends Request<BaseResponse> {
         mMap.put(key, value);
     }
 
-    public void setCheckLogin(boolean checkLogin) {
-        this.checkLogin = checkLogin;
+    public void addParam(HashMap<String, String> params) {
+        mMap.putAll(params);
     }
 
     public void addParam(String key, int value) {
         mMap.put(key, String.valueOf(value));
+    }
+
+    public void setCheckLogin(boolean checkLogin) {
+        this.checkLogin = checkLogin;
     }
 
     public Map<String, String> getParams() {

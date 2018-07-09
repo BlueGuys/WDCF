@@ -1,19 +1,53 @@
 package com.hongyan.wdcf.business.main;
 
 
-import com.hongyan.base.BaseActivity;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+
 import com.hongyan.base.BaseViewHolder;
+import com.hongyan.base.tab.SubPage;
+import com.hongyan.base.tab.TabActivity;
+import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.business.main.discover.DiscoverFragment;
+import com.hongyan.wdcf.business.main.me.MeFragment;
+import com.hongyan.wdcf.business.main.service.ServiceFragment;
 
-public class MainActivity extends BaseActivity {
+import java.util.ArrayList;
 
-    @Override
-    protected BaseViewHolder getViewHolder() {
-        return new MainViewHolder(this);
-    }
+public class MainActivity extends TabActivity {
 
     @Override
     protected void onResume() {
         super.onResume();
     }
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ArrayList<SubPage> list = new ArrayList<>();
+        SubPage discoverPage = new SubPage();
+        discoverPage.fragment = new DiscoverFragment();
+        discoverPage.text = "发现";
+        discoverPage.drawable = new int[]{R.drawable.icon_tab_index_n, R.drawable.icon_tab_index_s};
+
+        SubPage servicePage = new SubPage();
+        servicePage.fragment = new ServiceFragment();
+        servicePage.text = "服务";
+        servicePage.drawable = new int[]{R.drawable.icon_tab_index_n, R.drawable.icon_tab_index_s};
+
+        SubPage mePage = new SubPage();
+        mePage.fragment = new MeFragment();
+        mePage.text = "我的";
+        mePage.drawable = new int[]{R.drawable.icon_tab_index_n, R.drawable.icon_tab_index_s};
+
+        list.add(discoverPage);
+        list.add(servicePage);
+        list.add(mePage);
+        addSubPage(list);
+    }
+
+    @Override
+    protected BaseViewHolder getViewHolder() {
+        return super.getViewHolder();
+    }
 }

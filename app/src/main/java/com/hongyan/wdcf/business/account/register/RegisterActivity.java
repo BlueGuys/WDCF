@@ -1,11 +1,11 @@
-package com.hongyan.wdcf.business.login;
+package com.hongyan.wdcf.business.account.register;
 
 import android.os.Bundle;
 
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseViewHolder;
 
-public class LoginActivity extends BaseActivity {
+public class RegisterActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +15,6 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected BaseViewHolder getViewHolder() {
-        return new LoginViewHolder(this);
+        return new RegisterHolder(this);
     }
 }

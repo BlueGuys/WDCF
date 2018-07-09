@@ -26,9 +26,7 @@ class ViewHolder {
     private IViewHolder iViewHolder;
 
     private View rootView;
-    protected NavigationView navigationView;
     private LinearLayout contentLayout;
-    private LinearLayout businessLayout;
     private SmartRefreshLayout smartRefreshLayout;
     protected ListView listView;
     private View netErrorLayout;
@@ -45,6 +43,9 @@ class ViewHolder {
      * 初始化View
      */
     private void initBaseView() {
+        if (iViewHolder == null) {
+            return;
+        }
         int layoutResId = 0;
         if (iViewHolder.getLayoutType() == IViewHolder.LAYOUT_TYPE_COMMON) {
             layoutResId = R.layout.activity_base_common;
@@ -87,12 +88,16 @@ class ViewHolder {
         } else if (iViewHolder.getLayoutType() == IViewHolder.LAYOUT_TYPE_LIST) {
             initLayoutList();
         }
+
+        smartRefreshLayout.setEnableLoadMore(businessViewHolder.enableLoadMore());
+        smartRefreshLayout.setEnableRefresh(businessViewHolder.enablePullRefresh());
+
         showBusinessLayout();
     }
 
 
     private void initLayoutCommon() {
-        businessLayout = rootView.findViewById(R.id.businessLayout);
+        LinearLayout businessLayout = rootView.findViewById(R.id.businessLayout);
         View businessView = LayoutInflater.from(baseActivity).inflate(iViewHolder.getLayoutID(), null, false);
         businessLayout.addView(businessView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         iViewHolder.initView(businessView);
@@ -107,16 +112,22 @@ class ViewHolder {
      * 发送页面请求
      */
     private void requestPageData(final boolean isPullRefresh) {
-        if (!iViewHolder.needPageRequest()) {//如果子类指定不需要页面请求，那么就不请求
+        if (iViewHolder == null || !iViewHolder.needPageRequest()) {//如果子类指定不需要页面请求，那么就不请求
             return;
         }
-        baseActivity.startLoading(false);
+        if (!isPullRefresh) {// 如果不是下拉刷新，就展示Loading
+            baseActivity.startLoading(false);
+        }
         RequestBean requestBean = iViewHolder.getRequestBean();
         if (requestBean == null) {
             throw new Error("请求参数不能为空");
         }
         showBusinessLayout();
-        new NetworkCall<>().start(requestBean.getResultClass(), requestBean.getRequestUrl(), requestBean.getParams(), new RequestListener() {
+        NetworkCall networkCall = new NetworkCall<>();
+        networkCall.setRequestUrl(requestBean.getRequestUrl());
+        networkCall.setResultClass(requestBean.getResultClass());
+        networkCall.addParam(requestBean.getParams());
+        networkCall.start(new RequestListener() {
             @Override
             public <T extends BaseResult> void onResponse(T result) {
                 baseActivity.cancelLoading();

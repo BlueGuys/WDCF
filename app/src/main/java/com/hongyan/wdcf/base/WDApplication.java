@@ -11,5 +11,10 @@ public class WDApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        initRouter();
+    }
+
+    private void initRouter() {
+        RouterConfig.getInstance().init();
     }
 }

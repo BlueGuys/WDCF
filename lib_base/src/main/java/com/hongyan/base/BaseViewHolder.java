@@ -80,6 +80,14 @@ public class BaseViewHolder {
         });
     }
 
+    protected boolean enableLoadMore() {
+        return false;
+    }
+
+    protected boolean enablePullRefresh() {
+        return false;
+    }
+
     protected void showSuccessToast(String message) {
         mActivity.showSuccessToast(message);
     }

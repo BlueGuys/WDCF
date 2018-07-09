@@ -11,9 +11,18 @@ import java.util.HashMap;
 
 public class NetworkCall<T extends BaseResult> {
 
-    public void start(Class<T> resultClass, String url, HashMap<String, String> params, final RequestListener listener) {
+    private BaseRequest request;
+    private String requestUrl;
+    private Class<T> resultClass;
+    private HashMap<String, String> mMap = new HashMap();
+
+    public NetworkCall() {
+
+    }
+
+    public void start(final RequestListener listener) {
         BaseModel baseModel = new BaseModel();
-        BaseRequest request = new BaseRequest<>(resultClass, url, new Response.Listener<BaseResponse>() {
+        request = new BaseRequest<>(resultClass, requestUrl, new Response.Listener<BaseResponse>() {
             @Override
             public void onResponse(BaseResponse response) {
                 if (response == null || response.getResult() == null) {
@@ -31,7 +40,25 @@ public class NetworkCall<T extends BaseResult> {
                 }
             }
         });
+        request.addParam(mMap);
         baseModel.sendRequest(request);
     }
+
+    public void setResultClass(Class<T> resultClass) {
+        this.resultClass = resultClass;
+    }
+
+    public void setRequestUrl(String requestUrl) {
+        this.requestUrl = requestUrl;
+    }
+
+    public void addParam(String key, String value) {
+        mMap.put(key, value);
+    }
+
+    public void addParam(HashMap<String, String> params) {
+        request.addParam(params);
+    }
+
 
 }
