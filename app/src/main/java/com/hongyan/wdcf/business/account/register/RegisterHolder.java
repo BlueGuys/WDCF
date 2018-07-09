@@ -49,12 +49,7 @@ public class RegisterHolder extends BaseViewHolder implements IViewHolder {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Router router = new Router();
-                router.setUrl("https://www.zhihu.com");
-                router.addParams("hello", "222");
-                router.addParams("hell", "王宁");
-                RouterManager.getInstance().openUrl(router);
-//                registerModel.startRegister();
+                registerModel.startRegister();
             }
         });
         login = rootView.findViewById(R.id.login);

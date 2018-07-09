@@ -27,7 +27,6 @@ public final class RouterConfig {
         RouterConst.addRouter(UserLoginIndex, LoginActivity.class.getName());
     }
 
-
     public static final String UserLoginIndex = "native://user/login/index";
 
 }

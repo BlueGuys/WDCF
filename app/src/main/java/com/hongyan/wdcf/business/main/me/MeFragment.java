@@ -1,6 +1,5 @@
 package com.hongyan.wdcf.business.main.me;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -10,7 +9,7 @@ import android.widget.Button;
 
 import com.hongyan.base.BaseFragment;
 import com.hongyan.wdcf.R;
-import com.hongyan.wdcf.business.account.register.RegisterActivity;
+import com.hongyan.wdcf.business.account.core.AccountManager;
 
 public class MeFragment extends BaseFragment {
 
@@ -41,7 +40,7 @@ public class MeFragment extends BaseFragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), RegisterActivity.class));
+                AccountManager.getInstance().checkLogin();
             }
         });
     }

@@ -28,7 +28,6 @@ import com.hongyan.base.BaseViewHolder;
 import com.hongyan.lib_base.R;
 import com.hongyan.loading.WebViewProgressView;
 
-
 /**
  * com.jp.base.BaseWebViewActivity
  *
