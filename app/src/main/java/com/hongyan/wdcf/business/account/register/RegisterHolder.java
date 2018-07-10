@@ -25,6 +25,7 @@ public class RegisterHolder extends BaseViewHolder implements IViewHolder, TextW
     private EditText etPassword;
     private EditText etVerifyCode;
     private TextView tvSendCode;
+    private TextView tvBack;
     private Button btnRegister;
     private RegisterModel registerModel;
 
@@ -54,12 +55,12 @@ public class RegisterHolder extends BaseViewHolder implements IViewHolder, TextW
 
     @Override
     public void initView(View rootView) {
-        hideNavigationView();
         btnRegister = rootView.findViewById(R.id.register);
         etMobilePhone = rootView.findViewById(R.id.et_mobile_phone);
         etPassword = rootView.findViewById(R.id.et_password);
         etVerifyCode = rootView.findViewById(R.id.et_verify_code);
         tvSendCode = rootView.findViewById(R.id.tv_send_code);
+        tvBack = rootView.findViewById(R.id.tv_back);
         btnRegister.setEnabled(false);
         tvSendCode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,9 +74,20 @@ public class RegisterHolder extends BaseViewHolder implements IViewHolder, TextW
                 registerModel.startRegister(mobilePhone, password, verifyCode);
             }
         });
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
+            }
+        });
         etMobilePhone.addTextChangedListener(this);
         etPassword.addTextChangedListener(this);
         etVerifyCode.addTextChangedListener(this);
+    }
+
+    @Override
+    protected boolean hideNavigationView() {
+        return true;
     }
 
     @Override

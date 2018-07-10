@@ -2,6 +2,8 @@
 <resources>
 
     <color name="appColor">#dba965</color>
+    <color name="appColorPositive">#dba965</color>
+    <color name="appColorNegative">#A9A9A9</color>
 
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>

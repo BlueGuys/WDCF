@@ -95,6 +95,10 @@ public class BaseViewHolder {
         mActivity.startLoading();
     }
 
+    public void goBack(){
+        mActivity.finish();
+    }
+
     /**
      * @param isCancelable 是否可以取消
      */
