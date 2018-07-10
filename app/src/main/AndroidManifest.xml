@@ -30,7 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".business.account.login.LoginActivity" />
         <activity android:name=".business.account.register.RegisterActivity" />
         <activity android:name=".business.list.ListActivity" />
         <activity android:name="com.hongyan.base.webview.BaseWebViewActivity" />
@@ -38,6 +37,7 @@
             android:name="com.hongyan.TestActivity"
             android:launchMode="singleTask" />
         <activity android:name=".business.account.select.SelectIdentifyActivity" />
+        <activity android:name=".business.account.login.LoginActivity" />
     </application>
 
 </manifest>

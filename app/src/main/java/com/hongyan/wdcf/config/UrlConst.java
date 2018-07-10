@@ -25,4 +25,11 @@ public class UrlConst {
     public static String getSendCodeUrl() {
         return HOST + "Api/Users/sendyzm";
     }
+
+    /**
+     * 登录接口
+     */
+    public static String getLoginUrl() {
+        return HOST + "Api/Users/login";
+    }
 }

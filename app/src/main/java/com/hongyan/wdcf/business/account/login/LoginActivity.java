@@ -14,6 +14,6 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected BaseViewHolder getViewHolder() {
-        return new LoginViewHolder(this);
+        return new LoginHolder(this);
     }
 }
