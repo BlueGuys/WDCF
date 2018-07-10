@@ -70,7 +70,7 @@ public abstract class BaseActivity extends FragmentActivity {
      * 设置状态栏的颜色
      */
     public int setStatusBarColor() {
-        return 0xff007AFF;
+        return 0xffdba965;
     }
 
     /**
@@ -81,22 +81,22 @@ public abstract class BaseActivity extends FragmentActivity {
     }
 
 
-    protected void showSuccessToast(String message) {
+    public void showSuccessToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    protected void showErrorToast(String message) {
+    public void showErrorToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    protected void startLoading() {
+    public void startLoading() {
         startLoading(true);
     }
 
     /**
      * @param isCancelable 是否可以取消
      */
-    protected void startLoading(boolean isCancelable) {
+    public void startLoading(boolean isCancelable) {
         if (dialog == null) {
             dialog = new LoadingDialog(this);
             dialog.setCancelable(isCancelable);

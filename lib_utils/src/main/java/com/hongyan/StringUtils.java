@@ -43,6 +43,10 @@ public final class StringUtils {
         return TextUtils.isEmpty(str);
     }
 
+    public static boolean notEmpty(String str) {
+        return str != null && str.length() > 0;
+    }
+
     /**
      * 字符串转整数
      *

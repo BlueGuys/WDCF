@@ -1,13 +1,8 @@
 package com.hongyan.base;
 
-import android.app.Activity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.hongyan.lib_base.R;
 import com.hongyan.smartrefresh.layout.SmartRefreshLayout;
@@ -43,7 +38,7 @@ public class BaseViewHolder {
         netErrorLayout.setVisibility(View.VISIBLE);
     }
 
-    public Activity getActivity() {
+    public BaseActivity getActivity() {
         return mActivity;
     }
 
@@ -88,26 +83,26 @@ public class BaseViewHolder {
         return false;
     }
 
-    protected void showSuccessToast(String message) {
+    public void showSuccessToast(String message) {
         mActivity.showSuccessToast(message);
     }
 
-    protected void showErrorToast(String message) {
+    public void showErrorToast(String message) {
         mActivity.showErrorToast(message);
     }
 
-    protected void startLoading() {
+    public void startLoading() {
         mActivity.startLoading();
     }
 
     /**
      * @param isCancelable 是否可以取消
      */
-    protected void startLoading(boolean isCancelable) {
+    public void startLoading(boolean isCancelable) {
         mActivity.startLoading(isCancelable);
     }
 
-    protected void cancelLoading() {
+    public void cancelLoading() {
         mActivity.cancelLoading();
     }
 

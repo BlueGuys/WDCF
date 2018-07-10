@@ -1,11 +1,7 @@
 package com.hongyan.wdcf.business.account.core;
 
 
-import android.util.Log;
-import android.widget.Toast;
-
 import com.hongyan.StringUtils;
-import com.hongyan.base.BaseApplication;
 import com.hongyan.base.io.SharePreferenceManager;
 import com.hongyan.base.router.Router;
 import com.hongyan.base.router.RouterManager;
@@ -44,8 +40,6 @@ public class AccountManager {
 
     public void setToken(String token) {
         this.token = token;
-        Toast.makeText(BaseApplication.getInstance().getApplicationContext(), "登录成功", Toast.LENGTH_LONG).show();
-        getAccountInfoFromServer(token);
     }
 
     public String getToken() {
@@ -76,14 +70,6 @@ public class AccountManager {
         this.token = "";
     }
 
-    public void login() {
-
-    }
-
-    public void register() {
-
-    }
-
     public void refresh() {
         getAccountInfoFromServer(this.token);
     }
@@ -103,7 +89,6 @@ public class AccountManager {
 
     private void readAccountInfo() {
         String accountJson = SharePreferenceManager.getInstance().getString("account");
-        Log.e("XCJ", "accountJson=" + accountJson);
         if (!StringUtils.isEmpty(accountJson)) {
             mAccountInfo = GsonUtils.gsonResolve(accountJson, AccountInfo.class);
             if (mAccountInfo != null) {

@@ -13,9 +13,16 @@ public class UrlConst {
     }
 
     /**
-     * 鉴权注册接口
+     * 注册接口
      */
     public static String getRegisterUrl() {
         return HOST + "Api/Users/reg";
+    }
+
+    /**
+     * 鉴权注册接口
+     */
+    public static String getSendCodeUrl() {
+        return HOST + "Api/Users/sendyzm";
     }
 }

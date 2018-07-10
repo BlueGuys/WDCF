@@ -8,6 +8,7 @@ import com.android.volley.RequestQueue;
  */
 
 public class BaseModel {
+
     public BaseModel() {
 
     }
