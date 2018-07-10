@@ -9,7 +9,10 @@ import com.hongyan.base.BaseResult;
 import com.hongyan.base.EmptyResult;
 import com.hongyan.base.NetworkCall;
 import com.hongyan.base.RequestListener;
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.base.RequestKeyTable;
+import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.business.account.core.AccountManager;
 import com.hongyan.wdcf.config.UrlConst;
 
@@ -40,13 +43,17 @@ public class RegisterModel extends BaseModel {
                     RegisterResult.Data data = registerResult.data;
                     if (data != null) {
                         AccountManager.getInstance().setToken(data.token);
+                        Router router = new Router(RouterConfig.UserRegisterSelect);
+                        RouterManager.getInstance().openUrl(router);
                     }
+                } else {
+                    viewHolder.showErrorToast(registerResult.getReturnMessage());
                 }
             }
 
             @Override
-            public void onError(BaseError error) {
-                Log.e("test", error.toString());
+            public void onError(BaseResult.Error error) {
+                viewHolder.showErrorToast(error.errorMessage);
             }
         });
     }
@@ -68,7 +75,7 @@ public class RegisterModel extends BaseModel {
             }
 
             @Override
-            public void onError(BaseError error) {
+            public void onError(BaseResult.Error error) {
                 viewHolder.cancelLoading();
                 Log.e("test", error.toString());
             }

@@ -25,18 +25,24 @@ public class NetworkCall<T extends BaseResult> {
         request = new BaseRequest<>(resultClass, requestUrl, new Response.Listener<BaseResponse>() {
             @Override
             public void onResponse(BaseResponse response) {
-                if (response == null || response.getResult() == null) {
+                if (listener == null) {
                     return;
                 }
-                if (listener != null) {
-                    listener.onResponse(response.getResult());
+                if (response == null || response.getResult() == null) {
+                    listener.onError(BaseResult.getAnalysisError());
+                    return;
                 }
+                BaseResult result = response.getResult();
+                if (response.getResult().isSuccessful()) {
+                    listener.onResponse(result);
+                }
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (listener != null) {
-                    listener.onError(new BaseError());
+                    listener.onError(BaseResult.getVolleyError());
                 }
             }
         });

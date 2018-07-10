@@ -13,7 +13,10 @@ import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
 import com.hongyan.base.IViewHolder;
 import com.hongyan.base.RequestBean;
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.RouterConfig;
 
 /**
  * Created by wangning on 2018/6/10.
@@ -71,7 +74,10 @@ public class RegisterHolder extends BaseViewHolder implements IViewHolder, TextW
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registerModel.startRegister(mobilePhone, password, verifyCode);
+                //TODO 待处理
+                Router router = new Router(RouterConfig.UserRegisterSelect);
+                RouterManager.getInstance().openUrl(router);
+//                registerModel.startRegister(mobilePhone, password, verifyCode);
             }
         });
         tvBack.setOnClickListener(new View.OnClickListener() {

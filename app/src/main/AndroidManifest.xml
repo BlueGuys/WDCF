@@ -37,6 +37,7 @@
         <activity
             android:name="com.hongyan.TestActivity"
             android:launchMode="singleTask" />
+        <activity android:name=".business.account.select.SelectIdentifyActivity" />
     </application>
 
 </manifest>

@@ -139,7 +139,7 @@ class ViewHolder {
             }
 
             @Override
-            public void onError(BaseError error) {
+            public void onError(BaseResult.Error error) {
                 baseActivity.cancelLoading();
                 if (isPullRefresh) {
                     smartRefreshLayout.finishRefresh();

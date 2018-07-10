@@ -32,4 +32,18 @@ public class BaseResult {
         String returnCode = String.valueOf(getReturnCode());
         return "10000".equals(returnCode);
     }
+
+    public static Error getVolleyError() {
+        Error error = new Error();
+        error.errorCode = "100";
+        error.errorMessage = "网络异常，请稍后重试";
+        return error;
+    }
+
+    public static Error getAnalysisError() {
+        Error error = new Error();
+        error.errorCode = "200";
+        error.errorMessage = "解析错误";
+        return error;
+    }
 }

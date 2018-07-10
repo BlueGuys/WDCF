@@ -10,6 +10,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.hongyan.parse.GsonUtils;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,9 +49,6 @@ public class BaseRequest<T extends BaseResult> extends Request<BaseResponse> {
     @Override
     protected void deliverResponse(BaseResponse response) {
         if (mResponseListener != null) {
-            if (response == null) {
-                response = new BaseResponse();
-            }
             mResponseListener.onResponse(response);
         }
     }

@@ -8,6 +8,6 @@ public interface RequestListener {
 
     <T extends BaseResult> void onResponse(T result);
 
-    void onError(BaseError error);
+    void onError(BaseResult.Error error);
 
 }
