@@ -46,6 +46,7 @@ public class LoginViewHolder extends BaseViewHolder implements IViewHolder {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ///lijianjun
                 Router router = new Router(RouterConfig.UserRegisterIndex);
                 RouterManager.getInstance().openUrl(router);
             }
