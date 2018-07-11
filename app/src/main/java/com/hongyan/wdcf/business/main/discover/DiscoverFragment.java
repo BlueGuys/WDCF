@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.hongyan.base.BaseFragment;
 import com.hongyan.wdcf.R;
@@ -12,6 +13,9 @@ import com.hongyan.wdcf.R;
 public class DiscoverFragment extends BaseFragment {
 
     private View view;
+    private ListView listView;
+
+    private DiscoverModel model;
 
     @Nullable
     @Override
@@ -19,11 +23,11 @@ public class DiscoverFragment extends BaseFragment {
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_discover, container, false);
             initView();
+            model = new DiscoverModel(this);
+            model.requestDiscoverData();
         }
         return view;
     }
-
-
 
     @Override
     public void onDestroyView() {
@@ -35,6 +39,11 @@ public class DiscoverFragment extends BaseFragment {
 
 
     private void initView() {
+        listView = view.findViewById(R.id.listView);
+    }
+
+    protected void setData() {
 
     }
+
 }

@@ -39,4 +39,11 @@ public class UrlConst {
     public static String getUserInfoUrl() {
         return HOST + "Api/Users/getUserInfo";
     }
+
+    /**
+     * 首页接口
+     */
+    public static String getDiscoverUrl() {
+        return HOST + "api/home/index";
+    }
 }
