@@ -2,11 +2,15 @@ package com.hongyan.wdcf.business.account.core;
 
 
 import com.hongyan.StringUtils;
+import com.hongyan.base.BaseResult;
+import com.hongyan.base.RequestListener;
 import com.hongyan.base.io.SharePreferenceManager;
 import com.hongyan.base.router.Router;
 import com.hongyan.base.router.RouterManager;
 import com.hongyan.parse.GsonUtils;
 import com.hongyan.wdcf.base.RouterConfig;
+import com.hongyan.wdcf.base.WDNetworkCall;
+import com.hongyan.wdcf.config.UrlConst;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -25,7 +29,6 @@ public class AccountManager {
     private String userType = TYPE_USER;
 
     private AccountManager() {
-        init();
     }
 
     public static AccountManager getInstance() {
@@ -43,14 +46,15 @@ public class AccountManager {
      * 从SD卡读取账户信息
      */
     public void init() {
-        readAccountInfo();
         this.token = SharePreferenceManager.getInstance().getString("token");
         this.userType = SharePreferenceManager.getInstance().getString("userType");
+        readAccountInfo();
     }
 
     public void setToken(String token) {
         this.token = token;
         SharePreferenceManager.getInstance().putString("token", token);
+        refresh();
     }
 
     public String getToken() {
@@ -91,7 +95,10 @@ public class AccountManager {
     }
 
     public void refresh() {
-        getAccountInfoFromServer(this.token);
+        if (token == null) {
+            return;
+        }
+        getAccountInfoFromServer(token);
     }
 
     /**
@@ -99,8 +106,35 @@ public class AccountManager {
      */
     private void getAccountInfoFromServer(final String token) {
         if (null == token) {
-
+            return;
         }
+        WDNetworkCall userInfoCall = new WDNetworkCall<>();
+        userInfoCall.setRequestUrl(UrlConst.getUserInfoUrl());
+        userInfoCall.setResultClass(UserInfoResult.class);
+        userInfoCall.start(new RequestListener() {
+            @Override
+            public <T extends BaseResult> void onResponse(T result) {
+                UserInfoResult userInfoResult = (UserInfoResult) result;
+                if (userInfoResult.isSuccessful()) {
+                    UserInfoResult.Data data = userInfoResult.data;
+                    if (data == null) {
+                        return;
+                    }
+                    mAccountInfo = new AccountInfo();
+                    mAccountInfo.setId(data.id);
+                    mAccountInfo.setUser_type(data.user_type);
+                    mAccountInfo.setMobile(data.mobile);
+                    mAccountInfo.setAvatar(data.avatar);
+                    saveAccountInfo(GsonUtils.toJson(mAccountInfo));
+                }
+            }
+
+            @Override
+            public void onError(BaseResult.Error error) {
+
+            }
+        });
+
     }
 
     private void saveAccountInfo(String accountJson) {
@@ -111,9 +145,6 @@ public class AccountManager {
         String accountJson = SharePreferenceManager.getInstance().getString("account");
         if (!StringUtils.isEmpty(accountJson)) {
             mAccountInfo = GsonUtils.gsonResolve(accountJson, AccountInfo.class);
-            if (mAccountInfo != null) {
-                this.token = mAccountInfo.getToken();
-            }
         }
     }
 }

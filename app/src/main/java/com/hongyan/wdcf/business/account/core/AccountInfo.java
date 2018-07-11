@@ -3,14 +3,15 @@ package com.hongyan.wdcf.business.account.core;
 
 import com.hongyan.base.BaseResult;
 
+
 public class AccountInfo extends BaseResult {
 
-    private String id;
-    private String email;
-    private String status;
-    private String token;
-    private String nickname;
-    private String mobile;
+    public String id;
+    public String user_type;//2 用户 3理财师
+    public String user_nicename;
+    public String user_email;
+    public String avatar;
+    public String mobile;
 
     public String getId() {
         return id;
@@ -20,36 +21,36 @@ public class AccountInfo extends BaseResult {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUser_type() {
+        return user_type;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUser_type(String user_type) {
+        this.user_type = user_type;
     }
 
-    public String getStatus() {
-        return status;
+    public String getUser_nicename() {
+        return user_nicename;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setUser_nicename(String user_nicename) {
+        this.user_nicename = user_nicename;
     }
 
-    public String getToken() {
-        return token;
+    public String getUser_email() {
+        return user_email;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setUser_email(String user_email) {
+        this.user_email = user_email;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getMobile() {

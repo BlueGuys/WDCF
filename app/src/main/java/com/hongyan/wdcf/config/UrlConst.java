@@ -32,4 +32,11 @@ public class UrlConst {
     public static String getLoginUrl() {
         return HOST + "Api/Users/login";
     }
+
+    /**
+     * 用户信息
+     */
+    public static String getUserInfoUrl() {
+        return HOST + "Api/Users/getUserInfo";
+    }
 }

@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.business.account.core.AccountInfo;
 import com.hongyan.wdcf.business.account.core.AccountManager;
 
 /**
@@ -21,6 +22,7 @@ import com.hongyan.wdcf.business.account.core.AccountManager;
 public class MeUserPageView extends LinearLayout implements View.OnClickListener {
 
     private View view;
+    TextView tvUserPhone;
 
     public MeUserPageView(Context context) {
         super(context);
@@ -42,7 +44,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
         LinearLayout layoutUser = view.findViewById(R.id.ll_user);
         ImageView imageLogo = view.findViewById(R.id.image_logo);
         TextView tvUserName = view.findViewById(R.id.tv_userName);
-        TextView tvUserPhone = view.findViewById(R.id.tv_userPhone);
+        tvUserPhone = view.findViewById(R.id.tv_userPhone);
         layoutHelper.setOnClickListener(this);
         layoutFeedback.setOnClickListener(this);
         layoutEvaluate.setOnClickListener(this);
@@ -57,6 +59,11 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
         imageLogo.setOnClickListener(this);
         tvUserName.setOnClickListener(this);
         tvUserPhone.setOnClickListener(this);
+
+        AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
+        if (accountInfo != null) {
+            tvUserPhone.setText(accountInfo.mobile);
+        }
     }
 
     @Override

@@ -8,6 +8,7 @@ import com.hongyan.base.BaseViewHolder;
 import com.hongyan.base.tab.SubPage;
 import com.hongyan.base.tab.TabActivity;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.business.account.core.AccountManager;
 import com.hongyan.wdcf.business.main.discover.DiscoverFragment;
 import com.hongyan.wdcf.business.main.me.MeFragment;
 import com.hongyan.wdcf.business.main.service.ServiceFragment;
@@ -44,6 +45,8 @@ public class MainActivity extends TabActivity {
         list.add(servicePage);
         list.add(mePage);
         addSubPage(list);
+
+        AccountManager.getInstance().refresh();
     }
 
     @Override
