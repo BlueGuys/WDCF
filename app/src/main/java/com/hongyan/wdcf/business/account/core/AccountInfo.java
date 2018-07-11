@@ -57,6 +57,13 @@ public class AccountInfo extends BaseResult {
         return mobile;
     }
 
+    public String getUIMobile() {
+        if (mobile != null && mobile.length() == 11) {
+            return mobile.substring(0, 3) + "****" + mobile.substring(7, 11);
+        }
+        return mobile;
+    }
+
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }

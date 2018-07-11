@@ -65,7 +65,7 @@ public class NavigationView extends LinearLayout {
             mLeftLayout.removeAllViews();
             ImageView imageView = new ImageView(mContext);
             imageView.setImageResource(buttonResId);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(80, 80);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(50, 50);
             imageView.setLayoutParams(params);
             mLeftLayout.setOnClickListener(new OnClickListener() {
                 @Override

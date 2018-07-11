@@ -46,4 +46,11 @@ public class UrlConst {
     public static String getDiscoverUrl() {
         return HOST + "api/home/index";
     }
+
+    /**
+     * 提交反馈
+     */
+    public static String getFeedbackUrl() {
+        return HOST + "Api/Feedback/index";
+    }
 }

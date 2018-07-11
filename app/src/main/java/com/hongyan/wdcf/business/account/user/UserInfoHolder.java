@@ -1,0 +1,105 @@
+package com.hongyan.wdcf.business.account.user;
+
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.hongyan.base.BaseActivity;
+import com.hongyan.base.BaseResult;
+import com.hongyan.base.BaseViewHolder;
+import com.hongyan.base.IViewHolder;
+import com.hongyan.base.RequestBean;
+import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.business.account.core.AccountInfo;
+import com.hongyan.wdcf.business.account.core.AccountManager;
+import com.hongyan.wdcf.widget.ItemA;
+
+/**
+ * Created by wangning on 2018/6/10.
+ */
+
+public class UserInfoHolder extends BaseViewHolder implements IViewHolder, View.OnClickListener {
+
+    private UserInfoModel registerModel;
+    private ImageView imageUserLogo;
+    private TextView tvUserName;
+    private TextView tvUserMobile;
+    private ItemA itemName;
+    private ItemA itemCertificatesType;
+    private ItemA itemCertificatesNumber;
+    private Button buttonExit;
+
+    public UserInfoHolder(BaseActivity mActivity) {
+        super(mActivity);
+        registerModel = new UserInfoModel(this);
+    }
+
+    @Override
+    public int getLayoutID() {
+        return R.layout.activity_user_info;
+    }
+
+    @Override
+    public int getLayoutType() {
+        return IViewHolder.LAYOUT_TYPE_COMMON;
+    }
+
+    @Override
+    public boolean needPageRequest() {
+        return false;
+    }
+
+    @Override
+    public void initView(View rootView) {
+        addLeftButtonDefault();
+
+        imageUserLogo = rootView.findViewById(R.id.image_user_logo);
+        tvUserName = rootView.findViewById(R.id.tv_user_name);
+        tvUserMobile = rootView.findViewById(R.id.tv_user_mobile);
+        itemName = rootView.findViewById(R.id.item_name);
+        itemCertificatesType = rootView.findViewById(R.id.item_certificates_type);
+        itemCertificatesNumber = rootView.findViewById(R.id.item_certificates_number);
+        buttonExit = rootView.findViewById(R.id.btn_exit);
+        buttonExit.setOnClickListener(this);
+
+        AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
+        if (accountInfo != null) {
+            tvUserName.setText(accountInfo.getUser_nicename());
+            tvUserMobile.setText(accountInfo.getUIMobile());
+        }
+
+    }
+
+    @Override
+    public int getNavigationTitle() {
+        return R.string.person_information;
+    }
+
+    @Override
+    public RequestBean getRequestBean() {
+        return null;
+    }
+
+    @Override
+    public <T extends BaseResult> void onRequestSuccess(T result) {
+
+    }
+
+    @Override
+    public boolean onRequestFail() {
+        return false;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_exit:
+                AccountManager.getInstance().logout();
+                getActivity().finish();
+                break;
+            case R.id.image_user_logo:
+                break;
+        }
+    }
+}

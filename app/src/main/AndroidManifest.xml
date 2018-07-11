@@ -38,6 +38,8 @@
             android:launchMode="singleTask" />
         <activity android:name=".business.account.select.SelectIdentifyActivity" />
         <activity android:name=".business.account.login.LoginActivity" />
+        <activity android:name=".business.account.user.UserInfoActivity" />
+        <activity android:name=".business.account.feedback.FeedbackActivity" />
     </application>
 
 </manifest>

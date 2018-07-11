@@ -10,4 +10,6 @@ public class RequestKeyTable {
     public static final String YZM = "yzm";
     public static final String PASSWORD = "password";
     public static final String TOKEN = "token";
+    public static final String CONTENT = "content";
+    public static final String EMAIL = "email";
 }

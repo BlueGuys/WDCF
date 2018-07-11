@@ -89,8 +89,10 @@ public class AccountManager {
 
     public void logout() {
         SharePreferenceManager.getInstance().deleteStr("account");
+        SharePreferenceManager.getInstance().deleteStr("token");
+        SharePreferenceManager.getInstance().deleteStr("userType");
         EventBus.getDefault().post(new AccountMessageEvent(false));
-        mAccountInfo = null;
+        this.mAccountInfo = null;
         this.token = "";
     }
 

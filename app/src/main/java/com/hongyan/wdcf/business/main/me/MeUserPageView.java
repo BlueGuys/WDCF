@@ -3,6 +3,7 @@ package com.hongyan.wdcf.business.main.me;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -11,7 +12,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.business.account.core.AccountInfo;
 import com.hongyan.wdcf.business.account.core.AccountManager;
 
@@ -62,7 +66,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
 
         AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
         if (accountInfo != null) {
-            tvUserPhone.setText(accountInfo.mobile);
+            tvUserPhone.setText(accountInfo.getUIMobile());
         }
     }
 
@@ -71,8 +75,11 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
         switch (v.getId()) {
             case R.id.rl_help:
                 break;
-            case R.id.rl_user_feedback:
+            case R.id.rl_user_feedback: {
+                Router router = new Router(RouterConfig.UserUserFeedback);
+                RouterManager.getInstance().openUrl(router);
                 break;
+            }
             case R.id.rl_evaluate:
                 break;
             case R.id.rl_about:
@@ -90,13 +97,13 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
             case R.id.tv_member:
                 break;
             case R.id.ll_user:
-                break;
             case R.id.image_logo:
-                break;
             case R.id.tv_userName:
+            case R.id.tv_userPhone: {
+                Router router = new Router(RouterConfig.UserInfoIndex);
+                RouterManager.getInstance().openUrl(router);
                 break;
-            case R.id.tv_userPhone:
-                break;
+            }
         }
     }
 }
