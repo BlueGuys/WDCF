@@ -16,6 +16,14 @@ public class AccountManager {
     private AccountInfo mAccountInfo;
     private String token;
 
+    public static final String TYPE_USER = "2";
+    public static final String TYPE_TEACHER = "3";
+
+    /**
+     * 2 用户 3理财师
+     */
+    private String userType = TYPE_USER;
+
     private AccountManager() {
         init();
     }
@@ -36,10 +44,13 @@ public class AccountManager {
      */
     public void init() {
         readAccountInfo();
+        this.token = SharePreferenceManager.getInstance().getString("token");
+        this.userType = SharePreferenceManager.getInstance().getString("userType");
     }
 
     public void setToken(String token) {
         this.token = token;
+        SharePreferenceManager.getInstance().putString("token", token);
     }
 
     public String getToken() {
@@ -50,11 +61,20 @@ public class AccountManager {
         return mAccountInfo;
     }
 
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+        SharePreferenceManager.getInstance().putString("userType", userType);
+    }
+
     /**
      * 如果没有登录,直接跳转登录页面
      */
     public boolean checkLogin() {
-        if (mAccountInfo != null) {//如果没有登录，直接跳登录页面
+        if (token != null && token.length() > 0) {
             return true;
         }
         Router router = new Router();

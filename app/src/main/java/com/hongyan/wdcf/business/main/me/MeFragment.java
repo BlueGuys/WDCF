@@ -14,16 +14,28 @@ import com.hongyan.wdcf.business.account.core.AccountManager;
 public class MeFragment extends BaseFragment {
 
     private View view;
-    private Button button;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        if (view == null) {
-            view = inflater.inflate(R.layout.fragment_me, container, false);
-            initView();
+        switch (AccountManager.getInstance().getUserType()) {
+            case AccountManager.TYPE_USER:
+                view = new MeUserPageView(getActivity());
+                break;
+            case AccountManager.TYPE_TEACHER:
+                view = new MeTeacherPageView(getActivity());
+                break;
+            default:
+                view = inflater.inflate(R.layout.fragment_me, container, false);
+                break;
         }
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        AccountManager.getInstance().checkLogin();
     }
 
     @Override
@@ -32,15 +44,5 @@ public class MeFragment extends BaseFragment {
         if (null != view) {
             ((ViewGroup) view.getParent()).removeView(view);
         }
-    }
-
-    private void initView() {
-        button = view.findViewById(R.id.login);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AccountManager.getInstance().checkLogin();
-            }
-        });
     }
 }

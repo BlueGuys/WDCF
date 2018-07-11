@@ -56,6 +56,11 @@ public class TabViewHolder extends BaseViewHolder implements IViewHolder {
         initTab();
     }
 
+    @Override
+    protected boolean hideNavigationView() {
+        return true;
+    }
+
     private void initTab() {
 
     }
