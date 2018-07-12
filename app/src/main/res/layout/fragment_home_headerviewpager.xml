@@ -1,0 +1,13 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/headerviewpager_layout"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/ds360">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/homeheader_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
+
+</RelativeLayout>

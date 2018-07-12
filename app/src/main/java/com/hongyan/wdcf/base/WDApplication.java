@@ -14,7 +14,9 @@ public class WDApplication extends BaseApplication {
         super.onCreate();
         initRouter();
         AccountManager.getInstance().init();
+        ImageLoaderOptionHelper.getInstance().initImageLoader(this);
     }
+
 
     private void initRouter() {
         RouterConfig.getInstance().init();

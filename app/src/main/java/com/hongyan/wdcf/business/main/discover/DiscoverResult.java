@@ -14,34 +14,31 @@ public class DiscoverResult extends BaseResult {
 
     static class Data {
         public ArrayList<HomeTopAd> homeTopAd;
-        public ArrayList<HomeMediaAd> homeMedioAd;
-        public ArrayList<HomeBottomAd> homeFootAd;
-        public ArrayList<HotArticle> hotArticle;
-        public ArrayList<AssetArticle> assetArticle;
-        public ArrayList<homeEvent> homeEvent;
+        public ArrayList<HomeMediaAd> homeMedioAd;//中部广告位
+        public ArrayList<HomeBottomAd> homeFootAd;//底部广告位
+        public ArrayList<HotArticle> hotArticle;//热点资讯
+        public ArrayList<AssetArticle> assetArticle;//资产配置
+        public ArrayList<homeEvent> homeEvent;//精彩活动
     }
 
     static class HomeTopAd {
-
+        public String photo;
+        public String url;
+        public String id;
     }
 
     static class HomeMediaAd {
-
     }
 
     static class HomeBottomAd {
-
     }
 
     static class HotArticle {
-
     }
 
     static class AssetArticle {
-
     }
 
     static class homeEvent {
-
     }
 }

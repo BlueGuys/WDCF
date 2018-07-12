@@ -30,7 +30,7 @@ public class DiscoverModel {
                     if (data == null) {
                         return;
                     }
-                    fragment.setData();
+                    fragment.setData(data);
                 }
             }
 

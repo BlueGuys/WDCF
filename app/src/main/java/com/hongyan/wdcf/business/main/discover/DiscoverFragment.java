@@ -14,6 +14,7 @@ public class DiscoverFragment extends BaseFragment {
 
     private View view;
     private ListView listView;
+    private DiscoverAdapter adapter;
 
     private DiscoverModel model;
 
@@ -37,13 +38,14 @@ public class DiscoverFragment extends BaseFragment {
         }
     }
 
-
     private void initView() {
         listView = view.findViewById(R.id.listView);
+        adapter = new DiscoverAdapter();
+        listView.setAdapter(adapter);
     }
 
-    protected void setData() {
-
+    protected void setData(DiscoverResult.Data data) {
+        adapter.setData(data);
     }
 
 }

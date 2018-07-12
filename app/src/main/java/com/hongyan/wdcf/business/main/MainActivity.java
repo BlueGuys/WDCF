@@ -29,17 +29,17 @@ public class MainActivity extends TabActivity {
         SubPage discoverPage = new SubPage();
         discoverPage.fragment = new DiscoverFragment();
         discoverPage.text = "发现";
-        discoverPage.drawable = new int[]{R.drawable.icon_tab_index_n, R.drawable.icon_tab_index_s};
+        discoverPage.drawable = new int[]{R.drawable.icon_discover_s, R.drawable.icon_discover_s};
 
         SubPage servicePage = new SubPage();
         servicePage.fragment = new ServiceFragment();
         servicePage.text = "服务";
-        servicePage.drawable = new int[]{R.drawable.icon_tab_index_n, R.drawable.icon_tab_index_s};
+        servicePage.drawable = new int[]{R.drawable.icon_service_n, R.drawable.icon_service_n};
 
         SubPage mePage = new SubPage();
         mePage.fragment = new MeFragment();
         mePage.text = "我的";
-        mePage.drawable = new int[]{R.drawable.icon_tab_index_n, R.drawable.icon_tab_index_s};
+        mePage.drawable = new int[]{R.drawable.icon_me_n, R.drawable.icon_me_n};
 
         list.add(discoverPage);
         list.add(servicePage);
