@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="@dimen/ds350"
+    android:background="@color/appBackground"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/ds30"
+    android:paddingTop="@dimen/ds30">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="hello"/>
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/ds15">
 
+        <View
+            android:layout_width="@dimen/ds200"
+            android:layout_height="@dimen/ds2"
+            android:background="@color/appColorPositive" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ds30"
+            android:layout_marginRight="@dimen/ds30"
+            android:background="@color/appColorPositive"
+            android:gravity="center"
+            android:text="热门推荐"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <View
+            android:layout_width="@dimen/ds200"
+            android:layout_height="@dimen/ds2"
+            android:background="@color/appColorPositive" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/ds30"
+        android:layout_marginRight="@dimen/ds30" />
 </LinearLayout>

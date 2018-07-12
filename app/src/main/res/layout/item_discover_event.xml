@@ -1,11 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@color/appBackground">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="hello"/>
+        android:layout_margin="@dimen/ds10"
+        android:background="@drawable/bg_corner_white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/ds10"
+        android:paddingRight="@dimen/ds10"
+        android:paddingBottom="@dimen/ds10">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ds60"
+            android:layout_marginTop="@dimen/ds10"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/stub"
+                android:layout_width="@dimen/ds2"
+                android:layout_height="@dimen/ds40"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/ds10"
+                android:background="@color/fontPositive" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/stub"
+                android:gravity="center"
+                android:text="精彩活动"
+                android:textColor="@color/fontPositive"
+                android:textSize="14dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/icon_arrow_right" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/imageViewA"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ds250" />
+
+        <ImageView
+            android:id="@+id/imageViewB"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ds250" />
+
+    </LinearLayout>
 
 </LinearLayout>

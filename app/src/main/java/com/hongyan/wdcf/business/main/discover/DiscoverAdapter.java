@@ -4,12 +4,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hongyan.base.router.Router;
 import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.ImageLoaderOptionHelper;
 import com.hongyan.wdcf.widget.ScrollBannerView;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +26,8 @@ import java.util.List;
 public class DiscoverAdapter extends BaseAdapter {
 
     private static final int TYPE_BANNER = 0;
-    private static final int TYPE_HOT_ARTICLE = 1;
-    private static final int TYPE_MIDDLE_AD = 2;
+    private static final int TYPE_MIDDLE_AD = 1;
+    private static final int TYPE_HOT_ARTICLE = 2;
     private static final int TYPE_ASSET_ARTICLE = 3;
     private static final int TYPE_BOTTOM_AD = 4;
     private static final int TYPE_EVENT = 5;
@@ -51,9 +56,9 @@ public class DiscoverAdapter extends BaseAdapter {
             case 0:
                 return TYPE_BANNER;
             case 1:
-                return TYPE_HOT_ARTICLE;
-            case 2:
                 return TYPE_MIDDLE_AD;
+            case 2:
+                return TYPE_HOT_ARTICLE;
             case 3:
                 return TYPE_ASSET_ARTICLE;
             case 4:
@@ -87,20 +92,25 @@ public class DiscoverAdapter extends BaseAdapter {
                     convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_discover_head, parent, false);
                     handleHeader(convertView);
                     break;
-                case TYPE_HOT_ARTICLE:
-                    convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_discover_hot, parent, false);
-                    break;
                 case TYPE_MIDDLE_AD:
                     convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_discover_top_ad, parent, false);
+                    handleMiddleAdd(convertView);
+                    break;
+                case TYPE_HOT_ARTICLE:
+                    convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_discover_hot, parent, false);
+                    handleHotArticle(convertView);
                     break;
                 case TYPE_ASSET_ARTICLE:
                     convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_discover_asset, parent, false);
+                    handleAssetsArticle(convertView);
                     break;
                 case TYPE_BOTTOM_AD:
                     convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_discover_bottom_ad, parent, false);
+                    handleBottomAdd(convertView);
                     break;
                 case TYPE_EVENT:
                     convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_discover_event, parent, false);
+                    handleEvent(convertView);
                     break;
             }
         }
@@ -131,5 +141,120 @@ public class DiscoverAdapter extends BaseAdapter {
         TextView tvInvest = convertView.findViewById(R.id.tv_invest);
         TextView tvWelfare = convertView.findViewById(R.id.tv_welfare);
         TextView tvGuaratee = convertView.findViewById(R.id.tv_guarantee);
+    }
+
+    private void handleMiddleAdd(View convertView) {
+        ArrayList<DiscoverResult.HomeMediaAd> homeMedioAd = data.homeMedioAd;
+        ImageView imageView = convertView.findViewById(R.id.imageView);
+        if (homeMedioAd.size() > 0) {
+            DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getCornerImageOption(20);
+            ImageLoader.getInstance().displayImage(homeMedioAd.get(0).photo, imageView, options);
+        }
+    }
+
+    private void handleBottomAdd(View convertView) {
+        ArrayList<DiscoverResult.HomeBottomAd> homeFootAd = data.homeFootAd;
+        ImageView imageView = convertView.findViewById(R.id.imageView);
+        if (homeFootAd.size() > 0) {
+            DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getCornerImageOption(20);
+            ImageLoader.getInstance().displayImage(homeFootAd.get(0).photo, imageView, options);
+        }
+    }
+
+    private void handleEvent(View convertView) {
+        ArrayList<DiscoverResult.homeEvent> homeEvents = data.homeEvent;
+        ImageView imageViewA = convertView.findViewById(R.id.imageViewA);
+        ImageView imageViewB = convertView.findViewById(R.id.imageViewB);
+        if (homeEvents.size() > 1) {
+            DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getCommonImageOption();
+            ImageLoader.getInstance().displayImage(homeEvents.get(0).photo, imageViewA, options);
+            ImageLoader.getInstance().displayImage(homeEvents.get(0).photo, imageViewB, options);
+        }
+    }
+
+    private void handleHotArticle(View convertView) {
+        ArrayList<DiscoverResult.HotArticle> hotArticles = data.hotArticle;
+        TextView tvTitleA = convertView.findViewById(R.id.tv_title_A);
+        TextView tvDescA = convertView.findViewById(R.id.tv_desc_A);
+        TextView tvTimeA = convertView.findViewById(R.id.tv_timeA);
+        TextView tvSiteA = convertView.findViewById(R.id.tv_siteA);
+        ImageView imageViewA = convertView.findViewById(R.id.imageViewA);
+
+        TextView tvTitleB = convertView.findViewById(R.id.tv_title_B);
+        TextView tvDescB = convertView.findViewById(R.id.tv_desc_B);
+        TextView tvTimeB = convertView.findViewById(R.id.tv_timeB);
+        TextView tvSiteB = convertView.findViewById(R.id.tv_siteB);
+        ImageView imageViewB = convertView.findViewById(R.id.imageViewB);
+
+        LinearLayout layoutB = convertView.findViewById(R.id.linearB);
+
+        DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getCommonImageOption();
+        if (hotArticles.size() == 1) {
+            layoutB.setVisibility(View.GONE);
+            DiscoverResult.HotArticle articleA = hotArticles.get(0);
+            tvTitleA.setText(articleA.title);
+            tvDescA.setText(articleA.content);
+            tvTimeA.setText(articleA.create_time);
+            tvSiteA.setText(articleA.source);
+            ImageLoader.getInstance().displayImage(articleA.photo, imageViewA, options);
+        } else if (hotArticles.size() == 2) {
+            DiscoverResult.HotArticle articleA = hotArticles.get(0);
+            tvTitleA.setText(articleA.title);
+            tvDescA.setText(articleA.content);
+            tvTimeA.setText(articleA.create_time);
+            tvSiteA.setText(articleA.source);
+            ImageLoader.getInstance().displayImage(articleA.photo, imageViewA, options);
+
+            DiscoverResult.HotArticle articleB = hotArticles.get(1);
+            tvTitleB.setText(articleB.title);
+            tvDescB.setText(articleB.content);
+            tvTimeB.setText(articleB.create_time);
+            tvSiteB.setText(articleB.source);
+            ImageLoader.getInstance().displayImage(articleB.photo, imageViewB, options);
+        }
+    }
+
+    private void handleAssetsArticle(View convertView) {
+        ArrayList<DiscoverResult.AssetArticle> assetArticles = data.assetArticle;
+        TextView tvTitleA = convertView.findViewById(R.id.tv_title_A);
+        TextView tvDescA = convertView.findViewById(R.id.tv_desc_A);
+        TextView tvTimeA = convertView.findViewById(R.id.tv_timeA);
+        TextView tvSiteA = convertView.findViewById(R.id.tv_siteA);
+        ImageView imageViewA = convertView.findViewById(R.id.imageViewA);
+
+        TextView tvTitleB = convertView.findViewById(R.id.tv_title_B);
+        TextView tvDescB = convertView.findViewById(R.id.tv_desc_B);
+        TextView tvTimeB = convertView.findViewById(R.id.tv_timeB);
+        TextView tvSiteB = convertView.findViewById(R.id.tv_siteB);
+        ImageView imageViewB = convertView.findViewById(R.id.imageViewB);
+
+        LinearLayout layoutB = convertView.findViewById(R.id.linearB);
+
+        DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getCommonImageOption();
+        if (assetArticles.size() == 1) {
+
+            layoutB.setVisibility(View.GONE);
+            
+            DiscoverResult.AssetArticle articleA = assetArticles.get(0);
+            tvTitleA.setText(articleA.title);
+            tvDescA.setText(articleA.content);
+            tvTimeA.setText(articleA.create_time);
+            tvSiteA.setText(articleA.source);
+            ImageLoader.getInstance().displayImage(articleA.photo, imageViewA, options);
+        } else if (assetArticles.size() == 2) {
+            DiscoverResult.AssetArticle articleA = assetArticles.get(0);
+            tvTitleA.setText(articleA.title);
+            tvDescA.setText(articleA.content);
+            tvTimeA.setText(articleA.create_time);
+            tvSiteA.setText(articleA.source);
+            ImageLoader.getInstance().displayImage(articleA.photo, imageViewA, options);
+
+            DiscoverResult.AssetArticle articleB = assetArticles.get(1);
+            tvTitleB.setText(articleB.title);
+            tvDescB.setText(articleB.content);
+            tvTimeB.setText(articleB.create_time);
+            tvSiteB.setText(articleB.source);
+            ImageLoader.getInstance().displayImage(articleB.photo, imageViewB, options);
+        }
     }
 }

@@ -7,6 +7,8 @@
     <color name="appBackground">#eff2f6</color>
     <color name="fontPositive">#66573e</color>
     <color name="fontNegative">#b1b1b1</color>
+    <color name="fontGray">#555555</color>
+    <color name="appLine">#dddddd</color>
 
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>

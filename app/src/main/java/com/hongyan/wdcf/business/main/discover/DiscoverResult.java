@@ -28,17 +28,40 @@ public class DiscoverResult extends BaseResult {
     }
 
     static class HomeMediaAd {
+        public String photo;
+        public String url;
+        public String id;
     }
 
     static class HomeBottomAd {
+        public String photo;
+        public String url;
+        public String id;
     }
 
     static class HotArticle {
+        public String photo;
+        public String url;
+        public String id;
+        public String title;
+        public String create_time;
+        public String content;
+        public String source;
     }
 
     static class AssetArticle {
+        public String photo;
+        public String url;
+        public String id;
+        public String title;
+        public String create_time;
+        public String content;
+        public String source;
     }
 
     static class homeEvent {
+        public String photo;
+        public String url;
+        public String id;
     }
 }

@@ -31,6 +31,11 @@ public class ImageLoaderOptionHelper {
     private DisplayImageOptions mListImageOption;
 
     /**
+     * 圆角
+     */
+    private DisplayImageOptions mCornerImageOption;
+
+    /**
      * 首页大图Image样式
      */
     private DisplayImageOptions mHeaderImageOption;
@@ -39,6 +44,9 @@ public class ImageLoaderOptionHelper {
      * 首页大图Image样式
      */
     private DisplayImageOptions mCircleImageOption;
+
+
+    private DisplayImageOptions mCommonImageOption;
 
 
     private ImageLoaderOptionHelper() {
@@ -55,6 +63,19 @@ public class ImageLoaderOptionHelper {
         return instance;
     }
 
+    public DisplayImageOptions getCommonImageOption() {
+        if (mCommonImageOption == null) {
+            mCommonImageOption = new DisplayImageOptions.Builder()
+                    .cacheInMemory(true)
+                    .cacheOnDisk(true)
+                    .considerExifParams(true)
+                    .bitmapConfig(Bitmap.Config.RGB_565)
+                    .displayer(new RoundedBitmapDisplayer(0))
+                    .build();
+        }
+        return mCommonImageOption;
+    }
+
     public DisplayImageOptions getCircleImageOption() {
         if (mCircleImageOption == null) {
             mCircleImageOption = new DisplayImageOptions.Builder()
@@ -66,6 +87,19 @@ public class ImageLoaderOptionHelper {
                     .build();
         }
         return mCircleImageOption;
+    }
+
+    public DisplayImageOptions getCornerImageOption(int radius) {
+        if (mCornerImageOption == null) {
+            mCornerImageOption = new DisplayImageOptions.Builder()
+                    .cacheInMemory(true)
+                    .cacheOnDisk(true)
+                    .considerExifParams(true)
+                    .bitmapConfig(Bitmap.Config.RGB_565)
+                    .displayer(new RoundedBitmapDisplayer(radius))
+                    .build();
+        }
+        return mCornerImageOption;
     }
 
     public DisplayImageOptions getListImageOption() {
