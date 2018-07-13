@@ -60,4 +60,11 @@ public class UrlConst {
     public static String getActivityUrl() {
         return HOST + "Api/Event/getList";
     }
+
+    /**
+     * 头条
+     */
+    public static String getNewsUrl() {
+        return HOST + "Api/Product/topList";
+    }
 }
