@@ -1,11 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/appBackground">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="头条" />
+        android:orientation="vertical">
 
-</LinearLayout>
+        <com.hongyan.wdcf.widget.MarginBannerView
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ds350"
+            android:layout_marginTop="@dimen/ds10" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ds10"
+            android:layout_marginRight="@dimen/ds10"
+            android:layout_marginTop="@dimen/ds20"
+            android:background="@drawable/bg_corner_white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ds180"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/icon_shouyi"
+                    android:gravity="center"
+                    android:text="类固定收益"
+                    android:textColor="@color/fontGray"
+                    android:textSize="12dp" />
+
+                <View
+                    android:layout_width="@dimen/ds1"
+                    android:layout_height="wrap_content"
+                    android:background="@color/appLine" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/icon_simu"
+                    android:gravity="center"
+                    android:text="私募股权"
+                    android:textColor="@color/fontGray"
+                    android:textSize="12dp" />
+
+                <View
+                    android:layout_width="@dimen/ds1"
+                    android:layout_height="match_parent"
+                    android:background="@color/appLine" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/icon_haiwai"
+                    android:gravity="center"
+                    android:text="海外投资"
+                    android:textColor="@color/fontGray"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ds1"
+                android:background="@color/appLine" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ds180"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/icon_baoxian"
+                    android:gravity="center"
+                    android:text="保险服务"
+                    android:textColor="@color/fontGray"
+                    android:textSize="12dp" />
+
+                <View
+                    android:layout_width="@dimen/ds1"
+                    android:layout_height="match_parent"
+                    android:background="@color/appLine" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/icon_erji"
+                    android:gravity="center"
+                    android:text="二级市场"
+                    android:textColor="@color/fontGray"
+                    android:textSize="12dp" />
+
+                <View
+                    android:layout_width="@dimen/ds1"
+                    android:layout_height="match_parent"
+                    android:background="@color/appLine" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/icon_erji"
+                    android:gravity="center"
+                    android:text="信托计划"
+                    android:textColor="@color/fontGray"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
