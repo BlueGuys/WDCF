@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/appBackground"
+    android:padding="@dimen/ds10">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_corner_white"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/ds10">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ds300"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ds10"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ds20"
+                android:maxLines="2"
+                android:text="中华人民共和国哈哈哈哈哈哈哈哈可好看好看好看好看"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/ds10"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/ds20">
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/ds40"
+                    android:maxLines="2"
+                    android:textColor="@color/fontGray"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:textColor="@color/fontGray"
+                    android:textSize="13dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ds10"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/ds20">
+
+                <TextView
+                    android:id="@+id/tv_label1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/ds30"
+                    android:background="@drawable/bg_yellow_stroke"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:paddingLeft="@dimen/ds20"
+                    android:paddingRight="@dimen/ds20"
+                    android:text="暑期游学"
+                    android:textColor="@color/fontPositive"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_label2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_yellow_stroke"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:paddingLeft="@dimen/ds20"
+                    android:paddingRight="@dimen/ds20"
+                    android:text="暑期游学"
+                    android:textColor="@color/fontPositive"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

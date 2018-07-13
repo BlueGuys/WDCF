@@ -53,4 +53,11 @@ public class UrlConst {
     public static String getFeedbackUrl() {
         return HOST + "Api/Feedback/index";
     }
+
+    /**
+     * 活动
+     */
+    public static String getActivityUrl() {
+        return HOST + "Api/Event/getList";
+    }
 }
