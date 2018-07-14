@@ -11,12 +11,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.hongyan.LogUtils;
 import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.base.ImageLoaderOptionHelper;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by wangning on 2018/7/14.
@@ -42,7 +44,7 @@ public class MarginBannerView extends LinearLayout {
         view = LayoutInflater.from(context).inflate(R.layout.view_margin_banner, this, true);
         viewPager = view.findViewById(R.id.viewpager);
         viewPager.setPageMargin(40);//设置page间间距，自行根据需求设置
-        viewPager.setOffscreenPageLimit(3);//>=3
+//        viewPager.setOffscreenPageLimit(3);//>=3
         adapter = new MyPagerAdapter();
         viewPager.setAdapter(adapter);
     }
@@ -51,9 +53,9 @@ public class MarginBannerView extends LinearLayout {
         if (list != null && list.size() > 0) {
             mList.addAll(list);
             adapter.notifyDataSetChanged();
-            if (adapter.getCount() > 0) {
-                viewPager.setCurrentItem(1);
-            }
+            int m = (Integer.MAX_VALUE / 2) % mList.size();
+            int currentPosition = Integer.MAX_VALUE / 2 - m;
+            viewPager.setCurrentItem(currentPosition);
         }
     }
 
@@ -65,6 +67,7 @@ public class MarginBannerView extends LinearLayout {
     class MyPagerAdapter extends PagerAdapter {
 
         private DisplayImageOptions imageOptions;
+        private List<View> mViewList;
 
         public MyPagerAdapter() {
             imageOptions = ImageLoaderOptionHelper.getInstance().getCornerImageOption(20);
@@ -72,7 +75,7 @@ public class MarginBannerView extends LinearLayout {
 
         @Override
         public int getCount() {
-            return mList.size();
+            return Integer.MAX_VALUE;
         }
 
         @Override
@@ -82,24 +85,39 @@ public class MarginBannerView extends LinearLayout {
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((View) object);
+            container.removeView(getView(position % mList.size()));
         }
 
         @Override
-        public Object instantiateItem(ViewGroup container, final int position) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.viewpager_item, null);
+        public Object instantiateItem(ViewGroup container, int position) {
+            final int pos = position%mList.size();
+            View view = getView(pos);
             ImageView imageView = view.findViewById(R.id.home_header_imageView);
-            ImageLoader.getInstance().displayImage(mList.get(position), imageView, imageOptions);
+            ImageLoader.getInstance().displayImage(mList.get(pos) ,imageView, imageOptions);
             imageView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mOnPageClickListener != null) {
-                        mOnPageClickListener.setOnPage(position);
+                        mOnPageClickListener.setOnPage(pos);
                     }
                 }
             });
+            ViewGroup group = (ViewGroup) view.getParent();
+            if (group != null) {
+                group.removeView(view);
+            }
             container.addView(view);
             return view;
+        }
+
+        private View getView(int position) {
+            if (mViewList == null) {
+                mViewList = new ArrayList<>();
+            }
+            while (mViewList.size() - 1 < position) {
+                mViewList.add(LayoutInflater.from(mContext).inflate(R.layout.viewpager_item, null));
+            }
+            return mViewList.get(position);
         }
     }
 
