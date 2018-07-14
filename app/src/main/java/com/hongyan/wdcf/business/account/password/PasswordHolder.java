@@ -1,5 +1,6 @@
-package com.hongyan.wdcf.business.account.setting;
+package com.hongyan.wdcf.business.account.password;
 
+import android.util.Log;
 import android.view.View;
 
 import com.hongyan.base.BaseActivity;
@@ -7,25 +8,25 @@ import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
 import com.hongyan.base.IViewHolder;
 import com.hongyan.base.RequestBean;
-import com.hongyan.base.router.Router;
-import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
-import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.widget.ItemC;
 
 /**
  * Created by wangning on 2018/6/10.
  */
 
-public class SettingHolder extends BaseViewHolder implements IViewHolder, View.OnClickListener {
+public class PasswordHolder extends BaseViewHolder implements IViewHolder, View.OnClickListener {
 
-    public SettingHolder(BaseActivity mActivity) {
+    private ItemC itemModifyLogin;
+    private ItemC itemModifyBusiness;
+
+    public PasswordHolder(BaseActivity mActivity) {
         super(mActivity);
     }
 
     @Override
     public int getLayoutID() {
-        return R.layout.activity_setting;
+        return R.layout.activity_password;
     }
 
     @Override
@@ -40,16 +41,16 @@ public class SettingHolder extends BaseViewHolder implements IViewHolder, View.O
 
     @Override
     public void initView(View rootView) {
-        ItemC itemBank = rootView.findViewById(R.id.item_bank);
-        ItemC itemPassword = rootView.findViewById(R.id.item_password);
-        itemBank.setOnClickListener(this);
-        itemPassword.setOnClickListener(this);
+        itemModifyLogin = rootView.findViewById(R.id.item_modify_login);
+        itemModifyBusiness = rootView.findViewById(R.id.item_modify_business);
+        itemModifyLogin.setOnClickListener(this);
+        itemModifyBusiness.setOnClickListener(this);
         addLeftButtonDefault();
     }
 
     @Override
     public int getNavigationTitle() {
-        return R.string.setting;
+        return R.string.password_manage;
     }
 
     @Override
@@ -69,14 +70,12 @@ public class SettingHolder extends BaseViewHolder implements IViewHolder, View.O
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.item_bank:
-                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserBankCardList));
+            case R.id.item_modify_login:
+                Log.e("test", "11111111");
                 break;
-            case R.id.item_password: {
-                Router router = new Router(RouterConfig.UserModifyPassword);
-                RouterManager.getInstance().openUrl(router);
+            case R.id.item_modify_business:
+                Log.e("test", "2222222");
                 break;
-            }
         }
     }
 }

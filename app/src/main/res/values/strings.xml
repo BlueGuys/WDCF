@@ -7,4 +7,6 @@
     <string name="setting">设置</string>
     <string name="register_now">立即注册</string>
     <string name="user_feedback">用户反馈</string>
+    <string name="password_manage">密码管理</string>
+    <string name="my_bankcard">我的银行卡</string>
 </resources>

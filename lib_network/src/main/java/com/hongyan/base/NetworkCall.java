@@ -33,9 +33,7 @@ public class NetworkCall<T extends BaseResult> {
                     return;
                 }
                 BaseResult result = response.getResult();
-                if (response.getResult().isSuccessful()) {
-                    listener.onResponse(result);
-                }
+                listener.onResponse(result);
 
             }
         }, new Response.ErrorListener() {
@@ -63,7 +61,7 @@ public class NetworkCall<T extends BaseResult> {
     }
 
     public void addParam(HashMap<String, String> params) {
-        request.addParam(params);
+        mMap.putAll(params);
     }
 
 

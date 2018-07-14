@@ -41,6 +41,8 @@
         <activity android:name=".business.account.user.UserInfoActivity" />
         <activity android:name=".business.account.feedback.FeedbackActivity" />
         <activity android:name=".business.account.setting.SettingActivity" />
+        <activity android:name=".business.account.password.PasswordActivity" />
+        <activity android:name=".business.account.bankcard.BankCardListActivity" />
     </application>
 
 </manifest>

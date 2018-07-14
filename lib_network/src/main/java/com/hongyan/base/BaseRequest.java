@@ -1,6 +1,8 @@
 package com.hongyan.base;
 
 
+import android.util.Log;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
@@ -71,6 +73,7 @@ public class BaseRequest<T extends BaseResult> extends Request<BaseResponse> {
                 string = new String(networkResponse.data);
             }
             response.setResponse(string);
+            Log.e("response", string);
             BaseResult result = GsonUtils.gsonResolve(string, mResultClass);
             response.setResult(result);
             return Response.success(response, HttpHeaderParser.parseCacheHeaders(networkResponse));

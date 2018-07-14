@@ -36,7 +36,6 @@ class ViewHolder {
         this.businessViewHolder = businessViewHolder;
         iViewHolder = (IViewHolder) businessViewHolder;
         initBaseView();
-        requestPageData(false);
     }
 
     /**
@@ -111,7 +110,7 @@ class ViewHolder {
     /**
      * 发送页面请求
      */
-    private void requestPageData(final boolean isPullRefresh) {
+    protected void requestPageData(final boolean isPullRefresh) {
         if (iViewHolder == null || !iViewHolder.needPageRequest()) {//如果子类指定不需要页面请求，那么就不请求
             return;
         }

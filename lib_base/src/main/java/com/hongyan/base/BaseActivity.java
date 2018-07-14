@@ -18,6 +18,7 @@ import com.hongyan.loading.LoadingDialog;
 public abstract class BaseActivity extends FragmentActivity {
 
     private LoadingDialog dialog;
+    private ViewHolder viewHolder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,10 +26,14 @@ public abstract class BaseActivity extends FragmentActivity {
         init();
         BaseViewHolder baseViewHolder = getViewHolder();
         if (baseViewHolder != null) {
-            setContentView(new ViewHolder(this, getViewHolder()).getRootView());
+            viewHolder = new ViewHolder(this, getViewHolder());
+            setContentView(viewHolder.getRootView());
         }
     }
 
+    public void startRequestPageData() {
+        viewHolder.requestPageData(false);
+    }
 
     @Override
     protected void onResume() {

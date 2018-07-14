@@ -11,9 +11,8 @@
 
     <ImageView
         android:id="@+id/img_left"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/ds60"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/ds15"
         android:layout_marginRight="@dimen/ds10" />
 
     <TextView

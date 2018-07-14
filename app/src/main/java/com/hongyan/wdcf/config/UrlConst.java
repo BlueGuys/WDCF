@@ -67,4 +67,11 @@ public class UrlConst {
     public static String getNewsUrl() {
         return HOST + "Api/Product/topList";
     }
+
+    /**
+     * 银行卡列表
+     */
+    public static String getBankCardListUrl() {
+        return HOST + "Api/Bank/getBanksList";
+    }
 }
