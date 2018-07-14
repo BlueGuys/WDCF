@@ -90,8 +90,11 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
                 break;
             case R.id.image_share:
                 break;
-            case R.id.image_setting:
+            case R.id.image_setting: {
+                Router router = new Router(RouterConfig.UserUserSetting);
+                RouterManager.getInstance().openUrl(router);
                 break;
+            }
             case R.id.image_message:
                 break;
             case R.id.tv_member:

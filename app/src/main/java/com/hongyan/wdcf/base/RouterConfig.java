@@ -6,6 +6,7 @@ import com.hongyan.wdcf.business.account.feedback.FeedbackActivity;
 import com.hongyan.wdcf.business.account.login.LoginActivity;
 import com.hongyan.wdcf.business.account.register.RegisterActivity;
 import com.hongyan.wdcf.business.account.select.SelectIdentifyActivity;
+import com.hongyan.wdcf.business.account.setting.SettingActivity;
 import com.hongyan.wdcf.business.account.user.UserInfoActivity;
 
 public final class RouterConfig {
@@ -33,6 +34,7 @@ public final class RouterConfig {
         RouterConst.addRouter(UserRegisterSelect, SelectIdentifyActivity.class.getName());
         RouterConst.addRouter(UserInfoIndex, UserInfoActivity.class.getName());
         RouterConst.addRouter(UserUserFeedback, FeedbackActivity.class.getName());
+        RouterConst.addRouter(UserUserSetting, SettingActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -40,5 +42,6 @@ public final class RouterConfig {
     public static final String UserRegisterSelect = "native://user/register/select";
     public static final String UserInfoIndex = "native://user/info/index";
     public static final String UserUserFeedback = "native://user/user/feedback";
+    public static final String UserUserSetting = "native://user/user/setting";
 
 }
