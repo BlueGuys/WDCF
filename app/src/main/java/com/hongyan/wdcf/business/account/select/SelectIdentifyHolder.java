@@ -75,7 +75,7 @@ public class SelectIdentifyHolder extends BaseViewHolder implements IViewHolder,
         etAddress.addTextChangedListener(this);
 
         IdentityView identityView = rootView.findViewById(R.id.identityView);
-        identityView.setStep(1);
+        identityView.setStep(2);
 
         tvBack.setOnClickListener(this);
         buttonChinese.setOnClickListener(this);

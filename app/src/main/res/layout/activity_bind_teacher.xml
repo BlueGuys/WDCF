@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eff2f6">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/icon_login_header" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/ds100"
+            android:src="@drawable/icon_logo" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ds500"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/ds30"
+        android:layout_marginRight="@dimen/ds30"
+        android:background="@drawable/bg_corner_white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/ds40"
+        android:paddingTop="@dimen/ds40">
+
+        <LinearLayout
+            android:id="@+id/teacher01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/ds15"
+            android:paddingLeft="@dimen/ds70"
+            android:paddingRight="@dimen/ds70"
+            android:paddingTop="@dimen/ds15">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkbox01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/bg_drawable_checkbox"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7" />
+
+                <TextView
+                    android:id="@+id/tv_teacher01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ds15"
+                    android:text="理财师1"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
+
+                <View
+                    android:layout_width="@dimen/ds1"
+                    android:layout_height="@dimen/ds30"
+                    android:layout_marginLeft="@dimen/ds20"
+                    android:layout_marginRight="@dimen/ds20"
+                    android:background="@color/appLine" />
+
+                <TextView
+                    android:id="@+id/tv_teacher_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="员工编号"
+                    android:textColor="@color/fontNegative"
+                    android:textSize="13dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ds80"
+                android:text="哈哈哈哈哈哈"
+                android:textColor="@color/fontNegative"
+                android:textSize="13dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ds1"
+            android:layout_marginLeft="@dimen/ds15"
+            android:layout_marginRight="@dimen/ds15"
+            android:background="@color/appColorPositive" />
+
+        <LinearLayout
+            android:id="@+id/teacher03"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/ds15"
+            android:paddingLeft="@dimen/ds70"
+            android:paddingRight="@dimen/ds70"
+            android:paddingTop="@dimen/ds15">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkbox02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/bg_drawable_checkbox"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ds15"
+                    android:text="自选理财师"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_code"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ds60"
+                android:layout_marginLeft="@dimen/ds70"
+                android:layout_marginTop="@dimen/ds20"
+                android:maxLength="12"
+                android:background="#ffcccccc"
+                android:hint="请输入理财顾问12位员工编号"
+                android:textColor="@color/black"
+                android:textSize="13dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <com.hongyan.wdcf.business.account.IdentityView
+        android:id="@+id/identityView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contentLayout"
+        android:layout_marginTop="@dimen/ds30" />
+
+    <Button
+        android:id="@+id/btn_commit"
+        style="@style/button_normal"
+        android:layout_below="@id/identityView"
+        android:layout_marginLeft="@dimen/ds100"
+        android:layout_marginRight="@dimen/ds100"
+        android:layout_marginTop="@dimen/ds30"
+        android:text="绑定理财师" />
+
+    <TextView
+        android:id="@+id/tv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/ds30"
+        android:text="返回上一页"
+        android:textColor="@color/appColorNegative"
+        android:textSize="13dp" />
+</RelativeLayout>

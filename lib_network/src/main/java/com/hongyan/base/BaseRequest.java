@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,9 +27,11 @@ public class BaseRequest<T extends BaseResult> extends Request<BaseResponse> {
     private Class<T> mResultClass = null;
     private HashMap<String, String> mMap = new HashMap();
     private boolean checkLogin = false;
+    private String requestUrl;
 
     public BaseRequest(Class<T> resultClass, String url, Response.Listener<BaseResponse> listener, Response.ErrorListener errorListener) {
         this(Method.POST, url, listener, errorListener);
+        this.requestUrl = url;
         mResultClass = resultClass;
         mErrorListener = errorListener;
         addCommonParams();
@@ -73,7 +76,7 @@ public class BaseRequest<T extends BaseResult> extends Request<BaseResponse> {
                 string = new String(networkResponse.data);
             }
             response.setResponse(string);
-            Log.e("response", string);
+            Log.e("response", "url=" + this.requestUrl + "\nparams=" + GsonUtils.toJson(mMap) + "\nresponse=" + string);
             BaseResult result = GsonUtils.gsonResolve(string, mResultClass);
             response.setResult(result);
             return Response.success(response, HttpHeaderParser.parseCacheHeaders(networkResponse));

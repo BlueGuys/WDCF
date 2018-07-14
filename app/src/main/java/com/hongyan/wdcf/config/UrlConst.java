@@ -117,6 +117,18 @@ public class UrlConst {
         return HOST + "Api/Users/edit_user";
     }
 
+    /**
+     * 推荐的理财师
+     */
+    public static String getRecommandTeacherUrl() {
+        return HOST + "Api/Finaplanner/getChoose";
+    }
 
+    /**
+     * 推荐的理财师
+     */
+    public static String getBindTeacherUrl() {
+        return HOST + "Api/Finaplanner/bindFinaplanner";
+    }
 
 }

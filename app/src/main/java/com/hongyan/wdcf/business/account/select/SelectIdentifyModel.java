@@ -3,7 +3,10 @@ package com.hongyan.wdcf.business.account.select;
 import com.hongyan.base.BaseModel;
 import com.hongyan.base.BaseResult;
 import com.hongyan.base.RequestListener;
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.base.RequestKeyTable;
+import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.base.WDNetworkCall;
 import com.hongyan.wdcf.business.account.feedback.FeedbackHolder;
 import com.hongyan.wdcf.business.main.discover.DiscoverResult;
@@ -45,6 +48,7 @@ public class SelectIdentifyModel extends BaseModel {
                 SelectIdentifyResult selectIdentifyResult = (SelectIdentifyResult) result;
                 if (selectIdentifyResult.isSuccessful()) {
                     viewHolder.showSuccessToast("提交成功");
+                    RouterManager.getInstance().openUrl(new Router(RouterConfig.UserBindTeacher));
                 }
             }
 
