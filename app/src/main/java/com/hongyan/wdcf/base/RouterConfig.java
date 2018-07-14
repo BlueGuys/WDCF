@@ -3,6 +3,7 @@ package com.hongyan.wdcf.base;
 
 import com.hongyan.base.router.RouterConst;
 import com.hongyan.wdcf.business.account.bankcard.BankCardListActivity;
+import com.hongyan.wdcf.business.account.bankcard.BindBankCardActivity;
 import com.hongyan.wdcf.business.account.feedback.FeedbackActivity;
 import com.hongyan.wdcf.business.account.login.LoginActivity;
 import com.hongyan.wdcf.business.account.password.PasswordActivity;
@@ -39,6 +40,7 @@ public final class RouterConfig {
         RouterConst.addRouter(UserUserSetting, SettingActivity.class.getName());
         RouterConst.addRouter(UserModifyPassword, PasswordActivity.class.getName());
         RouterConst.addRouter(UserBankCardList, BankCardListActivity.class.getName());
+        RouterConst.addRouter(UserBindBankCard, BindBankCardActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -49,5 +51,6 @@ public final class RouterConfig {
     public static final String UserUserSetting = "native://user/user/setting";
     public static final String UserModifyPassword = "native://user/user/password";
     public static final String UserBankCardList = "native://user/bankcard/list";
+    public static final String UserBindBankCard = "native://user/bankcard/bind";
 
 }

@@ -40,6 +40,8 @@ public class LoginModel extends BaseModel {
                         AccountManager.getInstance().setUserType(data.user_type);
                         viewHolder.showSuccessToast("登录成功");
                         viewHolder.goBack();
+                    } else {
+                        viewHolder.showErrorToast("数据错误");
                     }
                 } else {
                     viewHolder.showErrorToast(registerResult.getReturnMessage());

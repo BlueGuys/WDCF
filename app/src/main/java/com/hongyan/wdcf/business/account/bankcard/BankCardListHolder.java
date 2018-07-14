@@ -9,8 +9,11 @@ import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
 import com.hongyan.base.IViewHolder;
 import com.hongyan.base.RequestBean;
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.base.RequestKeyTable;
+import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.business.account.core.AccountManager;
 import com.hongyan.wdcf.business.main.MainResult;
 import com.hongyan.wdcf.config.UrlConst;
@@ -25,6 +28,7 @@ public class BankCardListHolder extends BaseViewHolder implements IViewHolder, V
 
     private BankCardListAdapter adapter;
     private ListView listView;
+    private Button button;
 
     public BankCardListHolder(BaseActivity mActivity) {
         super(mActivity);
@@ -49,6 +53,8 @@ public class BankCardListHolder extends BaseViewHolder implements IViewHolder, V
     public void initView(View rootView) {
         addLeftButtonDefault();
         listView = rootView.findViewById(R.id.listView);
+        button = rootView.findViewById(R.id.btn_commit);
+        button.setOnClickListener(this);
         adapter = new BankCardListAdapter();
         listView.setAdapter(adapter);
     }
@@ -92,7 +98,7 @@ public class BankCardListHolder extends BaseViewHolder implements IViewHolder, V
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_commit:
-
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserBindBankCard));
                 break;
         }
     }

@@ -83,11 +83,31 @@ public class UrlConst {
     }
 
     /**
-     * 我的活动
+     * 资讯列表
      */
-    public static String getMyActivityUrl() {
-        return HOST + "Api/Finaplanner/myEvent";
+    public static String getNewsListUrl() {
+        return HOST + "Api/News/getList";
     }
 
+    /**
+     * 资讯详情
+     */
+    public static String getNewsDetailUrl() {
+        return HOST + "Api/News/getDetail";
+    }
+
+    /**
+     * 活动详情
+     */
+    public static String getActivityDetailUrl() {
+        return HOST + "Api/Event/getDetail";
+    }
+
+    /**
+     * 预约活动
+     */
+    public static String getYuyueActivityUrl() {
+        return HOST + "Api/event/joinEvent";
+    }
 
 }

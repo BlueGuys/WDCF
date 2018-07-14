@@ -10,6 +10,7 @@ import com.hongyan.base.BaseViewHolder;
 import com.hongyan.base.IViewHolder;
 import com.hongyan.base.RequestBean;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.business.account.IdentityView;
 
 /**
  * Created by wangning on 2018/6/10.
@@ -17,6 +18,8 @@ import com.hongyan.wdcf.R;
 
 public class SelectIdentifyHolder extends BaseViewHolder implements IViewHolder, View.OnClickListener {
 
+
+    private IdentityView identityView;
 
     public SelectIdentifyHolder(BaseActivity mActivity) {
         super(mActivity);
@@ -43,6 +46,8 @@ public class SelectIdentifyHolder extends BaseViewHolder implements IViewHolder,
         Button buttonGat = rootView.findViewById(R.id.button_gat);
         Button buttonForeigner = rootView.findViewById(R.id.button_foreigner);
         TextView tvBack = rootView.findViewById(R.id.tv_back);
+        identityView = rootView.findViewById(R.id.identityView);
+        identityView.setStep(1);
 
         tvBack.setOnClickListener(this);
         buttonChinese.setOnClickListener(this);
