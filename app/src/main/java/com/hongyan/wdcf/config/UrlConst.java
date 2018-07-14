@@ -74,4 +74,20 @@ public class UrlConst {
     public static String getBankCardListUrl() {
         return HOST + "Api/Bank/getBanksList";
     }
+
+    /**
+     * 我的订单
+     */
+    public static String getMyOrderUrl() {
+        return HOST + "Api/Finaplanner/myOrder";
+    }
+
+    /**
+     * 我的活动
+     */
+    public static String getMyActivityUrl() {
+        return HOST + "Api/Finaplanner/myEvent";
+    }
+
+
 }
