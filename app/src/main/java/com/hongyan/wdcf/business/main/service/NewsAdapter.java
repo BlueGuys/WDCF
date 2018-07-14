@@ -11,7 +11,6 @@ import com.hongyan.base.router.Router;
 import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.base.ImageLoaderOptionHelper;
-import com.hongyan.wdcf.business.main.discover.DiscoverResult;
 import com.hongyan.wdcf.widget.ScrollBannerView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -74,27 +73,24 @@ public class NewsAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (getItemViewType(position) == TYPE_BANNER) {
-            if (convertView == null) {
-                convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_activity_head, parent, false);
-                ScrollBannerView bannerView = convertView.findViewById(R.id.banner);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news_head, parent, false);
+            ScrollBannerView bannerView = convertView.findViewById(R.id.banner);
 
-                ArrayList<ScrollBannerView.Entity> entityArrayList = new ArrayList<>();
-                for (int i = 0; i < mAdList.size(); i++) {
-                    ScrollBannerView.Entity entity = new ScrollBannerView.Entity();
-                    entity.setImageUrl(mAdList.get(i).photo);
-                    entity.setTitle("");
-                    entityArrayList.add(entity);
-                }
-                bannerView.setData(entityArrayList);
-                bannerView.setOnPageClickListener(new ScrollBannerView.OnPageClickListener() {
-                    @Override
-                    public void setOnPage(int position) {
-                        Router router = new Router();
-                        router.setUrl(mAdList.get(position).url);
-                        RouterManager.getInstance().openUrl(router);
-                    }
-                });
+            ArrayList<ScrollBannerView.Entity> entityArrayList = new ArrayList<>();
+            for (int i = 0; i < mAdList.size(); i++) {
+                ScrollBannerView.Entity entity = new ScrollBannerView.Entity();
+                entity.setImageUrl(mAdList.get(i).photo);
+                entityArrayList.add(entity);
             }
+            bannerView.setData(entityArrayList);
+            bannerView.setOnPageClickListener(new ScrollBannerView.OnPageClickListener() {
+                @Override
+                public void setOnPage(int position) {
+                    Router router = new Router();
+                    router.setUrl(mAdList.get(position).url);
+                    RouterManager.getInstance().openUrl(router);
+                }
+            });
         } else {
             ViewHolder holder;
             if (convertView == null) {
