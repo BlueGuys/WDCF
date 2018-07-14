@@ -83,6 +83,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
             case R.id.rl_evaluate:
                 break;
             case R.id.rl_about:
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserRegisterSelect));
                 break;
             case R.id.ll_order:
                 break;
@@ -91,8 +92,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
             case R.id.image_share:
                 break;
             case R.id.image_setting: {
-                Router router = new Router(RouterConfig.UserUserSetting);
-                RouterManager.getInstance().openUrl(router);
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserUserSetting));
                 break;
             }
             case R.id.image_message:
@@ -103,8 +103,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
             case R.id.image_logo:
             case R.id.tv_userName:
             case R.id.tv_userPhone: {
-                Router router = new Router(RouterConfig.UserInfoIndex);
-                RouterManager.getInstance().openUrl(router);
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserInfoIndex));
                 break;
             }
         }

@@ -110,4 +110,13 @@ public class UrlConst {
         return HOST + "Api/event/joinEvent";
     }
 
+    /**
+     * 预约活动
+     */
+    public static String getEditUserUrl() {
+        return HOST + "Api/Users/edit_user";
+    }
+
+
+
 }

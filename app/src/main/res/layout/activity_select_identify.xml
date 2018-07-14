@@ -24,53 +24,123 @@
             android:src="@drawable/icon_logo" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/inputLayout"
+    <ScrollView
+        android:id="@+id/contentLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/ds500"
         android:layout_centerInParent="true"
         android:layout_marginLeft="@dimen/ds30"
         android:layout_marginRight="@dimen/ds30"
-        android:background="@drawable/bg_corner_white"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/ds40"
-        android:paddingLeft="@dimen/ds70"
-        android:paddingRight="@dimen/ds70"
-        android:paddingTop="@dimen/ds40">
+        android:background="@drawable/bg_corner_white">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="为了便捷开户，请选择身份类别"
-            android:textColor="@color/appColorNegative"
-            android:textSize="12dp" />
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/ds40"
+            android:paddingLeft="@dimen/ds70"
+            android:paddingRight="@dimen/ds70"
+            android:paddingTop="@dimen/ds40">
 
-        <Button
-            android:id="@+id/button_chinese"
-            style="@style/button_normal"
-            android:layout_marginTop="@dimen/ds40"
-            android:text="大陆客户" />
+            <LinearLayout
+                android:id="@+id/ll_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button_gat"
-            style="@style/button_normal"
-            android:layout_marginTop="@dimen/ds40"
-            android:text="港澳台客户" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="为了便捷开户，请选择身份类别"
+                    android:textColor="@color/appColorNegative"
+                    android:textSize="12dp" />
 
-        <Button
-            android:id="@+id/button_foreigner"
-            style="@style/button_normal"
-            android:layout_marginTop="@dimen/ds40"
-            android:text="外籍客户" />
-    </LinearLayout>
+                <Button
+                    android:id="@+id/button_chinese"
+                    style="@style/button_normal"
+                    android:layout_marginTop="@dimen/ds40"
+                    android:text="大陆客户" />
+
+                <Button
+                    android:id="@+id/button_gat"
+                    style="@style/button_normal"
+                    android:layout_marginTop="@dimen/ds40"
+                    android:text="港澳台客户" />
+
+                <Button
+                    android:id="@+id/button_foreigner"
+                    style="@style/button_normal"
+                    android:layout_marginTop="@dimen/ds40"
+                    android:text="外籍客户" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/ds20"
+                    android:gravity="center"
+                    android:text="请填写本人真实信息，核实后不可更改"
+                    android:textColor="@color/black"
+                    android:textSize="13dp" />
+
+                <EditText
+                    android:id="@+id/et_identify_name"
+                    style="@style/editText_normal"
+                    android:hint="请输入真实姓名"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/et_identify_number"
+                    style="@style/editText_normal"
+                    android:hint="请输入身份证号"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/et_email_number"
+                    style="@style/editText_normal"
+                    android:hint="请输入电子邮箱"
+                    android:inputType="textEmailAddress" />
+
+                <EditText
+                    android:id="@+id/et_city"
+                    style="@style/editText_normal"
+                    android:hint="请输入居住地址"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/et_address"
+                    style="@style/editText_normal"
+                    android:hint="账单邮寄详细地址"
+                    android:inputType="text" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 
     <com.hongyan.wdcf.business.account.IdentityView
         android:id="@+id/identityView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/inputLayout"
+        android:layout_below="@id/contentLayout"
         android:layout_marginTop="@dimen/ds30" />
+
+    <Button
+        android:id="@+id/btn_commit"
+        style="@style/button_normal"
+        android:layout_below="@id/identityView"
+        android:layout_marginLeft="@dimen/ds100"
+        android:layout_marginRight="@dimen/ds100"
+        android:layout_marginTop="@dimen/ds30"
+        android:text="提交审核" />
 
     <TextView
         android:id="@+id/tv_back"

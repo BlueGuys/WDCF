@@ -16,6 +16,7 @@
         <item name="android:textColorHint">@color/darkgray</item>
         <item name="android:textColor">@color/appColor</item>
         <item name="android:textCursorDrawable">@drawable/bg_selector_edit_cursor</item>
+        <item name="android:textSize">14dp</item>
     </style>
 
     <style name="button_normal">
