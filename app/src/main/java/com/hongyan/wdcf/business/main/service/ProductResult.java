@@ -22,6 +22,7 @@ public class ProductResult extends BaseResult {
     static class Ad {
         public String photo;
         public String url;
+        public String detail_url;
         public String id;
     }
 
@@ -31,6 +32,7 @@ public class ProductResult extends BaseResult {
         public String status;
         public String scale;
         public String term_id;
+        public String detail_url;
     }
 
     static class Equity {

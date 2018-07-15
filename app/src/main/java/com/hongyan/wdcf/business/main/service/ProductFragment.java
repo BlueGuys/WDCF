@@ -16,6 +16,7 @@ import com.hongyan.wdcf.business.account.core.AccountManager;
 import com.hongyan.wdcf.widget.MarginBannerView;
 import com.hongyan.wdcf.widget.ProductA;
 import com.hongyan.wdcf.widget.ProductB;
+import com.hongyan.wdcf.widget.ScrollBannerView;
 
 import java.util.ArrayList;
 
@@ -54,12 +55,7 @@ public class ProductFragment extends BaseFragment {
         if (data == null) {
             return;
         }
-        ArrayList<ProductResult.Ad> list = data.topAd;
-        ArrayList<String> stringArrayList = new ArrayList<>();
-        for (ProductResult.Ad ad : list) {
-            stringArrayList.add(ad.photo);
-            stringArrayList.add(ad.photo);
-        }
+
 
         //标的
         ArrayList<ProductResult.Fixation> classFixation = data.classFixation;
@@ -137,7 +133,24 @@ public class ProductFragment extends BaseFragment {
             product01.setVisibility(View.GONE);
             product02.setVisibility(View.GONE);
         }
+        final ArrayList<ProductResult.Ad> list = data.topAd;
+        final ArrayList<String> stringArrayList = new ArrayList<>();
+        for (ProductResult.Ad ad : list) {
+            stringArrayList.add(ad.photo);
+            stringArrayList.add(ad.photo);
+        }
         bannerView.setData(stringArrayList);
+        bannerView.setOnPageClickListener(new ScrollBannerView.OnPageClickListener() {
+            @Override
+            public void setOnPage(int position) {
+                if (list.size() > 0) {
+                    Router router = new Router();
+                    router.setUrl(list.get(0).url);
+                    router.addParams(RequestKeyTable.TITLE, "热点资讯");
+                    RouterManager.getInstance().openUrl(router);
+                }
+            }
+        });
     }
 
     private void initView() {
