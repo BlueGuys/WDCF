@@ -152,4 +152,12 @@ public class UrlConst {
         return HOST + "";
     }
 
+    /**
+     * 获取产品列表
+     */
+    public static String getProductListUrl() {
+        return HOST + "Api/Product/home";
+    }
+
+
 }

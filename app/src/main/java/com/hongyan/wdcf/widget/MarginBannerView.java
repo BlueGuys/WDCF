@@ -46,11 +46,12 @@ public class MarginBannerView extends LinearLayout {
         viewPager.setPageMargin(40);//设置page间间距，自行根据需求设置
 //        viewPager.setOffscreenPageLimit(3);//>=3
         adapter = new MyPagerAdapter();
-        viewPager.setAdapter(adapter);
     }
 
     public void setData(ArrayList<String> list) {
         if (list != null && list.size() > 0) {
+            viewPager.setAdapter(adapter);
+            mList.clear();
             mList.addAll(list);
             adapter.notifyDataSetChanged();
             int m = (Integer.MAX_VALUE / 2) % mList.size();
@@ -75,6 +76,9 @@ public class MarginBannerView extends LinearLayout {
 
         @Override
         public int getCount() {
+            if (mList.size() == 0) {
+                return 0;
+            }
             return Integer.MAX_VALUE;
         }
 
@@ -90,10 +94,10 @@ public class MarginBannerView extends LinearLayout {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            final int pos = position%mList.size();
+            final int pos = position % mList.size();
             View view = getView(pos);
             ImageView imageView = view.findViewById(R.id.home_header_imageView);
-            ImageLoader.getInstance().displayImage(mList.get(pos) ,imageView, imageOptions);
+            ImageLoader.getInstance().displayImage(mList.get(pos), imageView, imageOptions);
             imageView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {

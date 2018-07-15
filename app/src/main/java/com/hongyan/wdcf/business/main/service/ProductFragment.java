@@ -2,6 +2,7 @@ package com.hongyan.wdcf.business.main.service;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,14 +17,16 @@ public class ProductFragment extends BaseFragment {
 
     private View view;
     private MarginBannerView bannerView;
+    private ProductModel productModel;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_sub_product, container, false);
-
             initView();
+            productModel = new ProductModel(this);
+            productModel.request();
         }
         return view;
     }
@@ -36,13 +39,21 @@ public class ProductFragment extends BaseFragment {
         }
     }
 
+    protected void setData(ProductResult.Data data) {
+        Log.e("test", "");
+        if (data == null) {
+            return;
+        }
+        ArrayList<ProductResult.Ad> list = data.topAd;
+        ArrayList<String> stringArrayList = new ArrayList<>();
+        for (ProductResult.Ad ad : list) {
+            stringArrayList.add(ad.photo);
+            stringArrayList.add(ad.photo);
+        }
+        bannerView.setData(stringArrayList);
+    }
+
     private void initView() {
         bannerView = view.findViewById(R.id.banner);
-        ArrayList<String> list = new ArrayList<>();
-        list.add("http://e.hiphotos.baidu.com/image/h%3D300/sign=d109aa168dcb39dbdec06156e01409a7/2f738bd4b31c8701ad467c1a2b7f9e2f0608ff5e.jpg");
-        list.add("http://e.hiphotos.baidu.com/image/h%3D300/sign=d109aa168dcb39dbdec06156e01409a7/2f738bd4b31c8701ad467c1a2b7f9e2f0608ff5e.jpg");
-        list.add("http://e.hiphotos.baidu.com/image/h%3D300/sign=d109aa168dcb39dbdec06156e01409a7/2f738bd4b31c8701ad467c1a2b7f9e2f0608ff5e.jpg");
-        list.add("http://e.hiphotos.baidu.com/image/h%3D300/sign=d109aa168dcb39dbdec06156e01409a7/2f738bd4b31c8701ad467c1a2b7f9e2f0608ff5e.jpg");
-        bannerView.setData(list);
     }
 }
