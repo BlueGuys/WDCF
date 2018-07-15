@@ -44,7 +44,7 @@ public class MainActivity extends TabActivity {
         SubPage mePage = new SubPage();
         mePage.fragment = new MeFragment();
         mePage.text = "我的";
-        mePage.drawable = new int[]{R.drawable.icon_me_n, R.drawable.icon_me_n};
+        mePage.drawable = new int[]{R.drawable.icon_me_s, R.drawable.icon_me_n};
 
         list.add(discoverPage);
         list.add(servicePage);

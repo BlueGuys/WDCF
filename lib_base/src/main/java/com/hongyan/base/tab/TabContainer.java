@@ -3,7 +3,6 @@ package com.hongyan.base.tab;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -11,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.hongyan.lib_base.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class TabContainer extends LinearLayout {
 
     private List<Tab> tabList = new ArrayList<>();
     private OnSelectChangeListener onSelectChangeListener;
+    private int currentIndex;
 
     public TabContainer(Context context) {
         this(context, null);
@@ -41,10 +43,20 @@ public class TabContainer extends LinearLayout {
         notifyDataSetChanged();
     }
 
+    public void selectPage(int position) {
+        this.currentIndex = position;
+        notifyDataSetChanged();
+    }
+
     public void notifyDataSetChanged() {
         removeAllViews();
         for (int i = 0; i < tabList.size(); i++) {
             Tab tab = tabList.get(i);
+            if (i == currentIndex) {
+                tab.isSelected = true;
+            } else {
+                tab.isSelected = false;
+            }
             LinearLayout tabView = createTabView(tab);
             final int finalI = i;
             tabView.setOnClickListener(new OnClickListener() {
@@ -78,8 +90,10 @@ public class TabContainer extends LinearLayout {
 
         if (tab.isSelected) {
             image.setImageResource(tab.drawable[0]);
+            textView.setTextColor(getResources().getColor(R.color.appColorPositive));
         } else {
             image.setImageResource(tab.drawable[1]);
+            textView.setTextColor(getResources().getColor(R.color.black));
         }
         tabView.addView(image);
         tabView.addView(textView);

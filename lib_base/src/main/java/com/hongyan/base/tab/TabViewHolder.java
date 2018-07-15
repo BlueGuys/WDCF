@@ -68,6 +68,22 @@ public class TabViewHolder extends BaseViewHolder implements IViewHolder {
     private void initContent() {
         contentAdapter = new ContentPagerAdapter(mActivity.getSupportFragmentManager());
         mViewPager.setAdapter(contentAdapter);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                tabContainer.selectPage(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
