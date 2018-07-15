@@ -296,7 +296,8 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="@dimen/ds30"
-            android:paddingRight="@dimen/ds30">
+            android:paddingRight="@dimen/ds30"
+            android:visibility="gone">
 
             <View
                 android:id="@+id/stub_c"

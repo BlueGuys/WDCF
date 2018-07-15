@@ -74,6 +74,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.rl_help:
+                RouterManager.getInstance().openUrl(new Router("http://caifu.thongfu.com/App/Help/index.html?title=帮助中心"));
                 break;
             case R.id.rl_user_feedback: {
                 Router router = new Router(RouterConfig.UserUserFeedback);

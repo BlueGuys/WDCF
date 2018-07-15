@@ -161,7 +161,7 @@ public class BaseWebViewActivity extends BaseActivity {
         Uri uri = Uri.parse(mUrl);
         String title = uri.getQueryParameter("title");
         if (StringUtils.isEmpty(title)) {
-            tvTitle.setText("烯财经");
+            tvTitle.setText("五道财富");
         } else {
             tvTitle.setText(title);
         }
