@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.hongyan.LogUtils;
 import com.hongyan.loading.LoadingDialog;
 
 /**
@@ -23,6 +24,7 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LogUtils.w("BaseActivity",getClass().getSimpleName());
         init();
         BaseViewHolder baseViewHolder = getViewHolder();
         if (baseViewHolder != null) {
@@ -109,7 +111,7 @@ public abstract class BaseActivity extends FragmentActivity {
         dialog.show();
     }
 
-    protected void cancelLoading() {
+    public void cancelLoading() {
         if (dialog == null) {
             return;
         }

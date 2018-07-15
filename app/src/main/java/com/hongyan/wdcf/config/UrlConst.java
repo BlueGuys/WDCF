@@ -131,4 +131,25 @@ public class UrlConst {
         return HOST + "Api/Finaplanner/bindFinaplanner";
     }
 
+    /**
+     * 修改登录密码
+     */
+    public static String getModifyLoginPasswordUrl() {
+        return HOST + "";
+    }
+
+    /**
+     * 获取验证码
+     */
+    public static String getCheckCodeUrl() {
+        return HOST + "";
+    }
+
+    /**
+     * 修改交易密码
+     */
+    public static String getModifyTradePasswordUrl() {
+        return HOST + "";
+    }
+
 }

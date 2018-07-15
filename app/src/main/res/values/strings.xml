@@ -8,6 +8,8 @@
     <string name="register_now">立即注册</string>
     <string name="user_feedback">用户反馈</string>
     <string name="password_manage">密码管理</string>
+    <string name="modify_loginpassword">修改登录密码</string>
+    <string name="modify_tradepassword">交易密码管理</string>
     <string name="my_bankcard">我的银行卡</string>
     <string name="bind_bankcard">添加银行卡</string>
 </resources>

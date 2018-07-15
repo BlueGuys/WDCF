@@ -1,5 +1,6 @@
 package com.hongyan.wdcf.base;
 
+import com.hongyan.ToastsUtils;
 import com.hongyan.base.BaseApplication;
 import com.hongyan.wdcf.business.account.core.AccountManager;
 
@@ -15,6 +16,7 @@ public class WDApplication extends BaseApplication {
         initRouter();
         AccountManager.getInstance().init();
         ImageLoaderOptionHelper.getInstance().initImageLoader(this);
+        ToastsUtils.register(this);
     }
 
 

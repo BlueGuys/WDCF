@@ -7,6 +7,8 @@ import com.hongyan.wdcf.business.account.bankcard.BindBankCardActivity;
 import com.hongyan.wdcf.business.account.bindteacher.BindTeacherActivity;
 import com.hongyan.wdcf.business.account.feedback.FeedbackActivity;
 import com.hongyan.wdcf.business.account.login.LoginActivity;
+import com.hongyan.wdcf.business.account.modifyloginpassword.ModifyLoginPasswordActivity;
+import com.hongyan.wdcf.business.account.modifytradepassword.ModifyTradePasswordActivity;
 import com.hongyan.wdcf.business.account.password.PasswordActivity;
 import com.hongyan.wdcf.business.account.register.RegisterActivity;
 import com.hongyan.wdcf.business.account.select.SelectIdentifyActivity;
@@ -43,6 +45,8 @@ public final class RouterConfig {
         RouterConst.addRouter(UserBankCardList, BankCardListActivity.class.getName());
         RouterConst.addRouter(UserBindBankCard, BindBankCardActivity.class.getName());
         RouterConst.addRouter(UserBindTeacher, BindTeacherActivity.class.getName());
+        RouterConst.addRouter(UserModifyLoginPasswrod, ModifyLoginPasswordActivity.class.getName());
+        RouterConst.addRouter(UserModifyTradePasswrod, ModifyTradePasswordActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -55,5 +59,7 @@ public final class RouterConfig {
     public static final String UserBankCardList = "native://user/bankcard/list";
     public static final String UserBindBankCard = "native://user/bankcard/bind";
     public static final String UserBindTeacher = "native://user/user/bindTeacher";
+    public static final String UserModifyLoginPasswrod = "native://user/user/modifyloginpassword";
+    public static final String UserModifyTradePasswrod = "native://user/user/modifytradepassword";
 
 }

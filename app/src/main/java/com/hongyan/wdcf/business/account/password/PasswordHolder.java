@@ -8,7 +8,10 @@ import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
 import com.hongyan.base.IViewHolder;
 import com.hongyan.base.RequestBean;
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.widget.ItemC;
 
 /**
@@ -71,10 +74,10 @@ public class PasswordHolder extends BaseViewHolder implements IViewHolder, View.
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.item_modify_login:
-                Log.e("test", "11111111");
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserModifyLoginPasswrod));
                 break;
             case R.id.item_modify_business:
-                Log.e("test", "2222222");
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserModifyTradePasswrod));
                 break;
         }
     }

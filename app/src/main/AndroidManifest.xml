@@ -43,6 +43,8 @@
         <activity android:name=".business.account.bankcard.BankCardListActivity" />
         <activity android:name=".business.account.bankcard.BindBankCardActivity" />
         <activity android:name=".business.account.bindteacher.BindTeacherActivity" />
+        <activity android:name=".business.account.modifyloginpassword.ModifyLoginPasswordActivity" />
+        <activity android:name=".business.account.modifytradepassword.ModifyTradePasswordActivity" />
     </application>
 
 </manifest>
