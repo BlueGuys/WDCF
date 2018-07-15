@@ -14,12 +14,27 @@ public class ProductResult extends BaseResult {
 
     static class Data {
         public ArrayList<Ad> topAd;
+        public ArrayList<Fixation> classFixation;
+        public ArrayList<Equity> privateEquity;
+
     }
 
     static class Ad {
         public String photo;
         public String url;
         public String id;
+    }
+
+    static class Fixation {
+        public String title;
+        public String rate;
+        public String status;
+        public String scale;
+        public String term_id;
+    }
+
+    static class Equity {
+
     }
 
 }

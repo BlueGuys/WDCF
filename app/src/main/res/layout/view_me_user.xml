@@ -129,8 +129,8 @@
 
             <ImageView
                 android:id="@+id/image_logo"
-                android:layout_width="@dimen/ds60"
-                android:layout_height="@dimen/ds60"
+                android:layout_width="@dimen/ds80"
+                android:layout_height="@dimen/ds80"
                 android:src="@drawable/ic_launcher_background" />
 
             <TextView
@@ -214,7 +214,7 @@
         <RelativeLayout
             android:id="@+id/rl_help"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ds60"
+            android:layout_height="@dimen/ds80"
             android:layout_marginTop="@dimen/ds10"
             android:background="@drawable/bg_selector_white_gray"
             android:gravity="center_vertical"
@@ -252,7 +252,7 @@
         <RelativeLayout
             android:id="@+id/rl_user_feedback"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ds60"
+            android:layout_height="@dimen/ds80"
             android:layout_marginTop="@dimen/ds30"
             android:background="@drawable/bg_selector_white_gray"
             android:gravity="center_vertical"
@@ -290,7 +290,7 @@
         <RelativeLayout
             android:id="@+id/rl_evaluate"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ds60"
+            android:layout_height="@dimen/ds80"
             android:layout_marginTop="@dimen/ds30"
             android:background="@drawable/bg_selector_white_gray"
             android:gravity="center_vertical"
@@ -328,7 +328,7 @@
         <RelativeLayout
             android:id="@+id/rl_about"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ds60"
+            android:layout_height="@dimen/ds80"
             android:layout_marginTop="@dimen/ds30"
             android:background="@drawable/bg_selector_white_gray"
             android:gravity="center_vertical"

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearB"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/appBackground"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/ds10"
+    android:paddingRight="@dimen/ds10">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:background="@drawable/bg_corner_white"
+        android:gravity="center_horizontal|top"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/ds20"
+        android:paddingTop="@dimen/ds20">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ds10"
+            android:gravity="center"
+            android:text="某某债券可转债券 第12期限"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ds10"
+            android:background="@color/appColorPositive"
+            android:gravity="center"
+            android:paddingLeft="@dimen/ds30"
+            android:paddingRight="@dimen/ds30"
+            android:text="发行中"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tv_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ds10"
+            android:gravity="center"
+            android:text="7.30%"
+            android:textColor="@color/fontRed"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ds10"
+            android:gravity="center"
+            android:text="参考年回报率"
+            android:textColor="@color/fontNegative"
+            android:textSize="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="7.30%"
+                    android:textColor="@color/fontRed"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/tv_amount_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ds10"
+                    android:gravity="center"
+                    android:text="最低出借金额"
+                    android:textColor="@color/fontNegative"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/ds1"
+                android:layout_height="@dimen/ds50"
+                android:layout_marginBottom="@dimen/ds12"
+                android:layout_marginTop="@dimen/ds12"
+                android:background="@color/appLine" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_term"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="7.30%"
+                    android:textColor="@color/fontGray"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/tv_term_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ds10"
+                    android:gravity="center"
+                    android:text="最低出借金额"
+                    android:textColor="@color/fontNegative"
+                    android:textSize="12dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
