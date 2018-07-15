@@ -9,9 +9,14 @@ import com.hongyan.base.tab.SubPage;
 import com.hongyan.base.tab.TabActivity;
 import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.business.account.core.AccountManager;
+import com.hongyan.wdcf.business.account.core.MainMessageEvent;
 import com.hongyan.wdcf.business.main.discover.DiscoverFragment;
 import com.hongyan.wdcf.business.main.me.MeFragment;
 import com.hongyan.wdcf.business.main.service.ServiceFragment;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
@@ -45,8 +50,17 @@ public class MainActivity extends TabActivity {
         list.add(servicePage);
         list.add(mePage);
         addSubPage(list);
-
+        EventBus.getDefault().register(this);
         AccountManager.getInstance().refresh();
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    public void accountEvent(MainMessageEvent message) {
+        if (message == null) {
+            return;
+        }
+        selectPage(message.getPosition());
     }
 
     @Override
@@ -55,6 +69,12 @@ public class MainActivity extends TabActivity {
         if (position == 2) {
             AccountManager.getInstance().checkLogin();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override

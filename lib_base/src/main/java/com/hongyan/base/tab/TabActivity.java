@@ -35,4 +35,8 @@ public class TabActivity extends BaseActivity {
 
     }
 
+    protected void selectPage(int position){
+        viewHolder.selectPage(position);
+    }
+
 }

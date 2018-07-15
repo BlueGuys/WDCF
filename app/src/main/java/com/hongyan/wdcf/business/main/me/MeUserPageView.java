@@ -88,11 +88,12 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
             case R.id.rl_evaluate:
                 break;
             case R.id.rl_about:
-//                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserBindTeacher));
+                RouterManager.getInstance().openUrl(new Router("http://caifu.thongfu.com/App/About/index.html?title=关于"));
                 break;
             case R.id.ll_order:
                 break;
             case R.id.ll_risk:
+                RouterManager.getInstance().openUrl(new Router("http://caifu.thongfu.com/App/Assessment/lists.html?title=风险评估"));
                 break;
             case R.id.image_share:
                 break;

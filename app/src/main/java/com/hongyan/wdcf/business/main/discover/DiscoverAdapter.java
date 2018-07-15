@@ -12,9 +12,15 @@ import com.hongyan.base.router.Router;
 import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.base.ImageLoaderOptionHelper;
+import com.hongyan.wdcf.base.RequestKeyTable;
+import com.hongyan.wdcf.business.account.core.AccountManager;
+import com.hongyan.wdcf.business.account.core.AccountMessageEvent;
+import com.hongyan.wdcf.business.account.core.MainMessageEvent;
 import com.hongyan.wdcf.widget.ScrollBannerView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +39,12 @@ public class DiscoverAdapter extends BaseAdapter {
     private static final int TYPE_EVENT = 5;
 
     private DiscoverResult.Data data;
+
+    private DiscoverFragment fragment;
+
+    public DiscoverAdapter(DiscoverFragment fragment) {
+        this.fragment = fragment;
+    }
 
     public void setData(DiscoverResult.Data data) {
         if (data == null) {
@@ -141,6 +153,46 @@ public class DiscoverAdapter extends BaseAdapter {
         TextView tvInvest = convertView.findViewById(R.id.tv_invest);
         TextView tvWelfare = convertView.findViewById(R.id.tv_welfare);
         TextView tvGuaratee = convertView.findViewById(R.id.tv_guarantee);
+        tvStudy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Router router = new Router();
+                router.setUrl("http://caifu.thongfu.com/App/Active/lists.html?cat_id=4");
+                router.addParams(RequestKeyTable.TITLE, "学习");
+                router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
+                RouterManager.getInstance().openUrl(router);
+            }
+        });
+        tvLife.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Router router = new Router();
+                router.setUrl("http://caifu.thongfu.com/App/Life");
+                router.addParams(RequestKeyTable.TITLE, "生活");
+                router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
+                RouterManager.getInstance().openUrl(router);
+            }
+        });
+        tvInvest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new MainMessageEvent(1));
+            }
+        });
+        tvWelfare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragment.showErrorToast("敬请期待");
+            }
+        });
+        tvGuaratee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragment.showErrorToast("敬请期待");
+            }
+        });
+
+
     }
 
     private void handleMiddleAdd(View convertView) {

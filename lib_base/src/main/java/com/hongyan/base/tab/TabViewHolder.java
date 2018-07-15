@@ -85,6 +85,10 @@ public class TabViewHolder extends BaseViewHolder implements IViewHolder {
 
     }
 
+    protected void selectPage(int position){
+        mViewPager.setCurrentItem(position);
+    }
+
     @Override
     public boolean onRequestFail() {
         return false;

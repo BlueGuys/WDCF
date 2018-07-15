@@ -40,7 +40,7 @@ public class DiscoverFragment extends BaseFragment {
 
     private void initView() {
         listView = view.findViewById(R.id.listView);
-        adapter = new DiscoverAdapter();
+        adapter = new DiscoverAdapter(this);
         listView.setAdapter(adapter);
     }
 

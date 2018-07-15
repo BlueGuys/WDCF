@@ -17,4 +17,5 @@ public class RequestKeyTable {
     public static final String CITY = "city";
     public static final String ADDRESS = "address";
     public static final String USER_NICENAME = "user_nicename";
+    public static final String TITLE = "title";
 }
