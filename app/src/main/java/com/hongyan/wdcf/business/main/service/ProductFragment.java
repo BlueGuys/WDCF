@@ -8,9 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hongyan.base.BaseFragment;
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.RequestKeyTable;
+import com.hongyan.wdcf.business.account.core.AccountManager;
 import com.hongyan.wdcf.widget.MarginBannerView;
 import com.hongyan.wdcf.widget.ProductA;
+import com.hongyan.wdcf.widget.ProductB;
 
 import java.util.ArrayList;
 
@@ -21,6 +26,8 @@ public class ProductFragment extends BaseFragment {
     private ProductModel productModel;
     private ProductA productA;
     private ProductA productB;
+    private ProductB product01;
+    private ProductB product02;
 
     @Nullable
     @Override
@@ -53,8 +60,10 @@ public class ProductFragment extends BaseFragment {
             stringArrayList.add(ad.photo);
             stringArrayList.add(ad.photo);
         }
+
+        //标的
         ArrayList<ProductResult.Fixation> classFixation = data.classFixation;
-        if (classFixation.size() == 1) {
+        if (classFixation != null && classFixation.size() == 1) {
             ProductResult.Fixation fixationA = classFixation.get(0);
             productA.setAmount(fixationA.scale);
             productA.setRate(fixationA.rate);
@@ -62,7 +71,7 @@ public class ProductFragment extends BaseFragment {
             productA.setTerm(fixationA.term_id);
             productA.setTitle(fixationA.title);
             productB.setVisibility(View.GONE);
-        } else if (classFixation.size() == 2) {
+        } else if (classFixation != null && classFixation.size() == 2) {
             ProductResult.Fixation fixationA = classFixation.get(0);
             productA.setAmount(fixationA.scale);
             productA.setRate(fixationA.rate);
@@ -78,6 +87,56 @@ public class ProductFragment extends BaseFragment {
             productB.setTitle(fixationB.title);
         }
 
+        //平铺产品
+        ArrayList<ProductResult.Equity> equities = data.privateEquity;
+        if (equities != null) {
+            if (equities.size() == 1) {
+                final ProductResult.Equity equity01 = equities.get(0);
+                product01.setAmount(equity01.scale);
+                product01.setDeadLine(equity01.end_time);
+                product01.setDesc(equity01.excerpt);
+                product01.setImgUrl(equity01.photo);
+                product01.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                        Router router = new Router(equity01.detail_url);
+//                        router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
+//                        RouterManager.getInstance().openUrl(router);
+                    }
+                });
+                product02.setVisibility(View.GONE);
+            } else if (equities.size() == 2) {
+                final ProductResult.Equity equity01 = equities.get(0);
+                product01.setAmount(equity01.scale);
+                product01.setDeadLine(equity01.end_time);
+                product01.setDesc(equity01.excerpt);
+                product01.setImgUrl(equity01.photo);
+                product01.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                        Router router = new Router(equity01.detail_url);
+//                        router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
+//                        RouterManager.getInstance().openUrl(router);
+                    }
+                });
+                final ProductResult.Equity equity02 = equities.get(1);
+                product02.setAmount(equity02.scale);
+                product02.setDeadLine(equity02.end_time);
+                product02.setDesc(equity02.excerpt);
+                product02.setImgUrl(equity02.photo);
+                product02.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                        Router router = new Router(equity02.detail_url);
+//                        router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
+//                        RouterManager.getInstance().openUrl(router);
+                    }
+                });
+            }
+        } else {
+            product01.setVisibility(View.GONE);
+            product02.setVisibility(View.GONE);
+        }
         bannerView.setData(stringArrayList);
     }
 
@@ -85,5 +144,7 @@ public class ProductFragment extends BaseFragment {
         bannerView = view.findViewById(R.id.banner);
         productA = view.findViewById(R.id.product_A);
         productB = view.findViewById(R.id.product_B);
+        product01 = view.findViewById(R.id.product_01);
+        product02 = view.findViewById(R.id.product_02);
     }
 }

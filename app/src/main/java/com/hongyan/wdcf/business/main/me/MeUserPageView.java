@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hongyan.StringUtils;
 import com.hongyan.base.router.Router;
 import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
@@ -66,7 +67,9 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
 
         AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
         if (accountInfo != null) {
-            tvUserName.setText(accountInfo.getUser_nicename());
+            if (StringUtils.notEmpty(accountInfo.getUser_nicename())) {
+                tvUserName.setText(accountInfo.getUser_nicename());
+            }
             tvUserPhone.setText(accountInfo.getUIMobile());
         }
     }

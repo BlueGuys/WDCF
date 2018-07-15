@@ -144,6 +144,48 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/ds20"
                 android:layout_marginRight="@dimen/ds20"
+                android:text="资本市场"
+                android:textColor="@color/fontPositive"
+                android:textSize="15dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/ds1"
+                android:layout_weight="1"
+                android:background="@color/fontPositive" />
+
+        </LinearLayout>
+
+        <com.hongyan.wdcf.widget.ProductB
+            android:id="@+id/product_01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ds12" />
+
+        <com.hongyan.wdcf.widget.ProductB
+            android:id="@+id/product_02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ds12" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ds30"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/ds1"
+                android:layout_weight="1"
+                android:background="@color/fontPositive" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ds20"
+                android:layout_marginRight="@dimen/ds20"
                 android:text="类固定收益"
                 android:textColor="@color/fontPositive"
                 android:textSize="15dp" />

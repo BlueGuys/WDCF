@@ -34,7 +34,15 @@ public class ProductResult extends BaseResult {
     }
 
     static class Equity {
-
+        public String title;
+        public String rate;
+        public String status;
+        public String scale;
+        public String term_id;
+        public String excerpt;
+        public String end_time;
+        public String photo;
+        public String detail_url;
     }
 
 }
