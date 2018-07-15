@@ -107,6 +107,8 @@ public class TabViewHolder extends BaseViewHolder implements IViewHolder {
             @Override
             public void onChange(int position) {
                 mViewPager.setCurrentItem(position);
+                TabActivity activity = (TabActivity) mActivity;
+                activity.select(position);
             }
         });
         contentAdapter.notifyDataSetChanged();

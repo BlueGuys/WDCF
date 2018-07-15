@@ -66,8 +66,8 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
 
         AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
         if (accountInfo != null) {
-            tvUserPhone.setText(accountInfo.getUIMobile());
             tvUserName.setText(accountInfo.getUser_nicename());
+            tvUserPhone.setText(accountInfo.getUIMobile());
         }
     }
 

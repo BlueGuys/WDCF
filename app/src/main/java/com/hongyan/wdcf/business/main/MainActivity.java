@@ -50,6 +50,14 @@ public class MainActivity extends TabActivity {
     }
 
     @Override
+    protected void select(int position) {
+        super.select(position);
+        if (position == 2) {
+            AccountManager.getInstance().checkLogin();
+        }
+    }
+
+    @Override
     protected BaseViewHolder getViewHolder() {
         return super.getViewHolder();
     }

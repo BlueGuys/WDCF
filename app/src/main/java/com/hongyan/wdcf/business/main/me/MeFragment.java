@@ -34,7 +34,6 @@ public class MeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        AccountManager.getInstance().checkLogin();
         String tempType = AccountManager.getInstance().getUserType();
         if (!userType.equals(tempType)) {//如果当前的和最新的不一样，则切换View
             this.userType = tempType;
@@ -50,6 +49,9 @@ public class MeFragment extends BaseFragment {
                 break;
             case AccountManager.TYPE_TEACHER:
                 roorLayout.addView(teacherPageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                break;
+            default:
+                roorLayout.addView(userPageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 break;
         }
     }

@@ -124,22 +124,22 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:padding="@dimen/ds30"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/ds30">
 
             <ImageView
                 android:id="@+id/image_logo"
                 android:layout_width="@dimen/ds120"
                 android:layout_height="@dimen/ds120"
-                android:src="@drawable/icon_user_photo"
-                android:layout_marginBottom="@dimen/ds20"/>
+                android:layout_marginBottom="@dimen/ds20"
+                android:src="@drawable/icon_user_photo" />
 
             <TextView
                 android:id="@+id/tv_userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/ds8"
-                android:text="王先生"
+                android:text="哟哟哟"
                 android:textColor="@color/white"
                 android:textSize="15dp" />
 
@@ -148,7 +148,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/ds8"
-                android:text="186004217aa"
                 android:textColor="@color/white"
                 android:textSize="13dp" />
         </LinearLayout>

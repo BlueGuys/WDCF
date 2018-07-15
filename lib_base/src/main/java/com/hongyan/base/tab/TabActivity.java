@@ -31,4 +31,8 @@ public class TabActivity extends BaseActivity {
         viewHolder.addSubPage(list);
     }
 
+    protected void select(int position){
+
+    }
+
 }

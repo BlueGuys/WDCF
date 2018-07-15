@@ -74,10 +74,7 @@ public class RegisterHolder extends BaseViewHolder implements IViewHolder, TextW
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO 待处理
-                Router router = new Router(RouterConfig.UserRegisterSelect);
-                RouterManager.getInstance().openUrl(router);
-//                registerModel.startRegister(mobilePhone, password, verifyCode);
+                registerModel.startRegister(mobilePhone, password, verifyCode);
             }
         });
         tvBack.setOnClickListener(new View.OnClickListener() {
