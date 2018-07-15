@@ -242,7 +242,7 @@ public class DiscoverAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Router router = new Router();
-                router.setUrl(homeEvents.get(0).url);
+                router.setUrl(homeEvents.get(0).detail_url);
                 RouterManager.getInstance().openUrl(router);
             }
         });
@@ -250,7 +250,7 @@ public class DiscoverAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Router router = new Router();
-                router.setUrl(homeEvents.get(1).url);
+                router.setUrl(homeEvents.get(1).detail_url);
                 RouterManager.getInstance().openUrl(router);
             }
         });
@@ -285,7 +285,7 @@ public class DiscoverAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Router router = new Router();
-                    router.setUrl(articleA.url);
+                    router.setUrl(articleA.detail_url);
                     RouterManager.getInstance().openUrl(router);
                 }
             });
@@ -300,7 +300,7 @@ public class DiscoverAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Router router = new Router();
-                    router.setUrl(articleA.url);
+                    router.setUrl(articleA.detail_url);
                     RouterManager.getInstance().openUrl(router);
                 }
             });
@@ -315,7 +315,7 @@ public class DiscoverAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Router router = new Router();
-                    router.setUrl(articleB.url);
+                    router.setUrl(articleB.detail_url);
                     RouterManager.getInstance().openUrl(router);
                 }
             });
@@ -353,7 +353,7 @@ public class DiscoverAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Router router = new Router();
-                    router.setUrl(articleA.url);
+                    router.setUrl(articleA.detail_url);
                     RouterManager.getInstance().openUrl(router);
                 }
             });
@@ -368,7 +368,7 @@ public class DiscoverAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Router router = new Router();
-                    router.setUrl(articleA.url);
+                    router.setUrl(articleA.detail_url);
                     RouterManager.getInstance().openUrl(router);
                 }
             });
@@ -383,7 +383,7 @@ public class DiscoverAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Router router = new Router();
-                    router.setUrl(articleB.url);
+                    router.setUrl(articleB.detail_url);
                     RouterManager.getInstance().openUrl(router);
                 }
             });

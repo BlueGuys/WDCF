@@ -31,6 +31,7 @@ public class DiscoverResult extends BaseResult {
         public String photo;
         public String url;
         public String id;
+        public String detail_url;
     }
 
     static class HomeBottomAd {
@@ -48,6 +49,7 @@ public class DiscoverResult extends BaseResult {
         public String create_time;
         public String content;
         public String source;
+        public String detail_url;
     }
 
     static class AssetArticle {
@@ -59,11 +61,13 @@ public class DiscoverResult extends BaseResult {
         public String content;
         public String excerpt;
         public String source;
+        public String detail_url;
     }
 
     static class homeEvent {
         public String photo;
         public String url;
         public String id;
+        public String detail_url;
     }
 }
