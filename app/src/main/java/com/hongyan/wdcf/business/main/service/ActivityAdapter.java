@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.hongyan.StringUtils;
 import com.hongyan.base.router.Router;
 import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
@@ -59,16 +60,38 @@ public class ActivityAdapter extends BaseAdapter {
             holder.tvTitle = convertView.findViewById(R.id.tv_title);
             holder.tvAddress = convertView.findViewById(R.id.tv_address);
             holder.tvTime = convertView.findViewById(R.id.tv_time);
+            holder.tvLabel1 = convertView.findViewById(R.id.tv_label1);
+            holder.tvLabel2 = convertView.findViewById(R.id.tv_label2);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        ActivityResult.Activity activity = mList.get(position);
+        final ActivityResult.Activity activity = mList.get(position);
         holder.tvTitle.setText(activity.title);
         holder.tvAddress.setText("地点:" + activity.address);
         holder.tvTime.setText("时间:" + activity.start_time + "至" + activity.end_time);
+        if (StringUtils.notEmpty(activity.tags)) {
+            String tags[] = activity.tags.split(",");
+            if (tags.length == 1) {
+                String tag1 = activity.tags.split(",")[0];
+                holder.tvLabel1.setText(tag1);
+                holder.tvLabel2.setVisibility(View.GONE);
+            } else if (tags.length == 2) {
+                String tag1 = activity.tags.split(",")[0];
+                String tag2 = activity.tags.split(",")[1];
+                holder.tvLabel1.setText(tag1);
+                holder.tvLabel2.setText(tag2);
+            }
+        }
         DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getCornerImageOption(20);
         ImageLoader.getInstance().displayImage(activity.photo, holder.imageView, options);
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Router router = new Router(activity.detail_url);
+                RouterManager.getInstance().openUrl(router);
+            }
+        });
         return convertView;
     }
 
@@ -77,6 +100,8 @@ public class ActivityAdapter extends BaseAdapter {
         TextView tvTitle;
         TextView tvAddress;
         TextView tvTime;
+        TextView tvLabel1;
+        TextView tvLabel2;
     }
 
 }

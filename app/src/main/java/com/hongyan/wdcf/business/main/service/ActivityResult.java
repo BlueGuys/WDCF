@@ -24,6 +24,8 @@ public class ActivityResult extends BaseResult {
         public String end_time;
         public String start_time;
         public String title;
+        public String detail_url;
+        public String tags;
     }
 
 }

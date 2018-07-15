@@ -105,13 +105,20 @@ public class NewsAdapter extends BaseAdapter {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            NewsResult.News news = getItem(position);
+            final NewsResult.News news = getItem(position);
             holder.tvTitle.setText(news.title);
             holder.tvSite.setText(news.source);
             holder.tvDesc.setText(news.address);
             holder.tvTime.setText(news.create_time);
             DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getCommonImageOption();
             ImageLoader.getInstance().displayImage(news.photo, holder.imageView, options);
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Router router = new Router(news.detail_url);
+                    RouterManager.getInstance().openUrl(router);
+                }
+            });
         }
         return convertView;
     }

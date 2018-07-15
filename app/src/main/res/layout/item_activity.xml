@@ -79,7 +79,7 @@
                     android:maxLines="2"
                     android:paddingLeft="@dimen/ds20"
                     android:paddingRight="@dimen/ds20"
-                    android:text="暑期游学"
+                    android:text="暑期"
                     android:textColor="@color/fontPositive"
                     android:textSize="12dp" />
 
@@ -92,7 +92,7 @@
                     android:maxLines="2"
                     android:paddingLeft="@dimen/ds20"
                     android:paddingRight="@dimen/ds20"
-                    android:text="暑期游学"
+                    android:text="游学"
                     android:textColor="@color/fontPositive"
                     android:textSize="12dp" />
             </LinearLayout>

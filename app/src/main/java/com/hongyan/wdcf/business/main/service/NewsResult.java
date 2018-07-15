@@ -28,6 +28,7 @@ public class NewsResult extends BaseResult {
         public String content;
         public String source;
         public String create_time;
+        public String detail_url;
     }
 
     static class Ad{
