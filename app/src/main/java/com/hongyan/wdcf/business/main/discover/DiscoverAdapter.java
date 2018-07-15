@@ -144,25 +144,41 @@ public class DiscoverAdapter extends BaseAdapter {
     }
 
     private void handleMiddleAdd(View convertView) {
-        ArrayList<DiscoverResult.HomeMediaAd> homeMedioAd = data.homeMedioAd;
+        final ArrayList<DiscoverResult.HomeMediaAd> homeMedioAd = data.homeMedioAd;
         ImageView imageView = convertView.findViewById(R.id.imageView);
         if (homeMedioAd.size() > 0) {
             DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getCornerImageOption(20);
             ImageLoader.getInstance().displayImage(homeMedioAd.get(0).photo, imageView, options);
         }
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Router router = new Router();
+                router.setUrl(homeMedioAd.get(0).url);
+                RouterManager.getInstance().openUrl(router);
+            }
+        });
     }
 
     private void handleBottomAdd(View convertView) {
-        ArrayList<DiscoverResult.HomeBottomAd> homeFootAd = data.homeFootAd;
+        final ArrayList<DiscoverResult.HomeBottomAd> homeFootAd = data.homeFootAd;
         ImageView imageView = convertView.findViewById(R.id.imageView);
         if (homeFootAd.size() > 0) {
             DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getCornerImageOption(20);
             ImageLoader.getInstance().displayImage(homeFootAd.get(0).photo, imageView, options);
         }
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Router router = new Router();
+                router.setUrl(homeFootAd.get(0).url);
+                RouterManager.getInstance().openUrl(router);
+            }
+        });
     }
 
     private void handleEvent(View convertView) {
-        ArrayList<DiscoverResult.homeEvent> homeEvents = data.homeEvent;
+        final ArrayList<DiscoverResult.homeEvent> homeEvents = data.homeEvent;
         ImageView imageViewA = convertView.findViewById(R.id.imageViewA);
         ImageView imageViewB = convertView.findViewById(R.id.imageViewB);
         if (homeEvents.size() > 1) {
@@ -170,6 +186,22 @@ public class DiscoverAdapter extends BaseAdapter {
             ImageLoader.getInstance().displayImage(homeEvents.get(0).photo, imageViewA, options);
             ImageLoader.getInstance().displayImage(homeEvents.get(0).photo, imageViewB, options);
         }
+        imageViewA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Router router = new Router();
+                router.setUrl(homeEvents.get(0).url);
+                RouterManager.getInstance().openUrl(router);
+            }
+        });
+        imageViewB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Router router = new Router();
+                router.setUrl(homeEvents.get(1).url);
+                RouterManager.getInstance().openUrl(router);
+            }
+        });
     }
 
     private void handleHotArticle(View convertView) {
@@ -191,26 +223,50 @@ public class DiscoverAdapter extends BaseAdapter {
         DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getCommonImageOption();
         if (hotArticles.size() == 1) {
             layoutB.setVisibility(View.GONE);
-            DiscoverResult.HotArticle articleA = hotArticles.get(0);
+            final DiscoverResult.HotArticle articleA = hotArticles.get(0);
             tvTitleA.setText(articleA.title);
-            tvDescA.setText(articleA.content);
+            tvDescA.setText(articleA.excerpt);
             tvTimeA.setText(articleA.create_time);
             tvSiteA.setText(articleA.source);
             ImageLoader.getInstance().displayImage(articleA.photo, imageViewA, options);
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Router router = new Router();
+                    router.setUrl(articleA.url);
+                    RouterManager.getInstance().openUrl(router);
+                }
+            });
         } else if (hotArticles.size() == 2) {
-            DiscoverResult.HotArticle articleA = hotArticles.get(0);
+            final DiscoverResult.HotArticle articleA = hotArticles.get(0);
             tvTitleA.setText(articleA.title);
-            tvDescA.setText(articleA.content);
+            tvDescA.setText(articleA.excerpt);
             tvTimeA.setText(articleA.create_time);
             tvSiteA.setText(articleA.source);
             ImageLoader.getInstance().displayImage(articleA.photo, imageViewA, options);
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Router router = new Router();
+                    router.setUrl(articleA.url);
+                    RouterManager.getInstance().openUrl(router);
+                }
+            });
 
-            DiscoverResult.HotArticle articleB = hotArticles.get(1);
+            final DiscoverResult.HotArticle articleB = hotArticles.get(1);
             tvTitleB.setText(articleB.title);
-            tvDescB.setText(articleB.content);
+            tvDescB.setText(articleB.excerpt);
             tvTimeB.setText(articleB.create_time);
             tvSiteB.setText(articleB.source);
             ImageLoader.getInstance().displayImage(articleB.photo, imageViewB, options);
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Router router = new Router();
+                    router.setUrl(articleB.url);
+                    RouterManager.getInstance().openUrl(router);
+                }
+            });
         }
     }
 
@@ -234,27 +290,51 @@ public class DiscoverAdapter extends BaseAdapter {
         if (assetArticles.size() == 1) {
 
             layoutB.setVisibility(View.GONE);
-            
-            DiscoverResult.AssetArticle articleA = assetArticles.get(0);
-            tvTitleA.setText(articleA.title);
-            tvDescA.setText(articleA.content);
-            tvTimeA.setText(articleA.create_time);
-            tvSiteA.setText(articleA.source);
-            ImageLoader.getInstance().displayImage(articleA.photo, imageViewA, options);
-        } else if (assetArticles.size() == 2) {
-            DiscoverResult.AssetArticle articleA = assetArticles.get(0);
-            tvTitleA.setText(articleA.title);
-            tvDescA.setText(articleA.content);
-            tvTimeA.setText(articleA.create_time);
-            tvSiteA.setText(articleA.source);
-            ImageLoader.getInstance().displayImage(articleA.photo, imageViewA, options);
 
-            DiscoverResult.AssetArticle articleB = assetArticles.get(1);
+            final DiscoverResult.AssetArticle articleA = assetArticles.get(0);
+            tvTitleA.setText(articleA.title);
+            tvDescA.setText(articleA.excerpt);
+            tvTimeA.setText(articleA.create_time);
+            tvSiteA.setText(articleA.source);
+            ImageLoader.getInstance().displayImage(articleA.photo, imageViewA, options);
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Router router = new Router();
+                    router.setUrl(articleA.url);
+                    RouterManager.getInstance().openUrl(router);
+                }
+            });
+        } else if (assetArticles.size() == 2) {
+            final DiscoverResult.AssetArticle articleA = assetArticles.get(0);
+            tvTitleA.setText(articleA.title);
+            tvDescA.setText(articleA.excerpt);
+            tvTimeA.setText(articleA.create_time);
+            tvSiteA.setText(articleA.source);
+            ImageLoader.getInstance().displayImage(articleA.photo, imageViewA, options);
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Router router = new Router();
+                    router.setUrl(articleA.url);
+                    RouterManager.getInstance().openUrl(router);
+                }
+            });
+
+            final DiscoverResult.AssetArticle articleB = assetArticles.get(1);
             tvTitleB.setText(articleB.title);
-            tvDescB.setText(articleB.content);
+            tvDescB.setText(articleB.excerpt);
             tvTimeB.setText(articleB.create_time);
             tvSiteB.setText(articleB.source);
             ImageLoader.getInstance().displayImage(articleB.photo, imageViewB, options);
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Router router = new Router();
+                    router.setUrl(articleB.url);
+                    RouterManager.getInstance().openUrl(router);
+                }
+            });
         }
     }
 }

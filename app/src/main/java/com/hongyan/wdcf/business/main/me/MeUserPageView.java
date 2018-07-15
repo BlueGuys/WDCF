@@ -67,6 +67,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
         AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
         if (accountInfo != null) {
             tvUserPhone.setText(accountInfo.getUIMobile());
+            tvUserName.setText(accountInfo.getUser_nicename());
         }
     }
 
@@ -84,7 +85,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
             case R.id.rl_evaluate:
                 break;
             case R.id.rl_about:
-                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserBindTeacher));
+//                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserBindTeacher));
                 break;
             case R.id.ll_order:
                 break;

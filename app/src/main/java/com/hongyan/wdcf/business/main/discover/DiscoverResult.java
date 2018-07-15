@@ -42,6 +42,7 @@ public class DiscoverResult extends BaseResult {
     static class HotArticle {
         public String photo;
         public String url;
+        public String excerpt;
         public String id;
         public String title;
         public String create_time;
@@ -56,6 +57,7 @@ public class DiscoverResult extends BaseResult {
         public String title;
         public String create_time;
         public String content;
+        public String excerpt;
         public String source;
     }
 

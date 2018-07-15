@@ -129,9 +129,10 @@
 
             <ImageView
                 android:id="@+id/image_logo"
-                android:layout_width="@dimen/ds80"
-                android:layout_height="@dimen/ds80"
-                android:src="@drawable/ic_launcher_background" />
+                android:layout_width="@dimen/ds120"
+                android:layout_height="@dimen/ds120"
+                android:src="@drawable/icon_user_photo"
+                android:layout_marginBottom="@dimen/ds20"/>
 
             <TextView
                 android:id="@+id/tv_userName"
