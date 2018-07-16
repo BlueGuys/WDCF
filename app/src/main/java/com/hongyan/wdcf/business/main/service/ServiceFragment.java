@@ -69,5 +69,11 @@ public class ServiceFragment extends BaseFragment {
 
             }
         });
+        headView.setOnMenuClickListener(new ServiceHeadView.OnMenuClickListener() {
+            @Override
+            public void onSelect(int position) {
+                viewPager.setCurrentItem(position);
+            }
+        });
     }
 }

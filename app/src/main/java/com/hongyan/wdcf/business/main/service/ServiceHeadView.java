@@ -36,6 +36,33 @@ public class ServiceHeadView extends LinearLayout {
         textView01 = view.findViewById(R.id.textView_01);
         textView02 = view.findViewById(R.id.textView_02);
         textView03 = view.findViewById(R.id.textView_03);
+        textView01.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (menuClickListener != null) {
+                    menuClickListener.onSelect(0);
+                }
+                select(0);
+            }
+        });
+        textView02.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (menuClickListener != null) {
+                    menuClickListener.onSelect(1);
+                }
+                select(1);
+            }
+        });
+        textView03.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (menuClickListener != null) {
+                    menuClickListener.onSelect(2);
+                }
+                select(2);
+            }
+        });
         select(0);
     }
 
@@ -66,5 +93,15 @@ public class ServiceHeadView extends LinearLayout {
                 textView03.setBackgroundResource(R.drawable.bg_right_white);
                 break;
         }
+    }
+
+    private OnMenuClickListener menuClickListener;
+
+    public void setOnMenuClickListener(OnMenuClickListener listener) {
+        this.menuClickListener = listener;
+    }
+
+    interface OnMenuClickListener {
+        void onSelect(int position);
     }
 }

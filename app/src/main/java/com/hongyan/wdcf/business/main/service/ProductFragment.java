@@ -93,9 +93,9 @@ public class ProductFragment extends BaseFragment {
                 product01.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        Router router = new Router(equity01.detail_url);
-//                        router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
-//                        RouterManager.getInstance().openUrl(router);
+                        Router router = new Router(equity01.detail_url);
+                        router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
+                        RouterManager.getInstance().openUrl(router);
                     }
                 });
                 product02.setVisibility(View.GONE);
@@ -108,9 +108,9 @@ public class ProductFragment extends BaseFragment {
                 product01.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        Router router = new Router(equity01.detail_url);
-//                        router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
-//                        RouterManager.getInstance().openUrl(router);
+                        Router router = new Router(equity01.detail_url);
+                        router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
+                        RouterManager.getInstance().openUrl(router);
                     }
                 });
                 final ProductResult.Equity equity02 = equities.get(1);
@@ -121,9 +121,9 @@ public class ProductFragment extends BaseFragment {
                 product02.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        Router router = new Router(equity02.detail_url);
-//                        router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
-//                        RouterManager.getInstance().openUrl(router);
+                        Router router = new Router(equity02.detail_url);
+                        router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
+                        RouterManager.getInstance().openUrl(router);
                     }
                 });
             }
