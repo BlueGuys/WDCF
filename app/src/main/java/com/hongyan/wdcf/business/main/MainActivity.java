@@ -34,7 +34,7 @@ public class MainActivity extends TabActivity {
         SubPage discoverPage = new SubPage();
         discoverPage.fragment = new DiscoverFragment();
         discoverPage.text = "发现";
-        discoverPage.drawable = new int[]{R.drawable.icon_discover_s, R.drawable.icon_discover_s};
+        discoverPage.drawable = new int[]{R.drawable.icon_discover_s, R.drawable.icon_discover_n};
 
         SubPage servicePage = new SubPage();
         servicePage.fragment = new ServiceFragment();
