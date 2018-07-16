@@ -32,6 +32,9 @@ public class ProductResult extends BaseResult {
         public String status;
         public String scale;
         public String term_id;
+        public String excerpt;
+        public String end_time;
+        public String photo;
         public String detail_url;
     }
 

@@ -198,13 +198,13 @@
 
         </LinearLayout>
 
-        <com.hongyan.wdcf.widget.ProductA
+        <com.hongyan.wdcf.widget.ProductB
             android:id="@+id/product_A"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/ds12" />
 
-        <com.hongyan.wdcf.widget.ProductA
+        <com.hongyan.wdcf.widget.ProductB
             android:id="@+id/product_B"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

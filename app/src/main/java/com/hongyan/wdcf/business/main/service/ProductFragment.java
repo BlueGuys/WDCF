@@ -25,8 +25,8 @@ public class ProductFragment extends BaseFragment {
     private View view;
     private MarginBannerView bannerView;
     private ProductModel productModel;
-    private ProductA productA;
-    private ProductA productB;
+    private ProductB productA;
+    private ProductB productB;
     private ProductB product01;
     private ProductB product02;
 
@@ -62,25 +62,23 @@ public class ProductFragment extends BaseFragment {
         if (classFixation != null && classFixation.size() == 1) {
             ProductResult.Fixation fixationA = classFixation.get(0);
             productA.setAmount(fixationA.scale);
-            productA.setRate(fixationA.rate);
-//            productA.setStatus(fixationA.status);
-            productA.setTerm(fixationA.term_id);
-            productA.setTitle(fixationA.title);
+            productA.setDeadLine(fixationA.end_time);
+            productA.setDesc(fixationA.excerpt);
+            productA.setImgUrl(fixationA.photo);
+
             productB.setVisibility(View.GONE);
         } else if (classFixation != null && classFixation.size() == 2) {
             ProductResult.Fixation fixationA = classFixation.get(0);
             productA.setAmount(fixationA.scale);
-            productA.setRate(fixationA.rate);
-            productA.setStatus(fixationA.status);
-            productA.setTerm(fixationA.term_id);
-            productA.setTitle(fixationA.title);
+            productA.setDeadLine(fixationA.end_time);
+            productA.setDesc(fixationA.excerpt);
+            productA.setImgUrl(fixationA.photo);
 
             ProductResult.Fixation fixationB = classFixation.get(1);
             productB.setAmount(fixationB.scale);
-            productB.setRate(fixationB.rate);
-            productB.setStatus(fixationB.status);
-            productB.setTerm(fixationB.term_id);
-            productB.setTitle(fixationB.title);
+            productB.setDeadLine(fixationB.end_time);
+            productB.setDesc(fixationB.excerpt);
+            productB.setImgUrl(fixationB.photo);
         }
 
         //平铺产品
