@@ -20,14 +20,6 @@ public class AccountManager {
     private AccountInfo mAccountInfo;
     private String token;
 
-    public static final String TYPE_USER = "2";
-    public static final String TYPE_TEACHER = "3";
-
-    /**
-     * 2 用户 3理财师
-     */
-    private String userType = TYPE_USER;
-
     private AccountManager() {
     }
 
@@ -47,8 +39,16 @@ public class AccountManager {
      */
     public void init() {
         this.token = SharePreferenceManager.getInstance().getString("token");
-        this.userType = SharePreferenceManager.getInstance().getString("userType");
         readAccountInfo();
+    }
+
+    public void logout() {
+        SharePreferenceManager.getInstance().deleteStr("account");
+        SharePreferenceManager.getInstance().deleteStr("token");
+        SharePreferenceManager.getInstance().deleteStr("userType");
+        EventBus.getDefault().post(new AccountMessageEvent(false));
+        this.mAccountInfo = null;
+        this.token = "";
     }
 
     public void setToken(String token) {
@@ -65,15 +65,6 @@ public class AccountManager {
         return mAccountInfo;
     }
 
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
-        SharePreferenceManager.getInstance().putString("userType", userType);
-    }
-
     /**
      * 如果没有登录,直接跳转登录页面
      */
@@ -87,27 +78,15 @@ public class AccountManager {
         return false;
     }
 
-    public void logout() {
-        SharePreferenceManager.getInstance().deleteStr("account");
-        SharePreferenceManager.getInstance().deleteStr("token");
-        SharePreferenceManager.getInstance().deleteStr("userType");
-        EventBus.getDefault().post(new AccountMessageEvent(false));
-        this.mAccountInfo = null;
-        this.token = "";
-    }
-
     public void refresh() {
-        if (token == null) {
-            return;
-        }
-        getAccountInfoFromServer(token);
+        getAccountInfoFromServer();
     }
 
     /**
      * 从网络拉取账户信息
      */
-    private void getAccountInfoFromServer(final String token) {
-        if (null == token) {
+    private void getAccountInfoFromServer() {
+        if (null == this.token) {
             return;
         }
         WDNetworkCall userInfoCall = new WDNetworkCall<>();

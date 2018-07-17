@@ -34,7 +34,6 @@ public class UserInfoModel extends BaseModel {
                     UserInfoResult.Data data = registerResult.data;
                     if (data != null) {
                         AccountManager.getInstance().setToken(data.token);
-                        AccountManager.getInstance().setUserType(data.user_type);
                         viewHolder.showSuccessToast("登录成功");
                         viewHolder.goBack();
                     }

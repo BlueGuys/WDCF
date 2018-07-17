@@ -9,13 +9,14 @@ import android.widget.LinearLayout;
 
 import com.hongyan.base.BaseFragment;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.business.account.core.AccountInfo;
 import com.hongyan.wdcf.business.account.core.AccountManager;
 
 public class MeFragment extends BaseFragment {
 
     private View view;
     private LinearLayout roorLayout;
-    private String userType = AccountManager.getInstance().getUserType();
+    private String userType = getUserType();
     private MeUserPageView userPageView;
     private MeTeacherPageView teacherPageView;
 
@@ -34,7 +35,7 @@ public class MeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        String tempType = AccountManager.getInstance().getUserType();
+        String tempType = getUserType();
         if (!userType.equals(tempType)) {//如果当前的和最新的不一样，则切换View
             this.userType = tempType;
             changePage(tempType);
@@ -44,10 +45,10 @@ public class MeFragment extends BaseFragment {
     private void changePage(String userType) {
         roorLayout.removeAllViews();
         switch (userType) {
-            case AccountManager.TYPE_USER:
+            case AccountInfo.TYPE_USER:
                 roorLayout.addView(userPageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 break;
-            case AccountManager.TYPE_TEACHER:
+            case AccountInfo.TYPE_TEACHER:
                 roorLayout.addView(teacherPageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 break;
             default:
@@ -62,6 +63,14 @@ public class MeFragment extends BaseFragment {
         if (null != view) {
             ((ViewGroup) view.getParent()).removeView(view);
         }
+    }
+
+    private String getUserType() {
+        AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
+        if (accountInfo != null) {
+            return accountInfo.getUser_type();
+        }
+        return AccountInfo.TYPE_USER;
     }
 
 }

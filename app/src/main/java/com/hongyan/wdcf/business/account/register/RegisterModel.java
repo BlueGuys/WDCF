@@ -43,7 +43,6 @@ public class RegisterModel extends BaseModel {
                     RegisterResult.Data data = registerResult.data;
                     if (data != null) {
                         AccountManager.getInstance().setToken(data.token);
-                        AccountManager.getInstance().setUserType(data.user_type);
                         Router router = new Router(RouterConfig.UserRegisterSelect);
                         RouterManager.getInstance().openUrl(router);
                     }

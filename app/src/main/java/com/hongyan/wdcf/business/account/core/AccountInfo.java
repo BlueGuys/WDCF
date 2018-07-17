@@ -6,8 +6,14 @@ import com.hongyan.base.BaseResult;
 
 public class AccountInfo extends BaseResult {
 
+    public static final String TYPE_USER = "2";
+    public static final String TYPE_TEACHER = "3";
+
     public String id;
-    public String user_type;//2 用户 3理财师
+    /**
+     * 2 用户 3理财师
+     */
+    public String user_type;
     public String user_nicename;
     public String user_email;
     public String avatar;
