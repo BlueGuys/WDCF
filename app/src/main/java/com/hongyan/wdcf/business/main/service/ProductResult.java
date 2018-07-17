@@ -36,6 +36,7 @@ public class ProductResult extends BaseResult {
         public String end_time;
         public String photo;
         public String detail_url;
+        public String effecStr;
     }
 
     static class Equity {
@@ -48,6 +49,7 @@ public class ProductResult extends BaseResult {
         public String end_time;
         public String photo;
         public String detail_url;
+        public String effecStr;
     }
 
 }

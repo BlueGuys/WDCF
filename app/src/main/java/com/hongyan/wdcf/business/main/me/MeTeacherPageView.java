@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.hongyan.StringUtils;
 import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.business.account.core.AccountInfo;
 import com.hongyan.wdcf.business.account.core.AccountManager;
@@ -24,6 +25,7 @@ public class MeTeacherPageView extends LinearLayout implements View.OnClickListe
 
     private View view;
     TextView tvUserPhone;
+    TextView tvUserName;
 
     public MeTeacherPageView(Context context) {
         super(context);
@@ -33,7 +35,7 @@ public class MeTeacherPageView extends LinearLayout implements View.OnClickListe
         LinearLayout layout03 = view.findViewById(R.id.layout_03);
         LinearLayout layout04 = view.findViewById(R.id.layout_04);
         ImageView imageLogo = view.findViewById(R.id.image_logo);
-        TextView tvUserName = view.findViewById(R.id.tv_userName);
+        tvUserName = view.findViewById(R.id.tv_userName);
         tvUserPhone = view.findViewById(R.id.tv_userPhone);
         layout01.setOnClickListener(this);
         layout02.setOnClickListener(this);
@@ -44,6 +46,16 @@ public class MeTeacherPageView extends LinearLayout implements View.OnClickListe
         if (accountInfo != null) {
             tvUserPhone.setText(accountInfo.getUIMobile());
             tvUserName.setText(accountInfo.getUser_nicename());
+        }
+    }
+
+    public void notifyDataChanged(){
+        AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
+        if (accountInfo != null) {
+            if (StringUtils.notEmpty(accountInfo.getUser_nicename())) {
+                tvUserName.setText(accountInfo.getUser_nicename());
+            }
+            tvUserPhone.setText(accountInfo.getUIMobile());
         }
     }
 

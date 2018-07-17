@@ -28,6 +28,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
 
     private View view;
     TextView tvUserPhone;
+    TextView tvUserName;
 
     public MeUserPageView(Context context) {
         super(context);
@@ -48,7 +49,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
         TextView tvMember = view.findViewById(R.id.tv_member);
         LinearLayout layoutUser = view.findViewById(R.id.ll_user);
         ImageView imageLogo = view.findViewById(R.id.image_logo);
-        TextView tvUserName = view.findViewById(R.id.tv_userName);
+        tvUserName = view.findViewById(R.id.tv_userName);
         tvUserPhone = view.findViewById(R.id.tv_userPhone);
         layoutHelper.setOnClickListener(this);
         layoutFeedback.setOnClickListener(this);
@@ -65,6 +66,9 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
         tvUserName.setOnClickListener(this);
         tvUserPhone.setOnClickListener(this);
 
+    }
+
+    public void notifyDataChanged(){
         AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
         if (accountInfo != null) {
             if (StringUtils.notEmpty(accountInfo.getUser_nicename())) {

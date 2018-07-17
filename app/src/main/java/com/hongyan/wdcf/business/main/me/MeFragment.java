@@ -72,6 +72,8 @@ public class MeFragment extends BaseFragment {
     public void accountEvent(AccountMessageEvent message) {
         if (message.isLogin()) {
             changePage();
+            userPageView.notifyDataChanged();
+            teacherPageView.notifyDataChanged();
         }
     }
 

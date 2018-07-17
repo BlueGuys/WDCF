@@ -65,6 +65,7 @@ public class ProductFragment extends BaseFragment {
             productA.setDeadLine(fixationA.end_time);
             productA.setDesc(fixationA.excerpt);
             productA.setImgUrl(fixationA.photo);
+            productA.setLabel1(fixationA.effecStr);
 
             productB.setVisibility(View.GONE);
         } else if (classFixation != null && classFixation.size() == 2) {
@@ -73,12 +74,14 @@ public class ProductFragment extends BaseFragment {
             productA.setDeadLine(fixationA.end_time);
             productA.setDesc(fixationA.excerpt);
             productA.setImgUrl(fixationA.photo);
+            productA.setLabel1(fixationA.effecStr);
 
             ProductResult.Fixation fixationB = classFixation.get(1);
             productB.setAmount(fixationB.scale);
             productB.setDeadLine(fixationB.end_time);
             productB.setDesc(fixationB.excerpt);
             productB.setImgUrl(fixationB.photo);
+            productB.setLabel1(fixationA.effecStr);
         }
 
         //平铺产品
@@ -90,6 +93,7 @@ public class ProductFragment extends BaseFragment {
                 product01.setDeadLine(equity01.end_time);
                 product01.setDesc(equity01.excerpt);
                 product01.setImgUrl(equity01.photo);
+                product01.setLabel1(equity01.effecStr);
                 product01.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -104,6 +108,7 @@ public class ProductFragment extends BaseFragment {
                 product01.setAmount(equity01.scale);
                 product01.setDeadLine(equity01.end_time);
                 product01.setDesc(equity01.excerpt);
+                product01.setLabel1(equity01.effecStr);
                 product01.setImgUrl(equity01.photo);
                 product01.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -117,6 +122,7 @@ public class ProductFragment extends BaseFragment {
                 product02.setAmount(equity02.scale);
                 product02.setDeadLine(equity02.end_time);
                 product02.setDesc(equity02.excerpt);
+                product02.setLabel1(equity01.effecStr);
                 product02.setImgUrl(equity02.photo);
                 product02.setOnClickListener(new View.OnClickListener() {
                     @Override

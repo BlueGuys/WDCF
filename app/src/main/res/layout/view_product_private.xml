@@ -48,10 +48,12 @@
                     android:layout_height="wrap_content"
                     android:background="@color/appColorPositive"
                     android:paddingBottom="@dimen/ds3"
+                    android:paddingLeft="@dimen/ds24"
+                    android:paddingRight="@dimen/ds24"
                     android:paddingTop="@dimen/ds3"
                     android:text="募集中..."
                     android:textColor="@color/white"
-                    android:textSize="14dp" />
+                    android:textSize="10dp" />
 
                 <TextView
                     android:id="@+id/tv_label2"
@@ -59,12 +61,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/ds20"
                     android:background="@drawable/bg_stroke_yellow"
+                    android:gravity="center"
                     android:paddingBottom="@dimen/ds3"
                     android:paddingLeft="@dimen/ds15"
                     android:paddingRight="@dimen/ds15"
                     android:paddingTop="@dimen/ds3"
                     android:text="活期"
-                    android:textSize="14dp" />
+                    android:textColor="@color/fontPositive"
+                    android:textSize="10dp" />
 
                 <TextView
                     android:id="@+id/tv_label3"
@@ -72,12 +76,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/ds20"
                     android:background="@drawable/bg_stroke_yellow"
+                    android:gravity="center"
                     android:paddingBottom="@dimen/ds3"
                     android:paddingLeft="@dimen/ds15"
                     android:paddingRight="@dimen/ds15"
                     android:paddingTop="@dimen/ds3"
                     android:text="可变现"
-                    android:textSize="14dp" />
+                    android:textColor="@color/fontPositive"
+                    android:textSize="10dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -93,7 +99,7 @@
                     android:layout_marginRight="@dimen/ds25"
                     android:text="到期日"
                     android:textColor="@color/black"
-                    android:textSize="11dp" />
+                    android:textSize="9dp" />
 
                 <TextView
                     android:id="@+id/tv_deadline"
@@ -102,7 +108,7 @@
                     android:layout_marginRight="@dimen/ds25"
                     android:text="到期日"
                     android:textColor="@color/black"
-                    android:textSize="11dp" />
+                    android:textSize="9dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -110,7 +116,7 @@
                     android:layout_marginRight="@dimen/ds25"
                     android:text="剩余可投（元）"
                     android:textColor="@color/black"
-                    android:textSize="11dp" />
+                    android:textSize="9dp" />
 
                 <TextView
                     android:id="@+id/tv_amount"
@@ -119,7 +125,7 @@
                     android:layout_marginRight="@dimen/ds25"
                     android:text="到期日"
                     android:textColor="@color/black"
-                    android:textSize="11dp" />
+                    android:textSize="9dp" />
             </LinearLayout>
 
         </LinearLayout>
