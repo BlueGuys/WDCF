@@ -11,40 +11,41 @@ import com.hongyan.base.BaseFragment;
 import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.business.account.core.AccountInfo;
 import com.hongyan.wdcf.business.account.core.AccountManager;
+import com.hongyan.wdcf.business.account.core.MainActivityEvent;
+import com.hongyan.wdcf.business.account.core.MainMessageEvent;
+import com.hongyan.wdcf.business.account.core.TabChangeEvent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public class MeFragment extends BaseFragment {
 
     private View view;
     private LinearLayout roorLayout;
-    private String userType = getUserType();
     private MeUserPageView userPageView;
     private MeTeacherPageView teacherPageView;
-
+    private String userType = "none";
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        EventBus.getDefault().register(this);
         view = inflater.inflate(R.layout.fragment_me, container, false);
         roorLayout = view.findViewById(R.id.linearLayout);
         userPageView = new MeUserPageView(getActivity());
         teacherPageView = new MeTeacherPageView(getActivity());
-        changePage(userType);
+        changePage();
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        String tempType = getUserType();
-        if (!userType.equals(tempType)) {//如果当前的和最新的不一样，则切换View
-            this.userType = tempType;
-            changePage(tempType);
+    private void changePage() {
+        String temp = getUserType();
+        if (temp.equals(userType)) {
+            return;
         }
-    }
-
-    private void changePage(String userType) {
         roorLayout.removeAllViews();
-        switch (userType) {
+        switch (temp) {
             case AccountInfo.TYPE_USER:
                 roorLayout.addView(userPageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 break;
@@ -55,11 +56,13 @@ public class MeFragment extends BaseFragment {
                 roorLayout.addView(userPageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 break;
         }
+        this.userType = temp;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        EventBus.getDefault().unregister(this);
         if (null != view) {
             ((ViewGroup) view.getParent()).removeView(view);
         }
@@ -71,6 +74,14 @@ public class MeFragment extends BaseFragment {
             return accountInfo.getUser_type();
         }
         return AccountInfo.TYPE_USER;
+    }
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    public void accountEvent(MainActivityEvent message) {
+        if (message == null) {
+            return;
+        }
+        changePage();
     }
 
 }

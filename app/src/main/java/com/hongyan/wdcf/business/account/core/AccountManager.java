@@ -45,7 +45,6 @@ public class AccountManager {
     public void logout() {
         SharePreferenceManager.getInstance().deleteStr("account");
         SharePreferenceManager.getInstance().deleteStr("token");
-        SharePreferenceManager.getInstance().deleteStr("userType");
         EventBus.getDefault().post(new AccountMessageEvent(false));
         this.mAccountInfo = null;
         this.token = "";
@@ -67,9 +66,11 @@ public class AccountManager {
 
     /**
      * 如果没有登录,直接跳转登录页面
+     *
+     * @return true 已登录  false 去登录
      */
     public boolean checkLogin() {
-        if (token != null && token.length() > 0) {
+        if (mAccountInfo != null && StringUtils.notEmpty(mAccountInfo.getId())) {
             return true;
         }
         Router router = new Router();

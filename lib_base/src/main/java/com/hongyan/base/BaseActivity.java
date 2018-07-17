@@ -1,6 +1,7 @@
 package com.hongyan.base;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,7 +25,8 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LogUtils.w("BaseActivity",getClass().getSimpleName());
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//限制为竖屏
+        LogUtils.w("BaseActivity", getClass().getSimpleName());
         init();
         BaseViewHolder baseViewHolder = getViewHolder();
         if (baseViewHolder != null) {

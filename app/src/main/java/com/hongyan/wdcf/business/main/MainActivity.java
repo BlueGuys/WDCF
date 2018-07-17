@@ -9,7 +9,9 @@ import com.hongyan.base.tab.SubPage;
 import com.hongyan.base.tab.TabActivity;
 import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.business.account.core.AccountManager;
+import com.hongyan.wdcf.business.account.core.MainActivityEvent;
 import com.hongyan.wdcf.business.account.core.MainMessageEvent;
+import com.hongyan.wdcf.business.account.core.TabChangeEvent;
 import com.hongyan.wdcf.business.main.discover.DiscoverFragment;
 import com.hongyan.wdcf.business.main.me.MeFragment;
 import com.hongyan.wdcf.business.main.service.ServiceFragment;
@@ -21,11 +23,6 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 
 public class MainActivity extends TabActivity {
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,7 +49,18 @@ public class MainActivity extends TabActivity {
         addSubPage(list);
         EventBus.getDefault().register(this);
         AccountManager.getInstance().refresh();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EventBus.getDefault().post(new MainActivityEvent(MainActivityEvent.ON_RESUME));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     @Subscribe(threadMode = ThreadMode.POSTING)
@@ -69,12 +77,7 @@ public class MainActivity extends TabActivity {
         if (position == 2) {
             AccountManager.getInstance().checkLogin();
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
+        EventBus.getDefault().post(new TabChangeEvent(position));
     }
 
     @Override

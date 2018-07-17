@@ -9,6 +9,8 @@ public class AccountInfo extends BaseResult {
     public static final String TYPE_USER = "2";
     public static final String TYPE_TEACHER = "3";
 
+    public static final int AUTH_TYPE_STATUS = 1;
+
     public String id;
     /**
      * 2 用户 3理财师
@@ -18,6 +20,13 @@ public class AccountInfo extends BaseResult {
     public String user_email;
     public String avatar;
     public String mobile;
+    /**
+     *  auth_status=0 跳转提交资料页面提交资料进行审核
+     *  auth_status=1 等待审核 提示等待，
+     *  auth_status=2 通过，
+     *  auth_status=3 跳转提交资料页面提交资料进行审核
+     */
+    public int auth_status;
 
     public String getId() {
         return id;
@@ -72,5 +81,13 @@ public class AccountInfo extends BaseResult {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public int getAuth_status() {
+        return auth_status;
+    }
+
+    public void setAuth_status(int auth_status) {
+        this.auth_status = auth_status;
     }
 }

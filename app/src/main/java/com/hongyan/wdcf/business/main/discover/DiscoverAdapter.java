@@ -289,7 +289,7 @@ public class DiscoverAdapter extends BaseAdapter {
                     RouterManager.getInstance().openUrl(router);
                 }
             });
-        } else if (hotArticles.size() == 2) {
+        } else if (hotArticles.size() > 1) {
             final DiscoverResult.HotArticle articleA = hotArticles.get(0);
             tvTitleA.setText(articleA.title);
             tvDescA.setText(articleA.excerpt);
@@ -357,7 +357,7 @@ public class DiscoverAdapter extends BaseAdapter {
                     RouterManager.getInstance().openUrl(router);
                 }
             });
-        } else if (assetArticles.size() == 2) {
+        } else if (assetArticles.size() > 1) {
             final DiscoverResult.AssetArticle articleA = assetArticles.get(0);
             tvTitleA.setText(articleA.title);
             tvDescA.setText(articleA.excerpt);

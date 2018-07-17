@@ -48,7 +48,7 @@
             android:id="@+id/et_password"
             style="@style/editText_normal"
             android:layout_marginTop="@dimen/ds20"
-            android:hint="请设置密码"
+            android:hint="请输入密码"
             android:inputType="textPassword" />
 
         <Button
