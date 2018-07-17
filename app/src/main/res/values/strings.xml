@@ -13,4 +13,5 @@
     <string name="my_bankcard">我的银行卡</string>
     <string name="bind_bankcard">添加银行卡</string>
     <string name="my_order_list">我的订单</string>
+    <string name="share_and_invite">分享邀请</string>
 </resources>

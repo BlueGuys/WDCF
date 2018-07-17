@@ -14,6 +14,7 @@ import com.hongyan.wdcf.business.account.password.PasswordActivity;
 import com.hongyan.wdcf.business.account.register.RegisterActivity;
 import com.hongyan.wdcf.business.account.select.SelectIdentifyActivity;
 import com.hongyan.wdcf.business.account.setting.SettingActivity;
+import com.hongyan.wdcf.business.account.share.UserShareActivity;
 import com.hongyan.wdcf.business.account.user.UserInfoActivity;
 
 public final class RouterConfig {
@@ -49,6 +50,7 @@ public final class RouterConfig {
         RouterConst.addRouter(UserModifyLoginPasswrod, ModifyLoginPasswordActivity.class.getName());
         RouterConst.addRouter(UserModifyTradePasswrod, ModifyTradePasswordActivity.class.getName());
         RouterConst.addRouter(UserOrderList, OrderListActivity.class.getName());
+        RouterConst.addRouter(UserShare, UserShareActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -67,5 +69,9 @@ public final class RouterConfig {
      * 我的订单
      */
     public static final String UserOrderList = "native://user/order/list";
+    /**
+     * 分享邀请
+     */
+    public static final String UserShare = "native://user/share/index";
 
 }

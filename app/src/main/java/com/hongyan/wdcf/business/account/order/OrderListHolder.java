@@ -32,8 +32,6 @@ public class OrderListHolder extends BaseViewHolder implements IViewHolder, View
 
     private List<Fragment> fragments = new ArrayList<>();
 
-
-
     public OrderListHolder(BaseActivity mActivity) {
         super(mActivity);
     }
@@ -50,7 +48,7 @@ public class OrderListHolder extends BaseViewHolder implements IViewHolder, View
 
     @Override
     public boolean needPageRequest() {
-        return false;
+        return true;
     }
 
     @Override
@@ -97,7 +95,7 @@ public class OrderListHolder extends BaseViewHolder implements IViewHolder, View
     @Override
     public RequestBean getRequestBean() {
         RequestBean bean = new RequestBean<>(OrderListResult.class);
-        bean.setRequestUrl(UrlConst.getBankCardListUrl());
+        bean.setRequestUrl(UrlConst.getMyOrderListUrl());
         bean.addParam(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
         return bean;
     }

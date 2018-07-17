@@ -81,7 +81,7 @@ public class ProgressBarA extends View {
             int gap = Math.abs(currentIndex - i);
             item.setHeight(20.0f + 50 / (gap + 1));
             Rect rect = new Rect(item.getLeft(), item.getTop(), item.getRight(), item.getBottom());
-            paint.setColor(Color.BLUE);
+            paint.setColor(Color.parseColor("#66573e"));
             canvas.drawRect(rect, paint);
         }
     }

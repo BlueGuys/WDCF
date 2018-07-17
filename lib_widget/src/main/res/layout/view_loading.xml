@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/hard_loading"
-            android:textColor="#0000ff"
+            android:textColor="#66573e"
             android:textSize="12dp"
             android:visibility="gone" />
     </LinearLayout>
