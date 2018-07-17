@@ -13,6 +13,7 @@ import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.base.ImageLoaderOptionHelper;
 import com.hongyan.wdcf.base.RequestKeyTable;
+import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.business.account.core.AccountManager;
 import com.hongyan.wdcf.business.account.core.MainMessageEvent;
 import com.hongyan.wdcf.widget.ScrollBannerView;
@@ -231,27 +232,63 @@ public class DiscoverAdapter extends BaseAdapter {
         final ArrayList<DiscoverResult.homeEvent> homeEvents = data.homeEvent;
         ImageView imageViewA = convertView.findViewById(R.id.imageViewA);
         ImageView imageViewB = convertView.findViewById(R.id.imageViewB);
-        if (homeEvents.size() > 1) {
-            DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getCommonImageOption();
-            ImageLoader.getInstance().displayImage(homeEvents.get(0).photo, imageViewA, options);
-            ImageLoader.getInstance().displayImage(homeEvents.get(0).photo, imageViewB, options);
+        ImageView imageViewC = convertView.findViewById(R.id.imageViewC);
+        DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getCommonImageOption();
+        if (homeEvents == null) {
+            return;
         }
-        imageViewA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Router router = new Router();
-                router.setUrl(homeEvents.get(0).detail_url);
-                RouterManager.getInstance().openUrl(router);
+        switch (homeEvents.size()) {
+            case 0:
+                imageViewA.setVisibility(View.GONE);
+                imageViewB.setVisibility(View.GONE);
+                imageViewC.setVisibility(View.GONE);
+                break;
+            case 1:
+                imageViewB.setVisibility(View.GONE);
+                imageViewC.setVisibility(View.GONE);
+                break;
+            case 2:
+                imageViewC.setVisibility(View.GONE);
+                break;
+        }
+
+        for (int i = 0; i < homeEvents.size(); i++) {
+            final DiscoverResult.homeEvent event = homeEvents.get(i);
+            if (i == 0) {
+                ImageLoader.getInstance().displayImage(event.photo, imageViewA, options);
+                imageViewA.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Router router = new Router();
+                        router.setUrl(event.detail_url);
+                        router.addParams(RequestKeyTable.TITLE, event.title);
+                        RouterManager.getInstance().openUrl(router);
+                    }
+                });
+            } else if (i == 1) {
+                ImageLoader.getInstance().displayImage(event.photo, imageViewB, options);
+                imageViewB.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Router router = new Router();
+                        router.setUrl(event.detail_url);
+                        router.addParams(RequestKeyTable.TITLE, event.title);
+                        RouterManager.getInstance().openUrl(router);
+                    }
+                });
+            } else if (i == 2) {
+                ImageLoader.getInstance().displayImage(event.photo, imageViewC, options);
+                imageViewC.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Router router = new Router();
+                        router.setUrl(event.detail_url);
+                        router.addParams(RequestKeyTable.TITLE, event.title);
+                        RouterManager.getInstance().openUrl(router);
+                    }
+                });
             }
-        });
-        imageViewB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Router router = new Router();
-                router.setUrl(homeEvents.get(1).detail_url);
-                RouterManager.getInstance().openUrl(router);
-            }
-        });
+        }
     }
 
     private void handleHotArticle(View convertView) {

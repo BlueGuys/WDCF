@@ -68,7 +68,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
 
     }
 
-    public void notifyDataChanged(){
+    public void notifyDataChanged() {
         AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
         if (accountInfo != null) {
             if (StringUtils.notEmpty(accountInfo.getUser_nicename())) {
@@ -84,27 +84,25 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
             case R.id.rl_help:
                 RouterManager.getInstance().openUrl(new Router("http://caifu.thongfu.com/App/Help/index.html?title=帮助中心"));
                 break;
-            case R.id.rl_user_feedback: {
-                Router router = new Router(RouterConfig.UserUserFeedback);
-                RouterManager.getInstance().openUrl(router);
+            case R.id.rl_user_feedback:
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserUserFeedback));
                 break;
-            }
             case R.id.rl_evaluate:
                 break;
             case R.id.rl_about:
                 RouterManager.getInstance().openUrl(new Router("http://caifu.thongfu.com/App/About/index.html?title=关于"));
                 break;
             case R.id.ll_order:
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserOrderList));
                 break;
             case R.id.ll_risk:
                 RouterManager.getInstance().openUrl(new Router("http://caifu.thongfu.com/App/Assessment/lists.html?title=风险评估&&token" + AccountManager.getInstance().getToken()));
                 break;
             case R.id.image_share:
                 break;
-            case R.id.image_setting: {
+            case R.id.image_setting:
                 RouterManager.getInstance().openUrl(new Router(RouterConfig.UserUserSetting));
                 break;
-            }
             case R.id.image_message:
                 break;
             case R.id.tv_member:

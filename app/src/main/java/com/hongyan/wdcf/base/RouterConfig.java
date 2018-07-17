@@ -9,6 +9,7 @@ import com.hongyan.wdcf.business.account.feedback.FeedbackActivity;
 import com.hongyan.wdcf.business.account.login.LoginActivity;
 import com.hongyan.wdcf.business.account.modifyloginpassword.ModifyLoginPasswordActivity;
 import com.hongyan.wdcf.business.account.modifytradepassword.ModifyTradePasswordActivity;
+import com.hongyan.wdcf.business.account.order.OrderListActivity;
 import com.hongyan.wdcf.business.account.password.PasswordActivity;
 import com.hongyan.wdcf.business.account.register.RegisterActivity;
 import com.hongyan.wdcf.business.account.select.SelectIdentifyActivity;
@@ -47,6 +48,7 @@ public final class RouterConfig {
         RouterConst.addRouter(UserBindTeacher, BindTeacherActivity.class.getName());
         RouterConst.addRouter(UserModifyLoginPasswrod, ModifyLoginPasswordActivity.class.getName());
         RouterConst.addRouter(UserModifyTradePasswrod, ModifyTradePasswordActivity.class.getName());
+        RouterConst.addRouter(UserOrderList, OrderListActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -61,5 +63,9 @@ public final class RouterConfig {
     public static final String UserBindTeacher = "native://user/user/bindTeacher";
     public static final String UserModifyLoginPasswrod = "native://user/user/modifyloginpassword";
     public static final String UserModifyTradePasswrod = "native://user/user/modifytradepassword";
+    /**
+     * 我的订单
+     */
+    public static final String UserOrderList = "native://user/order/list";
 
 }

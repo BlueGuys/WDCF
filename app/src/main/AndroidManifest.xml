@@ -46,6 +46,7 @@
         <activity android:name=".business.account.bindteacher.BindTeacherActivity" />
         <activity android:name=".business.account.modifyloginpassword.ModifyLoginPasswordActivity" />
         <activity android:name=".business.account.modifytradepassword.ModifyTradePasswordActivity" />
+        <activity android:name=".business.account.order.OrderListActivity" />
     </application>
 
 </manifest>

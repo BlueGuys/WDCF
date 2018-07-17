@@ -69,5 +69,6 @@ public class DiscoverResult extends BaseResult {
         public String url;
         public String id;
         public String detail_url;
+        public String title;
     }
 }
