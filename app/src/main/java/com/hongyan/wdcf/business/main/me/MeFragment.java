@@ -11,9 +11,7 @@ import com.hongyan.base.BaseFragment;
 import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.business.account.core.AccountInfo;
 import com.hongyan.wdcf.business.account.core.AccountManager;
-import com.hongyan.wdcf.business.account.core.MainActivityEvent;
-import com.hongyan.wdcf.business.account.core.MainMessageEvent;
-import com.hongyan.wdcf.business.account.core.TabChangeEvent;
+import com.hongyan.wdcf.business.account.core.AccountMessageEvent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -25,7 +23,6 @@ public class MeFragment extends BaseFragment {
     private LinearLayout roorLayout;
     private MeUserPageView userPageView;
     private MeTeacherPageView teacherPageView;
-    private String userType = "none";
 
     @Nullable
     @Override
@@ -40,12 +37,8 @@ public class MeFragment extends BaseFragment {
     }
 
     private void changePage() {
-        String temp = getUserType();
-        if (temp.equals(userType)) {
-            return;
-        }
         roorLayout.removeAllViews();
-        switch (temp) {
+        switch (getUserType()) {
             case AccountInfo.TYPE_USER:
                 roorLayout.addView(userPageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 break;
@@ -56,7 +49,6 @@ public class MeFragment extends BaseFragment {
                 roorLayout.addView(userPageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 break;
         }
-        this.userType = temp;
     }
 
     @Override
@@ -77,11 +69,10 @@ public class MeFragment extends BaseFragment {
     }
 
     @Subscribe(threadMode = ThreadMode.POSTING)
-    public void accountEvent(MainActivityEvent message) {
-        if (message == null) {
-            return;
+    public void accountEvent(AccountMessageEvent message) {
+        if (message.isLogin()) {
+            changePage();
         }
-        changePage();
     }
 
 }

@@ -108,6 +108,7 @@ public class AccountManager {
                     mAccountInfo.setMobile(data.mobile);
                     mAccountInfo.setAvatar(data.avatar);
                     saveAccountInfo(GsonUtils.toJson(mAccountInfo));
+                    EventBus.getDefault().post(new AccountMessageEvent(true));
                 }
             }
 

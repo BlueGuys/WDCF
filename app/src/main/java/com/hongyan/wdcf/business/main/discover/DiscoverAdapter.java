@@ -14,7 +14,6 @@ import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.base.ImageLoaderOptionHelper;
 import com.hongyan.wdcf.base.RequestKeyTable;
 import com.hongyan.wdcf.business.account.core.AccountManager;
-import com.hongyan.wdcf.business.account.core.AccountMessageEvent;
 import com.hongyan.wdcf.business.account.core.MainMessageEvent;
 import com.hongyan.wdcf.widget.ScrollBannerView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -23,7 +22,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by wangning on 2018/7/11.

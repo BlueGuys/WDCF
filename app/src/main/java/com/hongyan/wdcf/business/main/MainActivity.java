@@ -9,7 +9,6 @@ import com.hongyan.base.tab.SubPage;
 import com.hongyan.base.tab.TabActivity;
 import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.business.account.core.AccountManager;
-import com.hongyan.wdcf.business.account.core.MainActivityEvent;
 import com.hongyan.wdcf.business.account.core.MainMessageEvent;
 import com.hongyan.wdcf.business.account.core.TabChangeEvent;
 import com.hongyan.wdcf.business.main.discover.DiscoverFragment;
@@ -54,7 +53,6 @@ public class MainActivity extends TabActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        EventBus.getDefault().post(new MainActivityEvent(MainActivityEvent.ON_RESUME));
     }
 
     @Override
