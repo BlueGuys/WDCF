@@ -1,6 +1,7 @@
 package com.hongyan.wdcf.business.account.share;
 
 import android.view.View;
+import android.widget.ImageView;
 
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;
@@ -11,6 +12,7 @@ import com.hongyan.base.router.Router;
 import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.base.RouterConfig;
+import com.hongyan.wdcf.utils.ZxingUtils;
 import com.hongyan.wdcf.widget.ItemC;
 
 /**
@@ -19,6 +21,9 @@ import com.hongyan.wdcf.widget.ItemC;
 
 public class UserShareHolder extends BaseViewHolder implements IViewHolder, View.OnClickListener {
 
+    private ImageView imageQRcode;
+    private ImageView imageWechat;
+    private ImageView imageQQ;
 
     public UserShareHolder(BaseActivity mActivity) {
         super(mActivity);
@@ -42,6 +47,12 @@ public class UserShareHolder extends BaseViewHolder implements IViewHolder, View
     @Override
     public void initView(View rootView) {
         addLeftButtonDefault();
+        imageQRcode = rootView.findViewById(R.id.image_code);
+        imageQQ = rootView.findViewById(R.id.image_qq);
+        imageWechat = rootView.findViewById(R.id.image_we_chat);
+        imageQQ.setOnClickListener(this);
+        imageWechat.setOnClickListener(this);
+        imageQRcode.setImageBitmap(ZxingUtils.createBitmap("http://www.baidu.com"));
     }
 
     @Override
@@ -66,10 +77,10 @@ public class UserShareHolder extends BaseViewHolder implements IViewHolder, View
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.item_modify_login:
+            case R.id.image_qq:
                 RouterManager.getInstance().openUrl(new Router(RouterConfig.UserModifyLoginPasswrod));
                 break;
-            case R.id.item_modify_business:
+            case R.id.image_we_chat:
                 RouterManager.getInstance().openUrl(new Router(RouterConfig.UserModifyTradePasswrod));
                 break;
         }

@@ -16,4 +16,6 @@
     <string name="share_and_invite">分享邀请</string>
     <string name="customer_info">客户信息</string>
     <string name="subscribe_handle">预约处理</string>
+    <string name="invite_you">邀请您加入</string>
+    <string name="add_record">添加客户沟通记录</string>
 </resources>

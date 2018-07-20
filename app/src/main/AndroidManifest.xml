@@ -50,6 +50,8 @@
         <activity android:name=".business.account.share.UserShareActivity" />
         <activity android:name=".business.customer.CustomerListActivity" />
         <activity android:name=".business.subscribe.SubscribeActivity" />
+        <activity android:name=".business.account.invite.InviteActivity" />
+        <activity android:name=".business.teacher.addrecord.AddRecordActivity" />
     </application>
 
 </manifest>

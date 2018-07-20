@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/appBackground"
+    android:background="@color/white"
     android:gravity="center_horizontal|top"
     android:orientation="vertical"
     android:paddingLeft="@dimen/ds10"
@@ -19,8 +19,8 @@
 
     <ImageView
         android:id="@+id/image_code"
-        android:layout_width="@dimen/ds400"
-        android:layout_height="@dimen/ds400"
+        android:layout_width="@dimen/ds599"
+        android:layout_height="@dimen/ds599"
         android:layout_marginTop="@dimen/ds100"
         android:background="@drawable/icon_xintuo" />
 

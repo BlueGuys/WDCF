@@ -52,7 +52,7 @@ public class MeTeacherPageView extends LinearLayout implements View.OnClickListe
         }
     }
 
-    public void notifyDataChanged(){
+    public void notifyDataChanged() {
         AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
         if (accountInfo != null) {
             if (StringUtils.notEmpty(accountInfo.getUser_nicename())) {
@@ -72,8 +72,10 @@ public class MeTeacherPageView extends LinearLayout implements View.OnClickListe
                 RouterManager.getInstance().openUrl(new Router(RouterConfig.Subscribe));
                 break;
             case R.id.layout_03:
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserInvite));
                 break;
             case R.id.layout_04:
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.TearcherAddRecord));
                 break;
         }
     }

@@ -22,6 +22,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation 'com.google.zxing:core:3.3.0'      //zxing核心依赖
+    implementation 'com.journeyapps:zxing-android-embedded:3.3.0'  //生成二维码依赖
     implementation project(':lib_base')
     implementation project(':lib_network')
     implementation project(':lib_test')

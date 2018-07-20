@@ -6,6 +6,7 @@ import com.hongyan.wdcf.business.account.bankcard.BankCardListActivity;
 import com.hongyan.wdcf.business.account.bankcard.BindBankCardActivity;
 import com.hongyan.wdcf.business.account.bindteacher.BindTeacherActivity;
 import com.hongyan.wdcf.business.account.feedback.FeedbackActivity;
+import com.hongyan.wdcf.business.account.invite.InviteActivity;
 import com.hongyan.wdcf.business.account.login.LoginActivity;
 import com.hongyan.wdcf.business.account.modifyloginpassword.ModifyLoginPasswordActivity;
 import com.hongyan.wdcf.business.account.modifytradepassword.ModifyTradePasswordActivity;
@@ -18,6 +19,7 @@ import com.hongyan.wdcf.business.account.share.UserShareActivity;
 import com.hongyan.wdcf.business.account.user.UserInfoActivity;
 import com.hongyan.wdcf.business.customer.CustomerListActivity;
 import com.hongyan.wdcf.business.subscribe.SubscribeActivity;
+import com.hongyan.wdcf.business.teacher.addrecord.AddRecordActivity;
 
 public final class RouterConfig {
 
@@ -55,6 +57,8 @@ public final class RouterConfig {
         RouterConst.addRouter(UserShare, UserShareActivity.class.getName());
         RouterConst.addRouter(CustomerInfo, CustomerListActivity.class.getName());
         RouterConst.addRouter(Subscribe, SubscribeActivity.class.getName());
+        RouterConst.addRouter(UserInvite, InviteActivity.class.getName());
+        RouterConst.addRouter(TearcherAddRecord, AddRecordActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -69,6 +73,10 @@ public final class RouterConfig {
     public static final String UserBindTeacher = "native://user/user/bindTeacher";
     public static final String UserModifyLoginPasswrod = "native://user/user/modifyloginpassword";
     public static final String UserModifyTradePasswrod = "native://user/user/modifytradepassword";
+    /**
+     * 邀请您加入
+     */
+    public static final String UserInvite = "native://user/invite";
     /**
      * 客户信息
      */
@@ -85,5 +93,9 @@ public final class RouterConfig {
      * 预约处理
      */
     public static final String Subscribe = "native://subscribe";
+    /**
+     * 增加聊天记录
+     */
+    public static final String TearcherAddRecord = "native://teacher/add/record";
 
 }
