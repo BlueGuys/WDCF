@@ -75,18 +75,19 @@ public class TabContainer extends LinearLayout {
         LinearLayout tabView = new LinearLayout(mContext);
         tabView.setOrientation(VERTICAL);
         tabView.setGravity(Gravity.CENTER);
-        tabView.setPadding(0, 0, 0, 0);
+        tabView.setPadding(0, 20, 0, 20);
         tabView.setLayoutParams(new LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1.0f));
 
         ImageView image = new ImageView(mContext);
-        image.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 0, 2.0f));
+        image.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         TextView textView = new TextView(mContext);
         textView.setGravity(Gravity.CENTER);
         textView.setTextColor(Color.BLACK);
         textView.setText(tab.text);
         textView.setTextSize(11);
-        textView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 0, 1.0f));
+        textView.setPadding(0, 10, 0, 0);
+        textView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         if (tab.isSelected) {
             image.setImageResource(tab.drawable[0]);
@@ -99,7 +100,6 @@ public class TabContainer extends LinearLayout {
         tabView.addView(textView);
         return tabView;
     }
-
 
     public static final class Tab {
         int[] drawable;

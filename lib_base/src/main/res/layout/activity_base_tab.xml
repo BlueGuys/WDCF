@@ -18,8 +18,6 @@
     <com.hongyan.base.tab.TabContainer
         android:id="@+id/tabContainer"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/ds130"
-        android:orientation="horizontal"
-        android:paddingTop="@dimen/ds20"
-        android:paddingBottom="@dimen/ds20"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" />
 </LinearLayout>

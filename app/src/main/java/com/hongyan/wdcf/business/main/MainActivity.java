@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.hongyan.base.BaseViewHolder;
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
 import com.hongyan.base.tab.SubPage;
 import com.hongyan.base.tab.TabActivity;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.business.account.core.AccountManager;
 import com.hongyan.wdcf.business.account.core.MainMessageEvent;
 import com.hongyan.wdcf.business.account.core.TabChangeEvent;
@@ -53,6 +56,7 @@ public class MainActivity extends TabActivity {
     @Override
     protected void onResume() {
         super.onResume();
+//        RouterManager.getInstance().openUrl(new Router(RouterConfig.CustomerInfo));
     }
 
     @Override

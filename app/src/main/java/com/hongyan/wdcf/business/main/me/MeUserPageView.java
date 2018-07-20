@@ -105,6 +105,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
                 RouterManager.getInstance().openUrl(new Router(RouterConfig.UserUserSetting));
                 break;
             case R.id.image_message:
+                RouterManager.getInstance().openUrl(new Router("http://caifu.thongfu.com/App/Users/message.html?title=消息"));
                 break;
             case R.id.tv_member:
                 break;

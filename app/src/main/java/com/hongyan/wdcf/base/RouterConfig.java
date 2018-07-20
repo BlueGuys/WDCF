@@ -16,6 +16,8 @@ import com.hongyan.wdcf.business.account.select.SelectIdentifyActivity;
 import com.hongyan.wdcf.business.account.setting.SettingActivity;
 import com.hongyan.wdcf.business.account.share.UserShareActivity;
 import com.hongyan.wdcf.business.account.user.UserInfoActivity;
+import com.hongyan.wdcf.business.customer.CustomerListActivity;
+import com.hongyan.wdcf.business.subscribe.SubscribeActivity;
 
 public final class RouterConfig {
 
@@ -51,6 +53,8 @@ public final class RouterConfig {
         RouterConst.addRouter(UserModifyTradePasswrod, ModifyTradePasswordActivity.class.getName());
         RouterConst.addRouter(UserOrderList, OrderListActivity.class.getName());
         RouterConst.addRouter(UserShare, UserShareActivity.class.getName());
+        RouterConst.addRouter(CustomerInfo, CustomerListActivity.class.getName());
+        RouterConst.addRouter(Subscribe, SubscribeActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -66,6 +70,10 @@ public final class RouterConfig {
     public static final String UserModifyLoginPasswrod = "native://user/user/modifyloginpassword";
     public static final String UserModifyTradePasswrod = "native://user/user/modifytradepassword";
     /**
+     * 客户信息
+     */
+    public static final String CustomerInfo = "native://customer/info/list";
+    /**
      * 我的订单
      */
     public static final String UserOrderList = "native://user/order/list";
@@ -73,5 +81,9 @@ public final class RouterConfig {
      * 分享邀请
      */
     public static final String UserShare = "native://user/share/index";
+    /**
+     * 预约处理
+     */
+    public static final String Subscribe = "native://subscribe";
 
 }

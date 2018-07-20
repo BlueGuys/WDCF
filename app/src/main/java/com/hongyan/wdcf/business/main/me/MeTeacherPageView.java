@@ -10,7 +10,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hongyan.StringUtils;
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.business.account.core.AccountInfo;
 import com.hongyan.wdcf.business.account.core.AccountManager;
 
@@ -63,8 +66,10 @@ public class MeTeacherPageView extends LinearLayout implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.layout_01:
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.CustomerInfo));
                 break;
             case R.id.layout_02:
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.Subscribe));
                 break;
             case R.id.layout_03:
                 break;

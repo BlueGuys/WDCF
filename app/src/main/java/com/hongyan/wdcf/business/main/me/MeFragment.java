@@ -38,17 +38,18 @@ public class MeFragment extends BaseFragment {
 
     private void changePage() {
         roorLayout.removeAllViews();
-        switch (getUserType()) {
-            case AccountInfo.TYPE_USER:
-                roorLayout.addView(userPageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                break;
-            case AccountInfo.TYPE_TEACHER:
-                roorLayout.addView(teacherPageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                break;
-            default:
-                roorLayout.addView(userPageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                break;
-        }
+        roorLayout.addView(teacherPageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+//        switch (getUserType()) {
+//            case AccountInfo.TYPE_USER:
+//                roorLayout.addView(userPageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+//                break;
+//            case AccountInfo.TYPE_TEACHER:
+//                roorLayout.addView(teacherPageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+//                break;
+//            default:
+//                roorLayout.addView(userPageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+//                break;
+//        }
     }
 
     @Override

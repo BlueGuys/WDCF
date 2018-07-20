@@ -115,7 +115,7 @@ class ViewHolder {
             return;
         }
         if (!isPullRefresh) {// 如果不是下拉刷新，就展示Loading
-            baseActivity.startLoading(false);
+            baseActivity.startLoading(true);
         }
         RequestBean requestBean = iViewHolder.getRequestBean();
         if (requestBean == null) {
