@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/wangning/Code/github/WDCF/lib_PullToRefresh/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-de/values-de.xml",
+            "map": [
+                {
+                    "source": "/Users/wangning/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/86a8286a947ad9d883deb1959f61a1fb/res/values-de/values-de.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "5",
+                        "startColumns": "4",
+                        "startOffsets": "291",
+                        "endColumns": "100",
+                        "endOffsets": "387"
+                    }
+                },
+                {
+                    "source": "/Users/wangning/Code/github/WDCF/lib_PullToRefresh/build/intermediates/bundles/debug/res/values-de/values-de.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,136,204",
+                        "endColumns": "80,67,86",
+                        "endOffsets": "131,199,286"
+                    }
+                }
+            ]
+        }
+    ]
+}

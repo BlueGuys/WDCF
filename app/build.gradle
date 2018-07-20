@@ -29,4 +29,5 @@ dependencies {
     implementation project(':lib_test')
     implementation project(':lib_utils')
     implementation project(':lib_widget')
+    implementation project(':lib_PullToRefresh')
 }

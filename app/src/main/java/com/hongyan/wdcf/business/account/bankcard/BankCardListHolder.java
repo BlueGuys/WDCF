@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 public class BankCardListHolder extends BaseViewHolder implements IViewHolder, View.OnClickListener {
 
     private BankCardListAdapter adapter;
-    private ListView listView;
+    private PullToRefreshListView listView;
     private Button button;
 
     public BankCardListHolder(BaseActivity mActivity) {
