@@ -9,7 +9,6 @@ import android.view.View;
 public interface IViewHolder {
 
     int LAYOUT_TYPE_COMMON = 0;
-    int LAYOUT_TYPE_LIST = 1;
 
     int getLayoutID();
 

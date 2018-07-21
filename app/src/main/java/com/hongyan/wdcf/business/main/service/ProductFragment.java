@@ -6,12 +6,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.hongyan.base.BaseFragment;
 import com.hongyan.base.router.Router;
 import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.base.RequestKeyTable;
+import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.business.account.core.AccountManager;
 import com.hongyan.wdcf.widget.MarginBannerView;
 import com.hongyan.wdcf.widget.ProductA;
@@ -20,7 +22,7 @@ import com.hongyan.wdcf.widget.ScrollBannerView;
 
 import java.util.ArrayList;
 
-public class ProductFragment extends BaseFragment {
+public class ProductFragment extends BaseFragment implements View.OnClickListener {
 
     private View view;
     private MarginBannerView bannerView;
@@ -163,5 +165,41 @@ public class ProductFragment extends BaseFragment {
         productB = view.findViewById(R.id.product_B);
         product01 = view.findViewById(R.id.product_01);
         product02 = view.findViewById(R.id.product_02);
+        TextView textView01 = view.findViewById(R.id.tv_product_01);
+        TextView textView02 = view.findViewById(R.id.tv_product_02);
+        TextView textView03 = view.findViewById(R.id.tv_product_03);
+        TextView textView04 = view.findViewById(R.id.tv_product_04);
+        TextView textView05 = view.findViewById(R.id.tv_product_05);
+        TextView textView06 = view.findViewById(R.id.tv_product_06);
+        textView01.setOnClickListener(this);
+        textView02.setOnClickListener(this);
+        textView03.setOnClickListener(this);
+        textView04.setOnClickListener(this);
+        textView05.setOnClickListener(this);
+        textView06.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_product_01:
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.ProductListFixed));
+                break;
+            case R.id.tv_product_02:
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.ProductListFixed));
+                break;
+            case R.id.tv_product_03:
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.ProductListFixed));
+                break;
+            case R.id.tv_product_04:
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.ProductListFixed));
+                break;
+            case R.id.tv_product_05:
+                showErrorToast("敬请期待");
+                break;
+            case R.id.tv_product_06:
+                showErrorToast("敬请期待");
+                break;
+        }
     }
 }

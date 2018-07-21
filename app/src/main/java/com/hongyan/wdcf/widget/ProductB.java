@@ -33,7 +33,7 @@ public class ProductB extends LinearLayout {
 
 
     public ProductB(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public ProductB(Context context, @Nullable AttributeSet attrs) {

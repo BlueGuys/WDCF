@@ -160,11 +160,16 @@ public class UrlConst {
     }
 
     /**
-     * 获取产品列表
+     * 我的订单列表
      */
     public static String getMyOrderListUrl() {
         return HOST + "Api/Users/myOrder";
     }
-
+    /**
+     * 类固定收益列表
+     */
+    public static String getProductFixedListUrl() {
+        return HOST + "Api/Product/getList";
+    }
 
 }

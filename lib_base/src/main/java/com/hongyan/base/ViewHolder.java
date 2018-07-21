@@ -6,7 +6,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.hongyan.lib_base.R;
@@ -28,7 +27,6 @@ class ViewHolder {
     private View rootView;
     private LinearLayout contentLayout;
     private SmartRefreshLayout smartRefreshLayout;
-    protected ListView listView;
     private View netErrorLayout;
 
     ViewHolder(BaseActivity baseActivity, BaseViewHolder businessViewHolder) {
@@ -48,8 +46,6 @@ class ViewHolder {
         int layoutResId = 0;
         if (iViewHolder.getLayoutType() == IViewHolder.LAYOUT_TYPE_COMMON) {
             layoutResId = R.layout.activity_base_common;
-        } else if (iViewHolder.getLayoutType() == IViewHolder.LAYOUT_TYPE_LIST) {
-            layoutResId = R.layout.activity_base_list;
         }
         rootView = LayoutInflater.from(baseActivity).inflate(layoutResId, null, false);
 
@@ -84,8 +80,6 @@ class ViewHolder {
 
         if (iViewHolder.getLayoutType() == IViewHolder.LAYOUT_TYPE_COMMON) {
             initLayoutCommon();
-        } else if (iViewHolder.getLayoutType() == IViewHolder.LAYOUT_TYPE_LIST) {
-            initLayoutList();
         }
 
         smartRefreshLayout.setEnableLoadMore(businessViewHolder.enableLoadMore());
@@ -100,11 +94,6 @@ class ViewHolder {
         View businessView = LayoutInflater.from(baseActivity).inflate(iViewHolder.getLayoutID(), null, false);
         businessLayout.addView(businessView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         iViewHolder.initView(businessView);
-    }
-
-    private void initLayoutList() {
-        listView = rootView.findViewById(R.id.listView);
-        listView.setAdapter(businessViewHolder.getAdapter());
     }
 
     /**

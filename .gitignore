@@ -8,3 +8,14 @@
 /captures
 .externalNativeBuild
 .idea
+libs/
+src/main/java/com/hongyan/test/
+src/main/res/drawable-xxhdpi/
+/lib_PullToRefresh/build/
+app/src/main/java/com/hongyan/test/
+app/src/main/res/drawable-xxhdpi/
+lib_network/src/main/res/drawable/
+lib_test/src/main/res/drawable/
+lib_utils/src/main/res/drawable/
+lib_widget/src/main/java/com/hongyan/edittext/
+lib_widget/src/main/res/drawable/
