@@ -1,8 +1,7 @@
-package com.hongyan.wdcf.business.account.invite;
+package com.hongyan.wdcf.business.teacher.invite;
 
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;

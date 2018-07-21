@@ -56,13 +56,13 @@
         app:desc=""
         app:title="预留手机" />
 
-    <com.hongyan.wdcf.widget.ItemA
+    <com.hongyan.wdcf.widget.ItemB
         android:id="@+id/item_introduction"
         style="@style/item_a"
-        app:desc="身份证"
-        app:title="" />
+        app:desc=""
+        app:title="个人介绍" />
 
-    <com.hongyan.wdcf.widget.ItemA
+    <com.hongyan.wdcf.widget.ItemB
         android:id="@+id/item_modify_password"
         style="@style/item_a"
         app:desc=""

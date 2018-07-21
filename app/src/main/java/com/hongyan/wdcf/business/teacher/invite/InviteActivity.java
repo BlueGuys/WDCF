@@ -1,11 +1,11 @@
-package com.hongyan.wdcf.business.subscribe;
+package com.hongyan.wdcf.business.teacher.invite;
 
 import android.os.Bundle;
 
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseViewHolder;
 
-public class SubscribeActivity extends BaseActivity {
+public class InviteActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,12 +14,6 @@ public class SubscribeActivity extends BaseActivity {
 
     @Override
     protected BaseViewHolder getViewHolder() {
-        return new SubscribeHolder(this);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        startRequestPageData();
+        return new InviteHolder(this);
     }
 }

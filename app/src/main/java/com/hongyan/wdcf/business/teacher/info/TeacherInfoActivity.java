@@ -1,4 +1,4 @@
-package com.hongyan.wdcf.business.teacher.person;
+package com.hongyan.wdcf.business.teacher.info;
 
 import android.os.Bundle;
 

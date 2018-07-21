@@ -1,4 +1,4 @@
-package com.hongyan.wdcf.business.account.invite;
+package com.hongyan.wdcf.business.teacher.invite;
 
 import com.hongyan.base.BaseModel;
 import com.hongyan.base.BaseResult;

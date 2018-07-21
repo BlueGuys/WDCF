@@ -47,15 +47,16 @@
         <activity android:name=".business.account.modifytradepassword.ModifyTradePasswordActivity" />
         <activity android:name=".business.account.order.OrderListActivity" />
         <activity android:name=".business.account.share.UserShareActivity" />
-        <activity android:name=".business.customer.CustomerListActivity" />
-        <activity android:name=".business.subscribe.SubscribeActivity" />
-        <activity android:name=".business.account.invite.InviteActivity" />
+        <activity android:name=".business.teacher.customer.CustomerListActivity" />
+        <activity android:name=".business.teacher.subscribe.SubscribeActivity" />
+        <activity android:name=".business.teacher.invite.InviteActivity" />
         <activity android:name=".business.teacher.addrecord.AddRecordActivity" />
         <activity android:name=".business.product.fixed.FixedProductListActivity" />
         <activity android:name=".business.product.equity.SimuListActivity" />
         <activity android:name=".business.product.overseas.OverseasProductListActivity" />
         <activity android:name=".business.product.insurance.InsuranceListActivity" />
-        <activity android:name=".business.teacher.person.TeacherInfoActivity" />
+        <activity android:name=".business.teacher.info.TeacherInfoActivity" />
+        <activity android:name=".business.teacher.introduction.ModifyIntroductionActivity" />
     </application>
 
 </manifest>

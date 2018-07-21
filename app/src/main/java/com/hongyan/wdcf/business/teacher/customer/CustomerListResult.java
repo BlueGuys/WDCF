@@ -1,4 +1,4 @@
-package com.hongyan.wdcf.business.customer;
+package com.hongyan.wdcf.business.teacher.customer;
 
 import com.hongyan.base.BaseResult;
 

@@ -1,4 +1,4 @@
-package com.hongyan.wdcf.business.subscribe;
+package com.hongyan.wdcf.business.teacher.subscribe;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;

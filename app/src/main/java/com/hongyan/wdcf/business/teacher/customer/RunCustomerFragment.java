@@ -1,4 +1,4 @@
-package com.hongyan.wdcf.business.subscribe;
+package com.hongyan.wdcf.business.teacher.customer;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import com.hongyan.base.BaseFragment;
 import com.hongyan.wdcf.R;
 
-public class FailedFragment extends BaseFragment {
+public class RunCustomerFragment extends BaseFragment {
 
     private View view;
 
@@ -17,7 +17,7 @@ public class FailedFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         if (view == null) {
-            view = inflater.inflate(R.layout.fragment_sub_subscribe_failed, container, false);
+            view = inflater.inflate(R.layout.fragment_sub_customer_run, container, false);
         }
         return view;
     }

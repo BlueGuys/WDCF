@@ -6,7 +6,8 @@ import com.hongyan.wdcf.business.account.bankcard.BankCardListActivity;
 import com.hongyan.wdcf.business.account.bankcard.BindBankCardActivity;
 import com.hongyan.wdcf.business.account.bindteacher.BindTeacherActivity;
 import com.hongyan.wdcf.business.account.feedback.FeedbackActivity;
-import com.hongyan.wdcf.business.account.invite.InviteActivity;
+import com.hongyan.wdcf.business.teacher.introduction.ModifyIntroductionActivity;
+import com.hongyan.wdcf.business.teacher.invite.InviteActivity;
 import com.hongyan.wdcf.business.account.login.LoginActivity;
 import com.hongyan.wdcf.business.account.modifyloginpassword.ModifyLoginPasswordActivity;
 import com.hongyan.wdcf.business.account.modifytradepassword.ModifyTradePasswordActivity;
@@ -17,14 +18,14 @@ import com.hongyan.wdcf.business.account.select.SelectIdentifyActivity;
 import com.hongyan.wdcf.business.account.setting.SettingActivity;
 import com.hongyan.wdcf.business.account.share.UserShareActivity;
 import com.hongyan.wdcf.business.account.user.UserInfoActivity;
-import com.hongyan.wdcf.business.customer.CustomerListActivity;
+import com.hongyan.wdcf.business.teacher.customer.CustomerListActivity;
 import com.hongyan.wdcf.business.product.equity.SimuListActivity;
 import com.hongyan.wdcf.business.product.fixed.FixedProductListActivity;
 import com.hongyan.wdcf.business.product.insurance.InsuranceListActivity;
 import com.hongyan.wdcf.business.product.overseas.OverseasProductListActivity;
-import com.hongyan.wdcf.business.subscribe.SubscribeActivity;
+import com.hongyan.wdcf.business.teacher.subscribe.SubscribeActivity;
 import com.hongyan.wdcf.business.teacher.addrecord.AddRecordActivity;
-import com.hongyan.wdcf.business.teacher.person.TeacherInfoActivity;
+import com.hongyan.wdcf.business.teacher.info.TeacherInfoActivity;
 
 public final class RouterConfig {
 
@@ -70,6 +71,7 @@ public final class RouterConfig {
         RouterConst.addRouter(ProductListOverseas, OverseasProductListActivity.class.getName());
         RouterConst.addRouter(ProductListInsurance, InsuranceListActivity.class.getName());
         RouterConst.addRouter(TeacherInfoIndex, TeacherInfoActivity.class.getName());
+        RouterConst.addRouter(TeacherIntroductionModify, ModifyIntroductionActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -128,5 +130,9 @@ public final class RouterConfig {
      * 理财师->个人信息
      */
     public static final String TeacherInfoIndex = "native://teacher/info/index";
+    /**
+     * 理财师->提交个人介绍
+     */
+    public static final String TeacherIntroductionModify = "native://teacher/introduction/modify";
 
 }
