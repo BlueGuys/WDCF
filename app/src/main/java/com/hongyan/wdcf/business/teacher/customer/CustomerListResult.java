@@ -13,11 +13,14 @@ public class CustomerListResult extends BaseResult {
     public Data data;
 
     static class Data {
-        public ArrayList<BankCard> list;
+        public ArrayList<Customer> list;
     }
 
-    static class BankCard{
-
+    static class Customer{
+        public String user_nicename;
+        public String id;
+        public String mobile;
+        public String review_str;
     }
 
 }

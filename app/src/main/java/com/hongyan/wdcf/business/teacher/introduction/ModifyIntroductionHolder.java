@@ -73,10 +73,10 @@ public class ModifyIntroductionHolder extends BaseViewHolder implements IViewHol
         switch (v.getId()) {
             case R.id.btn_commit:
                 String content = editText.getText().toString();
-                if (content.length() < 15) {
-                    showErrorToast("字数太少");
-                    return;
-                }
+//                if (content.length() < 15) {
+//                    showErrorToast("字数太少");
+//                    return;
+//                }
                 introductionModel.commit(content);
                 break;
         }

@@ -103,19 +103,6 @@ public class CustomerListHolder extends BaseViewHolder implements IViewHolder, V
 
     @Override
     public <T extends BaseResult> void onRequestSuccess(T result) {
-        CustomerListResult cardListResult = (CustomerListResult) result;
-        if (cardListResult == null) {
-            return;
-        }
-        if (cardListResult.isSuccessful()) {
-            setDataList(cardListResult.data.list);
-        } else {
-            showErrorToast(cardListResult.getReturnMessage());
-        }
-    }
-
-    protected void setDataList(ArrayList<CustomerListResult.BankCard> list) {
-        //
     }
 
     @Override

@@ -171,5 +171,11 @@ public class UrlConst {
     public static String getProductFixedListUrl() {
         return HOST + "Api/Product/getList";
     }
+    /**
+     * 我的客户列表
+     */
+    public static String getCustomerListUrl() {
+        return HOST + "Api/Finaplanner/myUser";
+    }
 
 }

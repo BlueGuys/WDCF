@@ -19,4 +19,5 @@ public class RequestKeyTable {
     public static final String USER_NICENAME = "user_nicename";
     public static final String TITLE = "title";
     public static final String CAT_ID = "cat_id";
+    public static final String IS_INVEST = "is_invest";
 }
