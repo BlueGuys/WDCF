@@ -11,7 +11,7 @@
     <com.hongyan.wdcf.widget.ItemC
         android:id="@+id/item_bank"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/ds90"
+        android:layout_height="@dimen/ds120"
         android:layout_marginTop="@dimen/ds40"
         app:image="@drawable/icon_bankcard"
         app:title="银行卡管理" />
@@ -19,7 +19,7 @@
     <com.hongyan.wdcf.widget.ItemC
         android:id="@+id/item_password"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/ds90"
+        android:layout_height="@dimen/ds120"
         android:layout_marginTop="@dimen/ds2"
         app:image="@drawable/icon_password"
         app:title="密码管理" />

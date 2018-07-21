@@ -29,7 +29,7 @@
 
     <style name="item_a">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">@dimen/ds100</item>
         <item name="android:layout_marginTop">@dimen/ds4</item>
         <item name="android:layout_marginLeft">@dimen/ds10</item>
         <item name="android:layout_marginRight">@dimen/ds10</item>

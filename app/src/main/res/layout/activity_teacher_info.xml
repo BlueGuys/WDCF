@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackground"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/ds30"
+        android:layout_marginLeft="@dimen/ds10"
+        android:layout_marginRight="@dimen/ds10"
+        android:layout_marginTop="@dimen/ds30"
+        android:background="@drawable/bg_corner_white"
+        android:padding="@dimen/ds20">
+
+        <ImageView
+            android:id="@+id/image_user_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_user_photo" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/ds30"
+            android:layout_toRightOf="@id/image_user_logo"
+            android:gravity="left|center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/fontPositive"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tv_user_mobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/fontPositive"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <com.hongyan.wdcf.widget.ItemA
+        android:id="@+id/item_mobile_phone"
+        style="@style/item_a"
+        app:desc=""
+        app:title="预留手机" />
+
+    <com.hongyan.wdcf.widget.ItemA
+        android:id="@+id/item_introduction"
+        style="@style/item_a"
+        app:desc="身份证"
+        app:title="" />
+
+    <com.hongyan.wdcf.widget.ItemA
+        android:id="@+id/item_modify_password"
+        style="@style/item_a"
+        app:desc=""
+        app:title="修改登录密码" />
+
+    <Button
+        android:id="@+id/btn_exit"
+        style="@style/button_normal"
+        android:layout_marginLeft="@dimen/ds100"
+        android:layout_marginRight="@dimen/ds100"
+        android:layout_marginTop="@dimen/ds60"
+        android:text="退出登录" />
+
+</LinearLayout>

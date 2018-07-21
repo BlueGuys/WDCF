@@ -38,12 +38,17 @@ public class MeTeacherPageView extends LinearLayout implements View.OnClickListe
         LinearLayout layout03 = view.findViewById(R.id.layout_03);
         LinearLayout layout04 = view.findViewById(R.id.layout_04);
         ImageView imageLogo = view.findViewById(R.id.image_logo);
+        TextView tvMember = view.findViewById(R.id.tv_member);
         tvUserName = view.findViewById(R.id.tv_userName);
         tvUserPhone = view.findViewById(R.id.tv_userPhone);
         layout01.setOnClickListener(this);
         layout02.setOnClickListener(this);
         layout03.setOnClickListener(this);
         layout04.setOnClickListener(this);
+        tvMember.setOnClickListener(this);
+        tvUserName.setOnClickListener(this);
+        tvUserPhone.setOnClickListener(this);
+        imageLogo.setOnClickListener(this);
 
         AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
         if (accountInfo != null) {
@@ -76,6 +81,12 @@ public class MeTeacherPageView extends LinearLayout implements View.OnClickListe
                 break;
             case R.id.layout_04:
                 RouterManager.getInstance().openUrl(new Router(RouterConfig.TearcherAddRecord));
+                break;
+            case R.id.tv_member:
+            case R.id.image_logo:
+            case R.id.tv_userName:
+            case R.id.tv_userPhone:
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.TeacherInfoIndex));
                 break;
         }
     }

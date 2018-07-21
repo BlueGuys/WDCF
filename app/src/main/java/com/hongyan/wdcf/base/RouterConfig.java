@@ -24,6 +24,7 @@ import com.hongyan.wdcf.business.product.insurance.InsuranceListActivity;
 import com.hongyan.wdcf.business.product.overseas.OverseasProductListActivity;
 import com.hongyan.wdcf.business.subscribe.SubscribeActivity;
 import com.hongyan.wdcf.business.teacher.addrecord.AddRecordActivity;
+import com.hongyan.wdcf.business.teacher.person.TeacherInfoActivity;
 
 public final class RouterConfig {
 
@@ -68,6 +69,7 @@ public final class RouterConfig {
         RouterConst.addRouter(ProductListSimu, SimuListActivity.class.getName());
         RouterConst.addRouter(ProductListOverseas, OverseasProductListActivity.class.getName());
         RouterConst.addRouter(ProductListInsurance, InsuranceListActivity.class.getName());
+        RouterConst.addRouter(TeacherInfoIndex, TeacherInfoActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -122,5 +124,9 @@ public final class RouterConfig {
      * 保险服务
      */
     public static final String ProductListInsurance = "native://product/list/insurance";
+    /**
+     * 理财师->个人信息
+     */
+    public static final String TeacherInfoIndex = "native://teacher/info/index";
 
 }
