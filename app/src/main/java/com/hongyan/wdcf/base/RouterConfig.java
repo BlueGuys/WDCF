@@ -18,6 +18,7 @@ import com.hongyan.wdcf.business.account.setting.SettingActivity;
 import com.hongyan.wdcf.business.account.share.UserShareActivity;
 import com.hongyan.wdcf.business.account.user.UserInfoActivity;
 import com.hongyan.wdcf.business.customer.CustomerListActivity;
+import com.hongyan.wdcf.business.product.equity.SimuListActivity;
 import com.hongyan.wdcf.business.product.fixed.FixedProductListActivity;
 import com.hongyan.wdcf.business.subscribe.SubscribeActivity;
 import com.hongyan.wdcf.business.teacher.addrecord.AddRecordActivity;
@@ -61,6 +62,8 @@ public final class RouterConfig {
         RouterConst.addRouter(UserInvite, InviteActivity.class.getName());
         RouterConst.addRouter(TearcherAddRecord, AddRecordActivity.class.getName());
         RouterConst.addRouter(ProductListFixed, FixedProductListActivity.class.getName());
+        RouterConst.addRouter(ProductListFixed, FixedProductListActivity.class.getName());
+        RouterConst.addRouter(ProductListSimu, SimuListActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -103,5 +106,9 @@ public final class RouterConfig {
      * 类固收列表
      */
     public static final String ProductListFixed = "native://product/list/fixed";
+    /**
+     * 私募股权
+     */
+    public static final String ProductListSimu = "native://product/list/fixed";
 
 }

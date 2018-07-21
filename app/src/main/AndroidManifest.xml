@@ -52,6 +52,7 @@
         <activity android:name=".business.account.invite.InviteActivity" />
         <activity android:name=".business.teacher.addrecord.AddRecordActivity" />
         <activity android:name=".business.product.fixed.FixedProductListActivity" />
+        <activity android:name=".business.product.equity.SimuListActivity" />
     </application>
 
 </manifest>
