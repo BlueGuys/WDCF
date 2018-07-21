@@ -56,7 +56,7 @@ public class MainActivity extends TabActivity {
     @Override
     protected void onResume() {
         super.onResume();
-//        RouterManager.getInstance().openUrl(new Router(RouterConfig.CustomerInfo));
+        RouterManager.getInstance().openUrl(new Router(RouterConfig.UserBankCardList));
     }
 
     @Override

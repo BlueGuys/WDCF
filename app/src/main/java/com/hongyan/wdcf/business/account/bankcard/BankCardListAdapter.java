@@ -24,6 +24,26 @@ public class BankCardListAdapter extends BaseAdapter {
 
     private ArrayList<BankCardListResult.BankCard> mList = new ArrayList<>();
 
+    public BankCardListAdapter() {
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+        mList.add(new BankCardListResult.BankCard());
+    }
+
     public void setData(ArrayList<BankCardListResult.BankCard> list) {
         if (list != null) {
             mList.addAll(list);
@@ -51,21 +71,13 @@ public class BankCardListAdapter extends BaseAdapter {
         ViewHolder holder;
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_activity, parent, false);
-            holder.imageView = convertView.findViewById(R.id.imageView);
-            holder.tvTitle = convertView.findViewById(R.id.tv_title);
-            holder.tvAddress = convertView.findViewById(R.id.tv_address);
-            holder.tvTime = convertView.findViewById(R.id.tv_time);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bankcard, parent, false);
+
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         BankCardListResult.BankCard bankCard = mList.get(position);
-//        holder.tvTitle.setText(bankCard.title);
-//        holder.tvAddress.setText("地点:" + bankCard.address);
-//        holder.tvTime.setText("时间:" + bankCard.start_time + "至" + bankCard.end_time);
-//        DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getCornerImageOption(20);
-//        ImageLoader.getInstance().displayImage(bankCard.photo, holder.imageView, options);
         return convertView;
     }
 
