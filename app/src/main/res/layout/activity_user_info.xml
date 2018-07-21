@@ -70,6 +70,25 @@
         app:desc=""
         app:title="证件号码" />
 
+    <com.hongyan.wdcf.widget.ItemA
+        android:id="@+id/item_mobile_phone"
+        style="@style/item_a"
+        app:desc=""
+        app:title="预约手机"
+        android:layout_marginTop="@dimen/ds30"/>
+
+    <com.hongyan.wdcf.widget.ItemA
+        android:id="@+id/item_email"
+        style="@style/item_a"
+        app:desc=""
+        app:title="电子邮箱" />
+
+    <com.hongyan.wdcf.widget.ItemA
+        android:id="@+id/item_address"
+        style="@style/item_a"
+        app:desc=""
+        app:title="账单邮寄地址" />
+
     <Button
         android:id="@+id/btn_exit"
         style="@style/button_normal"

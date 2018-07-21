@@ -18,6 +18,8 @@ public class UserInfoResult extends BaseResult {
         public String avatar;
         public String mobile;
         public String auth_status;
+        public String id_number;
+        public String address;
     }
 
     //        "id": "12",

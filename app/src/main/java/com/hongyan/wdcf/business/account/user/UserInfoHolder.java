@@ -21,18 +21,19 @@ import com.hongyan.wdcf.widget.ItemA;
 
 public class UserInfoHolder extends BaseViewHolder implements IViewHolder, View.OnClickListener {
 
-    private UserInfoModel registerModel;
     private ImageView imageUserLogo;
     private TextView tvUserName;
     private TextView tvUserMobile;
     private ItemA itemName;
     private ItemA itemCertificatesType;
     private ItemA itemCertificatesNumber;
+    private ItemA itemMobilePhone;
+    private ItemA itemEmail;
+    private ItemA itemAddress;
     private Button buttonExit;
 
     public UserInfoHolder(BaseActivity mActivity) {
         super(mActivity);
-        registerModel = new UserInfoModel(this);
     }
 
     @Override
@@ -60,6 +61,9 @@ public class UserInfoHolder extends BaseViewHolder implements IViewHolder, View.
         itemName = rootView.findViewById(R.id.item_name);
         itemCertificatesType = rootView.findViewById(R.id.item_certificates_type);
         itemCertificatesNumber = rootView.findViewById(R.id.item_certificates_number);
+        itemMobilePhone = rootView.findViewById(R.id.item_mobile_phone);
+        itemEmail = rootView.findViewById(R.id.item_email);
+        itemAddress = rootView.findViewById(R.id.item_address);
         buttonExit = rootView.findViewById(R.id.btn_exit);
         buttonExit.setOnClickListener(this);
 
@@ -67,6 +71,11 @@ public class UserInfoHolder extends BaseViewHolder implements IViewHolder, View.
         if (accountInfo != null) {
             tvUserName.setText(accountInfo.getUser_nicename());
             tvUserMobile.setText(accountInfo.getUIMobile());
+            itemName.setDesc(accountInfo.getUser_nicename());
+            itemCertificatesNumber.setDesc(accountInfo.getUser_nicename());
+            itemMobilePhone.setDesc(accountInfo.getUIMobile());
+            itemEmail.setDesc(accountInfo.getUser_email());
+            itemAddress.setDesc(accountInfo.getAddress());
         }
 
     }

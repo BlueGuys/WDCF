@@ -12,6 +12,7 @@ public class AccountInfo extends BaseResult {
     public static final int AUTH_TYPE_STATUS = 1;
 
     public String id;
+    public String id_number;
     /**
      * 2 用户 3理财师
      */
@@ -20,6 +21,7 @@ public class AccountInfo extends BaseResult {
     public String user_email;
     public String avatar;
     public String mobile;
+    public String address;
     /**
      *  auth_status=0 跳转提交资料页面提交资料进行审核
      *  auth_status=1 等待审核 提示等待，
@@ -89,5 +91,21 @@ public class AccountInfo extends BaseResult {
 
     public void setAuth_status(int auth_status) {
         this.auth_status = auth_status;
+    }
+
+    public String getId_number() {
+        return id_number;
+    }
+
+    public void setId_number(String id_number) {
+        this.id_number = id_number;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

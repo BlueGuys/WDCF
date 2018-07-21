@@ -107,6 +107,8 @@ public class AccountManager {
                     mAccountInfo.setUser_type(data.user_type);
                     mAccountInfo.setMobile(data.mobile);
                     mAccountInfo.setAvatar(data.avatar);
+                    mAccountInfo.setId_number(data.id_number);
+                    mAccountInfo.setAddress(data.address);
                     saveAccountInfo(GsonUtils.toJson(mAccountInfo));
                     EventBus.getDefault().post(new AccountMessageEvent(true));
                 }

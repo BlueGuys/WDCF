@@ -20,6 +20,9 @@ import com.hongyan.wdcf.R;
 public class ItemA extends LinearLayout {
 
     private View view;
+    TextView tvTitle;
+    TextView tvDesc;
+
 
     public ItemA(Context context) {
         super(context);
@@ -32,12 +35,20 @@ public class ItemA extends LinearLayout {
     }
 
     private void initView(Context context, AttributeSet attrs) {
-        TextView tvTitle = view.findViewById(R.id.tv_title);
-        TextView tvDesc = view.findViewById(R.id.tv_desc);
+        tvTitle = view.findViewById(R.id.tv_title);
+        tvDesc = view.findViewById(R.id.tv_desc);
         @SuppressLint("Recycle") TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ItemA);
         String title = ta.getString(R.styleable.ItemA_title);
         String desc = ta.getString(R.styleable.ItemA_desc);
         tvTitle.setText(title);
+        tvDesc.setText(desc);
+    }
+
+    public void setTitle(String title) {
+        tvTitle.setText(title);
+    }
+
+    public void setDesc(String desc) {
         tvDesc.setText(desc);
     }
 }
