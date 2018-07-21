@@ -192,7 +192,7 @@ public class ProductFragment extends BaseFragment implements View.OnClickListene
                 RouterManager.getInstance().openUrl(new Router(RouterConfig.ProductListOverseas));
                 break;
             case R.id.tv_product_04:
-                RouterManager.getInstance().openUrl(new Router(RouterConfig.ProductListFixed));
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.ProductListInsurance));
                 break;
             case R.id.tv_product_05:
                 showErrorToast("敬请期待");

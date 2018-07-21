@@ -54,6 +54,7 @@
         <activity android:name=".business.product.fixed.FixedProductListActivity" />
         <activity android:name=".business.product.equity.SimuListActivity" />
         <activity android:name=".business.product.overseas.OverseasProductListActivity" />
+        <activity android:name=".business.product.insurance.InsuranceListActivity" />
     </application>
 
 </manifest>
