@@ -20,6 +20,7 @@ import com.hongyan.wdcf.business.account.user.UserInfoActivity;
 import com.hongyan.wdcf.business.customer.CustomerListActivity;
 import com.hongyan.wdcf.business.product.equity.SimuListActivity;
 import com.hongyan.wdcf.business.product.fixed.FixedProductListActivity;
+import com.hongyan.wdcf.business.product.overseas.OverseasProductListActivity;
 import com.hongyan.wdcf.business.subscribe.SubscribeActivity;
 import com.hongyan.wdcf.business.teacher.addrecord.AddRecordActivity;
 
@@ -64,6 +65,7 @@ public final class RouterConfig {
         RouterConst.addRouter(ProductListFixed, FixedProductListActivity.class.getName());
         RouterConst.addRouter(ProductListFixed, FixedProductListActivity.class.getName());
         RouterConst.addRouter(ProductListSimu, SimuListActivity.class.getName());
+        RouterConst.addRouter(ProductListOverseas, OverseasProductListActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -110,5 +112,9 @@ public final class RouterConfig {
      * 私募股权
      */
     public static final String ProductListSimu = "native://product/list/fixed";
+    /**
+     * 海外投资
+     */
+    public static final String ProductListOverseas = "native://product/list/overseas";
 
 }

@@ -189,7 +189,7 @@ public class ProductFragment extends BaseFragment implements View.OnClickListene
                 RouterManager.getInstance().openUrl(new Router(RouterConfig.ProductListSimu));
                 break;
             case R.id.tv_product_03:
-                RouterManager.getInstance().openUrl(new Router(RouterConfig.ProductListFixed));
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.ProductListOverseas));
                 break;
             case R.id.tv_product_04:
                 RouterManager.getInstance().openUrl(new Router(RouterConfig.ProductListFixed));

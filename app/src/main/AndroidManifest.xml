@@ -53,6 +53,7 @@
         <activity android:name=".business.teacher.addrecord.AddRecordActivity" />
         <activity android:name=".business.product.fixed.FixedProductListActivity" />
         <activity android:name=".business.product.equity.SimuListActivity" />
+        <activity android:name=".business.product.overseas.OverseasProductListActivity" />
     </application>
 
 </manifest>
