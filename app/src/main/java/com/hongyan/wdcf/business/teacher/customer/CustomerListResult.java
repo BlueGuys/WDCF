@@ -16,11 +16,18 @@ public class CustomerListResult extends BaseResult {
         public ArrayList<Customer> list;
     }
 
-    static class Customer{
+    static class Customer {
         public String user_nicename;
         public String id;
         public String mobile;
         public String review_str;
+
+        public String getUIMobile() {
+            if (mobile != null && mobile.length() == 11) {
+                return mobile.substring(0, 3) + "****" + mobile.substring(7, 11);
+            }
+            return mobile;
+        }
     }
 
 }

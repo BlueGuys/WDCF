@@ -26,7 +26,7 @@ public class AllCustomerFragment extends BaseFragment implements CustomerListMod
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_sub_customer_all, container, false);
             listView = view.findViewById(R.id.listView);
-            adapter = new CustomerAdapter();
+            adapter = new CustomerAdapter(getActivity());
             listView.setAdapter(adapter);
         }
         model.refresh(true);

@@ -1,14 +1,18 @@
 package com.hongyan.wdcf.business.teacher.customer;
 
-import android.view.LayoutInflater;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.hongyan.wdcf.R;
-import com.hongyan.wdcf.business.account.bankcard.BankCardListResult;
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
+import com.hongyan.wdcf.base.RequestKeyTable;
+import com.hongyan.wdcf.base.RouterConfig;
+import com.hongyan.wdcf.widget.ConfirmDialog;
+import com.hongyan.wdcf.widget.ItemCustomer;
 
 import java.util.ArrayList;
 
@@ -18,10 +22,11 @@ import java.util.ArrayList;
 
 public class CustomerAdapter extends BaseAdapter {
 
-
+    private Activity activity;
     private ArrayList<CustomerListResult.Customer> mList = new ArrayList<>();
 
-    public CustomerAdapter() {
+    public CustomerAdapter(Activity context) {
+        this.activity = context;
     }
 
     public void setData(ArrayList<CustomerListResult.Customer> list) {
@@ -49,24 +54,46 @@ public class CustomerAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
-        if (convertView == null) {
-            holder = new ViewHolder();
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bankcard, parent, false);
-
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
+        ItemCustomer itemCustomer = new ItemCustomer(activity);
+        final CustomerListResult.Customer customer = mList.get(position);
+        if (customer != null) {
+            itemCustomer.setName(customer.user_nicename);
+            itemCustomer.setMobile(customer.getUIMobile());
+            itemCustomer.setLevel(customer.review_str);
+            itemCustomer.setCallClickListener(new ItemCustomer.OnCallClickListener() {
+                @Override
+                public void onClick() {
+                    final ConfirmDialog dialog = new ConfirmDialog(activity);
+                    dialog.show();
+                    dialog.setContent(customer.mobile, "取消", "呼叫");
+                    dialog.setLeftListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.setRightListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                            Intent intent = new Intent(Intent.ACTION_DIAL);
+                            Uri data = Uri.parse("tel:" + customer.mobile);
+                            intent.setData(data);
+                            activity.startActivity(intent);
+                        }
+                    });
+                }
+            });
+            itemCustomer.setEditClickListener(new ItemCustomer.OnEditClickListener() {
+                @Override
+                public void onClick() {
+                    Router router = new Router(RouterConfig.TearcherAddRecord);
+//                    router.addParams(RequestKeyTable.ID_NUMBER, customer.id);
+                    RouterManager.getInstance().openUrl(router);
+                }
+            });
         }
-        CustomerListResult.Customer customer = mList.get(position);
-        return convertView;
-    }
-
-    class ViewHolder {
-        ImageView imageView;
-        TextView tvTitle;
-        TextView tvAddress;
-        TextView tvTime;
+        return itemCustomer;
     }
 
 }
