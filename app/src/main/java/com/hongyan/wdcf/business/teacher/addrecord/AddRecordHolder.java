@@ -1,9 +1,12 @@
 package com.hongyan.wdcf.business.teacher.addrecord;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.hongyan.StringUtils;
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
@@ -15,6 +18,8 @@ import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.widget.ItemB;
 
+import org.feezu.liuli.timeselector.TimeSelector;
+
 /**
  * Created by wangning on 2018/6/10.
  */
@@ -24,7 +29,12 @@ public class AddRecordHolder extends BaseViewHolder implements IViewHolder, View
     private AddRecordModel addRecordModel;
     private EditText editText;
     private ItemB itemCustomer;
+    private ItemB itemChatTime;
+    private ItemB itemRemindTime;
     private String customerID;
+    private String content;
+    private String chatTime;
+    private String remindTime;
 
     public AddRecordHolder(BaseActivity mActivity) {
         super(mActivity);
@@ -50,14 +60,30 @@ public class AddRecordHolder extends BaseViewHolder implements IViewHolder, View
     public void initView(View rootView) {
         addLeftButtonDefault();
         itemCustomer = rootView.findViewById(R.id.item_select_customer);
-        ItemB itemChatTime = rootView.findViewById(R.id.item_chat_time);
-        ItemB itemRemindTime = rootView.findViewById(R.id.item_tip_time);
+        itemChatTime = rootView.findViewById(R.id.item_chat_time);
+        itemRemindTime = rootView.findViewById(R.id.item_tip_time);
         editText = rootView.findViewById(R.id.editText);
         Button buttonCommit = rootView.findViewById(R.id.btn_commit);
         buttonCommit.setOnClickListener(this);
         itemCustomer.setOnClickListener(this);
         itemChatTime.setOnClickListener(this);
         itemRemindTime.setOnClickListener(this);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                content = editText.getText().toString();
+            }
+        });
     }
 
     @Override
@@ -85,17 +111,53 @@ public class AddRecordHolder extends BaseViewHolder implements IViewHolder, View
             case R.id.item_select_customer:
                 RouterManager.getInstance().openUrl(new Router(RouterConfig.TeacherCustomerList));
                 break;
-            case R.id.item_chat_time:
+            case R.id.item_chat_time: {
+                TimeSelector timeSelector = new TimeSelector(mActivity, new TimeSelector.ResultHandler() {
+                    @Override
+                    public void handle(String time) {
+                        chatTime = time;
+                        itemChatTime.setDesc(time);
+                    }
+                }, "2018-01-01 00:00", "2028-12-31 23:59:59");
+                timeSelector.setIsLoop(false);//设置不循环,true循环
+                timeSelector.setMode(TimeSelector.MODE.YMD);//显示 年月日时分（默认）
+                timeSelector.show();
                 break;
-            case R.id.item_tip_time:
+            }
+            case R.id.item_tip_time: {
+                TimeSelector timeSelector = new TimeSelector(mActivity, new TimeSelector.ResultHandler() {
+                    @Override
+                    public void handle(String time) {
+                        remindTime = time;
+                        itemRemindTime.setDesc(time);
+                    }
+                }, "2018-01-01 00:00", "2028-12-31 23:59:59");
+                timeSelector.setIsLoop(false);//设置不循环,true循环
+                timeSelector.setMode(TimeSelector.MODE.YMD);//显示 年月日时分（默认）
+                timeSelector.show();
                 break;
+            }
             case R.id.btn_commit:
-                String content = editText.getText().toString();
+                if (StringUtils.isEmpty(customerID)) {
+                    showErrorToast("选择客户");
+                    return;
+                }
+                if (StringUtils.isEmpty(customerID)) {
+                    showErrorToast("选择沟通时间");
+                    return;
+                }
+                if (StringUtils.isEmpty(customerID)) {
+                    showErrorToast("选择提醒时间");
+                    return;
+                }
                 if (content.length() < 15) {
                     showErrorToast("字数太少");
                     return;
                 }
                 addRecordModel.setId(customerID);
+                addRecordModel.setLinkup_time(chatTime);
+                addRecordModel.setRemind_time(remindTime);
+                addRecordModel.setRemarks(content);
                 addRecordModel.commit();
                 break;
         }

@@ -27,8 +27,8 @@ public class OrderStatusModel extends BaseModel {
         WDNetworkCall editOrderCall = new WDNetworkCall<>();
         editOrderCall.setRequestUrl(UrlConst.getOrderStatusEditUrl());
         editOrderCall.setResultClass(OrderStatusResult.class);
-        editOrderCall.addParam(RequestKeyTable.CONTENT, content);
-        editOrderCall.addParam(RequestKeyTable.REMARKS, String.valueOf(status));
+        editOrderCall.addParam(RequestKeyTable.REMARKS, content);
+        editOrderCall.addParam(RequestKeyTable.STATUS, String.valueOf(status));
         editOrderCall.addParam(RequestKeyTable.ID, id);
         editOrderCall.start(new RequestListener() {
             @Override
