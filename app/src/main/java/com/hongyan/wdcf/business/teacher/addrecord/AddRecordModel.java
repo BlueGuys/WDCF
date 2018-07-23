@@ -15,22 +15,28 @@ import com.hongyan.wdcf.config.UrlConst;
 public class AddRecordModel extends BaseModel {
 
     private AddRecordHolder viewHolder;
+    private String id;
+    private String remarks;
+    private String linkup_time;
+    private String remind_time;
 
     public AddRecordModel(AddRecordHolder viewHolder) {
         this.viewHolder = viewHolder;
     }
 
-    public void commit(String content, String email) {
+    public void commit() {
         WDNetworkCall feedbackCall = new WDNetworkCall<>();
-        feedbackCall.setRequestUrl(UrlConst.getFeedbackUrl());
-        feedbackCall.setResultClass(DiscoverResult.class);
-        feedbackCall.addParam(RequestKeyTable.CONTENT, content);
-        feedbackCall.addParam(RequestKeyTable.EMAIL, email);
+        feedbackCall.setRequestUrl(UrlConst.getAddRecordUrl());
+        feedbackCall.setResultClass(AddRecordResult.class);
+        feedbackCall.addParam(RequestKeyTable.REMARKS, remarks);
+        feedbackCall.addParam(RequestKeyTable.ID, id);
+        feedbackCall.addParam(RequestKeyTable.LINK_UP_TIME, linkup_time);
+        feedbackCall.addParam(RequestKeyTable.REMIND_TIME, remind_time);
         feedbackCall.start(new RequestListener() {
             @Override
             public <T extends BaseResult> void onResponse(T result) {
-                DiscoverResult discoverResult = (DiscoverResult) result;
-                if (discoverResult.isSuccessful()) {
+                AddRecordResult addRecordResult = (AddRecordResult) result;
+                if (addRecordResult.isSuccessful()) {
                     viewHolder.showSuccessToast("提交成功");
                     viewHolder.goBack();
                 }
@@ -41,5 +47,21 @@ public class AddRecordModel extends BaseModel {
 
             }
         });
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    public void setLinkup_time(String linkup_time) {
+        this.linkup_time = linkup_time;
+    }
+
+    public void setRemind_time(String remind_time) {
+        this.remind_time = remind_time;
     }
 }

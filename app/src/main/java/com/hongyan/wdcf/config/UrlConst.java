@@ -193,4 +193,11 @@ public class UrlConst {
     public static String getOrderStatusEditUrl() {
         return HOST + "Api/Finaplanner/changeStatus";
     }
+
+    /**
+     * 增加沟通
+     */
+    public static String getAddRecordUrl() {
+        return HOST + "Api/Finaplanner/addLinkup";
+    }
 }

@@ -23,4 +23,6 @@ public class RequestKeyTable {
     public static final String STATUS = "status";
     public static final String ID = "id";
     public static final String REMARKS = "remarks";
+    public static final String LINK_UP_TIME = "linkup_time";
+    public static final String REMIND_TIME = "remind_time";
 }

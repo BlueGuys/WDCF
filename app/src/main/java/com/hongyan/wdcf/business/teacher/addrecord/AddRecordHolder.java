@@ -2,6 +2,7 @@ package com.hongyan.wdcf.business.teacher.addrecord;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;
@@ -9,6 +10,7 @@ import com.hongyan.base.BaseViewHolder;
 import com.hongyan.base.IViewHolder;
 import com.hongyan.base.RequestBean;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.widget.ItemB;
 
 /**
  * Created by wangning on 2018/6/10.
@@ -16,11 +18,12 @@ import com.hongyan.wdcf.R;
 
 public class AddRecordHolder extends BaseViewHolder implements IViewHolder, View.OnClickListener {
 
-    private AddRecordModel feedbackModel;
+    private AddRecordModel addRecordModel;
+    private EditText editText;
 
     public AddRecordHolder(BaseActivity mActivity) {
         super(mActivity);
-        feedbackModel = new AddRecordModel(this);
+        addRecordModel = new AddRecordModel(this);
     }
 
     @Override
@@ -41,8 +44,15 @@ public class AddRecordHolder extends BaseViewHolder implements IViewHolder, View
     @Override
     public void initView(View rootView) {
         addLeftButtonDefault();
+        ItemB itemCustomer = rootView.findViewById(R.id.item_select_customer);
+        ItemB itemChatTime = rootView.findViewById(R.id.item_chat_time);
+        ItemB itemRemindTime = rootView.findViewById(R.id.item_tip_time);
+        editText = rootView.findViewById(R.id.editText);
         Button buttonCommit = rootView.findViewById(R.id.btn_commit);
         buttonCommit.setOnClickListener(this);
+        itemCustomer.setOnClickListener(this);
+        itemChatTime.setOnClickListener(this);
+        itemRemindTime.setOnClickListener(this);
     }
 
     @Override
@@ -67,8 +77,19 @@ public class AddRecordHolder extends BaseViewHolder implements IViewHolder, View
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.item_select_customer:
+                break;
+            case R.id.item_chat_time:
+                break;
+            case R.id.item_tip_time:
+                break;
             case R.id.btn_commit:
-
+                String content = editText.getText().toString();
+                if (content.length() < 15) {
+                    showErrorToast("字数太少");
+                    return;
+                }
+                addRecordModel.commit();
                 break;
         }
     }
