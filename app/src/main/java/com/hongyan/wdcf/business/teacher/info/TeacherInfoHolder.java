@@ -13,12 +13,15 @@ import com.hongyan.base.RequestBean;
 import com.hongyan.base.router.Router;
 import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.ImageLoaderOptionHelper;
 import com.hongyan.wdcf.base.RequestKeyTable;
 import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.business.account.core.AccountInfo;
 import com.hongyan.wdcf.business.account.core.AccountManager;
 import com.hongyan.wdcf.widget.ItemA;
 import com.hongyan.wdcf.widget.ItemB;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * Created by wangning on 2018/6/10.
@@ -79,6 +82,8 @@ public class TeacherInfoHolder extends BaseViewHolder implements IViewHolder, Vi
             tvUserMobile.setText(accountInfo.getUIMobile());
             itemMobilePhone.setDesc(accountInfo.getUIMobile());
             itemIntroduction.setDesc(accountInfo.getContent());
+            DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getAvatarImageOption();
+            ImageLoader.getInstance().displayImage(accountInfo.getAvatar(), imageUserLogo, options);
         }
     }
 

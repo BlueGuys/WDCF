@@ -11,9 +11,12 @@ import com.hongyan.base.BaseViewHolder;
 import com.hongyan.base.IViewHolder;
 import com.hongyan.base.RequestBean;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.ImageLoaderOptionHelper;
 import com.hongyan.wdcf.business.account.core.AccountInfo;
 import com.hongyan.wdcf.business.account.core.AccountManager;
 import com.hongyan.wdcf.widget.ItemA;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * Created by wangning on 2018/6/10.
@@ -76,6 +79,9 @@ public class UserInfoHolder extends BaseViewHolder implements IViewHolder, View.
             itemMobilePhone.setDesc(accountInfo.getUIMobile());
             itemEmail.setDesc(accountInfo.getUser_email());
             itemAddress.setDesc(accountInfo.getAddress());
+
+            DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getAvatarImageOption();
+            ImageLoader.getInstance().displayImage(accountInfo.getAvatar(), imageUserLogo, options);
         }
 
     }

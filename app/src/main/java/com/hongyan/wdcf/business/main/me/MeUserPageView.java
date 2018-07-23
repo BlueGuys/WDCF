@@ -16,9 +16,12 @@ import com.hongyan.StringUtils;
 import com.hongyan.base.router.Router;
 import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.ImageLoaderOptionHelper;
 import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.business.account.core.AccountInfo;
 import com.hongyan.wdcf.business.account.core.AccountManager;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * Created by wangning on 2018/7/10.
@@ -29,6 +32,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
     private View view;
     TextView tvUserPhone;
     TextView tvUserName;
+    ImageView imageLogo;
 
     public MeUserPageView(Context context) {
         super(context);
@@ -48,7 +52,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
         ImageView imageMessage = view.findViewById(R.id.image_message);
         TextView tvMember = view.findViewById(R.id.tv_member);
         LinearLayout layoutUser = view.findViewById(R.id.ll_user);
-        ImageView imageLogo = view.findViewById(R.id.image_logo);
+        imageLogo = view.findViewById(R.id.image_logo);
         tvUserName = view.findViewById(R.id.tv_userName);
         tvUserPhone = view.findViewById(R.id.tv_userPhone);
         layoutHelper.setOnClickListener(this);
@@ -75,6 +79,10 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
                 tvUserName.setText(accountInfo.getUser_nicename());
             }
             tvUserPhone.setText(accountInfo.getUIMobile());
+            if (StringUtils.notEmpty(accountInfo.getAvatar())) {
+                DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getAvatarImageOption();
+                ImageLoader.getInstance().displayImage(accountInfo.getAvatar(), imageLogo, options);
+            }
         }
     }
 

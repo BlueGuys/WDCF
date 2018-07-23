@@ -13,9 +13,12 @@ import com.hongyan.StringUtils;
 import com.hongyan.base.router.Router;
 import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.ImageLoaderOptionHelper;
 import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.business.account.core.AccountInfo;
 import com.hongyan.wdcf.business.account.core.AccountManager;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,6 +57,10 @@ public class MeTeacherPageView extends LinearLayout implements View.OnClickListe
         if (accountInfo != null) {
             tvUserPhone.setText(accountInfo.getUIMobile());
             tvUserName.setText(accountInfo.getUser_nicename());
+            if(StringUtils.notEmpty(accountInfo.getAvatar())){
+                DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getAvatarImageOption();
+                ImageLoader.getInstance().displayImage(accountInfo.getAvatar(), imageLogo, options);
+            }
         }
     }
 
