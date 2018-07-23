@@ -186,4 +186,11 @@ public class UrlConst {
     public static String getSubcribeOrderListUrl() {
         return HOST + "Api/Users/myOrder";
     }
+
+    /**
+     * 订单受理状态
+     */
+    public static String getOrderStatusEditUrl() {
+        return HOST + "Api/Finaplanner/changeStatus";
+    }
 }

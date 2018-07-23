@@ -58,6 +58,7 @@
         <activity android:name=".business.product.insurance.InsuranceListActivity" />
         <activity android:name=".business.teacher.info.TeacherInfoActivity" />
         <activity android:name=".business.teacher.introduction.ModifyIntroductionActivity" />
+        <activity android:name=".business.teacher.orderstatus.OrderStatusActivity" />
     </application>
 
 </manifest>

@@ -23,6 +23,7 @@ import com.hongyan.wdcf.business.product.equity.SimuListActivity;
 import com.hongyan.wdcf.business.product.fixed.FixedProductListActivity;
 import com.hongyan.wdcf.business.product.insurance.InsuranceListActivity;
 import com.hongyan.wdcf.business.product.overseas.OverseasProductListActivity;
+import com.hongyan.wdcf.business.teacher.orderstatus.OrderStatusActivity;
 import com.hongyan.wdcf.business.teacher.subscribe.SubscribeActivity;
 import com.hongyan.wdcf.business.teacher.addrecord.AddRecordActivity;
 import com.hongyan.wdcf.business.teacher.info.TeacherInfoActivity;
@@ -72,6 +73,7 @@ public final class RouterConfig {
         RouterConst.addRouter(ProductListInsurance, InsuranceListActivity.class.getName());
         RouterConst.addRouter(TeacherInfoIndex, TeacherInfoActivity.class.getName());
         RouterConst.addRouter(TeacherIntroductionModify, ModifyIntroductionActivity.class.getName());
+        RouterConst.addRouter(TeacherOrderStatusEdit, OrderStatusActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -134,5 +136,9 @@ public final class RouterConfig {
      * 理财师->提交个人介绍
      */
     public static final String TeacherIntroductionModify = "native://teacher/introduction/modify";
+    /**
+     * 理财师->设置受理状态
+     */
+    public static final String TeacherOrderStatusEdit = "native://teacher/order/status";
 
 }

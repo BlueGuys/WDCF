@@ -10,7 +10,11 @@ import android.widget.BaseAdapter;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.hongyan.base.BaseFragment;
 import com.hongyan.base.BaseResult;
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.RequestKeyTable;
+import com.hongyan.wdcf.base.RouterConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,11 +87,20 @@ public class WaitFragment extends BaseFragment implements OrderListModel.UIReque
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ItemOrderA item = new ItemOrderA(getActivity());
-            SubscribeResult.Record record = mList.get(position);
+            final SubscribeResult.Record record = mList.get(position);
             if (record != null) {
                 item.setName(record.user_nicename);
                 item.setTime(record.create_time);
                 item.setType(record.term_str);
+                item.setEditClickListener(new ItemOrderA.OnEditClickListener() {
+                    @Override
+                    public void onClick() {
+                        Router router = new Router();
+                        router.setUrl(RouterConfig.TeacherOrderStatusEdit);
+                        router.addParams(RequestKeyTable.ID, record.id);
+                        RouterManager.getInstance().openUrl(router);
+                    }
+                });
             }
             return item;
         }

@@ -21,4 +21,6 @@ public class RequestKeyTable {
     public static final String CAT_ID = "cat_id";
     public static final String IS_INVEST = "is_invest";
     public static final String STATUS = "status";
+    public static final String ID = "id";
+    public static final String REMARKS = "remarks";
 }
