@@ -20,6 +20,7 @@ public class UserInfoResult extends BaseResult {
         public String auth_status;
         public String id_number;
         public String address;
+        public String company;
     }
 
     //        "id": "12",
