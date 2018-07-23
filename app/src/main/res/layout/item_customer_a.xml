@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/ds2"
+    android:background="@color/appBackground"
+    android:paddingLeft="@dimen/ds10"
+    android:paddingRight="@dimen/ds10">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_corner_white"
+        android:orientation="vertical"
+        android:padding="@dimen/ds20">
+
+        <ImageView
+            android:id="@+id/image_logo"
+            android:layout_width="@dimen/ds90"
+            android:layout_height="@dimen/ds90"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ds15" />
+
+        <TextView
+            android:id="@+id/tv_customer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ds15"
+            android:layout_toRightOf="@id/image_logo"
+            android:lines="1"
+            android:minWidth="@dimen/ds120"
+            android:textColor="@color/fontPositive"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tv_customer_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/ds10"
+            android:layout_toRightOf="@id/tv_customer_name"
+            android:textColor="@color/fontPositive"
+            android:textSize="14dp" />
+
+        <ImageView
+            android:id="@+id/img_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_call" />
+
+    </RelativeLayout>
+
+</LinearLayout>

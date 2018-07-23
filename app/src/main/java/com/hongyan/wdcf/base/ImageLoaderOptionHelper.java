@@ -44,6 +44,10 @@ public class ImageLoaderOptionHelper {
      * 首页大图Image样式
      */
     private DisplayImageOptions mCircleImageOption;
+    /**
+     * 头像 Image样式
+     */
+    private DisplayImageOptions mAvatarImageOption;
 
 
     private DisplayImageOptions mCommonImageOption;
@@ -61,6 +65,22 @@ public class ImageLoaderOptionHelper {
             }
         }
         return instance;
+    }
+
+    public DisplayImageOptions getAvatarImageOption() {
+        if (mAvatarImageOption == null) {
+            mAvatarImageOption = new DisplayImageOptions.Builder()
+                    .showImageOnLoading(R.drawable.icon_avatar_default)
+                    .showImageForEmptyUri(R.drawable.icon_avatar_default)
+                    .showImageOnFail(R.drawable.icon_avatar_default)
+                    .cacheInMemory(true)
+                    .cacheOnDisk(true)
+                    .considerExifParams(true)
+                    .bitmapConfig(Bitmap.Config.RGB_565)
+                    .displayer(new RoundedBitmapDisplayer(90))
+                    .build();
+        }
+        return mAvatarImageOption;
     }
 
     public DisplayImageOptions getCommonImageOption() {

@@ -9,7 +9,10 @@ import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
 import com.hongyan.base.IViewHolder;
 import com.hongyan.base.RequestBean;
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.widget.ItemB;
 
 /**
@@ -20,6 +23,8 @@ public class AddRecordHolder extends BaseViewHolder implements IViewHolder, View
 
     private AddRecordModel addRecordModel;
     private EditText editText;
+    private ItemB itemCustomer;
+    private String customerID;
 
     public AddRecordHolder(BaseActivity mActivity) {
         super(mActivity);
@@ -44,7 +49,7 @@ public class AddRecordHolder extends BaseViewHolder implements IViewHolder, View
     @Override
     public void initView(View rootView) {
         addLeftButtonDefault();
-        ItemB itemCustomer = rootView.findViewById(R.id.item_select_customer);
+        itemCustomer = rootView.findViewById(R.id.item_select_customer);
         ItemB itemChatTime = rootView.findViewById(R.id.item_chat_time);
         ItemB itemRemindTime = rootView.findViewById(R.id.item_tip_time);
         editText = rootView.findViewById(R.id.editText);
@@ -78,6 +83,7 @@ public class AddRecordHolder extends BaseViewHolder implements IViewHolder, View
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.item_select_customer:
+                RouterManager.getInstance().openUrl(new Router(RouterConfig.TeacherCustomerList));
                 break;
             case R.id.item_chat_time:
                 break;
@@ -89,8 +95,17 @@ public class AddRecordHolder extends BaseViewHolder implements IViewHolder, View
                     showErrorToast("字数太少");
                     return;
                 }
+                addRecordModel.setId(customerID);
                 addRecordModel.commit();
                 break;
         }
+    }
+
+    public void setCustomerID(String customerID) {
+        this.customerID = customerID;
+    }
+
+    public void setCustomerName(String customerName) {
+        itemCustomer.setDesc(customerName);
     }
 }
