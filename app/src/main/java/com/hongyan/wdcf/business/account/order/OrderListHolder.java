@@ -16,6 +16,7 @@ import com.hongyan.wdcf.base.RequestKeyTable;
 import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.business.account.core.AccountManager;
 import com.hongyan.wdcf.config.UrlConst;
+import com.hongyan.wdcf.widget.CommonIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ import java.util.List;
 
 public class OrderListHolder extends BaseViewHolder implements IViewHolder, View.OnClickListener {
 
-    private OrderListIndicator indicator;
+    private CommonIndicator indicator;
     private ViewPager viewPager;
     private OrderListPagerAdapter adapter;
 
@@ -63,7 +64,8 @@ public class OrderListHolder extends BaseViewHolder implements IViewHolder, View
 
         adapter = new OrderListPagerAdapter(mActivity.getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
-        indicator.setOnMenuClickListener(new OrderListIndicator.OnMenuClickListener() {
+        indicator.setTab(new String[]{"预约", "活动", "交易"});
+        indicator.setOnTabChangedListener(new CommonIndicator.OnTabChangedListener() {
             @Override
             public void onSelect(int position) {
                 viewPager.setCurrentItem(position);
@@ -77,7 +79,7 @@ public class OrderListHolder extends BaseViewHolder implements IViewHolder, View
 
             @Override
             public void onPageSelected(int position) {
-                indicator.select(position);
+                indicator.setCurrentTab(position);
             }
 
             @Override

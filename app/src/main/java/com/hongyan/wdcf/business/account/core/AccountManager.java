@@ -48,6 +48,7 @@ public class AccountManager {
         EventBus.getDefault().post(new AccountMessageEvent(false));
         this.mAccountInfo = null;
         this.token = "";
+        EventBus.getDefault().post(new MainMessageEvent(0));
     }
 
     public void setToken(String token) {
