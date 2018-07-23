@@ -29,6 +29,4 @@ public class OrderListFragment extends BaseFragment {
             ((ViewGroup) view.getParent()).removeView(view);
         }
     }
-
-
 }

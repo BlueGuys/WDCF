@@ -20,6 +20,5 @@ public class OrderListActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        startRequestPageData();
     }
 }

@@ -25,7 +25,7 @@ import java.util.List;
  * Created by wangning on 2018/6/10.
  */
 
-public class OrderListHolder extends BaseViewHolder implements IViewHolder, View.OnClickListener {
+public class OrderListHolder extends BaseViewHolder implements IViewHolder {
 
     private CommonIndicator indicator;
     private ViewPager viewPager;
@@ -49,7 +49,7 @@ public class OrderListHolder extends BaseViewHolder implements IViewHolder, View
 
     @Override
     public boolean needPageRequest() {
-        return true;
+        return false;
     }
 
     @Override
@@ -64,6 +64,7 @@ public class OrderListHolder extends BaseViewHolder implements IViewHolder, View
 
         adapter = new OrderListPagerAdapter(mActivity.getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(3);
         indicator.setTab(new String[]{"预约", "活动", "交易"});
         indicator.setOnTabChangedListener(new CommonIndicator.OnTabChangedListener() {
             @Override
@@ -74,7 +75,6 @@ public class OrderListHolder extends BaseViewHolder implements IViewHolder, View
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
@@ -84,7 +84,6 @@ public class OrderListHolder extends BaseViewHolder implements IViewHolder, View
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
     }
@@ -96,40 +95,16 @@ public class OrderListHolder extends BaseViewHolder implements IViewHolder, View
 
     @Override
     public RequestBean getRequestBean() {
-        RequestBean bean = new RequestBean<>(OrderListResult.class);
-        bean.setRequestUrl(UrlConst.getMyOrderListUrl());
-        bean.addParam(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
-        return bean;
+        return null;
     }
 
     @Override
     public <T extends BaseResult> void onRequestSuccess(T result) {
-        OrderListResult cardListResult = (OrderListResult) result;
-        if (cardListResult == null) {
-            return;
-        }
-        if (cardListResult.isSuccessful()) {
-            setDataList(cardListResult.data.list);
-        } else {
-            showErrorToast(cardListResult.getReturnMessage());
-        }
-    }
 
-    protected void setDataList(ArrayList<OrderListResult.BankCard> list) {
-        //
     }
 
     @Override
     public boolean onRequestFail() {
         return false;
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_commit:
-                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserBindBankCard));
-                break;
-        }
     }
 }
