@@ -165,12 +165,14 @@ public class UrlConst {
     public static String getMyOrderListUrl() {
         return HOST + "Api/Users/myOrder";
     }
+
     /**
      * 类固定收益列表
      */
     public static String getProductFixedListUrl() {
         return HOST + "Api/Product/getList";
     }
+
     /**
      * 我的客户列表
      */
@@ -178,4 +180,10 @@ public class UrlConst {
         return HOST + "Api/Finaplanner/myUser";
     }
 
+    /**
+     * 用户订单
+     */
+    public static String getSubcribeOrderListUrl() {
+        return HOST + "Api/Users/myOrder";
+    }
 }

@@ -30,6 +30,9 @@ public class SubscribeHolder extends BaseViewHolder implements IViewHolder, View
     private CommonIndicator indicator;
     private ViewPager viewPager;
     private SubscribePagerAdapter adapter;
+    private WaitFragment waitFragment = new WaitFragment();
+    private DoneFragment doneFragment = new DoneFragment();
+    private FailedFragment failedFragment = new FailedFragment();
 
     private List<Fragment> fragments = new ArrayList<>();
 
@@ -59,12 +62,13 @@ public class SubscribeHolder extends BaseViewHolder implements IViewHolder, View
         indicator.setTab(new String[]{"待受理", "已签约", "预约不成功"});
         viewPager = rootView.findViewById(R.id.viewpager);
 
-        fragments.add(new WaitFragment());
-        fragments.add(new DoneFragment());
-        fragments.add(new FailedFragment());
+        fragments.add(waitFragment);
+        fragments.add(doneFragment);
+        fragments.add(failedFragment);
 
         adapter = new SubscribePagerAdapter(mActivity.getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(4);
         indicator.setOnTabChangedListener(new CommonIndicator.OnTabChangedListener() {
             @Override
             public void onSelect(int position) {
@@ -104,19 +108,7 @@ public class SubscribeHolder extends BaseViewHolder implements IViewHolder, View
 
     @Override
     public <T extends BaseResult> void onRequestSuccess(T result) {
-        SubscribeResult cardListResult = (SubscribeResult) result;
-        if (cardListResult == null) {
-            return;
-        }
-        if (cardListResult.isSuccessful()) {
-            setDataList(cardListResult.data.list);
-        } else {
-            showErrorToast(cardListResult.getReturnMessage());
-        }
-    }
 
-    protected void setDataList(ArrayList<SubscribeResult.BankCard> list) {
-        //
     }
 
     @Override
