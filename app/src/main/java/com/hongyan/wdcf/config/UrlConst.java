@@ -111,7 +111,7 @@ public class UrlConst {
     }
 
     /**
-     * 预约活动
+     * 修改用户信息
      */
     public static String getEditUserUrl() {
         return HOST + "Api/Users/edit_user";

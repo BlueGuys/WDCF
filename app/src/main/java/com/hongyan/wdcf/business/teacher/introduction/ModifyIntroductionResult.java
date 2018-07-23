@@ -11,8 +11,6 @@ public class ModifyIntroductionResult extends BaseResult {
     public Data data;
 
     static class Data {
-        public String user_type;//2 用户 3理财师
-        public String token;
     }
 
 }

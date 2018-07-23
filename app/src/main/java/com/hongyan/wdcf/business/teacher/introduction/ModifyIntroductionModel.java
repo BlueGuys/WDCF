@@ -5,6 +5,7 @@ import com.hongyan.base.BaseResult;
 import com.hongyan.base.RequestListener;
 import com.hongyan.wdcf.base.RequestKeyTable;
 import com.hongyan.wdcf.base.WDNetworkCall;
+import com.hongyan.wdcf.business.account.core.AccountManager;
 import com.hongyan.wdcf.business.main.discover.DiscoverResult;
 import com.hongyan.wdcf.config.UrlConst;
 
@@ -22,16 +23,19 @@ public class ModifyIntroductionModel extends BaseModel {
 
     public void commit(String content) {
         WDNetworkCall feedbackCall = new WDNetworkCall<>();
-        feedbackCall.setRequestUrl(UrlConst.getFeedbackUrl());
-        feedbackCall.setResultClass(DiscoverResult.class);
+        feedbackCall.setRequestUrl(UrlConst.getEditUserUrl());
+        feedbackCall.setResultClass(ModifyIntroductionResult.class);
         feedbackCall.addParam(RequestKeyTable.CONTENT, content);
         feedbackCall.start(new RequestListener() {
             @Override
             public <T extends BaseResult> void onResponse(T result) {
-                DiscoverResult discoverResult = (DiscoverResult) result;
-                if (discoverResult.isSuccessful()) {
+                ModifyIntroductionResult modifyIntroductionResult = (ModifyIntroductionResult) result;
+                if (modifyIntroductionResult.isSuccessful()) {
                     viewHolder.showSuccessToast("提交成功");
+                    AccountManager.getInstance().refresh();
                     viewHolder.goBack();
+                } else {
+                    viewHolder.showErrorToast(modifyIntroductionResult.getReturnMessage());
                 }
             }
 

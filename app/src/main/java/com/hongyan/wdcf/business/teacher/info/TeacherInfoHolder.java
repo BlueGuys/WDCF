@@ -33,8 +33,7 @@ public class TeacherInfoHolder extends BaseViewHolder implements IViewHolder, Vi
     private ItemB itemIntroduction;
     private ItemB itemModifyPassword;
     private Button buttonExit;
-
-    private String introduction;
+    private String content;
 
     public TeacherInfoHolder(BaseActivity mActivity) {
         super(mActivity);
@@ -69,15 +68,18 @@ public class TeacherInfoHolder extends BaseViewHolder implements IViewHolder, Vi
         itemIntroduction.setOnClickListener(this);
         buttonExit = rootView.findViewById(R.id.btn_exit);
         buttonExit.setOnClickListener(this);
+        refresh();
+    }
 
+    protected void refresh() {
         AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
         if (accountInfo != null) {
+            content = accountInfo.getContent();
             tvUserName.setText(accountInfo.getUser_nicename());
             tvUserMobile.setText(accountInfo.getUIMobile());
             itemMobilePhone.setDesc(accountInfo.getUIMobile());
-            introduction = accountInfo.getUser_nicename();
+            itemIntroduction.setDesc(accountInfo.getContent());
         }
-
     }
 
     @Override
@@ -114,7 +116,7 @@ public class TeacherInfoHolder extends BaseViewHolder implements IViewHolder, Vi
                 break;
             case R.id.item_introduction:
                 Router router = new Router(RouterConfig.TeacherIntroductionModify);
-                router.addParams(RequestKeyTable.CONTENT, introduction);
+                router.addParams(RequestKeyTable.CONTENT, content);
                 RouterManager.getInstance().openUrl(router);
                 break;
         }

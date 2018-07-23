@@ -23,6 +23,7 @@ public class AccountInfo extends BaseResult {
     public String mobile;
     public String address;
     public String company;
+    public String content;
     /**
      *  auth_status=0 跳转提交资料页面提交资料进行审核
      *  auth_status=1 等待审核 提示等待，
@@ -116,5 +117,13 @@ public class AccountInfo extends BaseResult {
 
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

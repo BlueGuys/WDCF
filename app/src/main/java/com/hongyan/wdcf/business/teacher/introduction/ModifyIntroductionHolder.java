@@ -45,7 +45,7 @@ public class ModifyIntroductionHolder extends BaseViewHolder implements IViewHol
     public void initView(View rootView) {
         addLeftButtonDefault();
         Button buttonCommit = rootView.findViewById(R.id.btn_commit);
-        editText = rootView.findViewById(R.id.et_feedback);
+        editText = rootView.findViewById(R.id.editText);
         buttonCommit.setOnClickListener(this);
     }
 
@@ -73,10 +73,6 @@ public class ModifyIntroductionHolder extends BaseViewHolder implements IViewHol
         switch (v.getId()) {
             case R.id.btn_commit:
                 String content = editText.getText().toString();
-//                if (content.length() < 15) {
-//                    showErrorToast("字数太少");
-//                    return;
-//                }
                 introductionModel.commit(content);
                 break;
         }

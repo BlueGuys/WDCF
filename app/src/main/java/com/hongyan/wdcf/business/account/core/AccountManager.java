@@ -112,6 +112,7 @@ public class AccountManager {
                     mAccountInfo.setUser_email(data.user_email);
                     mAccountInfo.setUser_nicename(data.user_nicename);
                     mAccountInfo.setCompany(data.company);
+                    mAccountInfo.setContent(data.content);
                     saveAccountInfo(GsonUtils.toJson(mAccountInfo));
                     EventBus.getDefault().post(new AccountMessageEvent(true));
                 }

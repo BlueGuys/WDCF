@@ -16,7 +16,7 @@
         android:padding="@dimen/ds20">
 
         <EditText
-            android:id="@+id/et_feedback"
+            android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
@@ -24,6 +24,7 @@
             android:layout_alignParentTop="true"
             android:background="@null"
             android:gravity="left|top"
+            android:hint="请输入个人介绍"
             android:textColor="@color/black"
             android:textColorHint="@color/fontNegative"
             android:textSize="14dp" />

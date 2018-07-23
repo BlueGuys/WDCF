@@ -21,6 +21,7 @@ public class UserInfoResult extends BaseResult {
         public String id_number;
         public String address;
         public String company;
+        public String content;
     }
 
     //        "id": "12",
