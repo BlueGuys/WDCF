@@ -104,7 +104,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
                 RouterManager.getInstance().openUrl(new Router(RouterConfig.UserOrderList));
                 break;
             case R.id.ll_risk:
-                RouterManager.getInstance().openUrl(new Router("http://caifu.thongfu.com/App/Assessment/lists.html?title=风险评估&&token" + AccountManager.getInstance().getToken()));
+                RouterManager.getInstance().openUrl(new Router("http://caifu.thongfu.com/App/Assessment/lists.html?title=风险评估"));
                 break;
             case R.id.image_share:
                 RouterManager.getInstance().openUrl(new Router(RouterConfig.UserShare));

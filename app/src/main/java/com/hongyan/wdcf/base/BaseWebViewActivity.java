@@ -25,8 +25,14 @@ import android.widget.TextView;
 import com.hongyan.StringUtils;
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseViewHolder;
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
 import com.hongyan.loading.WebViewProgressView;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.business.account.core.AccountManager;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * com.jp.base.BaseWebViewActivity
@@ -59,9 +65,38 @@ public class BaseWebViewActivity extends BaseActivity {
         setContentView(R.layout.activity_webview);
         initView();
         mUrl = getParam(URL);
+
+        //添加token
+        HashMap<String, String> tokenMap = new HashMap<>();
+        tokenMap.put("token", AccountManager.getInstance().getToken());
+        mUrl = getHandleUrl(mUrl, tokenMap);
+
         setTitle();
         mWebView.loadUrl(mUrl);
 //        mWebView.loadUrl("file:///android_asset/hello.html");
+    }
+
+    /**
+     * 拼接参数
+     */
+    private String getHandleUrl(String url, Map<String, String> params) {
+        if (url == null || url.length() <= 1) {
+            return url;
+        }
+        if (params != null) {
+            StringBuilder builder = new StringBuilder(url);
+            for (String key : params.keySet()) {
+                String urlTemp = builder.toString();
+                String keyAndValue = key + "=" + params.get(key);
+                if (urlTemp.contains("?")) {
+                    builder.append("&").append(keyAndValue);
+                } else {
+                    builder.append("?").append(keyAndValue);
+                }
+            }
+            return builder.toString();
+        }
+        return url;
     }
 
     @Override
@@ -173,6 +208,24 @@ public class BaseWebViewActivity extends BaseActivity {
         public void finish() {
             BaseWebViewActivity.this.finish();
         }
+
+        @JavascriptInterface
+        public void login() {
+            AccountManager.getInstance().checkLogin();
+        }
+
+        @JavascriptInterface
+        public void updateUserLevel(String level) {
+            AccountManager.getInstance().refresh();
+        }
+
+        @JavascriptInterface
+        public void pushWebview(String title, String url) {
+            Router router = new Router();
+            router.setUrl(url);
+            router.addParams("title", title);
+            RouterManager.getInstance().openUrl(router);
+        }
     }
 
     private WebViewClient mWebViewClient = new WebViewClient() {
@@ -185,7 +238,6 @@ public class BaseWebViewActivity extends BaseActivity {
         @Override
         public void onLoadResource(WebView view, String url) {
             super.onLoadResource(view, url);
-
         }
 
         @Override
@@ -200,10 +252,6 @@ public class BaseWebViewActivity extends BaseActivity {
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (mWebView != null) {
-                BaseWebViewActivity.startActivity(BaseWebViewActivity.this, url);
-                return true;
-            }
             return super.shouldOverrideUrlLoading(view, url);
         }
 
