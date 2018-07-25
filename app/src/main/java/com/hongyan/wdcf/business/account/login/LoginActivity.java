@@ -4,6 +4,9 @@ import android.os.Bundle;
 
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseViewHolder;
+import com.hongyan.wdcf.business.account.core.MainMessageEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class LoginActivity extends BaseActivity {
 
@@ -15,5 +18,11 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected BaseViewHolder getViewHolder() {
         return new LoginHolder(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        EventBus.getDefault().post(new MainMessageEvent(0));
     }
 }

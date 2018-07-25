@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".business.account.register.RegisterActivity" />
-        <activity android:name="com.hongyan.base.webview.BaseWebViewActivity" />
+        <activity android:name=".base.BaseWebViewActivity" />
         <activity
             android:name="com.hongyan.TestActivity"
             android:launchMode="singleTask" />

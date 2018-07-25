@@ -69,7 +69,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
         imageLogo.setOnClickListener(this);
         tvUserName.setOnClickListener(this);
         tvUserPhone.setOnClickListener(this);
-
+        notifyDataChanged();
     }
 
     public void notifyDataChanged() {

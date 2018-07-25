@@ -1,4 +1,4 @@
-package com.hongyan.base.webview;
+package com.hongyan.wdcf.base;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -25,8 +25,8 @@ import android.widget.TextView;
 import com.hongyan.StringUtils;
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseViewHolder;
-import com.hongyan.lib_base.R;
 import com.hongyan.loading.WebViewProgressView;
+import com.hongyan.wdcf.R;
 
 /**
  * com.jp.base.BaseWebViewActivity

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.hongyan.base.BaseApplication;
-import com.hongyan.base.webview.BaseWebViewActivity;
 
 import java.util.Map;
 
@@ -51,7 +50,23 @@ public class RouterManager {
             return;
         }
         Context context = getContext();
-        Intent intent = new Intent(context, BaseWebViewActivity.class);
+        Class clz = null;
+        try {
+            clz = Class.forName("com.hongyan.wdcf.base.BaseWebViewActivity");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (clz == null) {
+            return;
+        }
+        Intent intent = new Intent(context, clz);
+        Map<String, String> params = router.getParams();
+        if (params != null) {
+            for (String key : params.keySet()) {
+                String value = params.get(key);
+                intent.putExtra(key, value);
+            }
+        }
         intent.putExtra("url", getHandleUrl(router.getUrl(), router.getParams()));
         context.startActivity(intent);
     }
