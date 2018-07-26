@@ -4,8 +4,11 @@ import android.os.Bundle;
 
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseViewHolder;
+import com.hongyan.wdcf.base.RequestKeyTable;
 
 public class OrderDetailActivity extends BaseActivity {
+
+    private OrderDetailHolder orderDetailHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,7 +17,9 @@ public class OrderDetailActivity extends BaseActivity {
 
     @Override
     protected BaseViewHolder getViewHolder() {
-        return new OrderDetailHolder(this);
+        orderDetailHolder = new OrderDetailHolder(this);
+        orderDetailHolder.setId(getParam(RequestKeyTable.ID));
+        return orderDetailHolder;
     }
 
     @Override

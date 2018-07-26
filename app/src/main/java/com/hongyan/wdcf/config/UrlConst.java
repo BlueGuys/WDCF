@@ -200,4 +200,11 @@ public class UrlConst {
     public static String getAddRecordUrl() {
         return HOST + "Api/Finaplanner/addLinkup";
     }
+
+    /**
+     * 订单详情
+     */
+    public static String getOrderDetailUrl() {
+        return HOST + "Api/Order/orderDetail";
+    }
 }

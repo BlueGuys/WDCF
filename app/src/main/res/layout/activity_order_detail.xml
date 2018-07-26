@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/ds10"
+        android:paddingRight="@dimen/ds10">
+
+        <com.hongyan.wdcf.widget.ItemA
+            android:id="@+id/item_order_status"
+            style="@style/item_a"
+            app:desc="身份证"
+            app:title="证件类型" />
+
+        <com.hongyan.wdcf.widget.ItemA
+            android:id="@+id/item_order_date"
+            style="@style/item_a"
+            app:desc="身份证"
+            app:title="预约日期" />
+
+        <com.hongyan.wdcf.widget.ItemA
+            android:id="@+id/item_order_term"
+            style="@style/item_a"
+            app:desc="身份证"
+            app:title="投资期限" />
+
+        <com.hongyan.wdcf.widget.ItemA
+            android:id="@+id/item_order_rate"
+            style="@style/item_a"
+            app:desc="身份证"
+            app:title="预期年华收益率" />
+
+        <com.hongyan.wdcf.widget.ItemA
+            android:id="@+id/item_order_number"
+            style="@style/item_a"
+            app:desc="身份证"
+            app:title="预约单号" />
+
+        <com.hongyan.wdcf.widget.ItemA
+            android:id="@+id/item_teacher_name"
+            style="@style/item_a"
+            android:layout_marginTop="@dimen/ds30"
+            app:desc="身份证"
+            app:title="理财顾问姓名" />
+
+        <com.hongyan.wdcf.widget.ItemA
+            android:id="@+id/item_teacher_mobile"
+            style="@style/item_a"
+            app:desc="身份证"
+            app:title="理财顾问电话" />
+
+        <TextView
+            android:id="@+id/tv_commit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ds100"
+            android:layout_marginTop="@dimen/ds60"
+            android:background="@color/appColorPositive"
+            android:gravity="center"
+            android:text="立即签约"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+</ScrollView>

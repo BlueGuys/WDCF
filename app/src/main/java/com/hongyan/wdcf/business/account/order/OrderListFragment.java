@@ -98,7 +98,7 @@ public class OrderListFragment extends BaseFragment implements OrderListModel.UI
                     @Override
                     public void onClick(View v) {
                         Router router = new Router(RouterConfig.UserOrderDetail);
-                        router.addParams(RequestKeyTable.ID, order.order_no);
+                        router.addParams(RequestKeyTable.ID, order.id);
                         RouterManager.getInstance().openUrl(router);
                     }
                 });
