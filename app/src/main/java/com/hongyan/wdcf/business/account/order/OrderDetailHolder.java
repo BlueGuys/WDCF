@@ -105,8 +105,8 @@ public class OrderDetailHolder extends BaseViewHolder implements IViewHolder, Vi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_commit:
-                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserBindBankCard));
+            case R.id.tv_commit:
+                showSuccessToast("敬请期待");
                 break;
         }
     }
