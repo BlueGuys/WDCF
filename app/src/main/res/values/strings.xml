@@ -25,4 +25,5 @@
     <string name="introduction_info">个人介绍</string>
     <string name="order_status_setting">受理状态设置</string>
     <string name="customer">客户</string>
+    <string name="order_detail">订单详情</string>
 </resources>

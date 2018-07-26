@@ -6,6 +6,7 @@ import com.hongyan.wdcf.business.account.bankcard.BankCardListActivity;
 import com.hongyan.wdcf.business.account.bankcard.BindBankCardActivity;
 import com.hongyan.wdcf.business.account.bindteacher.BindTeacherActivity;
 import com.hongyan.wdcf.business.account.feedback.FeedbackActivity;
+import com.hongyan.wdcf.business.account.order.OrderDetailActivity;
 import com.hongyan.wdcf.business.teacher.customerList.CustomerAllListActivity;
 import com.hongyan.wdcf.business.teacher.introduction.ModifyIntroductionActivity;
 import com.hongyan.wdcf.business.teacher.invite.InviteActivity;
@@ -76,6 +77,7 @@ public final class RouterConfig {
         RouterConst.addRouter(TeacherIntroductionModify, ModifyIntroductionActivity.class.getName());
         RouterConst.addRouter(TeacherOrderStatusEdit, OrderStatusActivity.class.getName());
         RouterConst.addRouter(TeacherCustomerList, CustomerAllListActivity.class.getName());
+        RouterConst.addRouter(UserOrderDetail, OrderDetailActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -146,5 +148,9 @@ public final class RouterConfig {
      * 理财师->我的客户列表
      */
     public static final String TeacherCustomerList = "native://teacher/customer/list";
+    /**
+     * 订单详情
+     */
+    public static final String UserOrderDetail = "native://user/order/detail";
 
 }

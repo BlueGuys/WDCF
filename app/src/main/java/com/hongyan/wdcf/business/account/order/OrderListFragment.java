@@ -94,6 +94,14 @@ public class OrderListFragment extends BaseFragment implements OrderListModel.UI
                 item.setDesc(order.tlimit);
                 item.setTime(order.create_time);
                 item.setStatus(order.status_str);
+                item.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Router router = new Router(RouterConfig.UserOrderDetail);
+                        router.addParams(RequestKeyTable.ID, order.order_no);
+                        RouterManager.getInstance().openUrl(router);
+                    }
+                });
             }
             return item;
         }
