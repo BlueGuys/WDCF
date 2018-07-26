@@ -20,7 +20,7 @@ import com.hongyan.wdcf.business.teacher.subscribe.ItemOrderA;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityListFragment extends BaseFragment implements OrderListModel.UIRequestListener{
+public class ActivityListFragment extends BaseFragment implements OrderListModel.UIRequestListener {
 
     private View view;
     private PullToRefreshListView listView;
@@ -87,21 +87,13 @@ public class ActivityListFragment extends BaseFragment implements OrderListModel
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ItemOrderA item = new ItemOrderA(getActivity());
+            ItemOrderActivity item = new ItemOrderActivity(getActivity());
             final OrderListResult.Order order = mList.get(position);
             if (order != null) {
-                item.setName(order.user_nicename);
+                item.setTitle(order.product_title);
+                item.setDesc(order.tlimit);
                 item.setTime(order.create_time);
-                item.setType(order.term_str);
-                item.setEditClickListener(new ItemOrderA.OnEditClickListener() {
-                    @Override
-                    public void onClick() {
-                        Router router = new Router();
-                        router.setUrl(RouterConfig.TeacherOrderStatusEdit);
-                        router.addParams(RequestKeyTable.ID, order.id);
-                        RouterManager.getInstance().openUrl(router);
-                    }
-                });
+                item.setStatus(order.status_str);
             }
             return item;
         }

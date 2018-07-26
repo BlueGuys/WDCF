@@ -87,21 +87,13 @@ public class OrderListFragment extends BaseFragment implements OrderListModel.UI
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ItemOrderA item = new ItemOrderA(getActivity());
+            ItemOrderSubscribe item = new ItemOrderSubscribe(getActivity());
             final OrderListResult.Order order = mList.get(position);
             if (order != null) {
-                item.setName(order.user_nicename);
+                item.setTitle(order.product_title);
+                item.setDesc(order.tlimit);
                 item.setTime(order.create_time);
-                item.setType(order.term_str);
-                item.setEditClickListener(new ItemOrderA.OnEditClickListener() {
-                    @Override
-                    public void onClick() {
-                        Router router = new Router();
-                        router.setUrl(RouterConfig.TeacherOrderStatusEdit);
-                        router.addParams(RequestKeyTable.ID, order.id);
-                        RouterManager.getInstance().openUrl(router);
-                    }
-                });
+                item.setStatus(order.status_str);
             }
             return item;
         }

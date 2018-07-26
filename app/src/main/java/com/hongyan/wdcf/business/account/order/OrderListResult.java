@@ -22,6 +22,10 @@ public class OrderListResult extends BaseResult {
         public int term_id;
         public String term_str;
         public String create_time;
+        public String product_title;
+        public String tlimit;
+        public String status_str;
+        public String order_no;
 
         public String getType() {
             switch (term_id) {

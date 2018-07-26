@@ -72,7 +72,7 @@ public class CommonIndicator extends LinearLayout {
         TextView textView = new TextView(mContext);
         textView.setGravity(Gravity.CENTER);
         textView.setText(text);
-        textView.setTextSize(11);
+        textView.setTextSize(14);
         textView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, DisplayUtils.dip2px(mContext, 30)));
         textView.setTextColor(isSeleted ? Color.parseColor("#66573e") : Color.parseColor("#000000"));
         tabLayout.addView(textView);
