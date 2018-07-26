@@ -220,6 +220,22 @@ public class BaseWebViewActivity extends BaseActivity {
         }
 
         @JavascriptInterface
+        public void appointmentSuccess() {
+            Router router = new Router();
+            router.setUrl(RouterConfig.UserOrderList);
+            RouterManager.getInstance().openUrl(router);
+            finish();
+        }
+
+        @JavascriptInterface
+        public void pushInsurance() {
+            Router router = new Router();
+            router.setUrl(RouterConfig.ProductListInsurance);
+            RouterManager.getInstance().openUrl(router);
+            finish();
+        }
+
+        @JavascriptInterface
         public void pushWebview(String title, String url) {
             Router router = new Router();
             router.setUrl(url);

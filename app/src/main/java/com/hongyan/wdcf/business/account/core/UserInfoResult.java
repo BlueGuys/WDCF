@@ -17,11 +17,13 @@ public class UserInfoResult extends BaseResult {
         public String user_email;
         public String avatar;
         public String mobile;
-        public String auth_status;
+        public int auth_status;
         public String id_number;
         public String address;
         public String company;
         public String content;
+        public int finaplanner_status;
+        public int review;
     }
 
     //        "id": "12",

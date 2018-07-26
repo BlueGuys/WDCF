@@ -31,7 +31,7 @@ public class IdentifyManager {
     public boolean startVerify() {
         if (AccountManager.getInstance().checkLogin()) {
             AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
-            int status = accountInfo.auth_status;
+            int status = accountInfo.getAuth_status();
             switch (status) {
                 case 0://跳转提交资料页面提交资料进行审核
                     RouterManager.getInstance().openUrl(new Router(RouterConfig.UserRegisterSelect));
@@ -44,6 +44,24 @@ public class IdentifyManager {
                 case 3://跳转提交资料页面提交资料进行审核
                     RouterManager.getInstance().openUrl(new Router(RouterConfig.UserRegisterSelect));
                     return false;
+            }
+        }
+        return false;
+    }
+
+    public boolean isBindTeacher() {
+        if (AccountManager.getInstance().checkLogin()) {
+            AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
+            int finaplanner_status = accountInfo.finaplanner_status;
+            switch (finaplanner_status) {
+                case 0://未绑定
+                    RouterManager.getInstance().openUrl(new Router(RouterConfig.UserBindTeacher));
+                    return false;
+                case 1://等待审核 提示等待
+                    Toast.makeText(WDApplication.getInstance().getApplicationContext(), "等待审核", Toast.LENGTH_SHORT).show();
+                    return false;
+                case 2://通过
+                    return true;
             }
         }
         return false;

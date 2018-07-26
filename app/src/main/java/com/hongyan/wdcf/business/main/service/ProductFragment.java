@@ -14,9 +14,11 @@ import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.base.RequestKeyTable;
 import com.hongyan.wdcf.base.RouterConfig;
+import com.hongyan.wdcf.business.account.core.AccountInfo;
 import com.hongyan.wdcf.business.account.core.AccountManager;
+import com.hongyan.wdcf.business.account.core.IdentifyManager;
+import com.hongyan.wdcf.widget.ConfirmDialog;
 import com.hongyan.wdcf.widget.MarginBannerView;
-import com.hongyan.wdcf.widget.ProductA;
 import com.hongyan.wdcf.widget.ProductB;
 import com.hongyan.wdcf.widget.ScrollBannerView;
 
@@ -62,32 +64,49 @@ public class ProductFragment extends BaseFragment implements View.OnClickListene
         //标的
         ArrayList<ProductResult.Fixation> classFixation = data.classFixation;
         if (classFixation != null && classFixation.size() == 1) {
-            ProductResult.Fixation fixationA = classFixation.get(0);
+            final ProductResult.Fixation fixationA = classFixation.get(0);
             productA.setAmount(fixationA.scale);
             productA.setDeadLine(fixationA.end_time);
             productA.setDesc(fixationA.excerpt);
             productA.setImgUrl(fixationA.photo);
             productA.setLabel1(fixationA.effecStr);
-
+            productA.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    gotoProductDetail(fixationA.detail_url, fixationA.risk_lv);
+                }
+            });
             productB.setVisibility(View.GONE);
         } else if (classFixation != null && classFixation.size() == 2) {
-            ProductResult.Fixation fixationA = classFixation.get(0);
+            final ProductResult.Fixation fixationA = classFixation.get(0);
             productA.setAmount(fixationA.scale);
             productA.setDeadLine(fixationA.end_time);
             productA.setDesc(fixationA.excerpt);
             productA.setImgUrl(fixationA.photo);
             productA.setLabel1(fixationA.effecStr);
+            productA.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    gotoProductDetail(fixationA.detail_url, fixationA.risk_lv);
+                }
+            });
 
-            ProductResult.Fixation fixationB = classFixation.get(1);
+            final ProductResult.Fixation fixationB = classFixation.get(1);
             productB.setAmount(fixationB.scale);
             productB.setDeadLine(fixationB.end_time);
             productB.setDesc(fixationB.excerpt);
             productB.setImgUrl(fixationB.photo);
             productB.setLabel1(fixationA.effecStr);
+            productB.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    gotoProductDetail(fixationB.detail_url, fixationB.risk_lv);
+                }
+            });
         }
 
         //平铺产品
-        ArrayList<ProductResult.Equity> equities = data.privateEquity;
+        final ArrayList<ProductResult.Equity> equities = data.privateEquity;
         if (equities != null) {
             if (equities.size() == 1) {
                 final ProductResult.Equity equity01 = equities.get(0);
@@ -99,9 +118,7 @@ public class ProductFragment extends BaseFragment implements View.OnClickListene
                 product01.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Router router = new Router(equity01.detail_url);
-                        router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
-                        RouterManager.getInstance().openUrl(router);
+                        gotoProductDetail(equity01.detail_url, equity01.risk_lv);
                     }
                 });
                 product02.setVisibility(View.GONE);
@@ -115,9 +132,7 @@ public class ProductFragment extends BaseFragment implements View.OnClickListene
                 product01.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Router router = new Router(equity01.detail_url);
-                        router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
-                        RouterManager.getInstance().openUrl(router);
+                        gotoProductDetail(equity01.detail_url, equity01.risk_lv);
                     }
                 });
                 final ProductResult.Equity equity02 = equities.get(1);
@@ -129,9 +144,7 @@ public class ProductFragment extends BaseFragment implements View.OnClickListene
                 product02.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Router router = new Router(equity02.detail_url);
-                        router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
-                        RouterManager.getInstance().openUrl(router);
+                        gotoProductDetail(equity02.detail_url, equity02.risk_lv);
                     }
                 });
             }
@@ -202,4 +215,48 @@ public class ProductFragment extends BaseFragment implements View.OnClickListene
                 break;
         }
     }
+
+    /**
+     * 点击产品的时候，
+     * 0.判断当前用户有没有实名认证和绑定理财师
+     * 1.如果没有进行过风险评测，那么跳转该风险评测页面。
+     * 2.如果本地已经有评测等级，然后比较等级
+     */
+    private void gotoProductDetail(String url, int risk) {
+        if (!IdentifyManager.getInstance().startVerify()) {//登录和实名认证
+            return;
+        }
+        if (!IdentifyManager.getInstance().isBindTeacher()) {//绑定理财师
+            return;
+        }
+        AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
+        if (risk > accountInfo.getReview()) {//比较等级
+            showRiskDialog(accountInfo.getReview());
+            return;
+        }
+        Router router = new Router(url);
+        router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
+        RouterManager.getInstance().openUrl(router);
+    }
+
+    private void showRiskDialog(int level) {
+        String str = "您目前的风险评测等级为R" + level + "，与此产品风险级别不匹配，不能浏览该产品";
+        final ConfirmDialog dialog = new ConfirmDialog(getActivity());
+        dialog.show();
+        dialog.setContent(str, "取消", "现在评测");
+        dialog.setLeftListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setRightListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                RouterManager.getInstance().openUrl(new Router("http://caifu.thongfu.com/App/Assessment/lists.html?title=风险评估"));
+            }
+        });
+    }
+
 }

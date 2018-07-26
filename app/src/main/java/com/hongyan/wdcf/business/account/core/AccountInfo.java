@@ -24,11 +24,18 @@ public class AccountInfo extends BaseResult {
     public String address;
     public String company;
     public String content;
+    public int review;
     /**
-     *  auth_status=0 跳转提交资料页面提交资料进行审核
-     *  auth_status=1 等待审核 提示等待，
-     *  auth_status=2 通过，
-     *  auth_status=3 跳转提交资料页面提交资料进行审核
+     * 0：未绑定
+     * 1：审核中
+     * 2: 已绑定
+     */
+    public int finaplanner_status;
+    /**
+     * auth_status=0 跳转提交资料页面提交资料进行审核
+     * auth_status=1 等待审核 提示等待，
+     * auth_status=2 通过，
+     * auth_status=3 跳转提交资料页面提交资料进行审核
      */
     public int auth_status;
 
@@ -125,5 +132,21 @@ public class AccountInfo extends BaseResult {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public int getFinaplanner_status() {
+        return finaplanner_status;
+    }
+
+    public void setFinaplanner_status(int finaplanner_status) {
+        this.finaplanner_status = finaplanner_status;
+    }
+
+    public int getReview() {
+        return review;
+    }
+
+    public void setReview(int review) {
+        this.review = review;
     }
 }

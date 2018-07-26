@@ -114,6 +114,9 @@ public class AccountManager {
                     mAccountInfo.setUser_nicename(data.user_nicename);
                     mAccountInfo.setCompany(data.company);
                     mAccountInfo.setContent(data.content);
+                    mAccountInfo.setFinaplanner_status(data.finaplanner_status);
+                    mAccountInfo.setReview(data.review);
+                    mAccountInfo.setAuth_status(data.auth_status);
                     saveAccountInfo(GsonUtils.toJson(mAccountInfo));
                     EventBus.getDefault().post(new AccountMessageEvent(true));
                 }
