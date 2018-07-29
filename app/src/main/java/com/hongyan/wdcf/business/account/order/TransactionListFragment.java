@@ -32,7 +32,7 @@ public class TransactionListFragment extends BaseFragment implements OrderListMo
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         model = new OrderListModel(this);
-        model.setStatus("1");
+        model.setStatus("4");
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_sub_transation_list, container, false);
             listView = view.findViewById(R.id.listView);

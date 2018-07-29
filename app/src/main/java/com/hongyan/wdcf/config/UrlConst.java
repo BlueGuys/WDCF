@@ -167,6 +167,13 @@ public class UrlConst {
     }
 
     /**
+     * 我的活动列表
+     */
+    public static String getMyActivityListUrl() {
+        return HOST + "Api/Users/myEvent";
+    }
+
+    /**
      * 类固定收益列表
      */
     public static String getProductFixedListUrl() {

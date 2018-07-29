@@ -47,7 +47,7 @@ public class CustomerListHolder extends BaseViewHolder implements IViewHolder, V
 
     @Override
     public int getLayoutID() {
-        return R.layout.activity_order_list;
+        return R.layout.activity_customer_list_teacher;
     }
 
     @Override

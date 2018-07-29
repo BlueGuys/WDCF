@@ -10,29 +10,23 @@ import android.widget.BaseAdapter;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.hongyan.base.BaseFragment;
 import com.hongyan.base.BaseResult;
-import com.hongyan.base.router.Router;
-import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
-import com.hongyan.wdcf.base.RequestKeyTable;
-import com.hongyan.wdcf.base.RouterConfig;
-import com.hongyan.wdcf.business.teacher.subscribe.ItemOrderA;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityListFragment extends BaseFragment implements OrderListModel.UIRequestListener {
+public class ActivityListFragment extends BaseFragment implements ActivityListModel.UIRequestListener {
 
     private View view;
     private PullToRefreshListView listView;
     private ActivityListFragment.OrderActivityAdapter adapter;
-    private OrderListModel model;
+    private ActivityListModel model;
     private List<OrderListResult.Order> mList = new ArrayList<>();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        model = new OrderListModel(this);
-        model.setStatus("1");
+        model = new ActivityListModel(this);
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_sub_activity_list, container, false);
             listView = view.findViewById(R.id.listView);

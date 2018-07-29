@@ -31,4 +31,5 @@ public class RequestKeyTable {
     public static final String LEVEL = "level";
     public static final String USER_REAL_NAME = "userRealName";
     public static final String USER_IDENTIFY_NUMBER = "userIdentifyNumber";
+    public static final String PAGE = "page";
 }
