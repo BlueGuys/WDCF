@@ -25,6 +25,7 @@ public class UserInfoActivity extends BaseActivity {
         String level = getParam(RequestKeyTable.LEVEL);
         String userIdentifyNumber = getParam(RequestKeyTable.USER_IDENTIFY_NUMBER);
         String userRealName = getParam(RequestKeyTable.USER_REAL_NAME);
+        String type = getParam(RequestKeyTable.TYPE);
         userInfoHolder = new UserInfoHolder(this);
         userInfoHolder.setUserName(userName);
         userInfoHolder.setAddress(address);
@@ -34,6 +35,7 @@ public class UserInfoActivity extends BaseActivity {
         userInfoHolder.setUserRealName(userRealName);
         userInfoHolder.setEmail(email);
         userInfoHolder.setUserAvatar(userAvatar);
+        userInfoHolder.setType(type);
         return userInfoHolder;
     }
 }

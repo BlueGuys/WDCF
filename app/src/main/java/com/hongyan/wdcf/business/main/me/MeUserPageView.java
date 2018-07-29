@@ -131,6 +131,7 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
                     router.addParams(RequestKeyTable.USER_IDENTIFY_NUMBER, accountInfo.getUser_nicename());
                     router.addParams(RequestKeyTable.ADDRESS, accountInfo.getAddress());
                     router.addParams(RequestKeyTable.USER_AVATAR, accountInfo.getAvatar());
+                    router.addParams(RequestKeyTable.TYPE, "1");
                     RouterManager.getInstance().openUrl(router);
                 }
                 break;

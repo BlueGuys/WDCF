@@ -84,8 +84,8 @@ public class ActivityListFragment extends BaseFragment implements ActivityListMo
             ItemOrderActivity item = new ItemOrderActivity(getActivity());
             final OrderListResult.Order order = mList.get(position);
             if (order != null) {
-                item.setTitle(order.product_title);
-                item.setDesc(order.tlimit);
+                item.setTitle(order.title);
+                item.setDesc("订单编号:" + order.event_no);
                 item.setTime(order.create_time);
                 item.setStatus(order.status_str);
             }

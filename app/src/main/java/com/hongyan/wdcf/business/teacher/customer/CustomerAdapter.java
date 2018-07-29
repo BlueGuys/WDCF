@@ -103,6 +103,7 @@ public class CustomerAdapter extends BaseAdapter {
                     router.addParams(RequestKeyTable.USER_IDENTIFY_NUMBER, customer.id_number);
                     router.addParams(RequestKeyTable.ADDRESS, customer.address);
                     router.addParams(RequestKeyTable.USER_AVATAR, customer.avatar);
+                    router.addParams(RequestKeyTable.TYPE, "2");
                     RouterManager.getInstance().openUrl(router);
                 }
             });

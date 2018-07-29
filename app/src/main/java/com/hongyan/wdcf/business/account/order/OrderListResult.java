@@ -26,6 +26,8 @@ public class OrderListResult extends BaseResult {
         public String tlimit;
         public String status_str;
         public String order_no;
+        public String title;
+        public String event_no;
 
         public String getType() {
             switch (term_id) {
