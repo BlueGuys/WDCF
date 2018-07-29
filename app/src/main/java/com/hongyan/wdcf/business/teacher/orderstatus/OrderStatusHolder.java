@@ -2,10 +2,14 @@ package com.hongyan.wdcf.business.teacher.orderstatus;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
+import com.hongyan.StringUtils;
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
@@ -21,10 +25,13 @@ import com.hongyan.wdcf.widget.ItemB;
 public class OrderStatusHolder extends BaseViewHolder implements IViewHolder, View.OnClickListener {
 
     private OrderStatusModel introductionModel;
+    private EditText editTextAmount;
     private EditText editText;
     private ItemB itemSelectStatus;
     private String orderID;
     private int status;
+    private String amount;
+    private RelativeLayout relativeLayout;
 
     public OrderStatusHolder(BaseActivity mActivity) {
         super(mActivity);
@@ -52,8 +59,28 @@ public class OrderStatusHolder extends BaseViewHolder implements IViewHolder, Vi
         Button buttonCommit = rootView.findViewById(R.id.btn_commit);
         itemSelectStatus = rootView.findViewById(R.id.item_order_status);
         editText = rootView.findViewById(R.id.et_feedback);
+        relativeLayout = rootView.findViewById(R.id.rl_amount);
+        editTextAmount = rootView.findViewById(R.id.et_amount);
         buttonCommit.setOnClickListener(this);
         itemSelectStatus.setOnClickListener(this);
+        editTextAmount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                amount = editTextAmount.getText().toString();
+            }
+        });
+
+
     }
 
     @Override
@@ -87,6 +114,7 @@ public class OrderStatusHolder extends BaseViewHolder implements IViewHolder, Vi
                 introductionModel.setContent(content);
                 introductionModel.setStatus(status);
                 introductionModel.setId(orderID);
+                introductionModel.setAmount(amount);
                 introductionModel.commit();
                 break;
             case R.id.item_order_status:
@@ -96,7 +124,7 @@ public class OrderStatusHolder extends BaseViewHolder implements IViewHolder, Vi
     }
 
     private void showDialog() {
-        final String[] items = {"待审核", "审核通过", "拒绝"};
+        final String[] items = {"待受理", "已受理", "拒绝"};
         final AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity);
         dialog.setSingleChoiceItems(items, 0,
                 new DialogInterface.OnClickListener() {
@@ -104,6 +132,11 @@ public class OrderStatusHolder extends BaseViewHolder implements IViewHolder, Vi
                     public void onClick(DialogInterface dialog, int which) {
                         status = which;
                         itemSelectStatus.setDesc(items[which]);
+                        if(which == 1){
+                            relativeLayout.setVisibility(View.VISIBLE);
+                        }else{
+                            relativeLayout.setVisibility(View.GONE);
+                        }
                         dialog.dismiss();
                     }
                 });

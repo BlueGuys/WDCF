@@ -59,7 +59,7 @@ public class SubscribeHolder extends BaseViewHolder implements IViewHolder, View
     public void initView(View rootView) {
         addLeftButtonDefault();
         indicator = rootView.findViewById(R.id.indicator);
-        indicator.setTab(new String[]{"待受理", "已签约", "预约不成功"});
+        indicator.setTab(new String[]{"待受理", "预约成功", "预约不成功"});
         viewPager = rootView.findViewById(R.id.viewpager);
 
         fragments.add(waitFragment);

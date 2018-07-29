@@ -18,6 +18,7 @@ public class OrderStatusModel extends BaseModel {
     private int status;
     private String content;
     private String id;
+    private String amount;
 
     public OrderStatusModel(OrderStatusHolder viewHolder) {
         this.viewHolder = viewHolder;
@@ -30,12 +31,13 @@ public class OrderStatusModel extends BaseModel {
         editOrderCall.addParam(RequestKeyTable.REMARKS, content);
         editOrderCall.addParam(RequestKeyTable.STATUS, String.valueOf(status));
         editOrderCall.addParam(RequestKeyTable.ID, id);
+        editOrderCall.addParam(RequestKeyTable.MONEY, amount);
         editOrderCall.start(new RequestListener() {
             @Override
             public <T extends BaseResult> void onResponse(T result) {
                 OrderStatusResult orderStatusResult = (OrderStatusResult) result;
                 if (orderStatusResult.isSuccessful()) {
-                    viewHolder.showSuccessToast("提交成功");
+                    viewHolder.showSuccessToast("修改成功");
                     viewHolder.goBack();
                 } else {
                     viewHolder.showErrorToast(orderStatusResult.getReturnMessage());
@@ -59,5 +61,9 @@ public class OrderStatusModel extends BaseModel {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
 }

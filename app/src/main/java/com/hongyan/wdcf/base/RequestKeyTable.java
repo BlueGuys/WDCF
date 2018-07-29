@@ -32,4 +32,6 @@ public class RequestKeyTable {
     public static final String USER_REAL_NAME = "userRealName";
     public static final String USER_IDENTIFY_NUMBER = "userIdentifyNumber";
     public static final String PAGE = "page";
+    public static final String AMOUNT = "amount";
+    public static final String MONEY = "money";
 }

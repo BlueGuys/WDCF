@@ -18,14 +18,7 @@ public class OrderStatusActivity extends BaseActivity {
     @Override
     protected BaseViewHolder getViewHolder() {
         holder = new OrderStatusHolder(this);
+        holder.setOrderID(getParam(RequestKeyTable.ID));
         return holder;
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (holder != null) {
-            holder.setOrderID(getParam(RequestKeyTable.ID));
-        }
     }
 }
