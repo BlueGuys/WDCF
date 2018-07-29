@@ -92,6 +92,20 @@ public class CustomerAdapter extends BaseAdapter {
                     RouterManager.getInstance().openUrl(router);
                 }
             });
+            itemCustomer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Router router = new Router(RouterConfig.UserInfoIndex);
+                    router.addParams(RequestKeyTable.USER_NAME, customer.user_nicename);
+                    router.addParams(RequestKeyTable.USER_REAL_NAME, customer.user_nicename);
+                    router.addParams(RequestKeyTable.MOBILE, customer.mobile);
+                    router.addParams(RequestKeyTable.EMAIL, customer.user_email);
+                    router.addParams(RequestKeyTable.USER_IDENTIFY_NUMBER, customer.id_number);
+                    router.addParams(RequestKeyTable.ADDRESS, customer.address);
+                    router.addParams(RequestKeyTable.USER_AVATAR, customer.avatar);
+                    RouterManager.getInstance().openUrl(router);
+                }
+            });
         }
         return itemCustomer;
     }

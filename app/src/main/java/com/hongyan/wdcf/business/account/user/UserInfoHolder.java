@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hongyan.StringUtils;
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
@@ -34,6 +35,15 @@ public class UserInfoHolder extends BaseViewHolder implements IViewHolder, View.
     private ItemA itemEmail;
     private ItemA itemAddress;
     private Button buttonExit;
+
+    private String userName;
+    private String userAvatar;
+    private String mobile;
+    private String userRealName;
+    private String userIdentifyNumber;
+    private String level;
+    private String email;
+    private String address;
 
     public UserInfoHolder(BaseActivity mActivity) {
         super(mActivity);
@@ -70,21 +80,19 @@ public class UserInfoHolder extends BaseViewHolder implements IViewHolder, View.
         buttonExit = rootView.findViewById(R.id.btn_exit);
         buttonExit.setOnClickListener(this);
 
-        AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
-        if (accountInfo != null) {
-            tvUserName.setText(accountInfo.getUser_nicename());
-            tvUserMobile.setText(accountInfo.getUIMobile());
-            itemName.setDesc(accountInfo.getUser_nicename());
-            itemCertificatesNumber.setDesc(accountInfo.getUser_nicename());
-            itemMobilePhone.setDesc(accountInfo.getUIMobile());
-            itemEmail.setDesc(accountInfo.getUser_email());
-            itemAddress.setDesc(accountInfo.getAddress());
-
+        tvUserName.setText(userName);
+        tvUserMobile.setText(mobile);
+        itemName.setDesc(userName);
+        itemCertificatesNumber.setDesc(userIdentifyNumber);
+        itemMobilePhone.setDesc(userName);
+        itemEmail.setDesc(email);
+        itemAddress.setDesc(address);
+        if(StringUtils.notEmpty(userAvatar)){
             DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getAvatarImageOption();
-            ImageLoader.getInstance().displayImage(accountInfo.getAvatar(), imageUserLogo, options);
+            ImageLoader.getInstance().displayImage(userAvatar, imageUserLogo, options);
         }
-
     }
+
 
     @Override
     public int getNavigationTitle() {
@@ -116,5 +124,37 @@ public class UserInfoHolder extends BaseViewHolder implements IViewHolder, View.
             case R.id.image_user_logo:
                 break;
         }
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public void setUserRealName(String userRealName) {
+        this.userRealName = userRealName;
+    }
+
+    public void setUserIdentifyNumber(String userIdentifyNumber) {
+        this.userIdentifyNumber = userIdentifyNumber;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

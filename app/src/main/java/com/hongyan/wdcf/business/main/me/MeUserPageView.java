@@ -17,6 +17,7 @@ import com.hongyan.base.router.Router;
 import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
 import com.hongyan.wdcf.base.ImageLoaderOptionHelper;
+import com.hongyan.wdcf.base.RequestKeyTable;
 import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.business.account.core.AccountInfo;
 import com.hongyan.wdcf.business.account.core.AccountManager;
@@ -120,7 +121,18 @@ public class MeUserPageView extends LinearLayout implements View.OnClickListener
             case R.id.image_logo:
             case R.id.tv_userName:
             case R.id.tv_userPhone: {
-                RouterManager.getInstance().openUrl(new Router(RouterConfig.UserInfoIndex));
+                AccountInfo accountInfo = AccountManager.getInstance().getAccountInfo();
+                if (accountInfo != null) {
+                    Router router = new Router(RouterConfig.UserInfoIndex);
+                    router.addParams(RequestKeyTable.USER_NAME, accountInfo.getUser_nicename());
+                    router.addParams(RequestKeyTable.USER_REAL_NAME, accountInfo.getUser_nicename());
+                    router.addParams(RequestKeyTable.MOBILE, accountInfo.getUIMobile());
+                    router.addParams(RequestKeyTable.EMAIL, accountInfo.getUser_email());
+                    router.addParams(RequestKeyTable.USER_IDENTIFY_NUMBER, accountInfo.getUser_nicename());
+                    router.addParams(RequestKeyTable.ADDRESS, accountInfo.getAddress());
+                    router.addParams(RequestKeyTable.USER_AVATAR, accountInfo.getAvatar());
+                    RouterManager.getInstance().openUrl(router);
+                }
                 break;
             }
         }

@@ -26,4 +26,9 @@ public class RequestKeyTable {
     public static final String LINK_UP_TIME = "linkup_time";
     public static final String REMIND_TIME = "remind_time";
     public static final String SEARCH_WORD = "searchWord";
+    public static final String USER_NAME = "userName";
+    public static final String USER_AVATAR = "userAvatar";
+    public static final String LEVEL = "level";
+    public static final String USER_REAL_NAME = "userRealName";
+    public static final String USER_IDENTIFY_NUMBER = "userIdentifyNumber";
 }

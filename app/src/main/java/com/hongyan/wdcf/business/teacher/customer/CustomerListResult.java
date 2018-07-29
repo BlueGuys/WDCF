@@ -21,6 +21,11 @@ public class CustomerListResult extends BaseResult {
         public String id;
         public String mobile;
         public String review_str;
+        public String id_number;
+        public String user_email;
+        public String avatar;
+        public String address;
+        public String realname;
 
         public String getUIMobile() {
             if (mobile != null && mobile.length() == 11) {
