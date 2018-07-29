@@ -195,6 +195,13 @@ public class UrlConst {
     }
 
     /**
+     * 理财师->活动列表
+     */
+    public static String getSubcribeEventListUrl() {
+        return HOST + "Api/Finaplanner/myEvent";
+    }
+
+    /**
      * 订单受理状态
      */
     public static String getOrderStatusEditUrl() {

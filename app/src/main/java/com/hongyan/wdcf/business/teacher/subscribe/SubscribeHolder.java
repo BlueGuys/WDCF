@@ -27,12 +27,16 @@ import java.util.List;
 
 public class SubscribeHolder extends BaseViewHolder implements IViewHolder, View.OnClickListener {
 
+    private TeacherOrderListHeadView toggleView;
     private CommonIndicator indicator;
     private ViewPager viewPager;
     private SubscribePagerAdapter adapter;
     private WaitFragment waitFragment = new WaitFragment();
     private DoneFragment doneFragment = new DoneFragment();
     private FailedFragment failedFragment = new FailedFragment();
+    private Wait1Fragment wait1Fragment = new Wait1Fragment();
+    private Done1Fragment done1Fragment = new Done1Fragment();
+    private Failed1Fragment failed1Fragment = new Failed1Fragment();
 
     private List<Fragment> fragments = new ArrayList<>();
 
@@ -57,7 +61,7 @@ public class SubscribeHolder extends BaseViewHolder implements IViewHolder, View
 
     @Override
     public void initView(View rootView) {
-        addLeftButtonDefault();
+        toggleView = rootView.findViewById(R.id.view_toggle);
         indicator = rootView.findViewById(R.id.indicator);
         indicator.setTab(new String[]{"待受理", "预约成功", "预约不成功"});
         viewPager = rootView.findViewById(R.id.viewpager);
@@ -65,10 +69,9 @@ public class SubscribeHolder extends BaseViewHolder implements IViewHolder, View
         fragments.add(waitFragment);
         fragments.add(doneFragment);
         fragments.add(failedFragment);
-
         adapter = new SubscribePagerAdapter(mActivity.getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
-        viewPager.setOffscreenPageLimit(4);
+        viewPager.setOffscreenPageLimit(3);
         indicator.setOnTabChangedListener(new CommonIndicator.OnTabChangedListener() {
             @Override
             public void onSelect(int position) {
@@ -91,6 +94,36 @@ public class SubscribeHolder extends BaseViewHolder implements IViewHolder, View
 
             }
         });
+
+//        toggleView.setOnMenuClickListener(new TeacherOrderListHeadView.OnMenuClickListener() {
+//            @Override
+//            public void onSelect(int position) {
+//                if (position == 0) {
+//                    fragments.clear();
+//                    fragments.add(waitFragment);
+//                    fragments.add(doneFragment);
+//                    fragments.add(failedFragment);
+//                    adapter.setFragments(fragments);
+//                } else if (position == 2) {
+//                    fragments.clear();
+//                    fragments.add(wait1Fragment);
+//                    fragments.add(done1Fragment);
+//                    fragments.add(failed1Fragment);
+//                    adapter.setFragments(fragments);
+//                }
+//            }
+//        });
+        toggleView.setBackClickListener(new TeacherOrderListHeadView.OnBackClickListener() {
+            @Override
+            public void onClick() {
+                mActivity.finish();
+            }
+        });
+    }
+
+    @Override
+    protected boolean hideNavigationView() {
+        return true;
     }
 
     @Override
@@ -100,10 +133,7 @@ public class SubscribeHolder extends BaseViewHolder implements IViewHolder, View
 
     @Override
     public RequestBean getRequestBean() {
-        RequestBean bean = new RequestBean<>(SubscribeResult.class);
-        bean.setRequestUrl(UrlConst.getMyOrderListUrl());
-        bean.addParam(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
-        return bean;
+        return null;
     }
 
     @Override

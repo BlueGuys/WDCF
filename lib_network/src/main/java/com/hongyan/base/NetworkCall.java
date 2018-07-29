@@ -2,6 +2,9 @@ package com.hongyan.base;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.hongyan.StringUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 
@@ -33,8 +36,14 @@ public class NetworkCall<T extends BaseResult> {
                     return;
                 }
                 BaseResult result = response.getResult();
+                if (result == null) {
+                    return;
+                }
+                if (StringUtils.notEmpty(result.getReturnCode()) && result.getReturnCode().equals("50003")) {
+                    EventBus.getDefault().post(new TokenMessageEvent(false));
+                    return;
+                }
                 listener.onResponse(result);
-
             }
         }, new Response.ErrorListener() {
             @Override

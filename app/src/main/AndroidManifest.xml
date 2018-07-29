@@ -17,8 +17,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".business.main.MainActivity"
             android:launchMode="singleTask">
@@ -36,7 +35,9 @@
             android:name="com.hongyan.TestActivity"
             android:launchMode="singleTask" />
         <activity android:name=".business.account.select.SelectIdentifyActivity" />
-        <activity android:name=".business.account.login.LoginActivity" />
+        <activity
+            android:name=".business.account.login.LoginActivity"
+            android:launchMode="singleTop" />
         <activity android:name=".business.account.user.UserInfoActivity" />
         <activity android:name=".business.account.feedback.FeedbackActivity" />
         <activity android:name=".business.account.setting.SettingActivity" />

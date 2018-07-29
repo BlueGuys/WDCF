@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.KeyEvent;
 
 import com.hongyan.base.BaseViewHolder;
+import com.hongyan.base.TokenMessageEvent;
 import com.hongyan.base.tab.SubPage;
 import com.hongyan.base.tab.TabActivity;
 import com.hongyan.wdcf.R;
@@ -71,6 +72,15 @@ public class MainActivity extends TabActivity {
             return;
         }
         selectPage(message.getPosition());
+    }
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    public void tokenEvent(TokenMessageEvent message) {
+        if (message == null) {
+            return;
+        }
+        AccountManager.getInstance().logout();
+        AccountManager.getInstance().checkLogin();
     }
 
     @Override

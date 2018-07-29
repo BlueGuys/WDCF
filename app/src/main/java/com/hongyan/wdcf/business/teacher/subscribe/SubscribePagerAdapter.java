@@ -20,6 +20,14 @@ public class SubscribePagerAdapter extends FragmentPagerAdapter {
         this.fragments = fragments;
     }
 
+//    public void setFragments(List<Fragment> fragmentList) {
+//        if (fragmentList != null) {
+//            this.fragments.clear();
+//            this.fragments.addAll(fragmentList);
+//            notifyDataSetChanged();
+//        }
+//    }
+
     @Override
     public Fragment getItem(int position) {
         return fragments.get(position);
