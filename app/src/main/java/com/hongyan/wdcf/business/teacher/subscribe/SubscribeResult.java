@@ -22,6 +22,7 @@ public class SubscribeResult extends BaseResult {
         public int term_id;
         public String term_str;
         public String create_time;
+        public String remarks;
 
         public String getType() {
             switch (term_id) {

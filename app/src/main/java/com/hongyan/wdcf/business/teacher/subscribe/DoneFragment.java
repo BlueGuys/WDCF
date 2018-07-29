@@ -10,7 +10,11 @@ import android.widget.BaseAdapter;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.hongyan.base.BaseFragment;
 import com.hongyan.base.BaseResult;
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.RequestKeyTable;
+import com.hongyan.wdcf.base.RouterConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +31,7 @@ public class DoneFragment extends BaseFragment implements OrderListModel.UIReque
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         model = new OrderListModel(this);
-        model.setStatus("2");
+        model.setStatus("1");
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_sub_subscribe_wait, container, false);
             listView = view.findViewById(R.id.listView);
@@ -83,11 +87,19 @@ public class DoneFragment extends BaseFragment implements OrderListModel.UIReque
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ItemOrderB item = new ItemOrderB(getActivity());
-            SubscribeResult.Record record = mList.get(position);
+            final SubscribeResult.Record record = mList.get(position);
             if (record != null) {
                 item.setName(record.user_nicename);
                 item.setTime(record.create_time);
                 item.setType(record.term_str);
+                item.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Router router = new Router(RouterConfig.UserOrderDetail);
+                        router.addParams(RequestKeyTable.ID, record.id);
+                        RouterManager.getInstance().openUrl(router);
+                    }
+                });
             }
             return item;
         }

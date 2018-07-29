@@ -31,7 +31,7 @@ public class WaitFragment extends BaseFragment implements OrderListModel.UIReque
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         model = new OrderListModel(this);
-        model.setStatus("1");
+        model.setStatus("0");
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_sub_subscribe_wait, container, false);
             listView = view.findViewById(R.id.listView);
@@ -97,6 +97,14 @@ public class WaitFragment extends BaseFragment implements OrderListModel.UIReque
                     public void onClick() {
                         Router router = new Router();
                         router.setUrl(RouterConfig.TeacherOrderStatusEdit);
+                        router.addParams(RequestKeyTable.ID, record.id);
+                        RouterManager.getInstance().openUrl(router);
+                    }
+                });
+                item.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Router router = new Router(RouterConfig.UserOrderDetail);
                         router.addParams(RequestKeyTable.ID, record.id);
                         RouterManager.getInstance().openUrl(router);
                     }

@@ -27,7 +27,7 @@ public class FailedFragment extends BaseFragment implements OrderListModel.UIReq
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         model = new OrderListModel(this);
-        model.setStatus("3");
+        model.setStatus("2");
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_sub_subscribe_wait, container, false);
             listView = view.findViewById(R.id.listView);
@@ -83,11 +83,18 @@ public class FailedFragment extends BaseFragment implements OrderListModel.UIReq
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ItemOrderC item = new ItemOrderC(getActivity());
-            SubscribeResult.Record record = mList.get(position);
+            final SubscribeResult.Record record = mList.get(position);
             if (record != null) {
                 item.setName(record.user_nicename);
                 item.setResponse(record.term_str);
-                item.setType("原因查看");
+                item.setResponse("原因查看");
+                item.setType(record.term_str);
+                item.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showErrorToast(record.remarks);
+                    }
+                });
             }
             return item;
         }
