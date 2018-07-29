@@ -11,6 +11,10 @@ import com.hongyan.base.BaseFragment;
 import com.hongyan.base.BaseResult;
 import com.hongyan.wdcf.R;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 public class RunCustomerFragment extends BaseFragment implements CustomerListModel.UIRequestListener {
 
     private View view;
@@ -28,6 +32,7 @@ public class RunCustomerFragment extends BaseFragment implements CustomerListMod
             adapter = new CustomerAdapter(getActivity());
             listView.setAdapter(adapter);
         }
+        EventBus.getDefault().register(this);
         model.refresh(false);
         return view;
     }
@@ -38,8 +43,17 @@ public class RunCustomerFragment extends BaseFragment implements CustomerListMod
         if (null != view) {
             ((ViewGroup) view.getParent()).removeView(view);
         }
+        EventBus.getDefault().unregister(this);
     }
 
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    public void accountEvent(SearchTextChangeEvent message) {
+        if (message == null) {
+            return;
+        }
+        model.setSearchKey(message.getSearchKey());
+        model.refresh(false);
+    }
 
     @Override
     public void onSuccess(BaseResult result) {

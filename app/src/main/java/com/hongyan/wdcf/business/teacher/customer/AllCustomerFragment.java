@@ -2,7 +2,6 @@ package com.hongyan.wdcf.business.teacher.customer;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,10 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.hongyan.base.BaseFragment;
 import com.hongyan.base.BaseResult;
 import com.hongyan.wdcf.R;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public class AllCustomerFragment extends BaseFragment implements CustomerListModel.UIRequestListener {
 
@@ -29,6 +32,7 @@ public class AllCustomerFragment extends BaseFragment implements CustomerListMod
             adapter = new CustomerAdapter(getActivity());
             listView.setAdapter(adapter);
         }
+        EventBus.getDefault().register(this);
         model.refresh(true);
         return view;
     }
@@ -39,8 +43,17 @@ public class AllCustomerFragment extends BaseFragment implements CustomerListMod
         if (null != view) {
             ((ViewGroup) view.getParent()).removeView(view);
         }
+        EventBus.getDefault().unregister(this);
     }
 
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    public void accountEvent(SearchTextChangeEvent message) {
+        if (message == null) {
+            return;
+        }
+        model.setSearchKey(message.getSearchKey());
+        model.refresh(true);
+    }
 
     @Override
     public void onSuccess(BaseResult result) {

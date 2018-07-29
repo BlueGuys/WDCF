@@ -5,8 +5,6 @@ import com.hongyan.base.BaseResult;
 import com.hongyan.base.RequestListener;
 import com.hongyan.wdcf.base.RequestKeyTable;
 import com.hongyan.wdcf.base.WDNetworkCall;
-import com.hongyan.wdcf.business.account.feedback.FeedbackHolder;
-import com.hongyan.wdcf.business.main.discover.DiscoverResult;
 import com.hongyan.wdcf.config.UrlConst;
 
 /**
@@ -16,16 +14,19 @@ import com.hongyan.wdcf.config.UrlConst;
 public class CustomerListModel extends BaseModel {
 
     private UIRequestListener mListener;
+    private String searchKey = "";
+    private WDNetworkCall feedbackCall;
 
     public CustomerListModel(UIRequestListener listener) {
         this.mListener = listener;
+        feedbackCall = new WDNetworkCall<>();
     }
 
     public void refresh(boolean isAll) {
-        WDNetworkCall feedbackCall = new WDNetworkCall<>();
         feedbackCall.setRequestUrl(UrlConst.getCustomerListUrl());
         feedbackCall.setResultClass(CustomerListResult.class);
         feedbackCall.addParam(RequestKeyTable.IS_INVEST, isAll ? "0" : "1");
+        feedbackCall.addParam(RequestKeyTable.SEARCH_WORD, searchKey);
         feedbackCall.start(new RequestListener() {
             @Override
             public <T extends BaseResult> void onResponse(T result) {
@@ -41,6 +42,10 @@ public class CustomerListModel extends BaseModel {
                 }
             }
         });
+    }
+
+    public void setSearchKey(String searchKey) {
+        this.searchKey = searchKey;
     }
 
     public interface UIRequestListener {

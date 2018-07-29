@@ -2,8 +2,13 @@ package com.hongyan.wdcf.business.teacher.customer;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import com.hongyan.SoftInputUtils;
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;
 import com.hongyan.base.BaseViewHolder;
@@ -18,6 +23,8 @@ import com.hongyan.wdcf.business.account.core.AccountManager;
 import com.hongyan.wdcf.config.UrlConst;
 import com.hongyan.wdcf.widget.CommonIndicator;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +37,7 @@ public class CustomerListHolder extends BaseViewHolder implements IViewHolder, V
     private CommonIndicator indicator;
     private ViewPager viewPager;
     private CustomerPagerAdapter adapter;
+    private EditText editText;
 
     private List<Fragment> fragments = new ArrayList<>();
 
@@ -58,6 +66,7 @@ public class CustomerListHolder extends BaseViewHolder implements IViewHolder, V
         indicator = rootView.findViewById(R.id.indicator);
         indicator.setTab(new String[]{"全部客户", "在投客户"});
         viewPager = rootView.findViewById(R.id.viewpager);
+        editText = rootView.findViewById(R.id.et_search);
 
         fragments.add(new AllCustomerFragment());
         fragments.add(new RunCustomerFragment());
@@ -84,6 +93,18 @@ public class CustomerListHolder extends BaseViewHolder implements IViewHolder, V
             @Override
             public void onPageScrollStateChanged(int state) {
 
+            }
+        });
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    SearchTextChangeEvent s = new SearchTextChangeEvent();
+                    s.setSearchKey(editText.getText().toString());
+                    EventBus.getDefault().post(s);
+                    SoftInputUtils.hideSoftKeyPad(mActivity,editText);
+                }
+                return false;
             }
         });
     }
