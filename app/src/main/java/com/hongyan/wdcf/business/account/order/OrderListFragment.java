@@ -90,6 +90,7 @@ public class OrderListFragment extends BaseFragment implements OrderListModel.UI
             ItemOrderSubscribe item = new ItemOrderSubscribe(getActivity());
             final OrderListResult.Order order = mList.get(position);
             if (order != null) {
+                item.setLabel(order.term_str);
                 item.setTitle(order.product_title);
                 item.setDesc(order.tlimit);
                 item.setTime(order.create_time);
