@@ -4,9 +4,9 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/ds2"
     android:background="@color/appBackground"
+    android:minHeight="@dimen/ds100"
     android:paddingLeft="@dimen/ds10"
-    android:paddingRight="@dimen/ds10"
-    android:minHeight="@dimen/ds100">
+    android:paddingRight="@dimen/ds10">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginTop="@dimen/ds10"
+            android:layout_toLeftOf="@id/tv_order_time"
             android:layout_toRightOf="@id/tv_order_name"
             android:minWidth="@dimen/ds120"
             android:textColor="@color/fontPositive"

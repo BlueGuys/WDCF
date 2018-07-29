@@ -32,6 +32,7 @@
             android:layout_centerVertical="true"
             android:layout_marginTop="@dimen/ds10"
             android:layout_toRightOf="@id/tv_order_name"
+            android:layout_toLeftOf="@id/tv_order_time"
             android:minWidth="@dimen/ds120"
             android:textColor="@color/fontPositive"
             android:textSize="14dp" />

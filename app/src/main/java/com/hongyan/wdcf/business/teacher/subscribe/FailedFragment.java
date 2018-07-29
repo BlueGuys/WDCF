@@ -86,9 +86,8 @@ public class FailedFragment extends BaseFragment implements OrderListModel.UIReq
             final SubscribeResult.Record record = mList.get(position);
             if (record != null) {
                 item.setName(record.user_nicename);
-                item.setResponse(record.term_str);
                 item.setResponse("原因查看");
-                item.setType(record.term_str);
+                item.setType(record.product_title);
                 item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

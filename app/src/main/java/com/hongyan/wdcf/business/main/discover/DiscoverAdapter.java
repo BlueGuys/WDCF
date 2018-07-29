@@ -158,7 +158,6 @@ public class DiscoverAdapter extends BaseAdapter {
                 Router router = new Router();
                 router.setUrl("http://caifu.thongfu.com/App/Active/lists.html?cat_id=4");
                 router.addParams(RequestKeyTable.TITLE, "学习");
-                router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
                 RouterManager.getInstance().openUrl(router);
             }
         });
@@ -168,7 +167,6 @@ public class DiscoverAdapter extends BaseAdapter {
                 Router router = new Router();
                 router.setUrl("http://caifu.thongfu.com/App/Life");
                 router.addParams(RequestKeyTable.TITLE, "生活");
-                router.addParams(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
                 RouterManager.getInstance().openUrl(router);
             }
         });

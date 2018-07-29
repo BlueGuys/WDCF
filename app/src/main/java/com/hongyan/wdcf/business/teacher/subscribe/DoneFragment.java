@@ -91,7 +91,7 @@ public class DoneFragment extends BaseFragment implements OrderListModel.UIReque
             if (record != null) {
                 item.setName(record.user_nicename);
                 item.setTime(record.create_time);
-                item.setType(record.term_str);
+                item.setType(record.product_title);
                 item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

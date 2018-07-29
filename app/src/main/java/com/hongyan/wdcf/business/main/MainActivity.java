@@ -3,14 +3,12 @@ package com.hongyan.wdcf.business.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.KeyEvent;
 
 import com.hongyan.base.BaseViewHolder;
-import com.hongyan.base.router.Router;
-import com.hongyan.base.router.RouterManager;
 import com.hongyan.base.tab.SubPage;
 import com.hongyan.base.tab.TabActivity;
 import com.hongyan.wdcf.R;
-import com.hongyan.wdcf.base.RouterConfig;
 import com.hongyan.wdcf.business.account.core.AccountManager;
 import com.hongyan.wdcf.business.account.core.MainMessageEvent;
 import com.hongyan.wdcf.business.account.core.TabChangeEvent;
@@ -25,6 +23,9 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 
 public class MainActivity extends TabActivity {
+
+    private long exitTime = 0;
+    private final static long DOUBLE_BACK_TIME = 2000; // 两次back的间隔时间：2s
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,5 +85,21 @@ public class MainActivity extends TabActivity {
     @Override
     protected BaseViewHolder getViewHolder() {
         return super.getViewHolder();
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() != KeyEvent.KEYCODE_BACK) {
+            return super.dispatchKeyEvent(event);
+        }
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > DOUBLE_BACK_TIME) {
+                showErrorToast("再按一次退出程序");
+                exitTime = System.currentTimeMillis();
+            } else {
+                System.exit(0);
+            }
+        }
+        return true;
     }
 }

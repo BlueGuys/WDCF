@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginTop="@dimen/ds10"
+            android:layout_toLeftOf="@id/tv_order_reason"
             android:layout_toRightOf="@id/tv_order_name"
             android:minWidth="@dimen/ds120"
             android:textColor="@color/fontPositive"

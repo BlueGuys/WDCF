@@ -29,6 +29,7 @@ import com.hongyan.wdcf.business.teacher.orderstatus.OrderStatusActivity;
 import com.hongyan.wdcf.business.teacher.subscribe.SubscribeActivity;
 import com.hongyan.wdcf.business.teacher.addrecord.AddRecordActivity;
 import com.hongyan.wdcf.business.teacher.info.TeacherInfoActivity;
+import com.hongyan.wdcf.business.user.study.StudyListActivity;
 
 public final class RouterConfig {
 
@@ -78,6 +79,7 @@ public final class RouterConfig {
         RouterConst.addRouter(TeacherOrderStatusEdit, OrderStatusActivity.class.getName());
         RouterConst.addRouter(TeacherCustomerList, CustomerAllListActivity.class.getName());
         RouterConst.addRouter(UserOrderDetail, OrderDetailActivity.class.getName());
+        RouterConst.addRouter(UserStudyList, StudyListActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -152,5 +154,9 @@ public final class RouterConfig {
      * 订单详情
      */
     public static final String UserOrderDetail = "native://user/order/detail";
+    /**
+     * 学习
+     */
+    public static final String UserStudyList = "native://user/study/list";
 
 }
