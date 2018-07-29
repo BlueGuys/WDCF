@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseViewHolder;
+import com.hongyan.wdcf.base.RequestKeyTable;
 import com.hongyan.wdcf.business.account.core.MainMessageEvent;
 import com.hongyan.wdcf.business.teacher.customerList.CustomerMessageEvent;
 
@@ -26,7 +27,11 @@ public class AddRecordActivity extends BaseActivity {
 
     @Override
     protected BaseViewHolder getViewHolder() {
+        String id = getParam(RequestKeyTable.ID_NUMBER);
+        String name = getParam(RequestKeyTable.USER_NAME);
         holder = new AddRecordHolder(this);
+        holder.setCustomerID(id);
+        holder.setCustomerName(name);
         return holder;
     }
 

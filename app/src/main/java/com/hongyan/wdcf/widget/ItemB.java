@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ public class ItemB extends LinearLayout {
     private View view;
     TextView tvTitle;
     TextView tvDesc;
+    ImageView imgArrow;
 
     public ItemB(Context context) {
         super(context);
@@ -36,6 +38,7 @@ public class ItemB extends LinearLayout {
     private void initView(Context context, AttributeSet attrs) {
         tvTitle = view.findViewById(R.id.tv_title);
         tvDesc = view.findViewById(R.id.tv_desc);
+        imgArrow = view.findViewById(R.id.img_arrow);
         @SuppressLint("Recycle") TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ItemB);
         String title = ta.getString(R.styleable.ItemB_title);
         String desc = ta.getString(R.styleable.ItemB_desc);
@@ -49,5 +52,11 @@ public class ItemB extends LinearLayout {
 
     public void setDesc(String desc) {
         tvDesc.setText(desc);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        imgArrow.setVisibility(enabled ? View.VISIBLE : View.GONE);
     }
 }

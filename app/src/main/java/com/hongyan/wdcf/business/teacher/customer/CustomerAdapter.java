@@ -88,7 +88,8 @@ public class CustomerAdapter extends BaseAdapter {
                 @Override
                 public void onClick() {
                     Router router = new Router(RouterConfig.TearcherAddRecord);
-//                    router.addParams(RequestKeyTable.ID_NUMBER, customer.id);
+                    router.addParams(RequestKeyTable.ID_NUMBER, customer.id);
+                    router.addParams(RequestKeyTable.USER_NAME, customer.user_nicename);
                     RouterManager.getInstance().openUrl(router);
                 }
             });

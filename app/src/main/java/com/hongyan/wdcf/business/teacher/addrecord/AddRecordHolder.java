@@ -32,6 +32,7 @@ public class AddRecordHolder extends BaseViewHolder implements IViewHolder, View
     private ItemB itemChatTime;
     private ItemB itemRemindTime;
     private String customerID;
+    private String customerName;
     private String content;
     private String chatTime;
     private String remindTime;
@@ -84,6 +85,13 @@ public class AddRecordHolder extends BaseViewHolder implements IViewHolder, View
                 content = editText.getText().toString();
             }
         });
+        //这段逻辑只会执行一次
+        if (StringUtils.notEmpty(customerID)) {
+            itemCustomer.setDesc(customerName);
+            itemCustomer.setEnabled(false);
+        } else {
+            itemCustomer.setEnabled(true);
+        }
     }
 
     @Override
@@ -168,6 +176,9 @@ public class AddRecordHolder extends BaseViewHolder implements IViewHolder, View
     }
 
     public void setCustomerName(String customerName) {
-        itemCustomer.setDesc(customerName);
+        this.customerName = customerName;
+        if (itemCustomer != null) {
+            itemCustomer.setDesc(customerName);
+        }
     }
 }
