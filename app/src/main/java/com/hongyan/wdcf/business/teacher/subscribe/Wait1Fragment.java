@@ -86,25 +86,18 @@ public class Wait1Fragment extends BaseFragment implements EventListModel.UIRequ
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ItemOrderA item = new ItemOrderA(getActivity());
+            ItemActivity item = new ItemActivity(getActivity());
             final SubscribeResult.Record record = mList.get(position);
             if (record != null) {
-                item.setName(record.user_nicename);
+                item.setTitle(record.title);
                 item.setTime(record.create_time);
-                item.setType(record.product_title);
-                item.setEditClickListener(new ItemOrderA.OnEditClickListener() {
-                    @Override
-                    public void onClick() {
-                        Router router = new Router();
-                        router.setUrl(RouterConfig.TeacherOrderStatusEdit);
-                        router.addParams(RequestKeyTable.ID, record.id);
-                        RouterManager.getInstance().openUrl(router);
-                    }
-                });
+                item.setDesc("订单编号 " + record.event_no);
+                item.setStatus(record.status_str);
                 item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Router router = new Router(RouterConfig.UserOrderDetail);
+                        Router router = new Router();
+                        router.setUrl(RouterConfig.TeacherOrderStatusEdit);
                         router.addParams(RequestKeyTable.ID, record.id);
                         RouterManager.getInstance().openUrl(router);
                     }

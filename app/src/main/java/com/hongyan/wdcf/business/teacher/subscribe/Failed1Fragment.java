@@ -10,7 +10,11 @@ import android.widget.BaseAdapter;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.hongyan.base.BaseFragment;
 import com.hongyan.base.BaseResult;
+import com.hongyan.base.router.Router;
+import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.R;
+import com.hongyan.wdcf.base.RequestKeyTable;
+import com.hongyan.wdcf.base.RouterConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,12 +86,13 @@ public class Failed1Fragment extends BaseFragment implements EventListModel.UIRe
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ItemOrderC item = new ItemOrderC(getActivity());
+            ItemActivity item = new ItemActivity(getActivity());
             final SubscribeResult.Record record = mList.get(position);
             if (record != null) {
-                item.setName(record.user_nicename);
-                item.setResponse("原因查看");
-                item.setType(record.product_title);
+                item.setTitle(record.title);
+                item.setTime(record.create_time);
+                item.setDesc("订单编号 " + record.event_no);
+                item.setStatus(record.status_str);
                 item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

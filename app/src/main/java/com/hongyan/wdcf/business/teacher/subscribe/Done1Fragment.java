@@ -86,12 +86,13 @@ public class Done1Fragment extends BaseFragment implements EventListModel.UIRequ
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ItemOrderB item = new ItemOrderB(getActivity());
+            ItemActivity item = new ItemActivity(getActivity());
             final SubscribeResult.Record record = mList.get(position);
             if (record != null) {
-                item.setName(record.user_nicename);
+                item.setTitle(record.title);
                 item.setTime(record.create_time);
-                item.setType(record.product_title);
+                item.setDesc("订单编号 " + record.event_no);
+                item.setStatus(record.status_str);
                 item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

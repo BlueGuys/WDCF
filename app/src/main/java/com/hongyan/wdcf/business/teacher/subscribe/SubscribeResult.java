@@ -24,6 +24,10 @@ public class SubscribeResult extends BaseResult {
         public String create_time;
         public String remarks;
         public String product_title;
+        public String title;
+        public String event_no;
+        public String status_str;
+
 
         public String getType() {
             switch (term_id) {

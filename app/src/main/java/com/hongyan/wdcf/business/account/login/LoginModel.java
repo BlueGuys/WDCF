@@ -24,6 +24,7 @@ public class LoginModel extends BaseModel {
     }
 
     public void login(String mobilePhone, String password) {
+        viewHolder.startLoading();
         NetworkCall registerCall = new NetworkCall<>();
         registerCall.setRequestUrl(UrlConst.getLoginUrl());
         registerCall.setResultClass(LoginResult.class);
@@ -32,6 +33,7 @@ public class LoginModel extends BaseModel {
         registerCall.start(new RequestListener() {
             @Override
             public <T extends BaseResult> void onResponse(T result) {
+                viewHolder.cancelLoading();
                 LoginResult registerResult = (LoginResult) result;
                 if (registerResult.isSuccessful()) {
                     LoginResult.Data data = registerResult.data;
@@ -49,6 +51,7 @@ public class LoginModel extends BaseModel {
 
             @Override
             public void onError(BaseResult.Error error) {
+                viewHolder.cancelLoading();
                 viewHolder.showErrorToast(error.errorMessage);
             }
         });
