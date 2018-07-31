@@ -31,7 +31,6 @@
                 android:id="@+id/tv_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="规定一个期限规定一个期限规定一个期限规定一个期限"
                 android:textColor="@color/fontGray"
                 android:textSize="15dp" />
 

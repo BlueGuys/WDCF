@@ -27,6 +27,7 @@ public class FixedProductListHolder extends BaseViewHolder implements IViewHolde
 
     private FixedProductListAdapter adapter;
     private PullToRefreshListView listView;
+    public ArrayList<FixedProductListResult.Product> list;
 
     public FixedProductListHolder(BaseActivity mActivity) {
         super(mActivity);

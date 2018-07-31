@@ -55,7 +55,7 @@ public class SimuListAdapter extends BaseAdapter {
         final SimuListResult.Product product = mList.get(position);
         productB.setAmount(product.scale);
         productB.setDeadLine(product.end_time);
-        productB.setDesc(product.excerpt);
+        productB.setDesc(product.title);
         productB.setLabel1(product.effecStr);
         productB.setImgUrl(product.photo);
         productB.setOnClickListener(new View.OnClickListener() {
