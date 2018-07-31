@@ -27,6 +27,7 @@ public class SimuListResult extends BaseResult {
         public String photo;
         public String detail_url;
         public String effecStr;
+        public String surplus_money;
     }
 
 }

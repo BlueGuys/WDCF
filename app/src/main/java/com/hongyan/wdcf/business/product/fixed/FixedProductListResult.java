@@ -1,5 +1,6 @@
 package com.hongyan.wdcf.business.product.fixed;
 
+import com.hongyan.StringUtils;
 import com.hongyan.base.BaseResult;
 
 import java.util.ArrayList;
@@ -14,6 +15,12 @@ public class FixedProductListResult extends BaseResult {
 
     static class Data {
         public ArrayList<Product> list;
+        private String hasMore;
+        public String next_page;
+
+        public boolean hasMore() {
+            return StringUtils.notEmpty(hasMore) && "1".equals(hasMore);
+        }
     }
 
     static class Product {
@@ -27,6 +34,7 @@ public class FixedProductListResult extends BaseResult {
         public String photo;
         public String detail_url;
         public String effecStr;
+        public String surplus_money;
     }
 
 }

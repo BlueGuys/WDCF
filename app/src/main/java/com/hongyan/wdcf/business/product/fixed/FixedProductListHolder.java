@@ -2,7 +2,9 @@ package com.hongyan.wdcf.business.product.fixed;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.hongyan.base.BaseActivity;
 import com.hongyan.base.BaseResult;
@@ -27,7 +29,7 @@ public class FixedProductListHolder extends BaseViewHolder implements IViewHolde
 
     private FixedProductListAdapter adapter;
     private PullToRefreshListView listView;
-    public ArrayList<FixedProductListResult.Product> list;
+    private FixedProductListModel model;
 
     public FixedProductListHolder(BaseActivity mActivity) {
         super(mActivity);
@@ -45,7 +47,7 @@ public class FixedProductListHolder extends BaseViewHolder implements IViewHolde
 
     @Override
     public boolean needPageRequest() {
-        return true;
+        return false;
     }
 
     @Override
@@ -54,6 +56,38 @@ public class FixedProductListHolder extends BaseViewHolder implements IViewHolde
         listView = rootView.findViewById(R.id.listView);
         adapter = new FixedProductListAdapter(mActivity);
         listView.setAdapter(adapter);
+        model = new FixedProductListModel(new FixedProductListModel.UIRequestListener() {
+            @Override
+            public void onRefresh(ArrayList<FixedProductListResult.Product> list, boolean hasMore) {
+                listView.setMode(hasMore ? PullToRefreshBase.Mode.BOTH : PullToRefreshBase.Mode.MANUAL_REFRESH_ONLY);
+                adapter.setData(list);
+                listView.onRefreshComplete();
+            }
+
+            @Override
+            public void onLoadMore(ArrayList<FixedProductListResult.Product> list, boolean hasMore) {
+                listView.setMode(hasMore ? PullToRefreshBase.Mode.BOTH : PullToRefreshBase.Mode.MANUAL_REFRESH_ONLY);
+                adapter.setData(list);
+                listView.onRefreshComplete();
+            }
+
+            @Override
+            public void onFail(String message) {
+                showErrorToast(message);
+            }
+        });
+        listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                model.refresh();
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+                model.loadMore();
+            }
+        });
+        model.refresh();
     }
 
     @Override
@@ -63,28 +97,11 @@ public class FixedProductListHolder extends BaseViewHolder implements IViewHolde
 
     @Override
     public RequestBean getRequestBean() {
-        RequestBean bean = new RequestBean<>(FixedProductListResult.class);
-        bean.setRequestUrl(UrlConst.getProductFixedListUrl());
-        bean.addParam(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
-        bean.addParam(RequestKeyTable.CAT_ID, "5");
-        return bean;
+        return null;
     }
 
     @Override
     public <T extends BaseResult> void onRequestSuccess(T result) {
-        FixedProductListResult cardListResult = (FixedProductListResult) result;
-        if (cardListResult == null) {
-            return;
-        }
-        if (cardListResult.isSuccessful()) {
-            setDataList(cardListResult.data.list);
-        } else {
-            showErrorToast(cardListResult.getReturnMessage());
-        }
-    }
-
-    protected void setDataList(ArrayList<FixedProductListResult.Product> list) {
-        adapter.setData(list);
     }
 
     @Override

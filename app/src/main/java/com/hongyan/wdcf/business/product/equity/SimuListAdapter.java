@@ -53,7 +53,7 @@ public class SimuListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ProductB productB = new ProductB(mContext);
         final SimuListResult.Product product = mList.get(position);
-        productB.setAmount(product.scale);
+        productB.setAmount(product.surplus_money);
         productB.setDeadLine(product.end_time);
         productB.setDesc(product.title);
         productB.setLabel1(product.effecStr);

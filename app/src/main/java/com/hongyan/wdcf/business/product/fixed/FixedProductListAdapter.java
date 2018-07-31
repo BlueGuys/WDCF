@@ -33,6 +33,7 @@ public class FixedProductListAdapter extends BaseAdapter {
 
     public void setData(ArrayList<FixedProductListResult.Product> list) {
         if (list != null) {
+            mList.clear();
             mList.addAll(list);
         }
         notifyDataSetChanged();
@@ -57,7 +58,7 @@ public class FixedProductListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ProductB productB = new ProductB(mContext);
         final FixedProductListResult.Product product = mList.get(position);
-        productB.setAmount(product.scale);
+        productB.setAmount(product.surplus_money);
         productB.setDeadLine(product.end_time);
         productB.setDesc(product.title);
         productB.setLabel1(product.effecStr);
