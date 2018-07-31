@@ -7,6 +7,7 @@ import com.hongyan.wdcf.business.account.bankcard.BindBankCardActivity;
 import com.hongyan.wdcf.business.account.bindteacher.BindTeacherActivity;
 import com.hongyan.wdcf.business.account.feedback.FeedbackActivity;
 import com.hongyan.wdcf.business.account.order.OrderDetailActivity;
+import com.hongyan.wdcf.business.teacher.activitydetail.ActivityDetailActivity;
 import com.hongyan.wdcf.business.teacher.customerList.CustomerAllListActivity;
 import com.hongyan.wdcf.business.teacher.introduction.ModifyIntroductionActivity;
 import com.hongyan.wdcf.business.teacher.invite.InviteActivity;
@@ -70,7 +71,6 @@ public final class RouterConfig {
         RouterConst.addRouter(UserInvite, InviteActivity.class.getName());
         RouterConst.addRouter(TearcherAddRecord, AddRecordActivity.class.getName());
         RouterConst.addRouter(ProductListFixed, FixedProductListActivity.class.getName());
-        RouterConst.addRouter(ProductListFixed, FixedProductListActivity.class.getName());
         RouterConst.addRouter(ProductListSimu, SimuListActivity.class.getName());
         RouterConst.addRouter(ProductListOverseas, OverseasProductListActivity.class.getName());
         RouterConst.addRouter(ProductListInsurance, InsuranceListActivity.class.getName());
@@ -80,6 +80,7 @@ public final class RouterConfig {
         RouterConst.addRouter(TeacherCustomerList, CustomerAllListActivity.class.getName());
         RouterConst.addRouter(UserOrderDetail, OrderDetailActivity.class.getName());
         RouterConst.addRouter(UserStudyList, StudyListActivity.class.getName());
+        RouterConst.addRouter(UserActivityDetail, ActivityDetailActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -125,7 +126,7 @@ public final class RouterConfig {
     /**
      * 私募股权
      */
-    public static final String ProductListSimu = "native://product/list/fixed";
+    public static final String ProductListSimu = "native://product/list/simu";
     /**
      * 海外投资
      */
@@ -158,5 +159,9 @@ public final class RouterConfig {
      * 学习
      */
     public static final String UserStudyList = "native://user/study/list";
+    /**
+     * 订单详情
+     */
+    public static final String UserActivityDetail = "native://user/activity/detail";
 
 }

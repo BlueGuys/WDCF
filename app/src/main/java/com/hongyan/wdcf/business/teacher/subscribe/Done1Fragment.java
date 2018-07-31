@@ -19,7 +19,7 @@ import com.hongyan.wdcf.base.RouterConfig;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Done1Fragment extends BaseFragment implements EventListModel.UIRequestListener{
+public class Done1Fragment extends BaseFragment implements EventListModel.UIRequestListener {
 
     private View view;
     private PullToRefreshListView listView;
@@ -96,8 +96,12 @@ public class Done1Fragment extends BaseFragment implements EventListModel.UIRequ
                 item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Router router = new Router(RouterConfig.UserOrderDetail);
+                        Router router = new Router(RouterConfig.UserActivityDetail);
                         router.addParams(RequestKeyTable.ID, record.id);
+                        router.addParams(RequestKeyTable.CREATE_TIME, record.create_time);
+                        router.addParams(RequestKeyTable.TITLE, record.title);
+                        router.addParams(RequestKeyTable.STATUS, record.status_str);
+                        router.addParams(RequestKeyTable.NUMBER, record.event_no);
                         RouterManager.getInstance().openUrl(router);
                     }
                 });
@@ -105,7 +109,6 @@ public class Done1Fragment extends BaseFragment implements EventListModel.UIRequ
             return item;
         }
     }
-
 
 
 }

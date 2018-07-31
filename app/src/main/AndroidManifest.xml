@@ -63,6 +63,7 @@
         <activity android:name=".business.teacher.customerList.CustomerAllListActivity" />
         <activity android:name=".business.account.order.OrderDetailActivity" />
         <activity android:name=".business.user.study.StudyListActivity" />
+        <activity android:name=".business.teacher.activitydetail.ActivityDetailActivity" />
     </application>
 
 </manifest>

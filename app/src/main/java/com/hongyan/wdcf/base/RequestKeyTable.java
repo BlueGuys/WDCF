@@ -34,4 +34,6 @@ public class RequestKeyTable {
     public static final String PAGE = "page";
     public static final String AMOUNT = "amount";
     public static final String MONEY = "money";
+    public static final String CREATE_TIME = "create_time";
+    public static final String NUMBER = "number";
 }

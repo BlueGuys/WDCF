@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/ds10"
+        android:paddingRight="@dimen/ds10">
+
+        <com.hongyan.wdcf.widget.ItemA
+            android:id="@+id/item_order_title"
+            style="@style/item_a"
+            android:layout_marginTop="@dimen/ds20"
+            app:desc=""
+            app:title="" />
+
+        <com.hongyan.wdcf.widget.ItemA
+            android:id="@+id/item_order_time"
+            style="@style/item_a"
+            app:desc=""
+            app:title="下单时间" />
+
+        <com.hongyan.wdcf.widget.ItemA
+            android:id="@+id/item_order_no"
+            style="@style/item_a"
+            app:desc=""
+            app:title="订单编号" />
+
+        <TextView
+            android:id="@+id/tv_more"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ds100"
+            android:layout_marginTop="@dimen/ds50"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="查看活动详情" />
+
+    </LinearLayout>
+</ScrollView>
