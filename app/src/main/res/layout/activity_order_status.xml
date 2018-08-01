@@ -18,7 +18,8 @@
         android:id="@+id/rl_amount"
         android:layout_width="match_parent"
         android:layout_height="@dimen/ds100"
-        android:background="@drawable/bg_corner_white">
+        android:background="@drawable/bg_corner_white"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -39,6 +40,7 @@
             android:background="@color/transparent"
             android:gravity="center_vertical|right"
             android:hint="请输入金额"
+            android:textSize="14dp"
             android:inputType="numberDecimal"
             android:lines="1" />
     </RelativeLayout>

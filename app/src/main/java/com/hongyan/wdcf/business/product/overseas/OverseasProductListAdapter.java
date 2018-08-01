@@ -53,9 +53,9 @@ public class OverseasProductListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ProductB productB = new ProductB(mContext);
         final OverseasProductListResult.Product product = mList.get(position);
-        productB.setAmount(product.scale);
+        productB.setAmount(product.surplus_money);
         productB.setDeadLine(product.end_time);
-        productB.setDesc(product.excerpt);
+        productB.setDesc(product.title);
         productB.setLabel1(product.effecStr);
         productB.setImgUrl(product.photo);
         productB.setOnClickListener(new View.OnClickListener() {

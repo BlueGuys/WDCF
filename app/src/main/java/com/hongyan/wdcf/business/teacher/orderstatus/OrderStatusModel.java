@@ -25,6 +25,7 @@ public class OrderStatusModel extends BaseModel {
     }
 
     public void commit() {
+        viewHolder.startLoading();
         WDNetworkCall editOrderCall = new WDNetworkCall<>();
         editOrderCall.setRequestUrl(UrlConst.getOrderStatusEditUrl());
         editOrderCall.setResultClass(OrderStatusResult.class);
@@ -35,6 +36,7 @@ public class OrderStatusModel extends BaseModel {
         editOrderCall.start(new RequestListener() {
             @Override
             public <T extends BaseResult> void onResponse(T result) {
+                viewHolder.cancelLoading();
                 OrderStatusResult orderStatusResult = (OrderStatusResult) result;
                 if (orderStatusResult.isSuccessful()) {
                     viewHolder.showSuccessToast("修改成功");
@@ -46,7 +48,8 @@ public class OrderStatusModel extends BaseModel {
 
             @Override
             public void onError(BaseResult.Error error) {
-
+                viewHolder.cancelLoading();
+                viewHolder.showErrorToast(error.errorMessage);
             }
         });
     }
