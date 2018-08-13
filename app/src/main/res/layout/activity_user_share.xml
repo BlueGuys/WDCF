@@ -21,8 +21,7 @@
         android:id="@+id/image_code"
         android:layout_width="@dimen/ds599"
         android:layout_height="@dimen/ds599"
-        android:layout_marginTop="@dimen/ds100"
-        android:background="@drawable/icon_xintuo" />
+        android:layout_marginTop="@dimen/ds100" />
 
     <TextView
         android:layout_width="match_parent"
@@ -53,7 +52,20 @@
                 android:id="@+id/image_we_chat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/icon_share_chat_moment" />
+                android:background="@drawable/icon_wechat" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/ds200"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/image_moments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_moments" />
         </LinearLayout>
 
         <LinearLayout
@@ -66,7 +78,7 @@
                 android:id="@+id/image_qq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/icon_share_qq" />
+                android:background="@drawable/icon_qq" />
         </LinearLayout>
     </LinearLayout>
 

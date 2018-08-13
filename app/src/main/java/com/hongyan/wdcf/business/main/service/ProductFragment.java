@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hongyan.base.BaseFragment;
@@ -31,6 +32,7 @@ public class ProductFragment extends BaseFragment implements View.OnClickListene
     private ProductModel productModel;
     private ProductB productA;
     private ProductB productB;
+    private LinearLayout title01;
     private ProductB product01;
     private ProductB product02;
 
@@ -103,6 +105,9 @@ public class ProductFragment extends BaseFragment implements View.OnClickListene
                     gotoProductDetail(fixationB.detail_url, fixationB.risk_lv);
                 }
             });
+        } else {
+            productA.setVisibility(View.GONE);
+            productB.setVisibility(View.GONE);
         }
 
         //平铺产品
@@ -147,6 +152,10 @@ public class ProductFragment extends BaseFragment implements View.OnClickListene
                         gotoProductDetail(equity02.detail_url, equity02.risk_lv);
                     }
                 });
+            } else {
+                product01.setVisibility(View.GONE);
+                product02.setVisibility(View.GONE);
+                title01.setVisibility(View.GONE);
             }
         } else {
             product01.setVisibility(View.GONE);
@@ -176,6 +185,7 @@ public class ProductFragment extends BaseFragment implements View.OnClickListene
         bannerView = view.findViewById(R.id.banner);
         productA = view.findViewById(R.id.product_A);
         productB = view.findViewById(R.id.product_B);
+        title01 = view.findViewById(R.id.title_01);
         product01 = view.findViewById(R.id.product_01);
         product02 = view.findViewById(R.id.product_02);
         TextView textView01 = view.findViewById(R.id.tv_product_01);

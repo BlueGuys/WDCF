@@ -137,7 +137,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/ds30"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:id="@+id/title_01">
 
             <View
                 android:layout_width="0dp"
