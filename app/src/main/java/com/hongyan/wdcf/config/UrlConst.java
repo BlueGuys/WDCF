@@ -221,4 +221,11 @@ public class UrlConst {
     public static String getOrderDetailUrl() {
         return HOST + "Api/Order/orderDetail";
     }
+
+    /**
+     * 分享
+     */
+    public static String getShareUrl() {
+        return HOST + "api/Users/userShare";
+    }
 }
