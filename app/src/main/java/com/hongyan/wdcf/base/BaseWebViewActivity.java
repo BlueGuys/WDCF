@@ -1,14 +1,19 @@
 package com.hongyan.wdcf.base;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.ConsoleMessage;
@@ -268,6 +273,23 @@ public class BaseWebViewActivity extends BaseActivity {
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            Log.e("test", url);
+            if (StringUtils.notEmpty(url) && url.endsWith("pdf")) {
+                pdfUrl = url;
+                if (ContextCompat.checkSelfPermission(BaseWebViewActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    //如果应用之前请求过此权限但用户拒绝了请求，此方法将返回 true。
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(BaseWebViewActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {//这里可以写个对话框之类的项向用户解释为什么要申请权限，并在对话框的确认键后续再次申请权限} else {
+                        //申请权限，字符串数组内是一个或多个要申请的权限，1是申请权限结果的返回参数，在onRequestPermissionsResult可以得知申请结果
+                        ActivityCompat.requestPermissions(BaseWebViewActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,}, 10000);
+                    }
+                    ActivityCompat.requestPermissions(BaseWebViewActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,}, 10000);
+                } else {
+                    Router router = new Router(RouterConfig.UserActivityPDF);
+                    router.addParams("url", url);
+                    RouterManager.getInstance().openUrl(router);
+                }
+                return true;
+            }
             return super.shouldOverrideUrlLoading(view, url);
         }
 
@@ -276,5 +298,23 @@ public class BaseWebViewActivity extends BaseActivity {
             handler.proceed();
         }
     };
+
+    private String pdfUrl;
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 10000: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Router router = new Router(RouterConfig.UserActivityPDF);
+                    router.addParams("url", pdfUrl);
+                    RouterManager.getInstance().openUrl(router);
+                } else {
+                    showErrorToast("查看PDF必须同意读写权限");
+                }
+                break;
+            }
+        }
+    }
 
 }

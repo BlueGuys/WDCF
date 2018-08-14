@@ -66,7 +66,7 @@ public class UserShareHolder extends BaseViewHolder implements IViewHolder, View
         imageQQ.setOnClickListener(this);
         imageMoments.setOnClickListener(this);
         imageWechat.setOnClickListener(this);
-        imageQRcode.setImageBitmap(ZxingUtils.createBitmap("http://www.baidu.com"));
+        imageQRcode.setImageBitmap(ZxingUtils.createBitmap("http://caifu.thongfu.com//App//Download//index.html"));
     }
 
     @Override

@@ -5,14 +5,8 @@
     android:background="@color/gray"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <com.joanzapata.pdfview.PDFView
+        android:id="@+id/pdfview"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-        <es.voghdev.pdfviewpager.library.PDFViewPager
-            android:id="@+id/pdfViewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </RelativeLayout>
+        android:layout_height="match_parent" />
 </LinearLayout>

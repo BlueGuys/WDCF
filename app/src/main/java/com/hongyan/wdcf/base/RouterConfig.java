@@ -81,6 +81,7 @@ public final class RouterConfig {
         RouterConst.addRouter(UserOrderDetail, OrderDetailActivity.class.getName());
         RouterConst.addRouter(UserStudyList, StudyListActivity.class.getName());
         RouterConst.addRouter(UserActivityDetail, ActivityDetailActivity.class.getName());
+        RouterConst.addRouter(UserActivityPDF, PDFViewActivity.class.getName());
     }
 
     public static final String UserLoginIndex = "native://user/login/index";
@@ -163,5 +164,9 @@ public final class RouterConfig {
      * 订单详情
      */
     public static final String UserActivityDetail = "native://user/activity/detail";
+    /**
+     * 打开PDF
+     */
+    public static final String UserActivityPDF = "native://user/activity/pdf";
 
 }
