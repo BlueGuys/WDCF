@@ -228,4 +228,10 @@ public class UrlConst {
     public static String getShareUrl() {
         return HOST + "api/Users/userShare";
     }
+    /**
+     * 理财师分享
+     */
+    public static String getTeacherShareUrl() {
+        return HOST + "api/Users/finaplannerShare";
+    }
 }

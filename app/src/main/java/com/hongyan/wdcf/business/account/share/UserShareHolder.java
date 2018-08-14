@@ -150,12 +150,9 @@ public class UserShareHolder extends BaseViewHolder implements IViewHolder, View
                         .share();
                 break;
             case R.id.image_qq:
-                UMWeb web2 = new UMWeb("http://www.baidu.com");//连接地址
-                web2.setTitle("王宁");//标题
-                web2.setDescription("哈哈哈哈哈哈");//描述
                 new ShareAction(mActivity)
                         .setPlatform(SHARE_MEDIA.QQ)//传入平台
-                        .withMedia(web2)
+                        .withMedia(web)
                         .setCallback(new UMShareListener() {
                             @Override
                             public void onStart(SHARE_MEDIA share_media) {
