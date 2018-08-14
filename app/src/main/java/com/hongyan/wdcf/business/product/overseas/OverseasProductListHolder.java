@@ -59,9 +59,10 @@ public class OverseasProductListHolder extends BaseViewHolder implements IViewHo
     @Override
     public RequestBean getRequestBean() {
         RequestBean bean = new RequestBean<>(OverseasProductListResult.class);
-        bean.setRequestUrl(UrlConst.getProductFixedListUrl());
+        bean.setRequestUrl(UrlConst.getProductOverSeaListUrl());
         bean.addParam(RequestKeyTable.TOKEN, AccountManager.getInstance().getToken());
-        bean.addParam(RequestKeyTable.CAT_ID, "5");
+        bean.addParam(RequestKeyTable.CAT_ID, "7");
+        bean.addParam(RequestKeyTable.PAGE, "1");
         return bean;
     }
 

@@ -181,6 +181,13 @@ public class UrlConst {
     }
 
     /**
+     * 海外投资
+     */
+    public static String getProductOverSeaListUrl() {
+        return HOST + "api/Product/getList";
+    }
+
+    /**
      * 我的客户列表
      */
     public static String getCustomerListUrl() {
