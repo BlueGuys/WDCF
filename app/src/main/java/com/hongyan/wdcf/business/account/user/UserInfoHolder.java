@@ -35,7 +35,7 @@ public class UserInfoHolder extends BaseViewHolder implements IViewHolder, View.
     private ItemA itemCertificatesNumber;
     private ItemA itemMobilePhone;
     private ItemA itemEmail;
-    private ItemA itemAddress;
+    private TextView itemAddress;
     private Button button;
 
     private String userName;
@@ -79,7 +79,7 @@ public class UserInfoHolder extends BaseViewHolder implements IViewHolder, View.
         itemCertificatesNumber = rootView.findViewById(R.id.item_certificates_number);
         itemMobilePhone = rootView.findViewById(R.id.item_mobile_phone);
         itemEmail = rootView.findViewById(R.id.item_email);
-        itemAddress = rootView.findViewById(R.id.item_address);
+        itemAddress = rootView.findViewById(R.id.tv_address);
         button = rootView.findViewById(R.id.btn_exit);
 
         tvUserName.setText(userName);
@@ -88,7 +88,7 @@ public class UserInfoHolder extends BaseViewHolder implements IViewHolder, View.
         itemCertificatesNumber.setDesc(userIdentifyNumber);
         itemMobilePhone.setDesc(userName);
         itemEmail.setDesc(email);
-        itemAddress.setDesc(address);
+        itemAddress.setText(address);
         if (StringUtils.notEmpty(userAvatar)) {
             DisplayImageOptions options = ImageLoaderOptionHelper.getInstance().getAvatarImageOption();
             ImageLoader.getInstance().displayImage(userAvatar, imageUserLogo, options);
