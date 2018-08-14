@@ -35,6 +35,7 @@ public class FixedProductListResult extends BaseResult {
         public String detail_url;
         public String effecStr;
         public String surplus_money;
+        public String tags;
     }
 
 }

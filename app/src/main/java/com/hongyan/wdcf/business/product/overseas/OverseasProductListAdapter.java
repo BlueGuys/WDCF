@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.hongyan.StringUtils;
 import com.hongyan.base.router.Router;
 import com.hongyan.base.router.RouterManager;
 import com.hongyan.wdcf.base.RequestKeyTable;
@@ -66,6 +67,15 @@ public class OverseasProductListAdapter extends BaseAdapter {
                 RouterManager.getInstance().openUrl(router);
             }
         });
+        if (StringUtils.notEmpty(product.tags)) {
+            String[] tags = product.tags.split(",");
+            if (tags.length == 1) {
+                productB.setLabel2(tags[0]);
+            } else if (tags.length == 2) {
+                productB.setLabel2(tags[0]);
+                productB.setLabel3(tags[1]);
+            }
+        }
         convertView = productB;
         return convertView;
     }

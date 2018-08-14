@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.hongyan.StringUtils;
 import com.hongyan.base.BaseFragment;
 import com.hongyan.base.router.Router;
 import com.hongyan.base.router.RouterManager;
@@ -78,6 +79,15 @@ public class ProductFragment extends BaseFragment implements View.OnClickListene
                     gotoProductDetail(fixationA.detail_url, fixationA.risk_lv);
                 }
             });
+            if (StringUtils.notEmpty(fixationA.tags)) {
+                String[] tags = fixationA.tags.split(",");
+                if (tags.length == 1) {
+                    productA.setLabel2(tags[0]);
+                } else if (tags.length == 2) {
+                    productA.setLabel2(tags[0]);
+                    productA.setLabel3(tags[1]);
+                }
+            }
             productB.setVisibility(View.GONE);
         } else if (classFixation != null && classFixation.size() == 2) {
             final ProductResult.Fixation fixationA = classFixation.get(0);
@@ -92,6 +102,15 @@ public class ProductFragment extends BaseFragment implements View.OnClickListene
                     gotoProductDetail(fixationA.detail_url, fixationA.risk_lv);
                 }
             });
+            if (StringUtils.notEmpty(fixationA.tags)) {
+                String[] tags = fixationA.tags.split(",");
+                if (tags.length == 1) {
+                    productA.setLabel2(tags[0]);
+                } else if (tags.length == 2) {
+                    productA.setLabel2(tags[0]);
+                    productA.setLabel3(tags[1]);
+                }
+            }
 
             final ProductResult.Fixation fixationB = classFixation.get(1);
             productB.setAmount(fixationB.scale);
@@ -105,6 +124,15 @@ public class ProductFragment extends BaseFragment implements View.OnClickListene
                     gotoProductDetail(fixationB.detail_url, fixationB.risk_lv);
                 }
             });
+            if (StringUtils.notEmpty(fixationB.tags)) {
+                String[] tags = fixationA.tags.split(",");
+                if (tags.length == 1) {
+                    productB.setLabel2(tags[0]);
+                } else if (tags.length == 2) {
+                    productB.setLabel2(tags[0]);
+                    productB.setLabel3(tags[1]);
+                }
+            }
         } else {
             productA.setVisibility(View.GONE);
             productB.setVisibility(View.GONE);

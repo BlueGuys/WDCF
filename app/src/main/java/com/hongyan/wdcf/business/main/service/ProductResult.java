@@ -38,6 +38,7 @@ public class ProductResult extends BaseResult {
         public String detail_url;
         public String effecStr;
         public int risk_lv;
+        public String tags;
     }
 
     static class Equity {
@@ -52,6 +53,7 @@ public class ProductResult extends BaseResult {
         public String detail_url;
         public String effecStr;
         public int risk_lv;
+        public String tags;
     }
 
 }
