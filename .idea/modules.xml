@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WDCF.iml" filepath="$PROJECT_DIR$/WDCF.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidBase.iml" filepath="$PROJECT_DIR$/AndroidBase.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_PullToRefresh/lib_PullToRefresh.iml" filepath="$PROJECT_DIR$/lib_PullToRefresh/lib_PullToRefresh.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_base/lib_base.iml" filepath="$PROJECT_DIR$/lib_base/lib_base.iml" />
